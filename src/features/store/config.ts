@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import adminSlice from "@store/slices/adminSlice";
+import podcastListSlice from "@store/slices/podcastListSlice";
 
 export const store = configureStore({
   reducer: {
-    admin: adminSlice
+    admin: adminSlice,
+    podcasts: podcastListSlice
   },
 });
 

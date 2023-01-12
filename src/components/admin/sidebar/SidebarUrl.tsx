@@ -19,8 +19,8 @@ export default function SidebarUrl(props: UrlType) {
 
   return (
     <Link className={`
-      flex ${active && "bg-red-50"}
-      hover:bg-black/10 p-1 rounded-2xl text-black/90
+      flex ${active ? "bg-red-50 text-red-500" : "text-gray-700"}
+      hover:bg-black/10 p-1 rounded-2xl 
       transition-all
       gap-2 text-2xl
       ${admin.sidebarOpen ? "justify-start p-4" : "justify-center aspect-square rounded-full"}
