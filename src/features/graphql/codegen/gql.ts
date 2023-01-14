@@ -13,7 +13,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel-plugin for production.
  */
 const documents = {
-    "\n  query MostListenedToPodcast {\n      mostListenedToPodcasts {\n          edges {\n              node {\n                  audio\n                  dateAdded\n                  description\n                  podcastId\n                  title\n                  listens\n              }\n          }\n      }\n  }\n": types.MostListenedToPodcastDocument,
+    "\n  query MostListenedToPodcast {\n      podcasts: mostListenedToPodcasts {\n          edges {\n              node {\n                  audio\n                  dateAdded\n                  description\n                  podcastId\n                  title\n                  listens\n              }\n          }\n      }\n  }\n": types.MostListenedToPodcastDocument,
 };
 
 /**
@@ -33,7 +33,7 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query MostListenedToPodcast {\n      mostListenedToPodcasts {\n          edges {\n              node {\n                  audio\n                  dateAdded\n                  description\n                  podcastId\n                  title\n                  listens\n              }\n          }\n      }\n  }\n"): (typeof documents)["\n  query MostListenedToPodcast {\n      mostListenedToPodcasts {\n          edges {\n              node {\n                  audio\n                  dateAdded\n                  description\n                  podcastId\n                  title\n                  listens\n              }\n          }\n      }\n  }\n"];
+export function graphql(source: "\n  query MostListenedToPodcast {\n      podcasts: mostListenedToPodcasts {\n          edges {\n              node {\n                  audio\n                  dateAdded\n                  description\n                  podcastId\n                  title\n                  listens\n              }\n          }\n      }\n  }\n"): (typeof documents)["\n  query MostListenedToPodcast {\n      podcasts: mostListenedToPodcasts {\n          edges {\n              node {\n                  audio\n                  dateAdded\n                  description\n                  podcastId\n                  title\n                  listens\n              }\n          }\n      }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

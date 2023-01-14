@@ -1,14 +1,15 @@
 import React from "react";
 import { NextPageWithLayout } from "pages/_app";
-import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { MostListenedPodcast, SidebarLayout } from "@components/admin";
+import { useAppDispatch } from "@store/hooks";
+import { TrendingPodcasts, SidebarLayout } from "@components/admin";
 import { useMostListenedPodcasts } from "@gql/requests/queries/hooks";
-import { setPodcasts, selectPodcasts } from "@store/slices"
+import { setPodcasts } from "@store/slices"
+import Head from "next/head";
+import { SomethingWentWrong } from "@components/common";
 
 const DashBoard: NextPageWithLayout = () => {
   const {loading, data, error} = useMostListenedPodcasts()
   const dispatch = useAppDispatch();
-  const podcasts = useAppSelector(selectPodcasts);
 
   React.useEffect(() => {
     if (data?.podcasts) {
@@ -17,11 +18,17 @@ const DashBoard: NextPageWithLayout = () => {
   }, [data, dispatch])
 
   if (loading) return <div>Loadding</div>
-
+  if (error) return <SomethingWentWrong error={error} />
+  
   return (
-    <div>
-      <MostListenedPodcast />
-    </div>
+    <>
+      <Head>
+        <title>Geotech DashBoard</title>
+      </Head>
+      <main>
+        <TrendingPodcasts />
+      </main>
+    </>
   )
 };
 

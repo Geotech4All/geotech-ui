@@ -209,6 +209,33 @@ export type GuestType = {
   organization?: Maybe<OrganizationType>;
 };
 
+export type HostType = Node & {
+  __typename?: 'HostType';
+  dateAdded: Scalars['DateTime'];
+  hostId?: Maybe<Scalars['ID']>;
+  /** The ID of the object. */
+  id: Scalars['ID'];
+  podcast: PodcastType;
+  user?: Maybe<UserType>;
+};
+
+export type HostTypeConnection = {
+  __typename?: 'HostTypeConnection';
+  /** Contains the nodes in this connection. */
+  edges: Array<Maybe<HostTypeEdge>>;
+  /** Pagination data for this connection. */
+  pageInfo: PageInfo;
+};
+
+/** A Relay edge containing a `HostType` and its cursor. */
+export type HostTypeEdge = {
+  __typename?: 'HostTypeEdge';
+  /** A cursor for use in pagination */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge */
+  node?: Maybe<HostType>;
+};
+
 export type IncreasePodcastListens = {
   __typename?: 'IncreasePodcastListens';
   errors?: Maybe<Array<Maybe<ErrorType>>>;
@@ -731,7 +758,7 @@ export type PodcastType = Node & {
   /** short summary of this podcast */
   description: Scalars['String'];
   guests?: Maybe<Array<Maybe<GuestType>>>;
-  hosts?: Maybe<Array<Maybe<UserType>>>;
+  hosts?: Maybe<Array<Maybe<HostType>>>;
   /** The ID of the object. */
   id: Scalars['ID'];
   lastUpdated: Scalars['DateTime'];
@@ -809,6 +836,7 @@ export type Query = {
   getPostById?: Maybe<PostType>;
   me?: Maybe<UserNode>;
   mostListenedToPodcasts?: Maybe<PodcastTypeConnection>;
+  recentHosts?: Maybe<Array<Maybe<UserType>>>;
   staffList?: Maybe<Array<StaffType>>;
   user?: Maybe<UserNode>;
   userProfile?: Maybe<ProfileType>;
@@ -1017,6 +1045,7 @@ export type UserNode = Node & {
   email: Scalars['String'];
   firstName?: Maybe<Scalars['String']>;
   fullName?: Maybe<Scalars['String']>;
+  hostSet: HostTypeConnection;
   /** The ID of the object. */
   id: Scalars['ID'];
   isActive: Scalars['Boolean'];
@@ -1024,7 +1053,6 @@ export type UserNode = Node & {
   lastLogin?: Maybe<Scalars['DateTime']>;
   lastName?: Maybe<Scalars['String']>;
   pk?: Maybe<Scalars['Int']>;
-  podcasts: PodcastTypeConnection;
   postSet: Array<PostType>;
   profile?: Maybe<ProfileType>;
   secondaryEmail?: Maybe<Scalars['String']>;
@@ -1034,16 +1062,15 @@ export type UserNode = Node & {
 };
 
 
-export type UserNodePodcastsArgs = {
+export type UserNodeHostSetArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
+  dateAdded?: InputMaybe<Scalars['DateTime']>;
+  dateAdded_Icontains?: InputMaybe<Scalars['DateTime']>;
+  dateAdded_Istartswith?: InputMaybe<Scalars['DateTime']>;
   first?: InputMaybe<Scalars['Int']>;
-  id?: InputMaybe<Scalars['Float']>;
   last?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  title?: InputMaybe<Scalars['String']>;
-  title_Icontains?: InputMaybe<Scalars['String']>;
-  title_Istartswith?: InputMaybe<Scalars['String']>;
 };
 
 export type UserNodeConnection = {
@@ -1065,11 +1092,29 @@ export type UserNodeEdge = {
 
 export type UserType = {
   __typename?: 'UserType';
+  category: CustomUserCategory;
+  commentSet: Array<CommentType>;
   email: Scalars['String'];
   firstName?: Maybe<Scalars['String']>;
   fullName?: Maybe<Scalars['String']>;
+  hostSet: HostTypeConnection;
   id: Scalars['ID'];
   lastName?: Maybe<Scalars['String']>;
+  postSet: Array<PostType>;
+  profile?: Maybe<ProfileType>;
+  staff?: Maybe<StaffType>;
+};
+
+
+export type UserTypeHostSetArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  dateAdded?: InputMaybe<Scalars['DateTime']>;
+  dateAdded_Icontains?: InputMaybe<Scalars['DateTime']>;
+  dateAdded_Istartswith?: InputMaybe<Scalars['DateTime']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
 };
 
 /**
@@ -1116,7 +1161,7 @@ export type VerifyToken = {
 export type MostListenedToPodcastQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MostListenedToPodcastQuery = { __typename?: 'Query', mostListenedToPodcasts?: { __typename?: 'PodcastTypeConnection', edges: Array<{ __typename?: 'PodcastTypeEdge', node?: { __typename?: 'PodcastType', audio?: string | null, dateAdded: any, description: string, podcastId?: string | null, title: string, listens: number } | null } | null> } | null };
+export type MostListenedToPodcastQuery = { __typename?: 'Query', podcasts?: { __typename?: 'PodcastTypeConnection', edges: Array<{ __typename?: 'PodcastTypeEdge', node?: { __typename?: 'PodcastType', audio?: string | null, dateAdded: any, description: string, podcastId?: string | null, title: string, listens: number } | null } | null> } | null };
 
 
-export const MostListenedToPodcastDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"MostListenedToPodcast"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"mostListenedToPodcasts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"audio"}},{"kind":"Field","name":{"kind":"Name","value":"dateAdded"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"podcastId"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"listens"}}]}}]}}]}}]}}]} as unknown as DocumentNode<MostListenedToPodcastQuery, MostListenedToPodcastQueryVariables>;
+export const MostListenedToPodcastDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"MostListenedToPodcast"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"podcasts"},"name":{"kind":"Name","value":"mostListenedToPodcasts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"audio"}},{"kind":"Field","name":{"kind":"Name","value":"dateAdded"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"podcastId"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"listens"}}]}}]}}]}}]}}]} as unknown as DocumentNode<MostListenedToPodcastQuery, MostListenedToPodcastQueryVariables>;

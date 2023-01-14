@@ -2,12 +2,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Maybe, PodcastTypeConnection } from "@gql/codegen/graphql";
 import { RootState } from "@store/config";
 
-type PotentialPodcast =  Maybe<PodcastTypeConnection>
+export type PotentialPodcasts =  Maybe<PodcastTypeConnection>
 const podcastListSlice = createSlice({
   name: "podcasts",
-  initialState: {} as PotentialPodcast,
+  initialState: {} as PotentialPodcasts,
   reducers: {
-    setPodcasts: (state, action: PayloadAction<PotentialPodcast>) => {
+    setPodcasts: (_, action: PayloadAction<PotentialPodcasts>) => {
       const newState = action.payload;
       return newState;
     }
