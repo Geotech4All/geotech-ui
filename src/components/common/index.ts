@@ -12,6 +12,7 @@ import UserPill from "@components/common/user/UserPill";
 import UserOption from "@components/common/user/UserOption";
 import UserSelect from "@components/common/user/UserSelect";
 import MModal from "@components/common/modals/MModal";
+import AuthErrors from "@components/common/errors/AuthErrors";
 
 import type { GInputProps } from "@components/common/inputs/GInput";
 import type { LInputProps } from "@components/common/inputs/LInput";
@@ -28,6 +29,7 @@ export {
   GTextArea,
   UserSelect,
   UserOption,
+  AuthErrors,
   NothingFound,
   SLoadingRing,
   GraphqlErrors,

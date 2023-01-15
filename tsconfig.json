@@ -16,11 +16,14 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
+      "@api/*": ["./pages/api/*"],
+      "@pages/*": ["./pages/*"],
       "@store/*": ["./src/features/store/*"],
       "@gql/*": ["./src/features/graphql/*"],
       "@components/*": ["./src/components/*"],
       "@constants/*": ["./src/constants/*"],
       "@features/*": ["./src/features/*"],
+      "@utils/*": ["./src/utils/*"],
       "@src/*": ["./src/*"]
     }
   },

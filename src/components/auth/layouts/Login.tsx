@@ -33,7 +33,7 @@ export default function LoginLayout(props: LoginLayoutProps){
             src={imgSrc} alt={alt ?? "a woman wearing a lab-coat and looking into a microscope"} />
         </div>)
       }
-      <div className="flex-1 flex items-center p-3 justify-center h-full">{children}</div>
+      <div className="flex-1 flex shadow-lg items-center p-3 justify-center min-h-screen">{children}</div>
     </main>
   )
 };
