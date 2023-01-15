@@ -41,10 +41,6 @@ export default function MModal(props: DialogPropsType){
                   </Dialog.Title>)}
                 { description && <Dialog.Description>{description}</Dialog.Description>}
                 <div>{children}</div>
-                <Button
-                  className="bg-red-500 hover:bg-red-600 active:bg-red-600 transition-all self-end p-1 rounded-md mt-3 text-white px-4"
-                  type="button"
-                  onClick={onClose}>Cancel</Button>
               </Dialog.Panel>
             </AnimatePresence>
           </div>

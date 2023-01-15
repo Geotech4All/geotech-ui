@@ -3,8 +3,9 @@ import { SLoadingRing, SomethingWentWrong } from "@components/common";
 import { useAppDispatch } from "@store/hooks";
 import { NextPageWithLayout } from "pages/_app";
 import { useRecentHosts, useStaffList } from "@gql/requests/queries/hooks";
-import { setRecentHosts } from "@store/slices";
+import { setRecentHosts, setStaffList } from "@store/slices";
 import React from "react";
+import Head from "next/head";
 
 const Podcasts: NextPageWithLayout = () => {
   const { loading, error, data } = useRecentHosts();
@@ -15,10 +16,13 @@ const Podcasts: NextPageWithLayout = () => {
     if (data?.hosts) {
       dispatch(setRecentHosts(data?.hosts))
     }
-  }, [data, dispatch])
+    if (sData?.staff) {
+      dispatch(setStaffList(sData.staff))   
+    }
+  }, [data, dispatch, sData])
 
   if (loading || sLoading) return (
-    <div className="flex w-full items-center justify-center">
+    <div className="flex w-full min-h-screen items-center justify-center">
       <SLoadingRing />
     </div>
   )
@@ -26,7 +30,12 @@ const Podcasts: NextPageWithLayout = () => {
   if (sError) return <SomethingWentWrong error={sError} />
 
   return (
-    <NewPodcastForm />
+    <>
+      <Head>
+        <title>GeoTech Podcasts</title>
+      </Head>
+      <NewPodcastForm />
+    </>
   );
 };
 

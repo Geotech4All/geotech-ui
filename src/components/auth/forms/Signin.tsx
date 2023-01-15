@@ -1,4 +1,4 @@
-import { LInput, PInput, Button, SomethingWentWrong, AuthErrors } from "@components/common";
+import { LInput, PInput, Button, AuthErrors, PageLoadingRing } from "@components/common";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import React from "react";
 import Link from "next/link";
@@ -6,15 +6,19 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useAuthRefs } from "@constants/hooks";
 import { login } from "@api/login";
-import { GraphQLError } from "graphql";
+import { authenticateUser } from "@utils/auth";
+import { useAppDispatch } from "@store/hooks";
 
 export default function SigninForm() {
   const router = useRouter();
+  const [loading, setLoading] = React.useState(false);
   const { emailRef, passwdRef } = useAuthRefs();
   const [errors, setErrors] = React.useState<any>();
+  const dispatch = useAppDispatch();
 
   const loginHandler: React.FormEventHandler = async (event) => {
     event.preventDefault();
+    setLoading(true);
     const email = emailRef.current.value;
     const password = passwdRef.current.value;
     if (email && password) {
@@ -22,15 +26,21 @@ export default function SigninForm() {
         setErrors(res.errors);
         return res.data;
       })
-      const errs = data?.auth?.errors;
-      if (errs) {
-        setErrors(errs)
+      if (data?.auth?.errors) {
+        setLoading(false);
+        setErrors(data?.auth?.errors);
+      }
+      if (data?.auth?.user){
+        authenticateUser(data.auth, dispatch).then(() => {
+          router.replace("/admin/dashboard")
+        })
       }
     }
   };
 
   return (
     <div className="flex flex-col gap-7 items-center justify-center">
+      {loading && <PageLoadingRing />}
       <div className="max-w-sm">
         <Image
           className="w-full object-cover"
@@ -57,7 +67,7 @@ export default function SigninForm() {
         </fieldset>
         <div className="flex items-center justify-between">
           <Button
-            disabled
+            disabled={loading ? true : false}
             title="Dive in"
             className="flex disabled:bg-red-300 items-center duration-300 bg-red-500 hover:gap-5 font-bold text-lg p-2 transition-all px-4 hover:bg-red-600 w-fit rounded-md text-white flex-row-reverse gap-3"
             type="submit" icon={HiOutlineArrowNarrowRight}>Login</Button>

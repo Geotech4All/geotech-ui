@@ -1,15 +1,15 @@
-import { Maybe, UserType } from "@gql/codegen/graphql";
+import { Maybe, StaffType, UserType } from "@gql/codegen/graphql";
 import React from "react";
 import { UserOption } from "@components/common";
 
-interface UserSelectProps {
-  users: Maybe<UserType>[];
+interface StaffSelectProps {
+  staff: Maybe<StaffType>[];
   title?: string;
   className?: string;
   onSelect: (user: UserType) => void;
 };
-export default function UserSelect(props: UserSelectProps){
-  const { users, className, onSelect, title } = props;
+export default function StaffSelect(props: StaffSelectProps){
+  const { staff, onSelect, className, title } = props;
   return (
     <div className={className}>
       {title && (
@@ -19,11 +19,11 @@ export default function UserSelect(props: UserSelectProps){
         </label>
       )}
       <ul className="flex flex-col p-1 rounded-2xl">
-        {users.map(user => (
+        {staff.map(staff => (
           <UserOption
             onSelect={onSelect}
-            key={user?.id}
-            user={user}/>
+            key={staff?.staffId}
+            user={staff?.user}/>
           ))}
       </ul>
     </div>

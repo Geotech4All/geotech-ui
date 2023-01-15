@@ -2,7 +2,8 @@ import React from "react";
 import { Button, MModal, UserPill, UserSelect } from "@components/common";
 import { Maybe, UserType } from "@gql/codegen/graphql";
 import { useAppSelector } from "@store/hooks";
-import { selectRecentHosts } from "@store/slices";
+import { selectRecentHosts, selectStaffList } from "@store/slices";
+import StaffSelect from "../staff/StaffSelect";
 
 interface SelectHostsProps {
   getSelected: (selected: number[]) => void;
@@ -12,6 +13,7 @@ export default function SelectHosts(props: SelectHostsProps){
   const [chosenHosts, setChosenHosts] = React.useState<Maybe<UserType>[]>()
   const [modalOpen, setModalOpen] = React.useState(false);
   const prevHosts = useAppSelector(selectRecentHosts);
+  const staff = useAppSelector(selectStaffList);
   const hostIndexes = new Set<number>()
 
   const handleModalClose = () => setModalOpen(false);
@@ -52,10 +54,24 @@ export default function SelectHosts(props: SelectHostsProps){
         <MModal
           title="Add Host"
           open={modalOpen} onClose={handleModalClose}>
-          <UserSelect
-            title="Previous Hosts"
-            onSelect={handleAddHost}
-            users={prevHosts.hosts ?? []}/>
+          <div className="flex gap-3 flex-col">
+            <div className="flex flex-col md:flex-row gap-2 w-full justify-between">
+              <UserSelect
+                className="flex-1"
+                title="Previous Hosts"
+                onSelect={handleAddHost}
+                users={prevHosts.hosts ?? []}/>
+              <StaffSelect 
+                className="flex-1"
+                title="Staff list"
+                onSelect={handleAddHost}
+                staff={staff}/>
+            </div>
+            <Button
+              className="bg-red-500 hover:bg-red-600 active:bg-red-600 transition-all self-end p-1 rounded-md mt-3 text-white px-4"
+              type="button"
+              onClick={handleModalClose}>Cancel</Button>
+          </div>
         </MModal>
       </div>
     </div>

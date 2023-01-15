@@ -12,6 +12,7 @@ import AdminNavLink from "@components/admin/navbar/AdminNavLink";
 import AdminNavLinks from "@components/admin/navbar/AdminNavLinks";
 import NewPodcastForm from "@components/admin/podcasts/NewPodcastForm";
 import SelectHosts from "@components/admin/podcasts/SelectHosts";
+import StaffSelect from "@components/admin/staff/StaffSelect";
 
 export {
   User,
@@ -21,6 +22,7 @@ export {
   PodcastCard,
   AdminNavBar,
   SelectHosts,
+  StaffSelect,
   SidebarUrls,
   AdminNavLink,
   AdminNavLinks,

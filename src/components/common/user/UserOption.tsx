@@ -3,7 +3,7 @@ import { Maybe, UserType } from "@gql/codegen/graphql";
 import React from "react";
 
 interface UserOptionProps {
-  user: Maybe<UserType>;
+  user?: Maybe<UserType>;
   onSelect: (user: UserType) => void;
 };
 export default function UserOption(props: UserOptionProps){
