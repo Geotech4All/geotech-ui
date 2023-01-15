@@ -3,6 +3,12 @@ import { GInput, GTextArea } from "@components/common";
 import { SelectHosts } from "@components/admin";
 
 export default function NewPodcastForm (){
+  const [hosts, setHosts] = React.useState<Array<number>>()
+  const getHosts = (hosts: Array<number>) => setHosts(hosts)
+
+  React.useEffect(() => {
+    console.log(hosts)
+  }, [hosts])
   return (
     <form className="w-full p-2 flex flex-col gap-3">
       <GInput 
@@ -17,7 +23,7 @@ export default function NewPodcastForm (){
         title="Podcast description"
         classNameI="w-full outline-none p-2 text-lg focus:shadow-lg transition-all md:text-xl py-5 border rounded-lg"
         placeholder="Your description for this podcast goes here...."/>
-      <SelectHosts />
+      <SelectHosts getSelected={getHosts}/>
     </form>
   );
 };

@@ -5,9 +5,12 @@ import { useMediaQuery } from "react-responsive";
 interface LoginLayoutProps {
   src?: string;
   children?: React.ReactNode;
+  width?: number;
+  height?: number;
+  alt?: string;
 }
 export default function LoginLayout(props: LoginLayoutProps){
-  const { src, children } = props;
+  const { src, children, width, height, alt } = props;
   const [showImage, setShowImage] = React.useState(false);
   const imgSrc = src ? src : "/images/scientist.png";
   const isTabletOrMobile = useMediaQuery({ query: '(min-width: 975px)' })
@@ -16,14 +19,18 @@ export default function LoginLayout(props: LoginLayoutProps){
   }, [isTabletOrMobile]);
 
   return (
-    <main className=" items-center min-w-[100vw] flex">
+    <main className="items-center min-w-[100vw] min-h-screen flex">
       {showImage && (
-        <div className="flex-1 h-full">
+        <div className="flex-[1.5] flex bg-purple-50/50 p-3 flex-col items-center justify-center min-h-screen">
+          <div className="font-montserrat flex items-end gap-3 self-end p-6 text-black/90">
+            <h2 className="text-3xl font-semibold">Sign in</h2>
+            <h1 className="text-5xl font-extrabold text-purple-900">Let&apos;s discover</h1>
+          </div>
           <Image 
             className="w-full h-full object-cover"
-            width={624}
-            height={624}
-            src={imgSrc} alt="a woman wearing a lab-coat and looking into a microscope" />
+            width={width ?? 624}
+            height={height ?? 624}
+            src={imgSrc} alt={alt ?? "a woman wearing a lab-coat and looking into a microscope"} />
         </div>)
       }
       <div className="flex-1 flex items-center p-3 justify-center h-full">{children}</div>

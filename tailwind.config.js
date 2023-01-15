@@ -9,6 +9,9 @@ module.exports = {
       colors: {
         "ui-red-100": "#FF3A1B",
         "ui-red-200": "#EC1F00"
+      },
+      fontFamily: {
+        "montserrat": ['Montserrat', "sans-serif"]
       }
     },
   },

@@ -9,7 +9,7 @@ export default function Signin() {
         <meta content="Login to GeoTech / GeoTech" property="og:title" />
       </Head>
       <div>
-        <LoginLayout>
+        <LoginLayout width={1000} height={667} src="/images/scientists.svg">
           <SigninForm />
         </LoginLayout>
       </div>
