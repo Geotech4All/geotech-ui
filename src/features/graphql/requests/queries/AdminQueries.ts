@@ -57,3 +57,21 @@ export const STAFF_LIST = gql`
     }
   }
 `
+
+/**
+ * Returns a list of all previouse guests
+ */
+export const PREVIOUS_GUESTS = gql`
+  query PreviousGuests {
+    guests: previousGuests {
+      edges {
+        node {
+          id
+          guestId
+          name
+          image
+        }
+      }
+    }
+  }
+`

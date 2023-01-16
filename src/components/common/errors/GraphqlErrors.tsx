@@ -13,7 +13,6 @@ export default function GraphqlErrors(props: GraphqlErrorProps){
     for (const error of errors) {
       if (error.message === "Signature has expired") {
         setSigExpired(true);
-        console.log(error)
       }
     }
   }, [errors, setSigExpired])

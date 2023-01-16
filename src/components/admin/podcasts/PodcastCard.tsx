@@ -14,9 +14,12 @@ function randomColor (): PodcastColorType{
 
 export default function PodcastCard(props: PodcastCardProps){
   const { podcast } = props;
-  const color = randomColor();
+  const [color, setColor] = React.useState<PodcastColorType>()
+  React.useEffect(() => {
+    setColor(randomColor());
+  }, [])
   return (
-    <article className={`${color.bgColor} ${color.textColor} relative flex flex-col justify-center items-center p-4 rounded-2xl`}>
+    <article className={`${color?.bgColor} ${color?.textColor} relative flex flex-col justify-center items-center p-4 rounded-2xl`}>
       <span className="bg-black/50 w-7 absolute top-2 left-2 aspect-square flex items-center justify-center rounded-full">{podcast?.node?.listens}</span>
       <span><BiAlbum size={100} /></span>
       <div className="w-full">

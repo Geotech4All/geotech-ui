@@ -4,6 +4,7 @@ import podcastListSlice from "@store/slices/podcastListSlice";
 import recentHostsSlice from "@store/slices/recentHostsSlice";
 import userSlice from "@store/slices/userSlice";
 import staffListSlice from "@store/slices/staffListSlice";
+import previousGuestsSlice from "@store/slices/previousGuestsSlice";
 
 export const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ export const store = configureStore({
     podcasts: podcastListSlice,
     recentHosts: recentHostsSlice,
     user: userSlice,
-    staffList: staffListSlice
+    staffList: staffListSlice,
+    previousGuests: previousGuestsSlice
   },
 });
 

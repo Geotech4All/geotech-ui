@@ -13,6 +13,9 @@ import AdminNavLinks from "@components/admin/navbar/AdminNavLinks";
 import NewPodcastForm from "@components/admin/podcasts/NewPodcastForm";
 import SelectHosts from "@components/admin/podcasts/SelectHosts";
 import StaffSelect from "@components/admin/staff/StaffSelect";
+import GuestSelect from "@components/admin/guests/GuestSelect";
+import SelectGuests from "@components/admin/guests/SelectGuests";
+import GuestOption from "@components/admin/guests/GuestOption";
 
 export {
   User,
@@ -24,6 +27,9 @@ export {
   SelectHosts,
   StaffSelect,
   SidebarUrls,
+  GuestSelect,
+  GuestOption,
+  SelectGuests,
   AdminNavLink,
   AdminNavLinks,
   SidebarLayout,

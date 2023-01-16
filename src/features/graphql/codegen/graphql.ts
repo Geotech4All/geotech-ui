@@ -198,15 +198,34 @@ export type GuestCreateUpdateMutation = {
 };
 
 /** Guest graphql object type */
-export type GuestType = {
+export type GuestType = Node & {
   __typename?: 'GuestType';
   /** more information about this guest */
   description: Scalars['String'];
+  guestId?: Maybe<Scalars['ID']>;
+  /** The ID of the object. */
   id: Scalars['ID'];
   image?: Maybe<Scalars['String']>;
   /** The full name of the guest */
   name: Scalars['String'];
   organization?: Maybe<OrganizationType>;
+};
+
+export type GuestTypeConnection = {
+  __typename?: 'GuestTypeConnection';
+  /** Contains the nodes in this connection. */
+  edges: Array<Maybe<GuestTypeEdge>>;
+  /** Pagination data for this connection. */
+  pageInfo: PageInfo;
+};
+
+/** A Relay edge containing a `GuestType` and its cursor. */
+export type GuestTypeEdge = {
+  __typename?: 'GuestTypeEdge';
+  /** A cursor for use in pagination */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge */
+  node?: Maybe<GuestType>;
 };
 
 export type HostType = Node & {
@@ -502,6 +521,7 @@ export type MutationCreateUpdateOrganizationArgs = {
 
 export type MutationCreateUpdatePodcastArgs = {
   audio?: InputMaybe<Scalars['Upload']>;
+  coverPhoto?: InputMaybe<Scalars['Upload']>;
   description: Scalars['String'];
   guestIds?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   hostIds: Array<InputMaybe<Scalars['ID']>>;
@@ -754,6 +774,7 @@ export type PodcastCreateUpdateMutation = {
 export type PodcastType = Node & {
   __typename?: 'PodcastType';
   audio?: Maybe<Scalars['String']>;
+  coverPhoto?: Maybe<Scalars['String']>;
   dateAdded: Scalars['DateTime'];
   /** short summary of this podcast */
   description: Scalars['String'];
@@ -836,6 +857,7 @@ export type Query = {
   getPostById?: Maybe<PostType>;
   me?: Maybe<UserNode>;
   mostListenedToPodcasts?: Maybe<PodcastTypeConnection>;
+  previousGuests?: Maybe<GuestTypeConnection>;
   recentHosts?: Maybe<Array<Maybe<UserType>>>;
   staffList?: Maybe<Array<StaffType>>;
   user?: Maybe<UserNode>;
@@ -882,6 +904,18 @@ export type QueryMostListenedToPodcastsArgs = {
   title?: InputMaybe<Scalars['String']>;
   title_Icontains?: InputMaybe<Scalars['String']>;
   title_Istartswith?: InputMaybe<Scalars['String']>;
+};
+
+
+export type QueryPreviousGuestsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  dateAdded?: InputMaybe<Scalars['DateTime']>;
+  dateAdded_Icontains?: InputMaybe<Scalars['DateTime']>;
+  dateAdded_Istartswith?: InputMaybe<Scalars['DateTime']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -1158,10 +1192,37 @@ export type VerifyToken = {
   success?: Maybe<Scalars['Boolean']>;
 };
 
+export type TokenAuthMutationVariables = Exact<{
+  password: Scalars['String'];
+  email?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type TokenAuthMutation = { __typename?: 'Mutation', auth?: { __typename?: 'ObtainJSONWebToken', token?: string | null, success?: boolean | null, errors?: any | null, unarchiving?: boolean | null, refreshToken?: string | null, user?: { __typename?: 'UserNode', email: string, fullName?: string | null, profile?: { __typename?: 'ProfileType', about?: string | null, image?: string | null, profileId?: string | null } | null } | null } | null };
+
 export type MostListenedToPodcastQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type MostListenedToPodcastQuery = { __typename?: 'Query', podcasts?: { __typename?: 'PodcastTypeConnection', edges: Array<{ __typename?: 'PodcastTypeEdge', node?: { __typename?: 'PodcastType', audio?: string | null, dateAdded: any, description: string, podcastId?: string | null, title: string, listens: number } | null } | null> } | null };
 
+export type RecentHostsQueryVariables = Exact<{ [key: string]: never; }>;
 
+
+export type RecentHostsQuery = { __typename?: 'Query', hosts?: Array<{ __typename?: 'UserType', id: string, fullName?: string | null, email: string, profile?: { __typename?: 'ProfileType', image?: string | null, profileId?: string | null } | null } | null> | null };
+
+export type StaffListQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type StaffListQuery = { __typename?: 'Query', staff?: Array<{ __typename?: 'StaffType', canCreatePost: boolean, staffId?: string | null, id: string, user?: { __typename?: 'UserType', fullName?: string | null, id: string, profile?: { __typename?: 'ProfileType', profileId?: string | null, image?: string | null } | null } | null }> | null };
+
+export type PreviousGuestsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type PreviousGuestsQuery = { __typename?: 'Query', guests?: { __typename?: 'GuestTypeConnection', edges: Array<{ __typename?: 'GuestTypeEdge', node?: { __typename?: 'GuestType', id: string, guestId?: string | null, name: string, image?: string | null } | null } | null> } | null };
+
+
+export const TokenAuthDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"TokenAuth"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"password"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"email"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"auth"},"name":{"kind":"Name","value":"tokenAuth"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"password"},"value":{"kind":"Variable","name":{"kind":"Name","value":"password"}}},{"kind":"Argument","name":{"kind":"Name","value":"email"},"value":{"kind":"Variable","name":{"kind":"Name","value":"email"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"token"}},{"kind":"Field","name":{"kind":"Name","value":"success"}},{"kind":"Field","name":{"kind":"Name","value":"errors"}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"fullName"}},{"kind":"Field","name":{"kind":"Name","value":"profile"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"about"}},{"kind":"Field","name":{"kind":"Name","value":"image"}},{"kind":"Field","name":{"kind":"Name","value":"profileId"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"unarchiving"}},{"kind":"Field","name":{"kind":"Name","value":"refreshToken"}}]}}]}}]} as unknown as DocumentNode<TokenAuthMutation, TokenAuthMutationVariables>;
 export const MostListenedToPodcastDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"MostListenedToPodcast"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"podcasts"},"name":{"kind":"Name","value":"mostListenedToPodcasts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"audio"}},{"kind":"Field","name":{"kind":"Name","value":"dateAdded"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"podcastId"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"listens"}}]}}]}}]}}]}}]} as unknown as DocumentNode<MostListenedToPodcastQuery, MostListenedToPodcastQueryVariables>;
+export const RecentHostsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"RecentHosts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"hosts"},"name":{"kind":"Name","value":"recentHosts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"fullName"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"profile"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"image"}},{"kind":"Field","name":{"kind":"Name","value":"profileId"}}]}}]}}]}}]} as unknown as DocumentNode<RecentHostsQuery, RecentHostsQueryVariables>;
+export const StaffListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"StaffList"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"staff"},"name":{"kind":"Name","value":"staffList"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"canCreatePost"}},{"kind":"Field","name":{"kind":"Name","value":"staffId"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fullName"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"profile"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"profileId"}},{"kind":"Field","name":{"kind":"Name","value":"image"}}]}}]}}]}}]}}]} as unknown as DocumentNode<StaffListQuery, StaffListQueryVariables>;
+export const PreviousGuestsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"PreviousGuests"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"guests"},"name":{"kind":"Name","value":"previousGuests"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"guestId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"image"}}]}}]}}]}}]}}]} as unknown as DocumentNode<PreviousGuestsQuery, PreviousGuestsQueryVariables>;

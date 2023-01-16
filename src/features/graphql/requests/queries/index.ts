@@ -1,9 +1,11 @@
 import {
   MOST_LISTENED_PODCASTS,
   RECENT_HOSTS,
+  PREVIOUS_GUESTS,
   STAFF_LIST } from "@gql/requests/queries/AdminQueries";
 
 export {
+  PREVIOUS_GUESTS,
   STAFF_LIST,
   RECENT_HOSTS,
   MOST_LISTENED_PODCASTS,

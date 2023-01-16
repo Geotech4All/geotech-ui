@@ -14,6 +14,7 @@ import UserSelect from "@components/common/user/UserSelect";
 import MModal from "@components/common/modals/MModal";
 import AuthErrors from "@components/common/errors/AuthErrors";
 import PageLoadingRing from "@components/common/loading/PageLoadingRing";
+import GuestPill from "@components/common/guest/GuestPill";
 
 import type { GInputProps } from "@components/common/inputs/GInput";
 import type { LInputProps } from "@components/common/inputs/LInput";
@@ -27,6 +28,7 @@ export {
   MModal,
   UserPill,
   FullLogo,
+  GuestPill,
   GTextArea,
   UserSelect,
   UserOption,

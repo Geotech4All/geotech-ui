@@ -7,9 +7,10 @@ import StaffSelect from "../staff/StaffSelect";
 
 interface SelectHostsProps {
   getSelected: (selected: number[]) => void;
+  className?: string;
 }
 export default function SelectHosts(props: SelectHostsProps){
-  const { getSelected } = props;
+  const { getSelected, className } = props;
   const [chosenHosts, setChosenHosts] = React.useState<Maybe<UserType>[]>()
   const [modalOpen, setModalOpen] = React.useState(false);
   const prevHosts = useAppSelector(selectRecentHosts);
@@ -39,9 +40,9 @@ export default function SelectHosts(props: SelectHostsProps){
   }
 
   return (
-    <div>
+    <div className={className}>
       <label className="before:content-['\2022'] before:text-lg before:text-red-500 text-black/60 font-semibold"> Hosts</label>
-      <div className="relative flex flex-col gap-1 border p-1 rounded-3xl border-red-100/40 max-w-md ">
+      <div className="relative flex flex-col gap-1 border p-1 rounded-3xl border-red-100/40">
         {chosenHosts && chosenHosts?.length > 0 &&
           <ul className="bg-red-50 p-1 rounded-3xl flex gap-2 items-center border border-red-300/20">
             {chosenHosts?.map(host => <UserPill onRemove={handleRemoveHost} key={host?.id} user={host}/>)}
@@ -50,7 +51,7 @@ export default function SelectHosts(props: SelectHostsProps){
         <Button
           onClick={handleModalOpen}
           type="button"
-          className="bg-red-500 text-white self-end font-semibold p-2 rounded-xl transition-all active:bg-red-600 hover:bg-red-600">+ Add Host</Button>
+          className="bg-red-500 text-white self-end font-semibold p-2 rounded-3xl transition-all active:bg-red-600 hover:bg-red-600">+ Add Host</Button>
         <MModal
           title="Add Host"
           open={modalOpen} onClose={handleModalClose}>
