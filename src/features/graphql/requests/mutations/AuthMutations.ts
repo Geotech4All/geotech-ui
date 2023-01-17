@@ -20,3 +20,15 @@ export const TOKEN_AUTH = gql`
     }
   }
 `
+
+export const REFRESH_TOKEN = gql`
+  mutation RefreshToken($refreshToken: String!) {
+    token: refreshToken(refreshToken: $refreshToken) {
+      token
+      payload
+      success
+      errors
+      refreshToken
+    }
+  }
+`

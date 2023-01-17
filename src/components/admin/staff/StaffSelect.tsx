@@ -18,14 +18,17 @@ export default function StaffSelect(props: StaffSelectProps){
           {" " + title}
         </label>
       )}
-      <ul className="flex flex-col p-1 rounded-2xl">
-        {staff.map(staff => (
-          <UserOption
-            onSelect={onSelect}
-            key={staff?.staffId}
-            user={staff?.user}/>
-          ))}
-      </ul>
+      {staff.length > 0 ?
+        <ul className="flex flex-col p-1 rounded-2xl">
+          {staff.map(staff => (
+            <UserOption
+              onSelect={onSelect}
+              key={staff?.staffId}
+              user={staff?.user}/>
+            ))}
+        </ul>
+        : <p className="text-black/50 p-2 flex items-center justify-center border-2 border-black/30 rounded-2xl text-lg">No staff yet</p>
+      }
     </div>
   );
 };

@@ -19,11 +19,14 @@ export default function GuestSelect(props: GuestSelectProps){
           {" " + title}
         </label>
       )}
-      <ul className="flex flex-col p-1 rounded-2xl">
-        {guests.map(guest => (
-          <GuestOption key={guest?.node?.guestId} onSelect={onSelect}/>
-        ))}
-      </ul>
+      {guests.length > 0 ?
+        <ul className="flex flex-col p-1 rounded-2xl">
+          {guests.map(guest => (
+            <GuestOption key={guest?.node?.guestId} onSelect={onSelect}/>
+          ))}
+        </ul>
+        : <p className="text-black/50 p-2 flex items-center justify-center border-2 border-black/30 rounded-2xl text-lg">No guests yet</p>
+      }
     </div>
   );
 };

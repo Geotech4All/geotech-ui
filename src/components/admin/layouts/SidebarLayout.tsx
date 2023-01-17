@@ -1,8 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { EnsureAuth } from "@components/auth";
+import useIsLargeScreen from "@components/common/hooks";
 import { AdminNavBar, Sidebar } from "@components/admin";
 import type { AdminState } from "@store/slices"
-import useIsLargeScreen from "@components/common/hooks";
 
 export default function SidebarLayout(page: React.ReactElement) {
   const [state, setState] = React.useState<AdminState>();
@@ -30,7 +31,7 @@ export default function SidebarLayout(page: React.ReactElement) {
       <motion.div
         animate={{ paddingTop: topPadding }}
         className="">
-        { page }
+        <EnsureAuth>{ page }</EnsureAuth>
       </motion.div>
     </motion.div>
   )

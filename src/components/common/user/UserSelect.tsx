@@ -18,14 +18,17 @@ export default function UserSelect(props: UserSelectProps){
           {" " + title}
         </label>
       )}
-      <ul className="flex flex-col p-1 rounded-2xl">
-        {users.map(user => (
-          <UserOption
-            onSelect={onSelect}
-            key={user?.id}
-            user={user}/>
-          ))}
-      </ul>
+      {users.length > 0 ?
+        <ul className="flex flex-col p-1 rounded-2xl">
+          {users.map(user => (
+            <UserOption
+              onSelect={onSelect}
+              key={user?.id}
+              user={user}/>
+            ))}
+        </ul>
+        :<p className="text-black/50 p-2 flex items-center justify-center border-2 border-black/30 rounded-2xl text-lg">No Users yet</p>
+      }
     </div>
   );
 };

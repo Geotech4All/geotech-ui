@@ -17,7 +17,7 @@ export default function SelectGuests(props: SelectGuestsProps){
   const guestIndexes = React.useMemo(() => new Set<number>(), []);
 
   React.useEffect(() => {
-    setChosenGuests(previousGuests?.edges.filter(guest => (
+    setChosenGuests(previousGuests?.edges?.filter(guest => (
       guestIndexes.has(parseInt(guest?.node?.guestId ?? ""))))
     )
   }, [guestIndexes, previousGuests])
