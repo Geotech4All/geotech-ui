@@ -1,6 +1,7 @@
 import LInput from "@components/common/inputs/LInput";
 import PInput from "@components/common/inputs/PInput";
 import GInput from "@components/common/inputs/GInput";
+import FInput from "@components/common/inputs/FInput";
 import GTextArea from "@components/common/inputs/GTextArea";
 import Button from "@components/common/buttons/Button";
 import NothingFound from "@components/common/notFound/NotFound";
@@ -24,6 +25,7 @@ export {
   LInput,
   GInput,
   PInput,
+  FInput,
   Button,
   MModal,
   UserPill,

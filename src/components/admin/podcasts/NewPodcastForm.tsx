@@ -1,5 +1,6 @@
 import React from "react";
-import { GInput, GTextArea } from "@components/common";
+import { BsFileEarmarkMusic } from "react-icons/bs";
+import { FInput, GInput, GTextArea } from "@components/common";
 import { SelectGuests, SelectHosts } from "@components/admin";
 
 export default function NewPodcastForm (){
@@ -27,6 +28,16 @@ export default function NewPodcastForm (){
       <div className="flex flex-col gap-2 md:flex-row w-full">
         <SelectHosts getSelected={getHosts} className="flex-1"/>
         <SelectGuests getSelected={getGuests} className="flex-1"/>
+      </div>
+      <div>
+        <label className="before:content-['\2022'] flex before:text-lg font-semibold text-black/60 items-center before:text-red-500 gap-1">Podcast</label>
+        <FInput accept="audio/*" name="podcast">
+          <div className="flex flex-col text-black/70 items-center justify-center">
+            <span className="text-red-400"><BsFileEarmarkMusic size={50}/></span>
+            <p className="font-bold text-lg">Drag &amp;	drop an audio file</p>
+            <p>or <span className="text-red-400">browse </span>to choose a file</p>
+          </div>
+        </FInput>
       </div>
     </form>
   );
