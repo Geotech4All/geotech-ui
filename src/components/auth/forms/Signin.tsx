@@ -1,4 +1,4 @@
-import { LInput, PInput, Button, AuthErrors, PageLoadingRing } from "@components/common";
+import { LInput, PInput, Button, FormErrors, PageLoadingRing } from "@components/common";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import React from "react";
 import Link from "next/link";
@@ -52,7 +52,7 @@ export default function SigninForm() {
         <fieldset className="justify-center w-full gap-3 flex flex-col">
           <legend className="text-3xl font-extrabold">Welcome Back...</legend>
           <div className="flex flex-col mt-4 gap-2 text-black/70">
-            {errors && <AuthErrors errors={errors} />}
+            {errors && <FormErrors errors={errors} />}
             <LInput
               ref={emailRef}
               className="placeholder:font-semibold text-lg"

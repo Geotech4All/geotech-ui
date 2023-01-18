@@ -1,5 +1,5 @@
 import { NewPodcastForm, SidebarLayout } from "@components/admin";
-import { SLoadingRing, SomethingWentWrong } from "@components/common";
+import { Button, MModal, SLoadingRing, SomethingWentWrong } from "@components/common";
 import { useAppDispatch } from "@store/hooks";
 import { NextPageWithLayout } from "pages/_app";
 import { usePrevousGuests, useRecentHosts, useStaffList } from "@gql/requests/queries/hooks";
@@ -10,8 +10,12 @@ import Head from "next/head";
 const Podcasts: NextPageWithLayout = () => {
   const { loading, error, data } = useRecentHosts();
   const { loading: sLoading, error: sError, data: sData } = useStaffList();
-  const { loading: gLoading, error: gError, data: gData} = usePrevousGuests()
+  const { loading: gLoading, error: gError, data: gData } = usePrevousGuests()
+  const [open, setOpen] = React.useState(false);
   const dispatch = useAppDispatch();
+
+  const handleClose = () => setOpen(false);
+  const handleOpen = () => setOpen(true);
 
   React.useEffect(() => {
     if (data?.hosts) {
@@ -39,7 +43,19 @@ const Podcasts: NextPageWithLayout = () => {
       <Head>
         <title>GeoTech Podcasts</title>
       </Head>
-      <NewPodcastForm />
+      <div>
+        <Button
+          onClick={handleOpen}
+          className={`
+            bg-red-400 text-white p-2
+            rounded-lg hover:bg-red-500
+            transition-all font-semibold
+            active:bg-red-500
+            `}>+ New Podcast</Button>
+        <MModal open={open} onClose={handleClose}>
+          <NewPodcastForm onCreated={handleClose}/>
+        </MModal>
+      </div>
     </>
   );
 };

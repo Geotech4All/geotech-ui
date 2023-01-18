@@ -9,6 +9,7 @@ export const MOST_LISTENED_PODCASTS = gql`
           edges {
               node {
                   audio
+                  coverPhoto
                   dateAdded
                   description
                   podcastId
