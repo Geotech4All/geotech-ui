@@ -6,7 +6,6 @@ import { LoginAgainPrompt } from "@components/auth";
 interface GraphqlErrorProps {
   errors: GraphQLErrors; 
 };
-
 export default function GraphqlErrors(props: GraphqlErrorProps){
   const { errors } = props;
   const [sigExpired, setSigExpired] = React.useState(false);
