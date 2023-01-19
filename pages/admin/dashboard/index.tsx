@@ -5,7 +5,7 @@ import { TrendingPodcasts, SidebarLayout } from "@components/admin";
 import { useMostListenedPodcasts } from "@gql/requests/queries/hooks";
 import { setPodcasts } from "@store/slices"
 import Head from "next/head";
-import { SomethingWentWrong } from "@components/common";
+import { PageLoadingRing, SomethingWentWrong } from "@components/common";
 
 const DashBoard: NextPageWithLayout = () => {
   const {loading, data, error} = useMostListenedPodcasts()
@@ -17,7 +17,7 @@ const DashBoard: NextPageWithLayout = () => {
     }
   }, [data, dispatch])
 
-  if (loading) return <div>Loadding</div>
+  if (loading) return <PageLoadingRing />
   if (error) return <SomethingWentWrong error={error} />
   
   return (
