@@ -10,6 +10,9 @@ const uploadLink = createUploadLink({
   uri: ApiUrl,
 })
 
+console.log(ApiUrl);
+
+
 const authLink = setContext((_, { headers }) => {
   const token = getAuthTokens().token;
   return {
