@@ -19,6 +19,7 @@ import FormErrors from "@components/common/errors/FormErrors";
 import PageLoadingRing from "@components/common/loading/PageLoadingRing";
 import PageLoadingHalo from "@components/common/loading/PageLoadingHalo";
 import GuestPill from "@components/common/guest/GuestPill";
+import LargePodcastCard from "@components/common/podcast/LargePodcastCard";
 
 import type { GInputProps } from "@components/common/inputs/GInput";
 import type { LInputProps } from "@components/common/inputs/LInput";
@@ -45,6 +46,7 @@ export {
   GraphqlErrors,
   PageLoadingRing,
   PageLoadingHalo,
+  LargePodcastCard,
   SomethingWentWrong
 };
 
