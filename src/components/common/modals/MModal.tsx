@@ -26,7 +26,7 @@ export default function MModal(props: DialogPropsType){
             className="fixed inset-0 bg-black/20" aria-hidden="true" />
         </AnimatePresence>
         <div className="fixed inset-0 overflow-y-auto flex items-center ">
-          <div className="flex items-center w-full justify-center p-4">
+          <div className="flex items-center mt-[30rem] md:mt-52 w-full justify-center p-4">
             <AnimatePresence>
               <Dialog.Panel
                 key={Math.random()}
