@@ -3,6 +3,7 @@ import { setContext } from "@apollo/client/link/context"
 import { getAuthTokens } from "@utils/auth";
 import { createUploadLink } from "apollo-upload-client";
 
+// ApiUrl
 const ApiUrl = process.env.NEXT_PUBLIC_API_URL
 
 const uploadLink = createUploadLink({
