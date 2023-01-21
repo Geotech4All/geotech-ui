@@ -1,12 +1,7 @@
 import Head from 'next/head'
 import { RiArrowRightUpLine } from "react-icons/ri";
-import { Inter } from '@next/font/google'
-import styles from '../styles/Home.module.scss'
 import Link from 'next/link'
-import Image from 'next/image';
 import { MyImage } from '@components/common';
-
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
@@ -18,7 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main >
-        <div className={`relative p-10 md:p-20`}>
+        <div className={`relative p-5 sm:p-10 md:p-20`}>
           <div className='bg-gray-900 z-[-10] absolute inset-x-0 top-0 bottom-40'/>
           <div className={`flex flex-col gap-5 md:flex-row`}>
             <div className={`flex-1 flex flex-col gap-5 pt-7 text-white`}>
