@@ -1,15 +1,12 @@
 import React from "react"
 import { BiAlbum } from "react-icons/bi";
 import type { PodcastTypeEdge, Maybe } from "@gql/codegen/graphql";
-import { podcastColors, PodcastColorType } from "@constants/podcastColors";
+import { PodcastColorType } from "@constants/podcastColors";
+import { randomColor } from "@utils/common";
 type PotentialPodtact = Maybe<PodcastTypeEdge>
+
 interface PodcastCardProps {
   podcast: PotentialPodtact;
-}
-
-function randomColor (): PodcastColorType{
-  const index = Math.ceil(Math.random() * podcastColors.length -1)
-  return podcastColors[index];
 }
 
 export default function PodcastCard(props: PodcastCardProps){

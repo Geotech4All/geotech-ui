@@ -4,6 +4,7 @@ import { selectRecentHosts, setRecentHosts } from "@store/slices/recentHostsSlic
 import { selectUser, setUser } from "@store/slices/userSlice";
 import { selectStaffList, setStaffList } from "@store/slices/staffListSlice";
 import { setPreviousGuests, selectPreviousGuests } from "@store/slices/previousGuestsSlice";
+import { selectTrendingPodcasts, setTrendingPodcasts } from "@store/slices/trendingPodcastsSlice";
 import type { AdminState } from "@store/slices/adminSlice";
 import type { PotentialPodcasts } from "@store/slices/podcastListSlice";
 import type { PossibleHostsList } from "@store/slices/recentHostsSlice";
@@ -21,7 +22,9 @@ export {
   selectRecentHosts,
   setRecentHosts,
   setPreviousGuests,
-  selectPreviousGuests
+  selectPreviousGuests,
+  selectTrendingPodcasts,
+  setTrendingPodcasts
 };
 export type {
   AdminState,

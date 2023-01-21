@@ -12,7 +12,7 @@ export default function NothingFound(props: NothingFoundProps){
   return (
     <div>
       <Image
-        className="max-w-xl"
+        className="max-w-xl w-full"
         width={750}
         height={500}
         src="/images/not-found.svg"

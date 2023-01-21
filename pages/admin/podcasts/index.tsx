@@ -3,14 +3,17 @@ import { Button, MModal, SLoadingRing, SomethingWentWrong } from "@components/co
 import { useAppDispatch } from "@store/hooks";
 import { NextPageWithLayout } from "pages/_app";
 import { usePrevousGuests, useRecentHosts, useStaffList } from "@gql/requests/queries/hooks";
-import { setPreviousGuests, setRecentHosts, setStaffList } from "@store/slices";
+import { setPreviousGuests, setRecentHosts, setStaffList, setTrendingPodcasts } from "@store/slices";
+import { useTrendingPodcasts } from "@gql/requests/queries/hooks";
 import React from "react";
 import Head from "next/head";
+import TrendingPodcasts from "@components/common/podcast/TrendingPodcasts";
 
 const Podcasts: NextPageWithLayout = () => {
   const { loading, error, data } = useRecentHosts();
   const { loading: sLoading, error: sError, data: sData } = useStaffList();
   const { loading: gLoading, error: gError, data: gData } = usePrevousGuests()
+  const { loading: tLoading, error: tError, data: tData } = useTrendingPodcasts({ first: 5 })
   const [open, setOpen] = React.useState(false);
   const dispatch = useAppDispatch();
 
@@ -27,9 +30,12 @@ const Podcasts: NextPageWithLayout = () => {
     if (gData?.guests) {
       dispatch(setPreviousGuests(gData.guests));
     };
-  }, [data, dispatch, sData, gData])
+    if (tData?.podcasts) {
+      dispatch(setTrendingPodcasts(tData.podcasts));
+    }
+  }, [data, dispatch, sData, gData, tData])
 
-  if (loading || sLoading || gLoading) return (
+  if (loading || sLoading || gLoading || tLoading) return (
     <div className="flex w-full min-h-screen items-center justify-center">
       <SLoadingRing />
     </div>
@@ -37,6 +43,7 @@ const Podcasts: NextPageWithLayout = () => {
   if (error) return <SomethingWentWrong error={error} />
   if (sError) return <SomethingWentWrong error={sError} />
   if (gError) return <SomethingWentWrong error={gError} />
+  if (tError) return <SomethingWentWrong error={tError} />
 
   return (
     <>
@@ -44,6 +51,7 @@ const Podcasts: NextPageWithLayout = () => {
         <title>GeoTech Podcasts</title>
       </Head>
       <div>
+        <TrendingPodcasts />
         <Button
           onClick={handleOpen}
           className={`

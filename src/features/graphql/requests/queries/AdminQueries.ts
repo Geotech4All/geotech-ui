@@ -4,20 +4,37 @@ import { gql } from "@apollo/client"
  * Returns a list of podcasts ordered by highest listens
  */
 export const MOST_LISTENED_PODCASTS = gql`
-  query MostListenedToPodcast {
-      podcasts: mostListenedToPodcasts {
-          edges {
-              node {
-                  audio
-                  coverPhoto
-                  dateAdded
-                  description
-                  podcastId
-                  title
-                  listens
-              }
+  query MostListenedToPodcasts(
+    $after: String, $first: Int,
+    $offset: Int, $before: String,
+    $last: Int, $mostListenedToPodcastsId: Float,
+    $titleIcontains: String, $titleIstartswith: String, $title: String) {
+    podcasts: mostListenedToPodcasts(
+      offset: $offset, before: $before,
+      after: $after, first: $first, last: $last,
+      id: $mostListenedToPodcastsId, title_Icontains: $titleIcontains,
+      title_Istartswith: $titleIstartswith, title: $title) {
+      edges {
+        node {
+          coverPhoto
+          dateAdded
+          description
+          guests {
+            name
           }
+          hosts {
+            hostId
+            user {
+              fullName
+            }
+          }
+          listens
+          podcastId
+          title
+          id
+        }
       }
+    }
   }
 `
 

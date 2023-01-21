@@ -1,14 +1,14 @@
 import React from "react";
 import { NextPageWithLayout } from "pages/_app";
 import { useAppDispatch } from "@store/hooks";
-import { TrendingPodcasts, SidebarLayout } from "@components/admin";
-import { useMostListenedPodcasts } from "@gql/requests/queries/hooks";
+import { AdminTrendingPodcasts, SidebarLayout } from "@components/admin";
+import { useTrendingPodcasts } from "@gql/requests/queries/hooks";
 import { setPodcasts } from "@store/slices"
 import Head from "next/head";
 import { PageLoadingRing, SomethingWentWrong } from "@components/common";
 
 const DashBoard: NextPageWithLayout = () => {
-  const {loading, data, error} = useMostListenedPodcasts()
+  const {loading, data, error} = useTrendingPodcasts()
   const dispatch = useAppDispatch();
 
   React.useEffect(() => {
@@ -26,7 +26,7 @@ const DashBoard: NextPageWithLayout = () => {
         <title>Geotech DashBoard</title>
       </Head>
       <main>
-        <TrendingPodcasts />
+        <AdminTrendingPodcasts />
       </main>
     </>
   )

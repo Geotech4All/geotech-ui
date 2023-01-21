@@ -1,5 +1,9 @@
 import React from 'react'
 import '../styles/globals.scss'
+import "swiper/css";
+import "swiper/css/navigation"
+import "swiper/css/pagination"
+import "swiper/css/scrollbar"
 import type { AppProps } from 'next/app'
 import { ApolloProvider } from '@apollo/client'
 import { Provider } from "react-redux"

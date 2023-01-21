@@ -4,7 +4,7 @@ import { useAppSelector } from "@store/hooks";
 import { selectPodcasts } from "@store/slices";
 import { AdminPodcastList } from "@components/admin";
 
-export default function TrendingPodcasts(){
+export default function AdminTrendingPodcasts(){
   const podcasts = useAppSelector(selectPodcasts);
   const hasPodcasts = podcasts && podcasts.edges && podcasts.edges.length > 0;
   return (

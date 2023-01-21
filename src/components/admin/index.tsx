@@ -1,4 +1,4 @@
-import TrendingPodcasts from "@components/admin/podcasts/TrendingPodcasts";
+import AdminTrendingPodcasts from "@components/admin/podcasts/TrendingPodcasts";
 import User from "@components/admin/sidebar/User";
 import Sidebar from "@components/admin/sidebar/Sidebar";
 import SidebarLayout from "@components/admin/layouts/SidebarLayout";
@@ -35,5 +35,5 @@ export {
   SidebarLayout,
   NewPodcastForm,
   AdminPodcastList,
-  TrendingPodcasts,
+  AdminTrendingPodcasts
 };
