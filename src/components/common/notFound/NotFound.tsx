@@ -7,6 +7,7 @@ interface NothingFoundProps {
   url?: string;
   name?: string;
 }
+
 export default function NothingFound(props: NothingFoundProps){
   const { caption, url, name } = props;
   return (

@@ -22,10 +22,10 @@ export default function SidebarUrl(props: UrlType) {
       flex ${active ? "bg-red-50 text-red-500" : "text-gray-700"}
       hover:bg-black/10 p-1.5 rounded-2xl 
       transition-all
-      gap-2 text-2xl
+      gap-2 text-lg
       ${admin.sidebarOpen ? "justify-start p-4" : "justify-center aspect-square rounded-full"}
       items-center`} href={path}>
-      <Icon size={ 35 }/>
+      <Icon size={ 30 }/>
       {admin.sidebarOpen && (
         <motion.span>{ name }</motion.span>
       )}

@@ -4,6 +4,7 @@ import GInput from "@components/common/inputs/GInput";
 import FInput from "@components/common/inputs/FInput";
 import IInput from "@components/common/inputs/IInput";
 import GTextArea from "@components/common/inputs/GTextArea";
+import MyImage from "@components/common/images/MyImage";
 import Button from "@components/common/buttons/Button";
 import NothingFound from "@components/common/notFound/NotFound";
 import FullLogo from "@components/common/logo/FullLogo";
@@ -33,6 +34,7 @@ export {
   FInput,
   Button,
   MModal,
+  MyImage,
   UserPill,
   FullLogo,
   GuestPill,

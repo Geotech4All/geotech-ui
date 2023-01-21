@@ -10,7 +10,7 @@ export default function TrendingPodcasts(){
   SwiperCore.use([ Autoplay ])
   const trending = useAppSelector(selectTrendingPodcasts);
 
-  if (!trending || trending?.edges.length <= 0) return (
+  if (!trending?.edges || trending?.edges.length <= 0) return (
     <NothingFound
       url="admin/podcasts"
       caption="Sorry no podcasts were found"
