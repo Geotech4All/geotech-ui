@@ -1,7 +1,8 @@
 import React from "react";
+import { RecentPodcast } from "@components/common";
 
 export default function Podcast(){
   return (
-    <div>You have reached the podcast page</div>
+    <RecentPodcast />
   )
 }

@@ -4,8 +4,18 @@ import type {
   Maybe,
   PodcastTypeConnection,
   GuestTypeConnection,
-  UserType, StaffType, QueryMostListenedToPodcastsArgs } from "@gql/codegen/graphql";
+  UserType, StaffType,
+  QueryMostListenedToPodcastsArgs,
+  QueryAllPodcastsArgs
+} from "@gql/codegen/graphql";
 
+export function useAllPodcasts(variables?: QueryAllPodcastsArgs) {
+  return useQuery<
+    {podcasts: Maybe<PodcastTypeConnection>},
+    QueryAllPodcastsArgs>(Queries.ALL_PODCASTS, {
+      variables
+  })
+}
 
 export function useTrendingPodcasts(variables?: QueryMostListenedToPodcastsArgs){
   return useQuery<
