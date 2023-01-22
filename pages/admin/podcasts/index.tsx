@@ -38,7 +38,6 @@ const Podcasts: NextPageWithLayout = () => {
   if (error) return <SomethingWentWrong error={error} />
   if (sError) return <SomethingWentWrong error={sError} />
   if (gError) return <SomethingWentWrong error={gError} />
-  if (tError) return <SomethingWentWrong error={tError} />
 
   return (
     <>

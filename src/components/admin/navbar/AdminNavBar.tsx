@@ -19,7 +19,6 @@ export default function AdminNavBar(){
   }
 
   const closeNav: React.MouseEventHandler = (event) => {
-    console.log(event.target)
     if (
       event.target === rootRef.current
       ) {

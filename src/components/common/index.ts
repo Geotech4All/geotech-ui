@@ -3,6 +3,9 @@ import PInput from "@components/common/inputs/PInput";
 import GInput from "@components/common/inputs/GInput";
 import FInput from "@components/common/inputs/FInput";
 import IInput from "@components/common/inputs/IInput";
+import TipTap from "@components/common/tiptap/TipTap";
+import TipTapMenuBar from "@components/common/tiptap/TipTapMenuBar";
+import TipTapMenuItem from "@components/common/tiptap/TipTapMenuItem";
 import GTextArea from "@components/common/inputs/GTextArea";
 import MyImage from "@components/common/images/MyImage";
 import Button from "@components/common/buttons/Button";
@@ -27,6 +30,7 @@ import RecentPodcasts from "@components/common/podcast/RecentPodcasts";
 import type { GInputProps } from "@components/common/inputs/GInput";
 import type { LInputProps } from "@components/common/inputs/LInput";
 import type { DialogPropsType } from "@components/common/modals/types";
+import type { ButtonProps } from "@components/common/buttons/Button";
 
 export {
   LInput,
@@ -34,6 +38,7 @@ export {
   IInput,
   PInput,
   FInput,
+  TipTap,
   Button,
   MModal,
   MyImage,
@@ -48,6 +53,8 @@ export {
   SLoadingRing,
   SLoadingHalo,
   GraphqlErrors,
+  TipTapMenuBar,
+  TipTapMenuItem,
   RecentPodcasts,
   MidPodcastCard,
   PageLoadingRing,
@@ -56,4 +63,4 @@ export {
   SomethingWentWrong
 };
 
-export type { GInputProps, LInputProps, DialogPropsType }
+export type { GInputProps, LInputProps, DialogPropsType, ButtonProps }

@@ -81,6 +81,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  outline: none;
 }
 
 html,
@@ -111,6 +112,14 @@ a {
 
 .swiper-horizontal > .swiper-pagination-bullets{
   bottom: -6px !important;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+.ProseMirror-focused {
+  outline: none;
 }
 
 // @media (prefers-color-scheme: dark) {

@@ -1,6 +1,7 @@
 import { IconType } from "react-icons";
 import { MdSpaceDashboard } from "react-icons/md";
 import { SiGooglepodcasts } from "react-icons/si";
+import { CgNotes } from "react-icons/cg";
 
 export interface UrlType {
   path: string;
@@ -18,5 +19,10 @@ export const adminUrls: UrlType[] = [
     path: "/admin/podcasts",
     name: "Podcast",
     icon: SiGooglepodcasts
+  },
+  {
+    path: "/admin/blog",
+    name: "Blog",
+    icon: CgNotes
   }
 ]

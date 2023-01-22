@@ -1,7 +1,7 @@
 import React from "react";
 import { IconType } from "react-icons";
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: IconType;
   children?: React.ReactNode;
   iconSize?: number;
