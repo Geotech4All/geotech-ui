@@ -2,27 +2,40 @@ import React from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import Image from "@tiptap/extension-image";
 import StarterKit from "@tiptap/starter-kit";
-import { TipTapMenuBar } from "@components/common";
+import { GTextArea, TipTapMenuBar } from "@components/common";
 import Underline from "@tiptap/extension-underline"
 import Paragraph from "@tiptap/extension-paragraph";
+import CustomHeading from "./CustormHeading";
+import { Editor } from "@tiptap/core";
 
-export default function TipTap(){
+interface TipTapProps {
+  content?: string;
+  getContent?: (editor: Editor | null) => void;
+}
+
+export default function TipTap(props: TipTapProps){
+  const { content, getContent } = props;
   const editor = useEditor({
     extensions: [
-      StarterKit, Image, Underline, Paragraph
+      StarterKit.configure({ heading: false }),
+      Image,
+      Underline,
+      Paragraph,
+      CustomHeading
     ],
-    content: `<p class="">This is a basic example of implementing images. Drag to re-order.</p>
-        <img src="https://source.unsplash.com/8xznAGy4HcY/800x400" />
-        <img src="https://source.unsplash.com/K9QHL52rE2k/800x400" />`
+    content
   });
+
+  if (getContent) getContent(editor)
 
   return (
     <div className={`
-      shadow p-1 w-full border-2 rounded-2xl
+      flex flex-col gap-2
+      shadow p-1 w-full border-2 rounded-2xl transition-all
       outline-0 outline-none
-      border-red-400/60 focus-within:shadow-lg focus-within:shadow-black`}>
+      focus-within:shadow-lg`}>
       <TipTapMenuBar editor={editor}/>
-      <EditorContent className="outline-0 p-1" editor={editor} />
+      <EditorContent className="shadow rounded-2xl p-3" editor={editor} />
     </div>
   )
 }

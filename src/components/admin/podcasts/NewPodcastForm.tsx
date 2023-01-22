@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, FInput, FormErrors, GInput, GTextArea, IInput, PageLoadingHalo } from "@components/common";
+import { Button, FInput, FormErrors, AnimatedCheckMark, GInput, GTextArea, IInput, PageLoadingHalo } from "@components/common";
 import { SelectGuests, SelectHosts } from "@components/admin";
 import { useCreatePodcast } from "@gql/requests/mutations/hooks";
 import { useNewPodcastsRefs } from "@constants/hooks";
@@ -10,6 +10,7 @@ interface NewPodcastFormProps {
 
 export default function NewPodcastForm (props: NewPodcastFormProps){
   const { onCreated } = props;
+  const [creationComplete, setCreationComplete] = React.useState(false)
   const [hosts, setHosts] = React.useState<Array<string>>();
   const [guests, setGuests] = React.useState<Array<number>>();
   const [audio, setAudio] = React.useState<File>();
@@ -40,10 +41,14 @@ export default function NewPodcastForm (props: NewPodcastFormProps){
       }
     })
     .then(() => {
-      if (onCreated) onCreated()
+      setCreationComplete(true);
+      const timeout = setTimeout(() => {if (onCreated) onCreated()}, 3000);
+      return () => clearTimeout(timeout);
     })
     .catch(err => console.log(err))
   };
+
+  if (creationComplete) return <AnimatedCheckMark />
 
   return (
     <form onSubmit={submitHandler} className="w-full p-2 flex flex-col gap-3">

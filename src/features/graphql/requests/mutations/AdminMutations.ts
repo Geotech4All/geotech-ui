@@ -19,3 +19,27 @@ export const CREATE_PODCAST = gql`
     }
   }
 `
+
+export const CREATE_POST = gql`
+  mutation CreateUpdatePost($body: String!, $abstract: String, $title: String) {
+    post: createUpdatePost(body: $body, abstract: $abstract, title: $title) {
+      success
+      errors {
+        field
+        messages
+      }
+      post {
+        postId
+        abstract
+        author {
+          fullName
+          email
+        }
+        body
+        dateAdded
+        title
+        readLength
+      }
+    }
+  }
+`
