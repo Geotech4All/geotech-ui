@@ -22,7 +22,7 @@ import PageLoadingHalo from "@components/common/loading/PageLoadingHalo";
 import GuestPill from "@components/common/guest/GuestPill";
 import LargePodcastCard from "@components/common/podcast/LargePodcastCard";
 import MidPodcastCard from "@components/common/podcast/MidPodcastCard";
-import RecentPodcast from "@components/common/podcast/RecentPodcasts";
+import RecentPodcasts from "@components/common/podcast/RecentPodcasts";
 
 import type { GInputProps } from "@components/common/inputs/GInput";
 import type { LInputProps } from "@components/common/inputs/LInput";
@@ -48,7 +48,7 @@ export {
   SLoadingRing,
   SLoadingHalo,
   GraphqlErrors,
-  RecentPodcast,
+  RecentPodcasts,
   MidPodcastCard,
   PageLoadingRing,
   PageLoadingHalo,

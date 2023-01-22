@@ -1,8 +1,12 @@
 import React from "react";
-import { RecentPodcast } from "@components/common";
+import { RecentPodcasts } from "@components/common";
+import TrendingPodcasts from "@components/common/podcast/TrendingPodcasts";
 
 export default function Podcast(){
   return (
-    <RecentPodcast />
+    <div>
+      <TrendingPodcasts />
+      <RecentPodcasts />
+    </div>
   )
 }

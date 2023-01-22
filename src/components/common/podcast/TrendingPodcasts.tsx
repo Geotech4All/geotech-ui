@@ -2,13 +2,28 @@ import React from "react";
 import SwiperCore, { A11y, Pagination, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "@styles/Utils.module.scss"
-import { LargePodcastCard, NothingFound } from "@components/common"
-import { useAppSelector } from "@store/hooks";
-import { selectTrendingPodcasts } from "@store/slices";
+import { LargePodcastCard, NothingFound, SLoadingRing } from "@components/common"
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { selectTrendingPodcasts, setTrendingPodcasts } from "@store/slices";
+import { useTrendingPodcasts } from "@gql/requests/queries/hooks";
 
 export default function TrendingPodcasts(){
   SwiperCore.use([ Autoplay ])
   const trending = useAppSelector(selectTrendingPodcasts);
+  const { loading, error, data } = useTrendingPodcasts({ first: 5 })
+  const dispatch = useAppDispatch();
+
+  React.useEffect(() => {
+    if (data?.podcasts) {
+      dispatch(setTrendingPodcasts(data.podcasts));
+    }
+  }, [data, dispatch])
+
+  if (loading) return (
+    <div className="flex w-full min-h-screen items-center justify-center">
+      <SLoadingRing />
+    </div>
+  )
 
   if (!trending?.edges || trending?.edges.length <= 0) return (
     <NothingFound
