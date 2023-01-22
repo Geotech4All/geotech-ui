@@ -7,7 +7,11 @@ import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { selectTrendingPodcasts, setTrendingPodcasts } from "@store/slices";
 import { useTrendingPodcasts } from "@gql/requests/queries/hooks";
 
-export default function TrendingPodcasts(){
+interface TrendingPodcastsProps{
+  isAdmin: boolean;
+}
+
+export default function TrendingPodcasts(props: TrendingPodcastsProps){
   SwiperCore.use([ Autoplay ])
   const trending = useAppSelector(selectTrendingPodcasts);
   const { loading, error, data } = useTrendingPodcasts({ first: 5 })
@@ -25,8 +29,11 @@ export default function TrendingPodcasts(){
     </div>
   )
 
+  if (error) console.log({ error })
+
   if (!trending?.edges || trending?.edges.length <= 0) return (
     <NothingFound
+      isAdmin={props.isAdmin}
       url="admin/podcasts"
       caption="Sorry no podcasts were found"
       name="Podcasts" />

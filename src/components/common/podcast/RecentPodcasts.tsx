@@ -20,7 +20,7 @@ export default function RecentPodcasts(){
       </div>)
       :(
         <div className="flex items-center h-full justify-center w-full">
-          <NothingFound caption="Sorry no podcasts yet" name="Podcast"/>
+          <NothingFound isAdmin={false} caption="Sorry no podcasts yet" name="Podcast"/>
         </div>
       )}
     </div>

@@ -10,7 +10,7 @@ export default function Podcast(){
       <title>Podcasts - Geotech</title>
     </Head>
     <div>
-      <TrendingPodcasts />
+      <TrendingPodcasts isAdmin={false}/>
       <RecentPodcasts />
     </div>
     </>

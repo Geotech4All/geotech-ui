@@ -45,7 +45,7 @@ const Podcasts: NextPageWithLayout = () => {
         <title>GeoTech Podcasts</title>
       </Head>
       <div className="relative">
-        <TrendingPodcasts />
+        <TrendingPodcasts isAdmin={true}/>
         <RecentPodcasts />
         <Button
           onClick={handleOpen}
