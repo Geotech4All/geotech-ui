@@ -18,7 +18,7 @@ export default function UserPill(props: UserPillProps) {
     } else {
       setName(user?.email)
     }
-  }, [])
+  }, [user])
 
   function removeHandler(){
     if (user) {
