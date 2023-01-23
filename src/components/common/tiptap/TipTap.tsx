@@ -11,10 +11,11 @@ import { Editor } from "@tiptap/core";
 interface TipTapProps {
   content?: string;
   getContent?: (editor: Editor | null) => void;
+  title?: string;
 }
 
 export default function TipTap(props: TipTapProps){
-  const { content, getContent } = props;
+  const { content, title, getContent } = props;
   const editor = useEditor({
     extensions: [
       StarterKit.configure({ heading: false }),
@@ -34,7 +35,10 @@ export default function TipTap(props: TipTapProps){
       shadow p-1 w-full border-2 rounded-2xl transition-all
       outline-0 outline-none
       focus-within:shadow-lg`}>
-      <TipTapMenuBar editor={editor}/>
+      <div className="flex items-center justify-between">
+        <div className="font-extrabold px-2 text-red-400/30 text-xl">{title}</div>
+        <TipTapMenuBar editor={editor}/>
+      </div>
       <EditorContent className="shadow rounded-2xl p-3" editor={editor} />
     </div>
   )

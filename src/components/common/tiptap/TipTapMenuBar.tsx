@@ -29,7 +29,7 @@ export default function TipTapMenuBar(props: TipTapMenuBarProps) {
         onClick={() => editor.chain().focus().toggleUnderline().run()}
         icon={MdFormatUnderlined}
         func="underline" editor={editor} />
-      <div className="rounded-xl border flex gap-1 items-center px-1">
+      <div className="rounded-xl p-0.5 border flex gap-1 items-center px-1">
         <TipTapMenuItem
           showName="h1"
           onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}

@@ -6,13 +6,14 @@ interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
   className?: string;
   getFile?: (file?: File) => void;
+  title?: string
 };
 
 /**
  * A Image Input filed with forwarded Ref
  */
 const IInput = React.forwardRef<HTMLInputElement, IInputProps>((props, ref) => {
-  const { name, className, getFile, ...rest } = props;
+  const { name, title, className, getFile, ...rest } = props;
   const [image, setImage] = React.useState<File>();
   const [dragActive, setDragActive] = React.useState(false);
   const [error, setError] = React.useState<string>();
@@ -71,7 +72,7 @@ const IInput = React.forwardRef<HTMLInputElement, IInputProps>((props, ref) => {
           src={URL.createObjectURL(image)} alt={image.name}/>
         )}
       <input {...rest} onChange={handleChange} className="hidden" type="file" accept="image/*" ref={ref} id={name}/>
-      <label className="p-5 flex-1 cursor-pointer flex justify-center items-center w-full h-full" htmlFor={name}>
+      <label title={title} className="p-5 flex-1 cursor-pointer flex justify-center items-center w-full h-full" htmlFor={name}>
         <div className="flex text-black/70 flex-col items-center justify-center w-full">
           <span
             className={`${image ? "text-green-400" : "text-red-400"} transition-all`}>

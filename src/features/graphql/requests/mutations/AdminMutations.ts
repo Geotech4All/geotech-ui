@@ -21,8 +21,8 @@ export const CREATE_PODCAST = gql`
 `
 
 export const CREATE_POST = gql`
-  mutation CreateUpdatePost($body: String!, $abstract: String, $title: String) {
-    post: createUpdatePost(body: $body, abstract: $abstract, title: $title) {
+  mutation CreateUpdatePost($body: String!, $abstract: String, $coverPhoto: Upload, $title: String!) {
+    createUpdatePost(body: $body, abstract: $abstract, coverPhoto: $coverPhoto, title: $title) {
       success
       errors {
         field
