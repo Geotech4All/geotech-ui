@@ -14,7 +14,7 @@ export default function TipTapMenuBar(props: TipTapMenuBarProps) {
   if (!editor) return null;
   editor.isActive("bold")
   return (
-    <div className="flex w-fit self-end gap-1 p-1 shadow rounded-xl">
+    <div className="flex flex-wrap items-end justify-end w-fit self-end gap-1 p-1 shadow rounded-xl">
       <TipTapMenuItem
         disabled={!editor.can().chain().focus().toggleBold().run()}
         onClick={() => editor.chain().focus().toggleBold().run()}

@@ -35,7 +35,7 @@ export default function TipTap(props: TipTapProps){
       shadow p-1 w-full border-2 rounded-2xl transition-all
       outline-0 outline-none
       focus-within:shadow-lg`}>
-      <div className="flex items-center justify-between">
+      <div className="flex w-full flex-wrap items-center justify-between">
         <div className="font-extrabold px-2 text-red-400/30 text-xl">{title}</div>
         <TipTapMenuBar editor={editor}/>
       </div>
