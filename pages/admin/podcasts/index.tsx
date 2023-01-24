@@ -1,22 +1,19 @@
-import { NewPodcastForm, SidebarLayout } from "@components/admin";
-import { Button, MModal, RecentPodcasts, SLoadingRing, SomethingWentWrong } from "@components/common";
+import { SidebarLayout } from "@components/admin";
+import { Button, RecentPodcasts, SLoadingRing, SomethingWentWrong } from "@components/common";
 import { useAppDispatch } from "@store/hooks";
 import { NextPageWithLayout } from "pages/_app";
 import { usePrevousGuests, useRecentHosts, useStaffList } from "@gql/requests/queries/hooks";
-import { setPreviousGuests, setRecentHosts, setStaffList, setTrendingPodcasts } from "@store/slices";
+import { setPreviousGuests, setRecentHosts, setStaffList } from "@store/slices";
 import React from "react";
 import Head from "next/head";
 import TrendingPodcasts from "@components/common/podcast/TrendingPodcasts";
+import Link from "next/link";
 
 const Podcasts: NextPageWithLayout = () => {
   const { loading, error, data } = useRecentHosts();
   const { loading: sLoading, error: sError, data: sData } = useStaffList();
   const { loading: gLoading, error: gError, data: gData } = usePrevousGuests()
-  const [open, setOpen] = React.useState(false);
   const dispatch = useAppDispatch();
-
-  const handleClose = () => setOpen(false);
-  const handleOpen = () => setOpen(true);
 
   React.useEffect(() => {
     if (data?.hosts) {
@@ -47,18 +44,15 @@ const Podcasts: NextPageWithLayout = () => {
       <div className="relative">
         <TrendingPodcasts isAdmin={true}/>
         <RecentPodcasts />
-        <Button
-          onClick={handleOpen}
+        <Link
+          href="/admin/podcasts/new"
           className={`
             absolute top-4 right-4
             bg-red-400 text-white p-2
             rounded-lg hover:bg-red-500
             transition-all font-semibold
             active:bg-red-500
-            `}>+ New Podcast</Button>
-        <MModal open={open} onClose={handleClose}>
-          <NewPodcastForm onCreated={handleClose}/>
-        </MModal>
+            `}>+ New Podcast</Link>
       </div>
     </>
   );
