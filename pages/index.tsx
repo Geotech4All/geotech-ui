@@ -1,7 +1,10 @@
-import { BlogLanding, PodcastLanding } from '@components/landingPage'
 import Head from 'next/head'
+import { getMostPopularPosts } from "@api/client";
+import { BlogLanding, PodcastLanding } from '@components/landingPage'
+import { Maybe, PostTypeConnection } from '@gql/codegen/graphql';
 
-export default function Home() {
+export default function Home(props: { posts: Maybe<PostTypeConnection>}) {
+  console.log(props);
   return (
     <>
       <Head>
@@ -16,4 +19,13 @@ export default function Home() {
       </main>
     </>
   )
+}
+
+export async function getStaticProps() {
+  const posts = await getMostPopularPosts();
+  return {
+    props: {
+      posts: posts.posts
+    }
+  }
 }
