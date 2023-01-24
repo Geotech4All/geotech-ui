@@ -30,7 +30,7 @@ export default function UserPill(props: UserPillProps) {
     <div className="flex items-center gap-2 bg-red-100 pr-2 w-fit border-2 border-red-300 p-1 rounded-3xl">
       <div className="max-w-[2rem] rounded-full overflow-hidden">
         <img className="w-full object-cover"
-          src={user?.profile?.image ?? ""}
+          src={user?.profile?.image ?? "/images/guy-profile.svg"}
           alt={name ?? "user avatar"} />
       </div>
       <span>{name}</span>

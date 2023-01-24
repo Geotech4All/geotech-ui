@@ -106,6 +106,7 @@ export const ALL_POSTS = gql`
       edges {
         cursor
         node {
+          dateAdded
           abstract
           coverPhoto
           title

@@ -6,8 +6,18 @@ import type {
   GuestTypeConnection,
   UserType, StaffType,
   QueryMostListenedToPodcastsArgs,
-  QueryAllPodcastsArgs
+  QueryAllPodcastsArgs,
+  QueryAllPostsArgs,
+  PostTypeConnection
 } from "@gql/codegen/graphql";
+
+export function useAllPosts(variables?: QueryAllPostsArgs) {
+  return useQuery<
+    { posts: Maybe<PostTypeConnection> },
+    QueryAllPostsArgs>(Queries.ALL_POSTS, {
+      variables
+  })
+}
 
 export function useAllPodcasts(variables?: QueryAllPodcastsArgs) {
   return useQuery<

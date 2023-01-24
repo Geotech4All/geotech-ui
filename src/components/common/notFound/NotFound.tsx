@@ -1,6 +1,8 @@
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { getRandom } from "@utils/common";
+import { EmptyError, emptyErrors } from "@constants/errors";
 
 interface NothingFoundProps {
   caption?: string;
@@ -11,15 +13,18 @@ interface NothingFoundProps {
 
 export default function NothingFound(props: NothingFoundProps){
   const { caption, isAdmin, url, name } = props;
+  const [emptyError, setEmptyError] = React.useState<EmptyError>()
+
+  React.useEffect(() => setEmptyError(getRandom<EmptyError>(emptyErrors)), []);
   const admin = isAdmin ? isAdmin : false;
   return (
     <div>
       <Image
-        className="max-w-xl w-full"
-        width={750}
-        height={500}
-        src="/images/not-found.svg"
-        alt="man searching for files"/>
+        width={emptyError?.width ?? 0}
+        height={emptyError?.height ?? 0}
+        className="w-full"
+        src={emptyError?.img ?? ""}
+        alt={emptyError?.alt ?? ""}/>
       <div className="flex flex-col items-center justify-center text-lg text-black/60">
         <p>{caption}</p>
         {url && admin && (

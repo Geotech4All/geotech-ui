@@ -8,6 +8,7 @@ import TipTapMenuBar from "@components/common/tiptap/TipTapMenuBar";
 import TipTapMenuItem from "@components/common/tiptap/TipTapMenuItem";
 import GTextArea from "@components/common/inputs/GTextArea";
 import MyImage from "@components/common/images/MyImage";
+import GImage from "@components/common/images/GImage";
 import Button from "@components/common/buttons/Button";
 import NothingFound from "@components/common/notFound/NotFound";
 import FullLogo from "@components/common/logo/FullLogo";
@@ -27,6 +28,10 @@ import LargePodcastCard from "@components/common/podcast/LargePodcastCard";
 import MidPodcastCard from "@components/common/podcast/MidPodcastCard";
 import RecentPodcasts from "@components/common/podcast/RecentPodcasts";
 import AnimatedCheckMark from "@components/common/icons/AnimatedCheckMark";
+import MidPostCard from "@components/common/posts/MidPostCard";
+import PostList from "@components/common/posts/PostList";
+import PostAuthor from "@components/common/posts/PostAuthor";
+import CenterSLoadingRing from "@components/common/loading/CenterSLoadingRing";
 
 import type { GInputProps } from "@components/common/inputs/GInput";
 import type { LInputProps } from "@components/common/inputs/LInput";
@@ -42,7 +47,9 @@ export {
   TipTap,
   Button,
   MModal,
+  GImage,
   MyImage,
+  PostList,
   UserPill,
   FullLogo,
   GuestPill,
@@ -50,6 +57,8 @@ export {
   UserSelect,
   UserOption,
   FormErrors,
+  PostAuthor,
+  MidPostCard,
   NothingFound,
   SLoadingRing,
   SLoadingHalo,
@@ -62,7 +71,8 @@ export {
   PageLoadingHalo,
   LargePodcastCard,
   AnimatedCheckMark,
-  SomethingWentWrong
+  SomethingWentWrong,
+  CenterSLoadingRing,
 };
 
 export type { GInputProps, LInputProps, DialogPropsType, ButtonProps }

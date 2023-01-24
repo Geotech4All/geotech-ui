@@ -817,7 +817,7 @@ export type PostCreateUpdateMutation = {
   success?: Maybe<Scalars['Boolean']>;
 };
 
-export type PostType = {
+export type PostType = Node & {
   __typename?: 'PostType';
   abstract?: Maybe<Scalars['String']>;
   author: UserType;
@@ -826,12 +826,30 @@ export type PostType = {
   coverPhoto?: Maybe<Scalars['String']>;
   dateAdded: Scalars['DateTime'];
   dislikes: Scalars['Int'];
+  /** The ID of the object. */
   id: Scalars['ID'];
   lastUpdated: Scalars['DateTime'];
   likes: Scalars['Int'];
   postId?: Maybe<Scalars['ID']>;
   readLength: Scalars['Float'];
   title: Scalars['String'];
+};
+
+export type PostTypeConnection = {
+  __typename?: 'PostTypeConnection';
+  /** Contains the nodes in this connection. */
+  edges: Array<Maybe<PostTypeEdge>>;
+  /** Pagination data for this connection. */
+  pageInfo: PageInfo;
+};
+
+/** A Relay edge containing a `PostType` and its cursor. */
+export type PostTypeEdge = {
+  __typename?: 'PostTypeEdge';
+  /** A cursor for use in pagination */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge */
+  node?: Maybe<PostType>;
 };
 
 export type ProfileType = {
@@ -854,7 +872,7 @@ export type Query = {
   __typename?: 'Query';
   allEventImages?: Maybe<Array<Maybe<EventImageType>>>;
   allPodcasts?: Maybe<PodcastTypeConnection>;
-  allPosts?: Maybe<Array<Maybe<PostType>>>;
+  allPosts?: Maybe<PostTypeConnection>;
   getAddressById?: Maybe<AddressNode>;
   getGuestById?: Maybe<GuestType>;
   getPostById?: Maybe<PostType>;
@@ -876,6 +894,28 @@ export type QueryAllPodcastsArgs = {
   id?: InputMaybe<Scalars['Float']>;
   last?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
+  title?: InputMaybe<Scalars['String']>;
+  title_Icontains?: InputMaybe<Scalars['String']>;
+  title_Istartswith?: InputMaybe<Scalars['String']>;
+};
+
+
+export type QueryAllPostsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  body_Icontains?: InputMaybe<Scalars['String']>;
+  body_Istartswith?: InputMaybe<Scalars['String']>;
+  dateAdded?: InputMaybe<Scalars['DateTime']>;
+  dateAdded_Icontains?: InputMaybe<Scalars['DateTime']>;
+  dateAdded_Istartswith?: InputMaybe<Scalars['DateTime']>;
+  dislikes?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  likes?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  readLength?: InputMaybe<Scalars['Float']>;
+  readLength_Icontains?: InputMaybe<Scalars['Float']>;
+  readLength_Istartswith?: InputMaybe<Scalars['Float']>;
   title?: InputMaybe<Scalars['String']>;
   title_Icontains?: InputMaybe<Scalars['String']>;
   title_Istartswith?: InputMaybe<Scalars['String']>;
@@ -1090,7 +1130,7 @@ export type UserNode = Node & {
   lastLogin?: Maybe<Scalars['DateTime']>;
   lastName?: Maybe<Scalars['String']>;
   pk?: Maybe<Scalars['Int']>;
-  postSet: Array<PostType>;
+  postSet: PostTypeConnection;
   profile?: Maybe<ProfileType>;
   secondaryEmail?: Maybe<Scalars['String']>;
   staff?: Maybe<StaffType>;
@@ -1108,6 +1148,28 @@ export type UserNodeHostSetArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type UserNodePostSetArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  body_Icontains?: InputMaybe<Scalars['String']>;
+  body_Istartswith?: InputMaybe<Scalars['String']>;
+  dateAdded?: InputMaybe<Scalars['DateTime']>;
+  dateAdded_Icontains?: InputMaybe<Scalars['DateTime']>;
+  dateAdded_Istartswith?: InputMaybe<Scalars['DateTime']>;
+  dislikes?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  likes?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  readLength?: InputMaybe<Scalars['Float']>;
+  readLength_Icontains?: InputMaybe<Scalars['Float']>;
+  readLength_Istartswith?: InputMaybe<Scalars['Float']>;
+  title?: InputMaybe<Scalars['String']>;
+  title_Icontains?: InputMaybe<Scalars['String']>;
+  title_Istartswith?: InputMaybe<Scalars['String']>;
 };
 
 export type UserNodeConnection = {
@@ -1137,7 +1199,7 @@ export type UserType = {
   hostSet: HostTypeConnection;
   id: Scalars['ID'];
   lastName?: Maybe<Scalars['String']>;
-  postSet: Array<PostType>;
+  postSet: PostTypeConnection;
   profile?: Maybe<ProfileType>;
   staff?: Maybe<StaffType>;
 };
@@ -1152,6 +1214,28 @@ export type UserTypeHostSetArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type UserTypePostSetArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  body_Icontains?: InputMaybe<Scalars['String']>;
+  body_Istartswith?: InputMaybe<Scalars['String']>;
+  dateAdded?: InputMaybe<Scalars['DateTime']>;
+  dateAdded_Icontains?: InputMaybe<Scalars['DateTime']>;
+  dateAdded_Istartswith?: InputMaybe<Scalars['DateTime']>;
+  dislikes?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  likes?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  readLength?: InputMaybe<Scalars['Float']>;
+  readLength_Icontains?: InputMaybe<Scalars['Float']>;
+  readLength_Istartswith?: InputMaybe<Scalars['Float']>;
+  title?: InputMaybe<Scalars['String']>;
+  title_Icontains?: InputMaybe<Scalars['String']>;
+  title_Istartswith?: InputMaybe<Scalars['String']>;
 };
 
 /**
@@ -1262,6 +1346,30 @@ export type PreviousGuestsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type PreviousGuestsQuery = { __typename?: 'Query', guests?: { __typename?: 'GuestTypeConnection', edges: Array<{ __typename?: 'GuestTypeEdge', node?: { __typename?: 'GuestType', id: string, guestId?: string | null, name: string, image?: string | null } | null } | null> } | null };
 
+export type AllPostsQueryVariables = Exact<{
+  offset?: InputMaybe<Scalars['Int']>;
+  before?: InputMaybe<Scalars['String']>;
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  dateAdded?: InputMaybe<Scalars['DateTime']>;
+  dateAddedIcontains?: InputMaybe<Scalars['DateTime']>;
+  dateAddedIstartswith?: InputMaybe<Scalars['DateTime']>;
+  title?: InputMaybe<Scalars['String']>;
+  titleIcontains?: InputMaybe<Scalars['String']>;
+  titleIstartswith?: InputMaybe<Scalars['String']>;
+  bodyIcontains?: InputMaybe<Scalars['String']>;
+  bodyIstartswith?: InputMaybe<Scalars['String']>;
+  readLength?: InputMaybe<Scalars['Float']>;
+  readLengthIcontains?: InputMaybe<Scalars['Float']>;
+  readLengthIstartswith?: InputMaybe<Scalars['Float']>;
+  likes?: InputMaybe<Scalars['Int']>;
+  dislikes?: InputMaybe<Scalars['Int']>;
+}>;
+
+
+export type AllPostsQuery = { __typename?: 'Query', posts?: { __typename?: 'PostTypeConnection', pageInfo: { __typename?: 'PageInfo', endCursor?: string | null, hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null }, edges: Array<{ __typename?: 'PostTypeEdge', cursor: string, node?: { __typename?: 'PostType', abstract?: string | null, coverPhoto?: string | null, title: string, author: { __typename?: 'UserType', fullName?: string | null, profile?: { __typename?: 'ProfileType', image?: string | null } | null } } | null } | null> } | null };
+
 export type AllPodcastsQueryVariables = Exact<{
   offset?: InputMaybe<Scalars['Int']>;
   before?: InputMaybe<Scalars['String']>;
@@ -1286,4 +1394,5 @@ export const MostListenedToPodcastsDocument = {"kind":"Document","definitions":[
 export const RecentHostsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"RecentHosts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"hosts"},"name":{"kind":"Name","value":"recentHosts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"fullName"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"profile"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"image"}},{"kind":"Field","name":{"kind":"Name","value":"profileId"}}]}}]}}]}}]} as unknown as DocumentNode<RecentHostsQuery, RecentHostsQueryVariables>;
 export const StaffListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"StaffList"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"staff"},"name":{"kind":"Name","value":"staffList"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"canCreatePost"}},{"kind":"Field","name":{"kind":"Name","value":"staffId"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fullName"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"profile"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"profileId"}},{"kind":"Field","name":{"kind":"Name","value":"image"}}]}}]}}]}}]}}]} as unknown as DocumentNode<StaffListQuery, StaffListQueryVariables>;
 export const PreviousGuestsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"PreviousGuests"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"guests"},"name":{"kind":"Name","value":"previousGuests"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"guestId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"image"}}]}}]}}]}}]}}]} as unknown as DocumentNode<PreviousGuestsQuery, PreviousGuestsQueryVariables>;
+export const AllPostsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AllPosts"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"offset"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"before"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"after"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"first"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"last"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"dateAdded"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"DateTime"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"dateAddedIcontains"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"DateTime"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"dateAddedIstartswith"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"DateTime"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"title"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"titleIcontains"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"titleIstartswith"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"bodyIcontains"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"bodyIstartswith"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"readLength"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Float"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"readLengthIcontains"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Float"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"readLengthIstartswith"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Float"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"likes"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"dislikes"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"posts"},"name":{"kind":"Name","value":"allPosts"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"offset"},"value":{"kind":"Variable","name":{"kind":"Name","value":"offset"}}},{"kind":"Argument","name":{"kind":"Name","value":"before"},"value":{"kind":"Variable","name":{"kind":"Name","value":"before"}}},{"kind":"Argument","name":{"kind":"Name","value":"after"},"value":{"kind":"Variable","name":{"kind":"Name","value":"after"}}},{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"Variable","name":{"kind":"Name","value":"first"}}},{"kind":"Argument","name":{"kind":"Name","value":"last"},"value":{"kind":"Variable","name":{"kind":"Name","value":"last"}}},{"kind":"Argument","name":{"kind":"Name","value":"dateAdded"},"value":{"kind":"Variable","name":{"kind":"Name","value":"dateAdded"}}},{"kind":"Argument","name":{"kind":"Name","value":"dateAdded_Icontains"},"value":{"kind":"Variable","name":{"kind":"Name","value":"dateAddedIcontains"}}},{"kind":"Argument","name":{"kind":"Name","value":"dateAdded_Istartswith"},"value":{"kind":"Variable","name":{"kind":"Name","value":"dateAddedIstartswith"}}},{"kind":"Argument","name":{"kind":"Name","value":"title"},"value":{"kind":"Variable","name":{"kind":"Name","value":"title"}}},{"kind":"Argument","name":{"kind":"Name","value":"title_Icontains"},"value":{"kind":"Variable","name":{"kind":"Name","value":"titleIcontains"}}},{"kind":"Argument","name":{"kind":"Name","value":"title_Istartswith"},"value":{"kind":"Variable","name":{"kind":"Name","value":"titleIstartswith"}}},{"kind":"Argument","name":{"kind":"Name","value":"body_Icontains"},"value":{"kind":"Variable","name":{"kind":"Name","value":"bodyIcontains"}}},{"kind":"Argument","name":{"kind":"Name","value":"body_Istartswith"},"value":{"kind":"Variable","name":{"kind":"Name","value":"bodyIstartswith"}}},{"kind":"Argument","name":{"kind":"Name","value":"readLength"},"value":{"kind":"Variable","name":{"kind":"Name","value":"readLength"}}},{"kind":"Argument","name":{"kind":"Name","value":"readLength_Icontains"},"value":{"kind":"Variable","name":{"kind":"Name","value":"readLengthIcontains"}}},{"kind":"Argument","name":{"kind":"Name","value":"readLength_Istartswith"},"value":{"kind":"Variable","name":{"kind":"Name","value":"readLengthIstartswith"}}},{"kind":"Argument","name":{"kind":"Name","value":"likes"},"value":{"kind":"Variable","name":{"kind":"Name","value":"likes"}}},{"kind":"Argument","name":{"kind":"Name","value":"dislikes"},"value":{"kind":"Variable","name":{"kind":"Name","value":"dislikes"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"pageInfo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"endCursor"}},{"kind":"Field","name":{"kind":"Name","value":"hasNextPage"}},{"kind":"Field","name":{"kind":"Name","value":"hasPreviousPage"}},{"kind":"Field","name":{"kind":"Name","value":"startCursor"}}]}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"cursor"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"abstract"}},{"kind":"Field","name":{"kind":"Name","value":"coverPhoto"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"author"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"profile"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"image"}}]}},{"kind":"Field","name":{"kind":"Name","value":"fullName"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<AllPostsQuery, AllPostsQueryVariables>;
 export const AllPodcastsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AllPodcasts"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"offset"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"before"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"after"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"first"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"last"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Float"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"title_Icontains"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"title_Istartswith"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"title"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"podcasts"},"name":{"kind":"Name","value":"allPodcasts"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"offset"},"value":{"kind":"Variable","name":{"kind":"Name","value":"offset"}}},{"kind":"Argument","name":{"kind":"Name","value":"before"},"value":{"kind":"Variable","name":{"kind":"Name","value":"before"}}},{"kind":"Argument","name":{"kind":"Name","value":"after"},"value":{"kind":"Variable","name":{"kind":"Name","value":"after"}}},{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"Variable","name":{"kind":"Name","value":"first"}}},{"kind":"Argument","name":{"kind":"Name","value":"last"},"value":{"kind":"Variable","name":{"kind":"Name","value":"last"}}},{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"title_Icontains"},"value":{"kind":"Variable","name":{"kind":"Name","value":"title_Icontains"}}},{"kind":"Argument","name":{"kind":"Name","value":"title_Istartswith"},"value":{"kind":"Variable","name":{"kind":"Name","value":"title_Istartswith"}}},{"kind":"Argument","name":{"kind":"Name","value":"title"},"value":{"kind":"Variable","name":{"kind":"Name","value":"title"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"podcastId"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"listens"}},{"kind":"Field","name":{"kind":"Name","value":"audio"}},{"kind":"Field","name":{"kind":"Name","value":"coverPhoto"}},{"kind":"Field","name":{"kind":"Name","value":"podcastId"}},{"kind":"Field","name":{"kind":"Name","value":"guests"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"guestId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","name":{"kind":"Name","value":"hosts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hostId"}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fullName"}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<AllPodcastsQuery, AllPodcastsQueryVariables>;
