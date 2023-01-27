@@ -2,6 +2,7 @@ import { PostForm, SidebarLayout } from "@components/admin";
 import { PageLoadingRing, SomethingWentWrong } from "@components/common";
 import { useDetailedPost } from "@gql/requests/queries/hooks";
 import { NextPageWithLayout } from "@pages/_app";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
 
@@ -13,9 +14,15 @@ const EditPost: NextPageWithLayout = () => {
   if (loading) return <PageLoadingRing />
   if (error) return <SomethingWentWrong error={error} />
   return (
-    <div>
+    <>
+    <Head>
+      <title>Edit - {data?.post?.title}</title>
+    </Head>
+    <main>
+      <h1></h1>
       <PostForm post={data?.post}/>
-    </div>
+    </main>
+    </>
   )
 };
 

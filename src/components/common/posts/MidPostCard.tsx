@@ -20,6 +20,7 @@ export default function MidPostCard(props: MidPostCardProps) {
         ${bordered && "border-2 border-black/50"}
         hover:border-red-400 transition-all active:border-red-400
         shadow-lg shadow-black/5 flex-1 group
+        min-w-[20rem]
         justify-between  aspect-[1/1.1] max-w-md
         flex flex-col gap-2 p-2 rounded-lg ${className}`}>
       <GImage

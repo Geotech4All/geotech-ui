@@ -12,7 +12,7 @@ const Blog: NextPageWithLayout = () => {
   if (error) console.log({ error })
   return (
     <div className="p-4 relative">
-      <PostList className="w-full flex" posts={data?.posts}/>
+      <PostList title="Recent posts" className="w-full flex" posts={data?.posts}/>
       <Link
         className={`
           hover:bg-red-500 active:bg-red-500 transition-all absolute top-2 right-2
