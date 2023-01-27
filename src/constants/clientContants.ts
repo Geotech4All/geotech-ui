@@ -3,7 +3,7 @@ import type {
   HostTypeConnection,
   Maybe, PostTypeConnection } from "@gql/codegen/graphql";
 
-export const dummyPodcast: { posts: Maybe<PostTypeConnection> } = {
+export const dummyPosts: { posts: Maybe<PostTypeConnection> } = {
   posts: {
     edges: [
       {
@@ -15,6 +15,7 @@ export const dummyPodcast: { posts: Maybe<PostTypeConnection> } = {
           title: "The Importance of Soil Testing in Construction Projects",
           dislikes: 0,
           lastUpdated: new Date().toString(),
+          postId: Math.random().toString().split(".")[1],
           likes: 0,
           readLength: 20,
           views: 0,

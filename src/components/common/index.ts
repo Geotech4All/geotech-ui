@@ -29,6 +29,7 @@ import MidPodcastCard from "@components/common/podcast/MidPodcastCard";
 import RecentPodcasts from "@components/common/podcast/RecentPodcasts";
 import AnimatedCheckMark from "@components/common/icons/AnimatedCheckMark";
 import MidPostCard from "@components/common/posts/MidPostCard";
+import MiniPostCard from "@components/common/posts/MiniPostCard";
 import PostList from "@components/common/posts/PostList";
 import PostAuthor from "@components/common/posts/PostAuthor";
 import CenterSLoadingRing from "@components/common/loading/CenterSLoadingRing";
@@ -59,6 +60,7 @@ export {
   FormErrors,
   PostAuthor,
   MidPostCard,
+  MiniPostCard,
   NothingFound,
   SLoadingRing,
   SLoadingHalo,

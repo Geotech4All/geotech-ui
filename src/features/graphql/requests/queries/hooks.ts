@@ -8,8 +8,15 @@ import type {
   QueryMostListenedToPodcastsArgs,
   QueryAllPodcastsArgs,
   QueryAllPostsArgs,
-  PostTypeConnection
+  PostTypeConnection,
+  QueryPopularPostsArgs
 } from "@gql/codegen/graphql";
+
+export function usePopularPosts(variables?: QueryPopularPostsArgs) {
+  return useQuery<
+    { posts: Maybe<PostTypeConnection>},
+    QueryPopularPostsArgs>(Queries.POPULAR_POSTS, { variables })
+}
 
 export function useAllPosts(variables?: QueryAllPostsArgs) {
   return useQuery<

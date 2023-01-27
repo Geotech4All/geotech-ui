@@ -10,7 +10,7 @@ export default function PodcastLanding() {
       <div className={`flex flex-col gap-5 md:flex-row`}>
         <motion.div
           initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className={`flex-1 flex flex-col gap-5 pt-7 text-white`}>
           <h2 className={`font-extrabold sm:text-7xl text-5xl xl:text-8xl`}>
@@ -28,34 +28,37 @@ export default function PodcastLanding() {
         <div className={`flex-1 flex items-center gap-3`}>
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1}}
+            whileInView={{ opacity: 1}}
             transition={{ duration: 0.2 }}
             >
             <MyImage
+              priority={true}
               className={`rounded-t-full rounded-b-full overflow-hidden max-w-xs`}
               width={2893}
               height={4339}
-              src="/images/laughing-podcast-guy.jpg"
+              src="/images/laughing-podcast-guy.webp"
               alt="a dark dude lauging on a podcast"
             />
           </motion.div>
           <motion.div 
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1}}
+            whileInView={{ opacity: 1}}
             transition={{ duration: 0.4 }}
             className='flex flex-col gap-3'>
             <MyImage
+              priority={true}
               className={`rounded-t-full rounded-b-full overflow-hidden max-w-xs`}
               width={4000}
               height={6000}
               alt="a whithe guy on a podcast"
-              src="/images/white-guy-on-podcast.jpg"/>
+              src="/images/white-guy-on-podcast.webp"/>
             <MyImage 
+              priority={true}
               className={`rounded-t-full rounded-b-full overflow-hidden max-w-xs`}
               width={3632}
               height={4540}
               alt="dark dude talking to a mic"
-              src="/images/podcast-guy.jpg"
+              src="/images/podcast-guy.webp"
               />
           </motion.div>
         </div>

@@ -1,10 +1,23 @@
 import Head from 'next/head'
 import { getMostPopularPosts } from "@api/client";
 import { BlogLanding, PodcastLanding } from '@components/landingPage'
+import { dummyPosts } from '@constants/clientContants';
+import { usePopularPosts } from '@gql/requests/queries/hooks';
+import { PageLoadingRing, SomethingWentWrong } from '@components/common';
 import { Maybe, PostTypeConnection } from '@gql/codegen/graphql';
 
-export default function Home(props: { posts: Maybe<PostTypeConnection>}) {
-  console.log(props);
+interface HomeProps {
+  posts: {
+    posts: Maybe<PostTypeConnection>;
+  }
+}
+
+export default function Home(props: HomeProps) {
+  const {loading, data, error} = usePopularPosts({ first: 4 })
+  console.log(data)
+
+  if (loading) return <PageLoadingRing />
+  if (error) return <SomethingWentWrong error={error} />
   return (
     <>
       <Head>
@@ -15,7 +28,7 @@ export default function Home(props: { posts: Maybe<PostTypeConnection>}) {
       </Head>
       <main >
         <PodcastLanding />
-        <BlogLanding />
+        <BlogLanding posts={data?.posts ?? dummyPosts.posts} />
       </main>
     </>
   )
@@ -25,7 +38,7 @@ export async function getStaticProps() {
   const posts = await getMostPopularPosts();
   return {
     props: {
-      posts: posts.posts
+      posts: posts ? posts.data.posts?.edges : dummyPosts
     }
   }
 }
