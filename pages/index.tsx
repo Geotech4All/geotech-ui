@@ -13,11 +13,11 @@ interface HomeProps {
 }
 
 export default function Home(props: HomeProps) {
-  const {loading, data, error} = usePopularPosts({ first: 4 })
+  const {loading, data} = usePopularPosts({ first: 4 })
   console.log(data)
 
   if (loading) return <PageLoadingRing />
-  if (error) return <SomethingWentWrong error={error} />
+  
   return (
     <>
       <Head>
