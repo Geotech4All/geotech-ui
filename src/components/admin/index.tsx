@@ -16,7 +16,7 @@ import StaffSelect from "@components/admin/staff/StaffSelect";
 import GuestSelect from "@components/admin/guests/GuestSelect";
 import SelectGuests from "@components/admin/guests/SelectGuests";
 import GuestOption from "@components/admin/guests/GuestOption";
-import NewPostForm from "@components/admin/blog/NewPostForm";
+import PostForm from "@components/admin/blog/PostForm";
 
 export {
   User,
@@ -30,7 +30,7 @@ export {
   SidebarUrls,
   GuestSelect,
   GuestOption,
-  NewPostForm,
+  PostForm,
   SelectGuests,
   AdminNavLink,
   AdminNavLinks,

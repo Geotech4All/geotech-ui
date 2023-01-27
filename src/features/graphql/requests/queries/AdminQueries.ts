@@ -107,6 +107,7 @@ export const ALL_POSTS = gql`
         cursor
         node {
           dateAdded
+          postId
           abstract
           coverPhoto
           title

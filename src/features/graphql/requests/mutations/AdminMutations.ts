@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-export const CREATE_PODCAST = gql`
+export const CREATE_UPDATE_PODCAST = gql`
   mutation CreateUpdatePodcast($description: String!, $hostIds: [ID]!, $title: String!, $audio: Upload, $coverPhoto: Upload, $guestIds: [ID]) {
     createUpdatePodcast(description: $description, hostIds: $hostIds, title: $title, audio: $audio, coverPhoto: $coverPhoto, guestIds: $guestIds) {
       success
@@ -20,25 +20,20 @@ export const CREATE_PODCAST = gql`
   }
 `
 
-export const CREATE_POST = gql`
-  mutation CreateUpdatePost($body: String!, $abstract: String, $coverPhoto: Upload, $title: String!) {
-    createUpdatePost(body: $body, abstract: $abstract, coverPhoto: $coverPhoto, title: $title) {
-      success
+export const CREATE_UPDATE_POST = gql`
+  mutation CreateUpdatePost($title: String!, $abstract: String, $body: String!, $coverPhoto: Upload, $postId: ID) {
+    post: createUpdatePost(title: $title, abstract: $abstract, body: $body, coverPhoto: $coverPhoto, postId: $postId) {
       errors {
         field
         messages
       }
+      success
       post {
-        postId
         abstract
-        author {
-          fullName
-          email
-        }
+        id
         body
-        dateAdded
-        title
-        readLength
+        coverPhoto
+        postId
       }
     }
   }

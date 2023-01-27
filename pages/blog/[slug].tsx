@@ -1,4 +1,4 @@
-import { GImage, PageLoadingRing, PostAuthor, PostReadLength, SomethingWentWrong } from "@components/common";
+import { GImage, PageLoadingRing, PostAuthor, PostReadLength } from "@components/common";
 import { dummyPosts } from "@constants/clientContants";
 import { PostType } from "@gql/codegen/graphql";
 import { useDetailedPost } from "@gql/requests/queries/hooks";
@@ -7,7 +7,7 @@ import React from "react";
 
 export default function PostDetail() {
   const router = useRouter()
-  const postId = router.query.slug?.toString().split("-")[1]
+  const postId = router.query.slug?.toString().split("-").pop()
   const { loading, data, error } = useDetailedPost({ postId: postId ?? "" })
   const [post, setPost] = React.useState<PostType>()
 
@@ -16,11 +16,11 @@ export default function PostDetail() {
       if (data?.post) {
         setPost(data.post)
       }
+      else {
+        if (dummyPosts.posts?.edges[0]?.node)
+          setPost(dummyPosts.posts.edges[0].node)
+       }
     }
-    else {
-      if (dummyPosts.posts?.edges[0]?.node)
-        setPost(dummyPosts.posts.edges[0].node)
-     }
   }, [data, loading, error])
 
   if (loading) return <PageLoadingRing />

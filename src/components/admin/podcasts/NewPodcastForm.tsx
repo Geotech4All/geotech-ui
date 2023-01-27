@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, FInput, FormErrors, AnimatedCheckMark, GInput, GTextArea, IInput, PageLoadingHalo } from "@components/common";
 import { SelectGuests, SelectHosts } from "@components/admin";
-import { useCreatePodcast } from "@gql/requests/mutations/hooks";
+import { useCreateUpdatePodcast } from "@gql/requests/mutations/hooks";
 import { useNewPodcastsRefs } from "@constants/hooks";
 
 interface NewPodcastFormProps {
@@ -15,7 +15,7 @@ export default function NewPodcastForm (props: NewPodcastFormProps){
   const [guests, setGuests] = React.useState<Array<number>>();
   const [audio, setAudio] = React.useState<File>();
   const [coverPhoto, setCoverPhoto] = React.useState<File>();
-  const [createPodcast, { loading, error }] = useCreatePodcast();
+  const [createUpdatePodcast, { loading, error }] = useCreateUpdatePodcast();
   const podRefs = useNewPodcastsRefs();
 
   const getHosts = (hosts: Array<number>) => setHosts(hosts.map(String));
@@ -30,7 +30,7 @@ export default function NewPodcastForm (props: NewPodcastFormProps){
 
   const submitHandler: React.FormEventHandler = (event) => {
     event.preventDefault();
-    createPodcast({
+    createUpdatePodcast({
       variables: {
         hostIds: hosts ?? [],
         title: podRefs.titleRef.current.value ?? "",
