@@ -24,7 +24,6 @@ export default function PostDetail() {
   }, [data, loading, error])
 
   if (loading) return <PageLoadingRing />
-  if (error) return <SomethingWentWrong error={error} />
 
   return (
     <article className="p-6 px-5 sm:px-10 md:px-14 lg:px-32 flex flex-col gap-4">
