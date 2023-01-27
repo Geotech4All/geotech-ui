@@ -9,8 +9,18 @@ import type {
   QueryAllPodcastsArgs,
   QueryAllPostsArgs,
   PostTypeConnection,
-  QueryPopularPostsArgs
+  QueryPopularPostsArgs,
+  PostType,
+  QueryGetPostByIdArgs
 } from "@gql/codegen/graphql";
+
+export function useDetailedPost(variables?: QueryGetPostByIdArgs) {
+  return useQuery<
+    { post: Maybe<PostType>
+  },
+    QueryGetPostByIdArgs
+  >(Queries.GET_POST_BY_ID, { variables })
+}
 
 export function usePopularPosts(variables?: QueryPopularPostsArgs) {
   return useQuery<

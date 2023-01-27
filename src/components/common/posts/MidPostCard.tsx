@@ -15,7 +15,7 @@ export default function MidPostCard(props: MidPostCardProps) {
   const slug = post?.node?.title.toLowerCase().split(" ").join("-")
   return (
     <Link
-      href={`${isAdmin ? "/admin" : "" }/blog/${slug}/${post?.node?.postId}`}
+      href={`${isAdmin ? "/admin" : "" }/blog/${slug}-${post?.node?.postId}`}
       className={`
         ${bordered && "border-2 border-black/50"}
         hover:border-red-400 transition-all active:border-red-400
@@ -33,7 +33,7 @@ export default function MidPostCard(props: MidPostCardProps) {
             transition-all`}>{post?.node?.title}</h3>
           <p className="max-w-full text-sm line-clamp-2 flex flex-wrap">{post?.node?.abstract}</p>
         </div>
-        <PostAuthor post={post}/>
+        <PostAuthor post={post?.node}/>
       </div>
     </Link>
   );

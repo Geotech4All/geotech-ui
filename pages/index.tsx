@@ -3,18 +3,10 @@ import { getMostPopularPosts } from "@api/client";
 import { BlogLanding, PodcastLanding } from '@components/landingPage'
 import { dummyPosts } from '@constants/clientContants';
 import { usePopularPosts } from '@gql/requests/queries/hooks';
-import { PageLoadingRing, SomethingWentWrong } from '@components/common';
-import { Maybe, PostTypeConnection } from '@gql/codegen/graphql';
+import { PageLoadingRing } from '@components/common';
 
-interface HomeProps {
-  posts: {
-    posts: Maybe<PostTypeConnection>;
-  }
-}
-
-export default function Home(props: HomeProps) {
+export default function Home() {
   const {loading, data} = usePopularPosts({ first: 4 })
-  console.log(data)
 
   if (loading) return <PageLoadingRing />
   

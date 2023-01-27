@@ -3,12 +3,12 @@ import { mergeAttributes } from "@tiptap/core"
 
 type Levels = 1 | 2 | 3 | 4 | 5 | 6
 const classes: Record<Levels, string> = {
-  1: "font-extrabold text-5xl text-red-400 py-5",
-  2: "font-extrabold text-4xl text-red-400 py-4",
-  3: "font-bold text-3xl text-red-400 py-3",
-  4: "font-bold text-2xl text-red-400 py-2",
-  5: "font-bold text-xl text-red-400 py-1",
-  6: "font-bold text-lg text-red-400 py-0.5"
+  1: "font-extrabold text-3xl md:text-4xl text-red-400 py-5",
+  2: "font-extrabold text-2xl md:text-3xl text-red-400 py-4",
+  3: "font-bold text-xl md:text-2xl text-red-400 py-3",
+  4: "font-bold text-lg md:text-xl text-red-400 py-2",
+  5: "font-bold text-base md:text-lg text-red-400 py-1",
+  6: "font-bold text-base text-red-400 py-0.5"
 }
 
 const CustomHeading = BaseHeading.configure({ levels: [1, 2, 3, 4, 5, 6]}).extend({

@@ -70,3 +70,27 @@ export const POPULAR_POSTS = gql`
     }
   }
 `
+
+export const GET_POST_BY_ID = gql`
+  query GetPostById($postId: ID!) {
+    post: getPostById(postId: $postId) {
+      id
+      author {
+        fullName
+        profile {
+          image
+        }
+      }
+      title
+      abstract
+      body
+      views
+      likes
+      dislikes
+      readLength
+      dateAdded
+      coverPhoto
+      postId
+    }
+  }
+`

@@ -32,6 +32,7 @@ import MidPostCard from "@components/common/posts/MidPostCard";
 import MiniPostCard from "@components/common/posts/MiniPostCard";
 import PostList from "@components/common/posts/PostList";
 import PostAuthor from "@components/common/posts/PostAuthor";
+import PostReadLength from "@components/common/posts/PostReadLength";
 import CenterSLoadingRing from "@components/common/loading/CenterSLoadingRing";
 
 import type { GInputProps } from "@components/common/inputs/GInput";
@@ -68,6 +69,7 @@ export {
   TipTapMenuBar,
   TipTapMenuItem,
   RecentPodcasts,
+  PostReadLength,
   MidPodcastCard,
   PageLoadingRing,
   PageLoadingHalo,

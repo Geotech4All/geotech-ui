@@ -14,7 +14,7 @@ export default function MiniPostCard(props: MiniPostCardPorps) {
   const slug = post?.node?.title.toLowerCase().split(" ").join("-")
   return (
     <Link
-      href={`${isAdmin ? "/admin" : "" }/blog/${slug}/${post?.node?.postId}`}
+      href={`${isAdmin ? "/admin" : "" }/blog/${slug}-${post?.node?.postId}`}
       className="flex gap-3 group max-h-40 max-w-lg rounded-lg overflow-hidden">
       <GImage className="flex-[1]" src={post?.node?.coverPhoto ?? "/images/reading-geo-tech.svg"} alt={`${post?.node?.title} cover photo`}/>
       <div className="flex-[1] flex text-black/80 flex-col justify-between">
@@ -23,7 +23,7 @@ export default function MiniPostCard(props: MiniPostCardPorps) {
             transition-all
             group-hover:text-red-400 group-active:text-red-400
             line-clamp-3 font-bold text-lg`}>{post?.node?.title}</h3>
-        <PostAuthor post={post} />
+        <PostAuthor post={post?.node} />
       </div>
     </Link>
   )
