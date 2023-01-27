@@ -16,11 +16,11 @@ export default function PostDetail() {
       if (data?.post) {
         setPost(data.post)
       }
-      else {
-        if (dummyPosts.posts?.edges[0]?.node)
-          setPost(dummyPosts.posts.edges[0].node)
-       }
-      }
+    }
+    else {
+      if (dummyPosts.posts?.edges[0]?.node)
+        setPost(dummyPosts.posts.edges[0].node)
+     }
   }, [data, loading, error])
 
   if (loading) return <PageLoadingRing />
