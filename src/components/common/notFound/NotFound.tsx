@@ -29,7 +29,7 @@ export default function NothingFound(props: NothingFoundProps){
         <p>{caption}</p>
         {url && admin && (
           <Link
-            className="bg-ui-red-100 transition-all hover:px-4 hover:bg-ui-red-200 font-semibold p-1 text-white px-2"
+            className="bg-red-400 transition-all hover:bg-red-500 rounded-md font-semibold p-1 text-white px-2"
             href={url}>Add {name}</Link>)}
       </div>
     </div>

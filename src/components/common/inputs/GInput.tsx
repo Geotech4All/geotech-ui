@@ -3,6 +3,7 @@ import React from "react";
 export interface GInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   children?: React.ReactNode;
+  /** className for input wrapper */
   classNameW?: string;
   classNameL?: string;
   classNameI?: string;

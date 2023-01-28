@@ -17,6 +17,8 @@ import GuestSelect from "@components/admin/guests/GuestSelect";
 import SelectGuests from "@components/admin/guests/SelectGuests";
 import GuestOption from "@components/admin/guests/GuestOption";
 import PostForm from "@components/admin/blog/PostForm";
+import ManagePost from "@components/admin/blog/ManagePost";
+import ManagePosts from "@components/admin/blog/ManagePosts";
 
 export {
   User,
@@ -31,6 +33,8 @@ export {
   GuestSelect,
   GuestOption,
   PostForm,
+  ManagePost,
+  ManagePosts,
   SelectGuests,
   AdminNavLink,
   AdminNavLinks,

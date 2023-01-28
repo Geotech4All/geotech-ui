@@ -16,9 +16,15 @@ export default function PostList(props: PostListProps) {
     <div className={`flex flex-col ${className}`}>
       {title && <h2 className="font-semibold px-2">{title}</h2>}
       {!posts || !(posts.edges.length > 0) ?
-        <NothingFound url="/admin/blog/new" name="Post" isAdmin={true} />
+        (
+          <div className="flex items-center self-center justify-center max-w-md">
+            <NothingFound
+              caption="Sorry we couldn't find any posts"
+              url="/admin/blog/new" name="Post" isAdmin={true} />
+          </div>
+        )
       :(
-        <ul className={`flex ${wrap && "flex-wrap"} w-full gap-1`}>
+        <ul className={`flex overflow-auto ${wrap && "flex-wrap"} w-full gap-1`}>
           {posts?.edges.map(post => <MidPostCard key={post?.node?.postId} post={post} />)}
         </ul>
       )}

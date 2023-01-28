@@ -90,8 +90,8 @@ export default function PostForm(props: PostFormProps) {
         required
         className={`
           shadow w-full text-red-400 font-extrabold
-          placeholder:text-6xl placeholder:font-extrabold placeholder:text-red-300/60
-          rounded-2xl p-3 text-6xl`}
+          placeholder:text-4xl md:placeholder:text-6xl placeholder:font-extrabold placeholder:text-red-300/60
+          rounded-2xl p-3 text-4xl md:text-6xl`}
         placeholder="Your post title goes here" />
 
       <GTextArea
@@ -105,7 +105,7 @@ export default function PostForm(props: PostFormProps) {
       {image && <img className="shadow" src={URL.createObjectURL(image)} alt="temp alt"/>}
       {oldPost?.coverPhoto && !image && (
         <img
-          className="shadow p-2"
+          className="shadow"
           src={oldPost.coverPhoto}
           alt={`${oldPost.title} cover photo`}/>
       )}

@@ -51,7 +51,7 @@ export default function BlogLanding(props: BlogLandingProps) {
             <motion.div
               variants={child}
               key={index}>
-              <MiniPostCard post={post} />
+              {post?.node && <MiniPostCard post={post?.node} />}
             </motion.div>
           ))}
         </motion.ul>

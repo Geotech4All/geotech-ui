@@ -18,9 +18,11 @@ const EditPost: NextPageWithLayout = () => {
     <Head>
       <title>Edit - {data?.post?.title}</title>
     </Head>
-    <main>
-      <h1></h1>
-      <PostForm post={data?.post}/>
+    <main className="p-3">
+      <h1 className="font-bold text-3xl font-montserrat text-red-300">Edit Post</h1>
+      <div className="p-2 bg-gray-100 rounded-3xl">
+        <PostForm post={data?.post}/>
+      </div>
     </main>
     </>
   )
