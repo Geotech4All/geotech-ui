@@ -1,11 +1,12 @@
 import Head from 'next/head'
 import { getMostPopularPosts } from "@api/client";
-import { BlogLanding, PodcastLanding } from '@components/landingPage'
+import { BlogLanding, NavBarLayout, PodcastLanding } from '@components/frontFacing'
 import { dummyPosts } from '@constants/clientContants';
 import { usePopularPosts } from '@gql/requests/queries/hooks';
 import { PageLoadingRing } from '@components/common';
+import { NextPageWithLayout } from './_app';
 
-export default function Home() {
+const Home: NextPageWithLayout = () => {
   const {loading, data} = usePopularPosts({ first: 4 })
 
   if (loading) return <PageLoadingRing />
@@ -25,6 +26,10 @@ export default function Home() {
     </>
   )
 }
+
+Home.getLayout = NavBarLayout;
+
+export default Home;
 
 export async function getStaticProps() {
   const posts = await getMostPopularPosts();

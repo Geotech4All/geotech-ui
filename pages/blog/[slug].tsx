@@ -1,11 +1,13 @@
 import { GImage, PageLoadingRing, PostAuthor, PostReadLength } from "@components/common";
+import { NavBarLayout } from "@components/frontFacing";
 import { dummyPosts } from "@constants/clientContants";
 import { PostType } from "@gql/codegen/graphql";
 import { useDetailedPost } from "@gql/requests/queries/hooks";
+import { NextPageWithLayout } from "@pages/_app";
 import { useRouter } from "next/router";
 import React from "react";
 
-export default function PostDetail() {
+const PostDetail: NextPageWithLayout = () => {
   const router = useRouter()
   const postId = router.query.slug?.toString().split("-").pop()
   const { loading, data, error } = useDetailedPost({ postId: postId ?? "" })
@@ -39,3 +41,7 @@ export default function PostDetail() {
     </article>
   )
 }
+
+PostDetail.getLayout = NavBarLayout;
+
+export default PostDetail;

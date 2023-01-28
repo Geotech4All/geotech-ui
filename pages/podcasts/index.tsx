@@ -2,8 +2,10 @@ import React from "react";
 import Head from "next/head";
 import { RecentPodcasts } from "@components/common";
 import TrendingPodcasts from "@components/common/podcast/TrendingPodcasts";
+import { NextPageWithLayout } from "@pages/_app";
+import { NavBarLayout } from "@components/frontFacing";
 
-export default function Podcast(){
+const Podcast: NextPageWithLayout = () => {
   return (
     <>
     <Head>
@@ -15,4 +17,8 @@ export default function Podcast(){
     </div>
     </>
   )
-}
+};
+
+Podcast.getLayout = NavBarLayout;
+
+export default Podcast;

@@ -27,7 +27,7 @@ export default function ManagePosts(props: ManagePostsProps) {
 
   return (
     <>
-      <div className={`p-3 bg-gray-100 rounded-3xl`}>
+      <div className={`p-3 flex flex-col gap-3 bg-gray-100 rounded-3xl`}>
         <h4 className="font-bold text-red-600">Manage Posts</h4>
         <GInput
           onChange={handleSearch}
