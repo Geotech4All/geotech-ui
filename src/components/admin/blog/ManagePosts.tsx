@@ -16,10 +16,8 @@ export default function ManagePosts(props: ManagePostsProps) {
   }, [data]);
 
   const handleSearch: React.ChangeEventHandler<HTMLInputElement> = async (event) => {
-      console.log("Searching")
       refetch({title_Icontains: event.target.value})
       .then(res => {
-        console.log(res.data.posts)
         setPosts(res.data.posts)
       })
       .catch(err => console.log(err));
