@@ -21,7 +21,7 @@ const Home: NextPageWithLayout = () => {
       </Head>
       <main >
         <PodcastLanding />
-        <BlogLanding posts={data?.posts ?? dummyPosts.posts} />
+        <BlogLanding posts={data?.posts && data.posts.edges.length > 4 ? data.posts : dummyPosts.posts} />
       </main>
     </>
   )
