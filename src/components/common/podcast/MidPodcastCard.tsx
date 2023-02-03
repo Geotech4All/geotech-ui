@@ -30,7 +30,7 @@ export default function MidPodcastCard(props: MidPodcastCardProps){
         {podcast?.node?.coverPhoto ?
           (<img
             className={`w-full object-cover h-full`}
-            src={podcast?.node?.coverPhoto}
+            src={podcast?.node?.coverPhoto ?? "/images/listening-geo-tech.svg"}
             alt={`${podcast?.node?.title} cover photo`} />)
         : <span className="w-40 bg-black/40 text-white h-full flex items-center justify-center"><BiAlbum size={100}/></span>
         }

@@ -1,3 +1,4 @@
+import { Maybe } from "@gql/codegen/graphql";
 import React from "react";
 import { BsFileEarmark } from "react-icons/bs";
 
@@ -7,16 +8,18 @@ interface FInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   children?: React.ReactNode;
   className?: string;
   getFile?: (file?: File) => void;
+  defaultFile?: Maybe<string>;
 }
 
 /**
  * A File Input filed with forwarded Ref
  */
 const FInput = React.forwardRef<HTMLInputElement, FInputProps>((props, ref) => {
-  const { name, children, className, valid, getFile, ...rest } = props;
+  const { name, children, className, valid, defaultFile, getFile, ...rest } = props;
   const [dragIsIn, setDragIsIn] = React.useState(false);
   const [error, setError] = React.useState<string>();
   const [file, setFile] = React.useState<File>();
+
 
   React.useEffect(() => {
     if (getFile) getFile(file);
@@ -75,7 +78,7 @@ const FInput = React.forwardRef<HTMLInputElement, FInputProps>((props, ref) => {
         ref={ref} id={name}/>
       <label
         className={`cursor-pointer p-4 w-full h-full`} htmlFor={name}>
-        {!file ? (
+        {!file && !defaultFile ? (
           <div className="flex flex-col text-black/70 items-center justify-center">
             <span className="text-red-400"><BsFileEarmark size={50}/></span>
             <p className="font-bold text-lg">Drag &amp;	drop an audio file</p>
@@ -83,11 +86,9 @@ const FInput = React.forwardRef<HTMLInputElement, FInputProps>((props, ref) => {
             {error && <p className="font-semibold text-lg text-red-500">{error}</p>}
             {children}
           </div>
-          ):
-        <div className="flex flex-col items-center justify-center gap-2 text-black/70">
-          <span className="text-green-400"><BsFileEarmark size={40}/></span>
-          <p className="font-bold text-lg">{file.name}</p>
-        </div>}
+          ): !file && defaultFile ? (<FilePlaceHolder fileName={defaultFile} /> )
+          : file && <FilePlaceHolder fileName={file.name} />
+       }
       </label>
       {dragIsIn && <div className="fixed inset-0" onDragLeave={handleDrag} onDragEnter={handleDrag} onDragOver={handleDrag} onDrop={handleDrop}/>}
     </div>
@@ -97,3 +98,16 @@ const FInput = React.forwardRef<HTMLInputElement, FInputProps>((props, ref) => {
 FInput.displayName = "FInput"
 
 export default FInput;
+
+interface FilePlaceHolderProps {
+  fileName: string;
+}
+
+function FilePlaceHolder(props: FilePlaceHolderProps) {
+  return (
+     <div className="flex flex-col items-center justify-center gap-2 text-black/70">
+        <span className="text-green-400"><BsFileEarmark size={40}/></span>
+        <p className="font-bold text-lg">{props.fileName}</p>
+      </div>
+  )
+}

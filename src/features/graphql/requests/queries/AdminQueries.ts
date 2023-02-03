@@ -148,6 +148,7 @@ export const GET_PODCAST_BY_ID = gql`
             image
             profileId
           }
+          id
         }
       }
       title

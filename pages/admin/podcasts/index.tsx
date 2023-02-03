@@ -1,4 +1,4 @@
-import { SidebarLayout } from "@components/admin";
+import { ManagePodcasts, SidebarLayout } from "@components/admin";
 import { RecentPodcasts, SLoadingRing, SomethingWentWrong } from "@components/common";
 import { useAppDispatch } from "@store/hooks";
 import { NextPageWithLayout } from "pages/_app";
@@ -44,6 +44,7 @@ const Podcasts: NextPageWithLayout = () => {
       <div className="relative">
         <TrendingPodcasts isAdmin={true}/>
         <RecentPodcasts />
+        <ManagePodcasts />
         <Link
           href="/admin/podcasts/new"
           className={`

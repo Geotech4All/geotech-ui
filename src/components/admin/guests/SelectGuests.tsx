@@ -8,13 +8,17 @@ import { GuestSelect } from "@components/admin";
 interface SelectGuestsProps {
   getSelected: (indexes: number[]) => void;
   className?: string;
+  currentGuests?: (Maybe<string | undefined>)[];
 }
 export default function SelectGuests(props: SelectGuestsProps){
-  const { getSelected, className } = props;
+  const { getSelected, className, currentGuests } = props;
   const previousGuests = useAppSelector(selectPreviousGuests);
   const [chosenGuests, setChosenGuests] = React.useState<Maybe<GuestTypeEdge>[]>()
   const [modalOpen, setModalOpen] = React.useState(false);
-  const guestIndexes = React.useMemo(() => new Set<number>(), []);
+  const guestIndexes = React.useMemo(
+    () => new Set<number>(currentGuests?.map(guest => parseInt(guest?.toString() ?? ""))),
+    [currentGuests]
+  );
 
   React.useEffect(() => {
     setChosenGuests(previousGuests?.edges?.filter(guest => (

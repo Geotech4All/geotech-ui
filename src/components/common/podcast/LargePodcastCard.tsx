@@ -24,7 +24,6 @@ export default function LargePodcastCard(props: LargePodcastCardProps){
   }, [podcast])
 
   const handlePlay = () => {
-    console.log(podcast?.node)
     if (player.isPlaying) {
       dispatch(setPlayer({ ...player, isPlaying: false }))
     } else {
@@ -50,7 +49,7 @@ export default function LargePodcastCard(props: LargePodcastCardProps){
           {podcast?.node?.coverPhoto && (
             <img
               className="self-end w-full min-h-full object-cover"
-              src={podcast?.node?.coverPhoto} alt={podcast?.node?.title + " cover"} />
+              src={podcast?.node?.coverPhoto ?? "/images/listening-geo-tech.svg"} alt={podcast?.node?.title + " cover"} />
           )}
           <div
             className={`

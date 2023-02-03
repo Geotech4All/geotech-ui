@@ -1,4 +1,4 @@
-import { SidebarLayout } from "@components/admin";
+import { PodcastForm, SidebarLayout } from "@components/admin";
 import { PageLoadingRing, SomethingWentWrong } from "@components/common";
 import { useDetailedPodcast } from "@gql/requests/queries/hooks";
 import { NextPageWithLayout } from "@pages/_app";
@@ -18,6 +18,7 @@ const EditPodcast: NextPageWithLayout = () => {
   if (error) return <SomethingWentWrong error={error} />
   return (
     <div>
+      <PodcastForm onCreated={() => router.push("/admin/podcasts")} podcast={data?.podcast} edit />
     </div>
   )
 }

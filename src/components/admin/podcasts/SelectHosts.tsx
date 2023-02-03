@@ -8,14 +8,21 @@ import StaffSelect from "../staff/StaffSelect";
 interface SelectHostsProps {
   getSelected: (selected: number[]) => void;
   className?: string;
+  currentHosts?: (Maybe<string | undefined>)[];
 }
 export default function SelectHosts(props: SelectHostsProps){
-  const { getSelected, className } = props;
+  const { getSelected, className, currentHosts } = props;
   const [chosenHosts, setChosenHosts] = React.useState<Maybe<UserType>[]>()
   const [modalOpen, setModalOpen] = React.useState(false);
   const prevHosts = useAppSelector(selectRecentHosts);
   const staff = useAppSelector(selectStaffList);
-  const hostIndexes = new Set<number>()
+  const hostIndexes = new Set<number>(currentHosts?.map(host => parseInt(host?.toString() ?? "")))
+
+  React.useEffect(() => {
+    updateChosen()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [prevHosts])
+
 
   const handleModalClose = () => setModalOpen(false);
   const handleModalOpen = () => setModalOpen(true);
@@ -38,6 +45,7 @@ export default function SelectHosts(props: SelectHostsProps){
     hostIndexes.delete(parseInt(user?.id))
     updateChosen();
   }
+
 
   return (
     <div className={className}>

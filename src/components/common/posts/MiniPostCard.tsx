@@ -17,7 +17,7 @@ export default function MiniPostCard(props: MiniPostCardPorps) {
     <Link
       href={`${isAdmin ? "/admin" : "" }/blog/${slug}-${post?.postId}`}
       className="flex gap-3 group hover:shadow active:shadow transition-all max-h-40 max-w-lg rounded-lg overflow-hidden">
-      <GImage className="flex-[1]" src={post?.coverPhoto ?? "/images/reading-geo-tech.svg"} alt={`${post?.title} cover photo`}/>
+      <GImage className="flex-[1] overflow-hidden" src={post?.coverPhoto ?? "/images/reading-geo-tech.svg"} alt={`${post?.title} cover photo`}/>
       <div className="flex-[1] p-1 flex text-black/80 flex-col">
         <PostReadLength length={post?.readLength ?? 1}/>
         <div className="flex-1 flex flex-col justify-between">

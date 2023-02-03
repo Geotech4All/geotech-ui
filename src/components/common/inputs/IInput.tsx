@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { Maybe } from "@gql/codegen/graphql";
 import React from "react";
 import { BsImageFill } from "react-icons/bs";
 
@@ -6,14 +7,15 @@ interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
   className?: string;
   getFile?: (file?: File) => void;
-  title?: string
+  title?: string;
+  defaultImage?: Maybe<string>;
 };
 
 /**
  * A Image Input filed with forwarded Ref
  */
 const IInput = React.forwardRef<HTMLInputElement, IInputProps>((props, ref) => {
-  const { name, title, className, getFile, ...rest } = props;
+  const { name, title, className, getFile, defaultImage, ...rest } = props;
   const [image, setImage] = React.useState<File>();
   const [dragActive, setDragActive] = React.useState(false);
   const [error, setError] = React.useState<string>();
@@ -66,6 +68,11 @@ const IInput = React.forwardRef<HTMLInputElement, IInputProps>((props, ref) => {
         justify-center items-center
         ${dragActive ? "border-red-300" : "border-gray-200"}
         border-dashed rounded-2xl ${className}`}>
+      {!image && defaultImage && (
+        <img
+          className="absolute self-center opacity-80 inset-0 z-[-10] object-cover"
+          src={defaultImage} alt="" />
+      )}
       {image && (
         <img
           className="absolute self-center opacity-80 inset-0 z-[-10] object-contain"
