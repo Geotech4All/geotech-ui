@@ -3,12 +3,14 @@ import { Button, FInput, FormErrors, AnimatedCheckMark, GInput, GTextArea, IInpu
 import { SelectGuests, SelectHosts } from "@components/admin";
 import { useCreateUpdatePodcast } from "@gql/requests/mutations/hooks";
 import { useNewPodcastsRefs } from "@constants/hooks";
+import { Maybe, PodcastType } from "@gql/codegen/graphql";
 
 interface NewPodcastFormProps {
   onCreated?: () => void;
+  podcast?: Maybe<PodcastType> 
 }
 
-export default function NewPodcastForm (props: NewPodcastFormProps){
+export default function PodcastForm (props: NewPodcastFormProps){
   const { onCreated } = props;
   const [creationComplete, setCreationComplete] = React.useState(false)
   const [hosts, setHosts] = React.useState<Array<string>>();

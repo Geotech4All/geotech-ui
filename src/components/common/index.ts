@@ -34,6 +34,8 @@ import PostList from "@components/common/posts/PostList";
 import PostAuthor from "@components/common/posts/PostAuthor";
 import PostReadLength from "@components/common/posts/PostReadLength";
 import CenterSLoadingRing from "@components/common/loading/CenterSLoadingRing";
+import AudioPlayer from "@components/common/audio/AudioPlayer";
+import AudioLayout from "@components/common/layouts/AudioLayout";
 
 import type { GInputProps } from "@components/common/inputs/GInput";
 import type { LInputProps } from "@components/common/inputs/LInput";
@@ -60,6 +62,8 @@ export {
   UserOption,
   FormErrors,
   PostAuthor,
+  AudioPlayer,
+  AudioLayout,
   MidPostCard,
   MiniPostCard,
   NothingFound,

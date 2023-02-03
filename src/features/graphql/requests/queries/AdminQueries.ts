@@ -18,6 +18,7 @@ export const MOST_LISTENED_PODCASTS = gql`
         node {
           coverPhoto
           dateAdded
+          audio
           description
           guests {
             name
@@ -119,6 +120,39 @@ export const ALL_POSTS = gql`
           }
         }
       }
+    }
+  }
+`
+
+export const GET_PODCAST_BY_ID = gql`
+  query GetPodcastById($podcastId: ID!) {
+    podcast: getPodcastById(podcastId: $podcastId) {
+      audio
+      coverPhoto
+      dateAdded
+      description
+      guests {
+        id
+        guestId
+        image
+        name
+      }
+      hosts {
+        dateAdded
+        id
+        hostId
+        user {
+          fullName
+          email
+          profile {
+            image
+            profileId
+          }
+        }
+      }
+      title
+      podcastId
+      listens
     }
   }
 `

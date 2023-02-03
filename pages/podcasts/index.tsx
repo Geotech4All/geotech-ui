@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import { RecentPodcasts } from "@components/common";
+import { AudioLayout, AudioPlayer, RecentPodcasts } from "@components/common";
 import TrendingPodcasts from "@components/common/podcast/TrendingPodcasts";
 import { NextPageWithLayout } from "@pages/_app";
 import { NavBarLayout } from "@components/frontFacing";
@@ -11,10 +11,13 @@ const Podcast: NextPageWithLayout = () => {
     <Head>
       <title>Podcasts - Geotech</title>
     </Head>
-    <div>
-      <TrendingPodcasts isAdmin={false}/>
-      <RecentPodcasts />
-    </div>
+    <AudioLayout>
+      <div className="flex flex-col gap-4">
+        <TrendingPodcasts isAdmin={false}/>
+        <RecentPodcasts />
+        <AudioPlayer />
+      </div>
+    </AudioLayout>
     </>
   )
 };

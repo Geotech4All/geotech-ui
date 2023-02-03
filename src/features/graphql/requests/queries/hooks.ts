@@ -11,13 +11,20 @@ import type {
   PostTypeConnection,
   QueryPopularPostsArgs,
   PostType,
-  QueryGetPostByIdArgs
+  QueryGetPostByIdArgs,
+  QueryGetPodcastByIdArgs,
+  PodcastType
 } from "@gql/codegen/graphql";
+
+export function useDetailedPodcast(variables?: QueryGetPodcastByIdArgs) {
+  return useQuery<
+    { podcast: Maybe<PodcastType>},
+    QueryGetPodcastByIdArgs>(Queries.GET_PODCAST_BY_ID, { variables })
+}
 
 export function useDetailedPost(variables?: QueryGetPostByIdArgs) {
   return useQuery<
-    { post: Maybe<PostType>
-  },
+    { post: Maybe<PostType>},
     QueryGetPostByIdArgs
   >(Queries.GET_POST_BY_ID, { variables })
 }

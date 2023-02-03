@@ -6,6 +6,7 @@ import userSlice from "@store/slices/userSlice";
 import staffListSlice from "@store/slices/staffListSlice";
 import previousGuestsSlice from "@store/slices/previousGuestsSlice";
 import trendingPodcastsSlice from "@store/slices/trendingPodcastsSlice";
+import audioPlayerSlice from "@store/slices/audioPlayerSlice";
 
 export const store = configureStore({
   reducer: {
@@ -15,7 +16,8 @@ export const store = configureStore({
     user: userSlice,
     staffList: staffListSlice,
     previousGuests: previousGuestsSlice,
-    trendingPodcasts: trendingPodcastsSlice
+    trendingPodcasts: trendingPodcastsSlice,
+    audioPlayer: audioPlayerSlice
   },
 });
 

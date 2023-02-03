@@ -32,15 +32,17 @@ export default function TrendingPodcasts(props: TrendingPodcastsProps){
   if (error) console.log({ error })
 
   if (!trending?.edges || trending?.edges.length <= 0) return (
-    <NothingFound
-      isAdmin={props.isAdmin}
-      url="admin/podcasts"
-      caption="Sorry no podcasts were found"
-      name="Podcasts" />
+    <div className="flex items-center justify-center">
+      <NothingFound
+        isAdmin={props.isAdmin}
+        url="admin/podcasts"
+        caption="Sorry no podcasts were found"
+        name="Podcasts" />
+    </div>
   )
 
   return (
-    <div>
+    <div className="relative z-0">
       <h3 className="p-1 capitalize font-semibold">Trending Podcasts</h3>
       <div className="flex max-w-md p-1 md:max-w-2xl items-center w-full">
         <Swiper

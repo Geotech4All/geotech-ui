@@ -10,7 +10,7 @@ import AdminPodcastList from "@components/admin/podcasts/AdminPodcastList";
 import AdminNavBar from "@components/admin/navbar/AdminNavBar";
 import AdminNavLink from "@components/admin/navbar/AdminNavLink";
 import AdminNavLinks from "@components/admin/navbar/AdminNavLinks";
-import NewPodcastForm from "@components/admin/podcasts/NewPodcastForm";
+import PodcastForm from "@components/admin/podcasts/PodcastForm";
 import SelectHosts from "@components/admin/podcasts/SelectHosts";
 import StaffSelect from "@components/admin/staff/StaffSelect";
 import GuestSelect from "@components/admin/guests/GuestSelect";
@@ -19,6 +19,8 @@ import GuestOption from "@components/admin/guests/GuestOption";
 import PostForm from "@components/admin/blog/PostForm";
 import ManagePost from "@components/admin/blog/ManagePost";
 import ManagePosts from "@components/admin/blog/ManagePosts";
+import ManagePodcast from "@components/admin/podcasts/ManagePodcast";
+import ManagePodcasts from "@components/admin/podcasts/ManagePodcasts";
 
 export {
   User,
@@ -36,10 +38,12 @@ export {
   ManagePost,
   ManagePosts,
   SelectGuests,
+  ManagePodcasts,
+  ManagePodcast,
   AdminNavLink,
   AdminNavLinks,
   SidebarLayout,
-  NewPodcastForm,
+  PodcastForm,
   AdminPodcastList,
   AdminTrendingPodcasts
 };

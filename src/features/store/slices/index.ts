@@ -5,9 +5,11 @@ import { selectUser, setUser } from "@store/slices/userSlice";
 import { selectStaffList, setStaffList } from "@store/slices/staffListSlice";
 import { setPreviousGuests, selectPreviousGuests } from "@store/slices/previousGuestsSlice";
 import { selectTrendingPodcasts, setTrendingPodcasts } from "@store/slices/trendingPodcastsSlice";
+import { selectAudioPlayer, setPlayer } from "@store/slices/audioPlayerSlice";
 import type { AdminState } from "@store/slices/adminSlice";
 import type { PotentialPodcasts } from "@store/slices/podcastListSlice";
 import type { PossibleHostsList } from "@store/slices/recentHostsSlice";
+import type { AudioPlayer } from "@store/slices/audioPlayerSlice";
 
 export { 
   setUser,
@@ -24,10 +26,13 @@ export {
   setPreviousGuests,
   selectPreviousGuests,
   selectTrendingPodcasts,
-  setTrendingPodcasts
+  setTrendingPodcasts,
+  selectAudioPlayer,
+  setPlayer
 };
 export type {
   AdminState,
   PotentialPodcasts,
-  PossibleHostsList
+  PossibleHostsList,
+  AudioPlayer
 };

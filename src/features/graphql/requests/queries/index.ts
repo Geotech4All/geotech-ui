@@ -2,6 +2,7 @@ import {
   MOST_LISTENED_PODCASTS,
   RECENT_HOSTS,
   PREVIOUS_GUESTS,
+  GET_PODCAST_BY_ID,
   ALL_POSTS,
   STAFF_LIST } from "@gql/requests/queries/AdminQueries";
 
@@ -19,5 +20,6 @@ export {
   POPULAR_POSTS,
   GET_POST_BY_ID,
   PREVIOUS_GUESTS,
+  GET_PODCAST_BY_ID,
   MOST_LISTENED_PODCASTS,
 }

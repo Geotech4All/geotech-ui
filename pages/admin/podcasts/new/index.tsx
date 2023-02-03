@@ -1,5 +1,5 @@
 import React from "react";
-import { NewPodcastForm, SidebarLayout } from "@components/admin";
+import { PodcastForm, SidebarLayout } from "@components/admin";
 import { NextPageWithLayout } from "@pages/_app";
 import { useRouter } from "next/router";
 
@@ -12,7 +12,7 @@ const NewPodcast: NextPageWithLayout = () => {
 
   return (
     <div>
-      <NewPodcastForm onCreated={handleRedirect}/>
+      <PodcastForm onCreated={handleRedirect}/>
     </div>
   );
 };
