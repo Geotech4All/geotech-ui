@@ -35,7 +35,7 @@ export async function getStaticProps() {
   const posts = await getMostPopularPosts();
   return {
     props: {
-      posts: posts ? posts.data.posts?.edges : dummyPosts
+      posts: posts && posts.data.posts?.edges && posts.data.posts?.edges?.length > 4 ? posts.data.posts?.edges : dummyPosts
     }
   }
 }
