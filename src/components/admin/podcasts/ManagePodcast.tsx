@@ -12,14 +12,17 @@ export default function ManagePodcast(props: ManagePodcastProps) {
   const { podcast } = props;
   const slug = podcast?.title.toLowerCase().split(" ").join("-");
   return (
-    <div className="group flex items-center justify-between w-full px-4 bg-white rounded-3xl p-1">
+    <div className={`
+      group flex items-center justify-between w-full px-4 rounded-xl p-1
+      hover:bg-white transition-all hover:shadow
+    `}>
       <div className="flex items-center gap-4">
         {podcast?.coverPhoto && (
           <GImage
             className="max-w-[2rem] rounded-full aspect-square overflow-hidden"
             src={"/images/listening-geo-tech.svg"} alt={`${podcast.title} cover photo`} />
         )}
-        <h4 className="group-hover:text-red-400 transition-all">{podcast?.title}</h4>
+        <h4 className="group-hover:text-red-400 transition-all line-clamp-1">{podcast?.title}</h4>
       </div>
       <div>
         <Link

@@ -41,7 +41,7 @@ const Podcasts: NextPageWithLayout = () => {
       <Head>
         <title>GeoTech Podcasts</title>
       </Head>
-      <div className="relative">
+      <div className="relative flex flex-col gap-3 p-2">
         <TrendingPodcasts isAdmin={true}/>
         <RecentPodcasts />
         <ManagePodcasts />
