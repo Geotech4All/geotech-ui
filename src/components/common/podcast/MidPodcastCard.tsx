@@ -52,7 +52,7 @@ export default function MidPodcastCard(props: MidPodcastCardProps){
   },[podcast, color, dispatch, player])
 
   return (
-    <article className={`bg-gradient-to-r ${color?.to} ${color?.from} flex gap-3 p-2 w-full max-w-[20rem] rounded-2xl min-h-[10rem]`}>
+    <article className={`bg-gradient-to-r ${color?.to} ${color?.from} flex gap-3 p-2 w-full max-w-[40rem] rounded-2xl min-h-[10rem]`}>
       <div className="w-[10rem] flex rounded-2xl overflow-hidden flex-1 min-h-full">
         {podcast?.node?.coverPhoto ?
           (<img

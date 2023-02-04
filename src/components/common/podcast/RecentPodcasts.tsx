@@ -14,7 +14,8 @@ export default function RecentPodcasts(){
       {data?.podcasts && data.podcasts.edges.length > 0 ?
       (<div className="flex flex-col gap-1 p-2">
         <h3 className="font-bold text-sm">New podcasts</h3>
-        <ul className="flex gap-3 w-full overflow-auto">
+        <ul
+          className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 w-full overflow-auto`}>
           {data?.podcasts?.edges.map(podcast => (<MidPodcastCard key={podcast?.node?.podcastId} podcast={podcast} />))}
         </ul>
       </div>)
