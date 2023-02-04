@@ -25,14 +25,14 @@ const audioPlayerSlice = createSlice({
       const newState = action.payload;
       return newState;
     },
-    setVissible: (state, action: PayloadAction<boolean>) => {
-      const newState: AudioPlayer = {...state, playerVissible: action.payload};
+    clearPlayer: (_, ) => {
+      const newState = initialState;
       return newState;
     }
   }
 })
 
-export const { setPlayer, setVissible } = audioPlayerSlice.actions;
+export const { setPlayer, clearPlayer } = audioPlayerSlice.actions;
 export default audioPlayerSlice.reducer;
 
 export const selectAudioPlayer = (state: RootState) => state.audioPlayer;

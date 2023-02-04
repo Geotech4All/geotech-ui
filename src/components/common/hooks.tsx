@@ -1,7 +1,13 @@
 import { useMediaQuery } from "react-responsive";
 
-export default function useIsLargeScreen(){
-  return  useMediaQuery({
+export function useIsLargeScreen(){
+  return useMediaQuery({
     query: "(min-width: 769px)"
   });
 };
+
+export function useIsMidScreen(){
+  return useMediaQuery({
+    query: "(min-width: 640px)"
+  });
+}

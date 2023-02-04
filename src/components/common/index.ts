@@ -36,6 +36,7 @@ import PostReadLength from "@components/common/posts/PostReadLength";
 import CenterSLoadingRing from "@components/common/loading/CenterSLoadingRing";
 import AudioPlayer from "@components/common/audio/AudioPlayer";
 import AudioLayout from "@components/common/layouts/AudioLayout";
+import AudioPlayerButtons from "@components/common/audio/AudioPlayerButtons";
 
 import type { GInputProps } from "@components/common/inputs/GInput";
 import type { LInputProps } from "@components/common/inputs/LInput";
@@ -81,6 +82,7 @@ export {
   AnimatedCheckMark,
   SomethingWentWrong,
   CenterSLoadingRing,
+  AudioPlayerButtons,
 };
 
 export type { GInputProps, LInputProps, DialogPropsType, ButtonProps }

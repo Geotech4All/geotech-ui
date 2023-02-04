@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { EnsureAuth } from "@components/auth";
-import useIsLargeScreen from "@components/common/hooks";
+import { useIsLargeScreen } from "@components/common/hooks";
 import { AdminNavBar, Sidebar } from "@components/admin";
 import type { AdminState } from "@store/slices"
 

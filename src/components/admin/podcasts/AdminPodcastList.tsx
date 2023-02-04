@@ -1,7 +1,7 @@
 import React from "react";
 import type { PotentialPodcasts } from "@store/slices";
 import { PodcastCard } from "@components/admin";
-import useIsLargeScreen from "@components/common/hooks";
+import { useIsLargeScreen } from "@components/common/hooks";
 
 interface AdminPodcastListProps {
   podcasts: PotentialPodcasts
