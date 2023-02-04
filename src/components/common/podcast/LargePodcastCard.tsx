@@ -23,18 +23,15 @@ export default function LargePodcastCard(props: LargePodcastCardProps){
     setColor(randomColor());
   }, [podcast])
 
-  const handlePlay = () => {
-    if (player.isPlaying) {
-      dispatch(setPlayer({ ...player, isPlaying: false }))
-    } else {
-      dispatch(setPlayer({ 
-        ...player,
-        isPlaying: true,
-        src: podcast?.node?.audio ?? "",
-        playerVissible: true
-      }))
-    }
-  }
+  const handlePlay = React.useCallback(() => {
+    dispatch(setPlayer({ 
+      ...player,
+      isPlaying: true,
+      color,
+      podcast: podcast?.node,
+      playerVissible: true
+    }))
+  },[podcast, color, dispatch, player])
 
   return (
     <article
@@ -46,14 +43,14 @@ export default function LargePodcastCard(props: LargePodcastCardProps){
         max-w-lg md:max-w-2xl shadow-lg`}>
       <div className="absolute inset-0 z-[-10]">
         <div className="relative flex items-center w-full h-full justify-center">
-          {podcast?.node?.coverPhoto && (
-            <img
-              className="self-end w-full min-h-full object-cover"
-              src={podcast?.node?.coverPhoto ?? "/images/listening-geo-tech.svg"} alt={podcast?.node?.title + " cover"} />
-          )}
+          <img
+            className="self-end w-full min-h-full object-cover"
+            src={podcast?.node?.coverPhoto ?? "/images/listening-geo-tech.svg"} alt={podcast?.node?.title + " cover"} />
           <div
             className={`
-              bg-gradient-to-r ${ color?.from } ${ podcast?.node?.coverPhoto ? "to-transparent" : "to-black/50"}
+              backdrop-blur-sm
+              bg-gradient-to-r ${ color?.from }
+              ${ podcast?.node?.coverPhoto ? "to-transparent" : "to-black/50"}
               absolute inset-0`} />
         </div>
       </div>
