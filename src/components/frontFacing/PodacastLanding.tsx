@@ -10,7 +10,7 @@ export default function PodcastLanding() {
       <div className={`flex flex-col gap-5 md:flex-row`}>
         <motion.div
           initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className={`flex-1 flex flex-col gap-5 pt-7 text-white`}>
           <h2 className={`font-extrabold sm:text-7xl text-5xl xl:text-8xl`}>
@@ -28,7 +28,7 @@ export default function PodcastLanding() {
         <div className={`flex-1 z-0 flex items-center gap-3`}>
           <motion.div
             initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1}}
+            animate={{ opacity: 1}}
             transition={{ duration: 0.2 }}
             >
             <MyImage
@@ -42,7 +42,7 @@ export default function PodcastLanding() {
           </motion.div>
           <motion.div 
             initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1}}
+            animate={{ opacity: 1}}
             transition={{ duration: 0.4 }}
             className='flex flex-col gap-3'>
             <MyImage
