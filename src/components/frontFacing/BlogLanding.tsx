@@ -39,7 +39,7 @@ export default function BlogLanding(props: BlogLandingProps) {
           <motion.div
             whileInView={{ opacity: 1, y: 0 }}
             initial={{ opacity: 0, y: 5 }}>
-            <MidPostCard bordered post={posts?.edges[0]} />
+            <MidPostCard className="max-w-md" bordered post={posts?.edges[0].node} />
           </motion.div>
           )}
         <motion.ul
