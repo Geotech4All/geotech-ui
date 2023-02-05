@@ -11,7 +11,7 @@ const Podcast: NextPageWithLayout = () => {
 
   if (loading) return <PageLoadingRing />
   if (error) return <SomethingWentWrong error={error} />
-  if (data?.podcasts?.edges.length && data?.podcasts?.edges.length < 1) return (
+  if ((data?.podcasts?.edges.length && data?.podcasts?.edges.length < 1) || !data?.podcasts) return (
     <div className="flex justify-center flex-col w-full items-center">
       <GImage className="max-w-lg" src="/images/sorry.svg" alt="lady holding a sorry plack"/>
       <h1 className="text-xl text-gray-600">Sorry no podcasts yet</h1>
@@ -26,7 +26,7 @@ const Podcast: NextPageWithLayout = () => {
     <AudioLayout>
       <div className="flex md:p-2 flex-col gap-4">
         <TrendingPodcasts isAdmin={false}/>
-        <RecentPodcasts />
+        <RecentPodcasts isAdmin={false} />
       </div>
     </AudioLayout>
     </>

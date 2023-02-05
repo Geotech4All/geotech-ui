@@ -25,7 +25,7 @@ const Blog: NextPageWithLayout = () => {
           {pData?.posts?.edges.map(edge => <MidPostCard key={edge?.node?.postId} post={edge?.node}/>)}
         </ul>
       </div>
-      <PostList wrap title="Recent posts" className="w-full flex" posts={data?.posts}/>
+      <PostList isAdmin={false} title="Recent posts" className="w-full flex" posts={data?.posts}/>
     </div>
   );
 };
