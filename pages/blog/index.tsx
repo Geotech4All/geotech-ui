@@ -2,14 +2,15 @@ import React from "react";
 import { NavBarLayout } from "@components/frontFacing";
 import { NextPageWithLayout } from "@pages/_app";
 import { useAllPosts, usePopularPosts } from "@gql/requests/queries/hooks";
-import { CenterSLoadingRing, GImage, MidPostCard, PostList } from "@components/common";
+import { CenterSLoadingRing, GImage, MidPostCard, PostList, SomethingWentWrong } from "@components/common";
 
 const Blog: NextPageWithLayout = () => {
   const { loading, data, error } = useAllPosts({ first: 10 });
-  const { loading: pLoading, data: pData } = usePopularPosts({ first: 5 })
+  const { loading: pLoading, data: pData } = usePopularPosts({ first: 5 });
 
   if (loading || pLoading) return <CenterSLoadingRing />;
-  if ((data?.posts?.edges.length && data?.posts?.edges?.length < 1) || error) return (
+  if (error) return <SomethingWentWrong error={error} />;
+  if (data?.posts?.edges.length && data?.posts?.edges?.length < 1) return (
     <div className="flex justify-center flex-col w-full items-center">
       <GImage className="max-w-lg" src="/images/sorry.svg" alt="lady holding a sorry plack"/>
       <h1 className="text-xl text-gray-600">Sorry no podcasts yet</h1>
