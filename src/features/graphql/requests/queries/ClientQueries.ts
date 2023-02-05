@@ -31,6 +31,7 @@ export const ALL_PODCASTS = gql`
             hostId
             user {
               fullName
+              id
             }
           }
         }

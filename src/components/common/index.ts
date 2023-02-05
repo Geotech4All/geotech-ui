@@ -37,6 +37,9 @@ import CenterSLoadingRing from "@components/common/loading/CenterSLoadingRing";
 import AudioPlayer from "@components/common/audio/AudioPlayer";
 import AudioLayout from "@components/common/layouts/AudioLayout";
 import AudioPlayerButtons from "@components/common/audio/AudioPlayerButtons";
+import PlayerManageButtons from "@components/common/audio/PlayerManageButtons";
+import PlayingPodcastDetails from "@components/common/audio/PlayingPodcastDetails";
+import PlayerBackground from "@components/common/audio/PlayerBackground";
 
 import type { GInputProps } from "@components/common/inputs/GInput";
 import type { LInputProps } from "@components/common/inputs/LInput";
@@ -83,6 +86,9 @@ export {
   SomethingWentWrong,
   CenterSLoadingRing,
   AudioPlayerButtons,
+  PlayerManageButtons,
+  PlayerBackground,
+  PlayingPodcastDetails
 };
 
 export type { GInputProps, LInputProps, DialogPropsType, ButtonProps }
