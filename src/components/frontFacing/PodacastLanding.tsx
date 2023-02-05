@@ -25,7 +25,7 @@ export default function PodcastLanding() {
               p-2 px-5 rounded-3xl w-fit`}
             href="/podcasts">Browse podcasts <span className="flex items-center gap-1"><RiArrowRightUpLine /></span></Link>
         </motion.div>
-        <div className={`flex-1 flex items-center gap-3`}>
+        <div className={`flex-1 z-0 flex items-center gap-3`}>
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1}}
