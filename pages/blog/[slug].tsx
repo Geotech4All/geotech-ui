@@ -2,16 +2,25 @@ import { GImage, PageLoadingRing, PostAuthor, PostReadLength } from "@components
 import { NavBarLayout } from "@components/frontFacing";
 import { dummyPosts } from "@constants/clientContants";
 import { PostType } from "@gql/codegen/graphql";
+import { useIncreasePostViewCount } from "@gql/requests/mutations/hooks";
 import { useDetailedPost } from "@gql/requests/queries/hooks";
 import { NextPageWithLayout } from "@pages/_app";
 import { useRouter } from "next/router";
 import React from "react";
 
 const PostDetail: NextPageWithLayout = () => {
-  const router = useRouter()
-  const postId = router.query.slug?.toString().split("-").pop()
-  const { loading, data, error } = useDetailedPost({ postId: postId ?? "" })
-  const [post, setPost] = React.useState<PostType>()
+  const router = useRouter();
+  const postId = router.query.slug?.toString().split("-").pop();
+  const { loading, data, error } = useDetailedPost({ postId: postId ?? "" });
+  const [increaseCount] = useIncreasePostViewCount({ postId: postId ?? "" });
+  const [post, setPost] = React.useState<PostType>();
+
+  React.useEffect(() => {
+    if (postId)
+    increaseCount({
+      variables: { postId: postId ?? "" }
+      })
+  }, [increaseCount, postId])
 
   React.useEffect(() => {
     if (!loading && !error) {
@@ -24,6 +33,7 @@ const PostDetail: NextPageWithLayout = () => {
        }
     }
   }, [data, loading, error])
+
 
   if (loading) return <PageLoadingRing />
 

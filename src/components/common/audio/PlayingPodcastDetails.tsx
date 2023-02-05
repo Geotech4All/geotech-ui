@@ -16,8 +16,6 @@ export default function PlayingPodcastDetails(props: PlayingPodcastDetailsProps)
 
   }, [podcast?.hosts])
 
-  console.log(hosts)
-
   return (
     <AnimatePresence>
       {showDetails && (

@@ -3,9 +3,11 @@ import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { clearPlayer, selectAudioPlayer } from "@store/slices";
 import { AudioPlayerButtons, PlayerBackground, PlayerManageButtons, PlayingPodcastDetails } from "@components/common";
 import styles from "./audio.module.scss";
+import { useIncreasePodcastListens } from "@gql/requests/mutations/hooks";
 
 export default function AudioPlayer(){
   const player = useAppSelector(selectAudioPlayer);
+  const [increaseListens] = useIncreasePodcastListens({podcastId: player.podcast?.podcastId ?? ""})
   const dispatch = useAppDispatch();
   const [isPlaying, setIsPalying] = React.useState(false)
   const [duration, setDuration] = React.useState("0:00");
@@ -28,6 +30,12 @@ export default function AudioPlayer(){
       `${parseInt(rangeRef.current.value) / playerRef.current.duration * 100}%`
     );
   },[])
+
+  React.useEffect(() => {
+    increaseListens({
+      variables: { podcastId: player.podcast?.podcastId ?? "" }
+    }).then(res => console.log(res.data?.podcast));
+  }, [increaseListens, player?.podcast?.podcastId]);
 
   React.useEffect(() => {
     const seconds = playerRef.current.duration;

@@ -59,7 +59,7 @@ export default function LargePodcastCard(props: LargePodcastCardProps){
         <p className="font-semibold text-lg line-clamp-2">{podcast?.node?.description}</p>
         <div>
           <p className="flex items-center gap-1">
-            <span className="flex items-center text-red-400"><BsPlayFill size={20} /></span> {podcast?.node?.listens} plays
+            <span className="flex items-center text-red-400"><BsPlayFill size={20} /></span> {podcast?.node?.listens} listens
           </p>
         </div>
       </div>
