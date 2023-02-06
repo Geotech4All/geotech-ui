@@ -1,4 +1,4 @@
-import { GImage, PageLoadingRing, PostAuthor, PostReadLength } from "@components/common";
+import { GImage, PageLoadingRing, PostAuthor, PostReadLength, SomethingWentWrong } from "@components/common";
 import { NavBarLayout } from "@components/frontFacing";
 import { dummyPosts } from "@constants/clientContants";
 import { PostType } from "@gql/codegen/graphql";
@@ -37,6 +37,7 @@ const PostDetail: NextPageWithLayout = () => {
 
 
   if (loading) return <PageLoadingRing />
+  if (error) return <SomethingWentWrong error={error} />
 
   return (
     <article className="p-6 px-5 sm:px-10 md:px-14 lg:px-32 flex flex-col gap-4">
