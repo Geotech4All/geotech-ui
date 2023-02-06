@@ -8,7 +8,7 @@ import React from "react";
 
 const EditPost: NextPageWithLayout = () => {
   const router = useRouter();
-  const postId = router.query.slug?.toString().split("-").pop()
+  const postId = router.query.slug?.toString().split("-")[0]
   const { loading, data, error } = useDetailedPost({postId: postId ?? ""});
 
   if (loading) return <PageLoadingRing />

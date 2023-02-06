@@ -24,7 +24,7 @@ export default function PostList(props: PostListProps) {
           </div>
         )
       :(
-        <ul className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 overflow-auto w-full gap-1`}>
+        <ul className={`grid gap-1 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 overflow-auto w-full gap-1`}>
           {posts?.edges.map(post => <MidPostCard key={post?.node?.postId} post={post?.node} />)}
         </ul>
       )}

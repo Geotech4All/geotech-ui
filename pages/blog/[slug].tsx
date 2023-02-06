@@ -10,7 +10,7 @@ import React from "react";
 
 const PostDetail: NextPageWithLayout = () => {
   const router = useRouter();
-  const postId = router.query.slug?.toString().split("-").pop();
+  const postId = router.query.slug?.toString().split("-")[0];
   const { loading, data, error } = useDetailedPost({ postId: postId ?? "" });
   const [increaseCount] = useIncreasePostViewCount({ postId: postId ?? "" });
   const [post, setPost] = React.useState<PostType>();

@@ -15,7 +15,7 @@ export default function MiniPostCard(props: MiniPostCardPorps) {
   const slug = post?.title.toLowerCase().split(" ").join("-")
   return (
     <Link
-      href={`${isAdmin ? "/admin" : "" }/blog/${slug}-${post?.postId}`}
+      href={`${isAdmin ? "/admin" : "" }/blog/${post?.postId}-${slug}`}
       className="flex gap-3 group hover:shadow active:shadow transition-all max-h-40 max-w-lg rounded-lg overflow-hidden">
       <GImage className="flex-[1] overflow-hidden" src={post?.coverPhoto ?? "/images/reading-geo-tech.svg"} alt={`${post?.title} cover photo`}/>
       <div className="flex-[1] p-1 flex text-black/80 flex-col">

@@ -40,7 +40,7 @@ export default function ManagePost(props: ManagePostProps){
             flex items-center gap-1
             border border-blue-400
             p-0.5 px-2 rounded bg-blue-400/10 text-blue-900 hover:bg-blue-400/40 transition-all`}
-          href={`/admin/blog/edit/${slug}-${post?.postId}`}><CiEdit />Edit</Link>
+          href={`/admin/blog/edit/${post?.postId}-${slug}`}><CiEdit />Edit</Link>
       </div>
     </article>
   )

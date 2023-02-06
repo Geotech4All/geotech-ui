@@ -15,7 +15,7 @@ export default function MidPostCard(props: MidPostCardProps) {
   const slug = post?.title.toLowerCase().split(" ").join("-")
   return (
     <Link
-      href={`${isAdmin ? "/admin" : "" }/blog/${slug}-${post?.postId}`}
+      href={`${isAdmin ? "/admin" : "" }/blog/${post?.postId}-${slug}`}
       className={`
         ${bordered && "border-2 border-black/50"}
         hover:border-red-400 transition-all active:border-red-400
