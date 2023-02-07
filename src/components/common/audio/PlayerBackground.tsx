@@ -1,13 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-import { AudioPlayer } from "@store/slices";
 import React from "react";
+import { useAppSelector } from "@store/hooks";
+import { selectAudioPlayer } from "@store/slices";
 
-interface PlayerBackgroundProps {
-  player: AudioPlayer;   
-}
-
-export default function PlayerBackground(props: PlayerBackgroundProps){
-  const { player } = props;
+export default function PlayerBackground(){
+  const player = useAppSelector(selectAudioPlayer);
   return (
     <>
       <img 

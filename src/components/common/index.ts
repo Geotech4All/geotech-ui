@@ -40,6 +40,7 @@ import AudioPlayerButtons from "@components/common/audio/AudioPlayerButtons";
 import PlayerManageButtons from "@components/common/audio/PlayerManageButtons";
 import PlayingPodcastDetails from "@components/common/audio/PlayingPodcastDetails";
 import PlayerBackground from "@components/common/audio/PlayerBackground";
+import PlayerControls from "@components/common/audio/PlayerControls";
 
 import type { GInputProps } from "@components/common/inputs/GInput";
 import type { LInputProps } from "@components/common/inputs/LInput";
@@ -88,7 +89,8 @@ export {
   AudioPlayerButtons,
   PlayerManageButtons,
   PlayerBackground,
-  PlayingPodcastDetails
+  PlayingPodcastDetails,
+  PlayerControls,
 };
 
 export type { GInputProps, LInputProps, DialogPropsType, ButtonProps }

@@ -1,4 +1,5 @@
 import { Button, MModal } from "@components/common";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 
@@ -20,11 +21,18 @@ export default function LoginAgainPrompt(){
           <Button
             type="button"
             onClick={goToLogin}
-            className="bg-green-400 border border-green-600 outline-none outline-0 transition-all hover:bg-green-600 p-1 px-3 hover:text-white rounded-md">Login</Button>
-          <Button
+            className={`
+              bg-green-400 border border-green-600 outline-none
+              outline-0 transition-all hover:bg-green-600 p-1
+              px-3 hover:text-white rounded-md`}>Login</Button>
+          <Link
+            href="/admin/signout"
             type="button"
             onClick={goHome}
-            className="bg-red-400 border border-red-600 outline-0 transition-all hover:bg-red-600 p-1 px-3 hover:text-white rounded-md">Home</Button>
+            className={`
+              bg-red-400 border border-red-600 outline-0
+              transition-all hover:bg-red-600 p-1 px-3
+              hover:text-white rounded-md`}>Logout</Link>
         </div>
       </div>
     </MModal>

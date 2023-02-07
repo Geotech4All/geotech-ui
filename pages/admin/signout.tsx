@@ -8,7 +8,7 @@ export default function SignOut(){
   
   React.useEffect(() => {
     removeAuthTokens()
-    router.replace("/admin/signin")
+    router.replace("/")
   }, [router])
 
   return <PageLoadingRing />
