@@ -109,6 +109,7 @@ export const ALL_POSTS = gql`
         node {
           dateAdded
           postId
+          readLength
           abstract
           coverPhoto
           title
