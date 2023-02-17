@@ -40,19 +40,24 @@ const PostDetail: NextPageWithLayout = () => {
   if (error) return <SomethingWentWrong error={error} />
 
   return (
+    <>
+    <GImage
+      className="shadow"
+      src={post?.coverPhoto ?? "/images/reading-geo-tech.svg"}
+      alt={`${post?.title} cover photo`} />
     <article className="p-6 px-5 sm:px-10 md:px-14 lg:px-32 flex flex-col gap-4">
       <section className="flex flex-col gap-6">
         <div className="flex flex-col md:flex-row gap-3 justify-between">
-          <h1 className="text-4xl md:text-5xl text-red-500 font-semibold font-montserrat">{data?.post?.title}</h1>
+          <h1 className="text-4xl md:text-5xl text-red-500 font-semibold font-source-serif-pro">{data?.post?.title}</h1>
           {post && post?.readLength && <PostReadLength length={post.readLength} /> }
         </div>
         <PostAuthor post={data?.post}/>
-        <GImage className="shadow" src={post?.coverPhoto ?? "/images/reading-geo-tech.svg"} alt={`${post?.title} cover photo`} />
       </section>
       <section
         className="flex text-lg md:text-xl flex-col w-full gap-4 font-source-serif-pro"
         dangerouslySetInnerHTML={{ __html: data?.post?.body ?? ""}}></section>
     </article>
+    </>
   )
 }
 
