@@ -41,10 +41,12 @@ const PostDetail: NextPageWithLayout = () => {
 
   return (
     <>
-    <GImage
-      className="shadow"
-      src={post?.coverPhoto ?? "/images/reading-geo-tech.svg"}
-      alt={`${post?.title} cover photo`} />
+    <div className="p-0 sm:px-5 md:px-10">
+      <GImage
+        className="shadow"
+        src={post?.coverPhoto ?? "/images/reading-geo-tech.svg"}
+        alt={`${post?.title} cover photo`} />
+    </div>
     <article className="p-6 px-5 sm:px-10 md:px-14 lg:px-32 flex flex-col gap-4">
       <section className="flex flex-col gap-6">
         <div className="flex flex-col md:flex-row gap-3 justify-between">
