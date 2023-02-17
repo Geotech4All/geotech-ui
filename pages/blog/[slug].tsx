@@ -41,7 +41,7 @@ const PostDetail: NextPageWithLayout = () => {
 
   return (
     <>
-    <div className="p-0 sm:px-10 sm:py-5 md:px-14 md:py-7 lg:px-32 lg:py-7">
+    <div className="p-0 sm:px-10 sm:rounded-md sm:overflow-hidden sm:py-5 md:px-14 md:py-7 lg:px-32 lg:py-7">
       <GImage
         className="shadow"
         src={post?.coverPhoto ?? "/images/reading-geo-tech.svg"}
