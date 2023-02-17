@@ -49,7 +49,9 @@ const PostDetail: NextPageWithLayout = () => {
         <PostAuthor post={data?.post}/>
         <GImage className="shadow" src={post?.coverPhoto ?? "/images/reading-geo-tech.svg"} alt={`${post?.title} cover photo`} />
       </section>
-      <section className="flex text-lg md:text-xl flex-col w-full gap-4" dangerouslySetInnerHTML={{ __html: data?.post?.body ?? ""}}></section>
+      <section
+        className="flex text-lg md:text-xl flex-col w-full gap-4 font-source-serif-pro"
+        dangerouslySetInnerHTML={{ __html: data?.post?.body ?? ""}}></section>
     </article>
   )
 }

@@ -11,7 +11,8 @@ module.exports = {
         "ui-red-200": "#EC1F00"
       },
       fontFamily: {
-        "montserrat": ['Montserrat', "sans-serif"]
+        "montserrat": ['Montserrat', "sans-serif"],
+        "source-serif-pro": ['Source Serif Pro', "serif"]
       }
     },
   },
