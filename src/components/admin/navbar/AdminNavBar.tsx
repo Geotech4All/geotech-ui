@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { FullLogo } from "@components/common";
-import { AdminNavLinks } from "@components/admin";
+import { AdminNavLinks, User } from "@components/admin";
 import { BiMenu } from "react-icons/bi";
 import { MdClose } from "react-icons/md";
 
@@ -44,6 +44,7 @@ export default function AdminNavBar(){
             exit={{ translateX: -250 }}
             className="max-w-[15rem] bg-white p-3 shadow h-screen">
             <AdminNavLinks />
+            <User />
           </motion.div>
         }
       </AnimatePresence>
