@@ -1,6 +1,7 @@
 import { Maybe, PostType } from "@gql/codegen/graphql";
 import Link from "next/link";
 import React from "react";
+import { useIsMidScreen } from "../hooks";
 import GImage from "../images/GImage";
 import PostAuthor from "./PostAuthor";
 import PostReadLength from "./PostReadLength";
@@ -12,13 +13,20 @@ interface MiniPostCardPorps {
 
 export default function MiniPostCard(props: MiniPostCardPorps) {
   const { post, isAdmin } = props;
+  const [isMid, setIsMid] = React.useState<boolean>()
   const slug = post?.title.toLowerCase().split(" ").join("-")
+  const isMidScreen = useIsMidScreen();
+  
+  React.useEffect(() => {
+    setIsMid(isMidScreen)},
+  [isMidScreen]);
+
   return (
     <Link
       href={`${isAdmin ? "/admin" : "" }/blog/${post?.postId}-${slug}`}
       className={`
         flex gap-3 group hover:shadow active:shadow
-        bg-gray-50
+        bg-gray-100
         transition-all max-h-40 max-w-lg rounded-lg overflow-hidden`}>
       <GImage className="flex-[1] overflow-hidden" src={post?.coverPhoto ?? "/images/reading-geo-tech.svg"} alt={`${post?.title} cover photo`}/>
       <div className="flex-[1] p-1 flex text-black/80 flex-col">
@@ -29,6 +37,7 @@ export default function MiniPostCard(props: MiniPostCardPorps) {
               transition-all
               group-hover:text-red-400 group-active:text-red-400
               line-clamp-3 font-bold text-lg`}>{post?.title}</h3>
+          {isMid && <PostAuthor post={post}/>}
         </div>
       </div>
     </Link>
