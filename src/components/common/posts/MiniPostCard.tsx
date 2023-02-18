@@ -26,7 +26,6 @@ export default function MiniPostCard(props: MiniPostCardPorps) {
               transition-all
               group-hover:text-red-400 group-active:text-red-400
               line-clamp-3 font-bold text-lg`}>{post?.title}</h3>
-          <PostAuthor post={post} />
         </div>
       </div>
     </Link>
