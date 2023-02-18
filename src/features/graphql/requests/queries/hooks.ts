@@ -39,7 +39,7 @@ export function useAllPosts(variables?: QueryAllPostsArgs) {
   return useQuery<
     { posts: Maybe<PostTypeConnection> },
     QueryAllPostsArgs>(Queries.ALL_POSTS, {
-      variables
+      variables, fetchPolicy: "no-cache"
   })
 }
 

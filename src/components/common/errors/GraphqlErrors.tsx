@@ -18,10 +18,10 @@ export default function GraphqlErrors(props: GraphqlErrorProps){
     }
   }, [errors, setSigExpired])
   return (
-    <ul>
+    <ul className={`bg-red-600/10 p-0.5 mt-3 flex flex-col gap-2 rounded-md px-2 border border-red-500/40`}>
       {errors.map(error => (
         <motion.div
-          className="text-2xl text-red-500 font-semibold mt-3"
+          className="text-lg text-red-500"
           key={Math.random()}>
           <p>{error.message}</p>
         </motion.div>

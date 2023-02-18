@@ -3,7 +3,7 @@ import Image from "next/image";
 import type { ApolloError } from "@apollo/client";
 import { GraphqlErrors } from "@components/common";
 
-interface ErrorProps {
+export interface ErrorProps {
   error: ApolloError;
 }
 export default function SomethingWentWrong(props: ErrorProps){

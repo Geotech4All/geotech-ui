@@ -4,14 +4,17 @@ import {
   Maybe,
   MutationCreateUpdatePodcastArgs,
   MutationCreateUpdatePostArgs,
+  MutationDeletePostArgs,
   MutationIncreasePodcastListensArgs,
   MutationIncreasePostViewCountArgs,
   PodcastCreateUpdateMutation,
   PostCreateUpdateMutation, 
+  PostDeleteMutation, 
   PostViewsIncreaseMutation} from "@gql/codegen/graphql";
 import {
   CREATE_UPDATE_PODCAST,
   CREATE_UPDATE_POST,
+  DELETE_POST,
   INCREASE_PODCAST_LISTENS,
   INCREASE_POST_VIEW_COUNT } from "@gql/requests/mutations";
 
@@ -27,6 +30,13 @@ export const useCreateUpdatePost = () => {
   { post: Maybe<PostCreateUpdateMutation> },
     MutationCreateUpdatePostArgs
   >(CREATE_UPDATE_POST)
+}
+
+export const useDeletePost = (variables?: MutationDeletePostArgs) => {
+  return useMutation<
+  { post: Maybe<PostDeleteMutation> },
+    MutationDeletePostArgs
+  >(DELETE_POST, { variables })
 }
 
 export const useIncreasePostViewCount = (variables?: MutationIncreasePostViewCountArgs) => {

@@ -41,11 +41,13 @@ import PlayerManageButtons from "@components/common/audio/PlayerManageButtons";
 import PlayingPodcastDetails from "@components/common/audio/PlayingPodcastDetails";
 import PlayerBackground from "@components/common/audio/PlayerBackground";
 import PlayerControls from "@components/common/audio/PlayerControls";
+import PopupError from "@components/common/errors/PopupError";
 
 import type { GInputProps } from "@components/common/inputs/GInput";
 import type { LInputProps } from "@components/common/inputs/LInput";
 import type { DialogPropsType } from "@components/common/modals/types";
 import type { ButtonProps } from "@components/common/buttons/Button";
+import type { ErrorProps } from "@components/common/errors/SomethingWentWrong";
 
 export {
   LInput,
@@ -64,6 +66,7 @@ export {
   GuestPill,
   GTextArea,
   UserSelect,
+  PopupError,
   UserOption,
   FormErrors,
   PostAuthor,
@@ -93,4 +96,4 @@ export {
   PlayerControls,
 };
 
-export type { GInputProps, LInputProps, DialogPropsType, ButtonProps }
+export type { GInputProps, LInputProps, DialogPropsType, ButtonProps, ErrorProps }

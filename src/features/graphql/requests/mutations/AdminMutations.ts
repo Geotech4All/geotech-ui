@@ -37,3 +37,15 @@ export const CREATE_UPDATE_POST = gql`
     }
   }
 `
+
+export const DELETE_POST = gql`
+  mutation DeletePost($postId: ID!) {
+    post: deletePost(postId: $postId) {
+      success
+      errors {
+        field
+        messages
+      }
+    }
+  }
+`

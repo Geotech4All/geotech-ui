@@ -1,4 +1,5 @@
-import { CenterSLoadingRing, GInput, SomethingWentWrong } from "@components/common";
+import { ApolloError } from "@apollo/client";
+import { CenterSLoadingRing, GInput, SomethingWentWrong, PopupError } from "@components/common";
 import { Maybe, PostTypeConnection } from "@gql/codegen/graphql";
 import { useAllPosts } from "@gql/requests/queries/hooks";
 import React from "react";
@@ -10,10 +11,21 @@ interface ManagePostsProps {
 export default function ManagePosts(props: ManagePostsProps) {
   const { loading, data, error, refetch } = useAllPosts({ first: 20 });
   const [posts, setPosts] = React.useState<Maybe<PostTypeConnection>>();
+  const [delError, setDelError] = React.useState<ApolloError>();
 
   React.useEffect(() => {
     setPosts(data?.posts);
   }, [data]);
+
+  const handleDelete = () => {
+    refetch().then(res => {
+      setPosts(res.data.posts)
+    }).catch(err => console.log(err));
+  };
+
+  const handleDelError = (error: ApolloError) => {
+    setDelError(error);
+  };
 
   const handleSearch: React.ChangeEventHandler<HTMLInputElement> = async (event) => {
       refetch({title_Icontains: event.target.value})
@@ -36,10 +48,16 @@ export default function ManagePosts(props: ManagePostsProps) {
       {loading ? <CenterSLoadingRing />
       :(
         <ul className={`flex flex-col`}>
-          {posts?.edges.map(edge => <ManagePost key={edge?.node?.postId} post={edge?.node}/>)}
+          {posts?.edges.map(edge => (
+            <ManagePost
+              onError={handleDelError}
+              onDelete={handleDelete}
+              key={edge?.node?.postId} post={edge?.node}/>
+          ))}
         </ul>
       )}
       </div>
+      {delError && <PopupError error={delError} />}
     </>
   );
 };
