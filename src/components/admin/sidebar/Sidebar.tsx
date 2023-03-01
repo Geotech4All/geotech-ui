@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { SidebarUrl, SidebarUrls, SideBrand, User } from "@components/admin";
 import { useAppSelector } from "@features/store/hooks";
 import { AdminState, selectAdmin } from "@store/slices";
-import Link from "next/link";
 
 interface SidebarProps {
   getState?: (state: AdminState) => void

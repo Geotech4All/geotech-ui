@@ -1,8 +1,7 @@
 import React from "react";
-import Link from "next/link";
+import { AiOutlineLogout } from "react-icons/ai";
 import { AnimatePresence, motion } from "framer-motion";
-import { FullLogo } from "@components/common";
-import { AdminNavLinks, User } from "@components/admin";
+import { AdminNavLink, AdminNavLinks, User } from "@components/admin";
 import { BiMenu } from "react-icons/bi";
 import { MdClose } from "react-icons/md";
 
@@ -18,33 +17,30 @@ export default function AdminNavBar(){
     }
   }
 
-  const closeNav: React.MouseEventHandler = (event) => {
-    if (
-      event.target === rootRef.current
-      ) {
-      setNavOpen(false);
-    }
-  };
-
   return (
-    <div ref={rootRef} onClick={closeNav} className="fixed z-20 bg-black/10">
-      <div className="bg-white w-screen flex items-center max-h-10 shadow relative p-2">
-        <button onClick={toggleNav}>
-          {navOpen ? <MdClose size={25} /> : <BiMenu size={25} />}
-        </button>
-        <Link className="h-full absolute flex items-center right-1/2 top-1/2 -translate-y-1/2 translate-x-1/2"href="/">
-          <FullLogo className="w-36" />
-        </Link>
-      </div>
+    <div ref={rootRef} className="fixed z-20">
+      <AnimatePresence>
+        {navOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            key={Math.random()}
+            onClick={() => setNavOpen(false)} className="fixed z-[-10] inset-0 bg-black/50" />)}
+      </AnimatePresence>
+      <button className={`border fixed z-10 border-gray-400 right-2 top-1 backdrop-blur p-2 rounded-md`} onClick={toggleNav}>
+        {navOpen ? <MdClose size={25} /> : <BiMenu size={25} />}
+      </button>
       <AnimatePresence>
         {navOpen &&
           <motion.div 
-            initial={{ translateX: -250 }}
-            animate={{ translateX: 0 }}
-            exit={{ translateX: -250 }}
-            className="max-w-[15rem] bg-white p-3 shadow h-screen">
+            initial={{ translateX: "200%", translateY: "-100%" }}
+            animate={{ translateX: "100%", translateY: 0 }}
+            exit={{ translateX: "200%", translateY: "-100%" }}
+            className="max-w-[15rem] z-30 flex flex-col mt-3 justify-between bg-white p-3 shadow min-h-[70vh] rounded-lg">
             <AdminNavLinks />
             <User />
+            <AdminNavLink url={{icon: AiOutlineLogout, name: "Logout", path: "/admin/signout"}}/>
           </motion.div>
         }
       </AnimatePresence>

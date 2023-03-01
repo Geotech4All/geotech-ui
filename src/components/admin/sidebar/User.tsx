@@ -15,10 +15,8 @@ export default function User () {
       <img
         className={`
           w-full max-w-[10rem] bg-gray-200 rounded-full
-          group-hover:bg-red-100 transition-all   
+          group-hover:bg-red-100 transition-all object-cover
           aspect-square p-0.5`}
-        width={24}
-        height={24}
         src={user?.profile?.image ?? "/images/profile.svg" } alt={user?.fullName ?? "user profile"} />
       {admin.sidebarOpen && (
         <address>{user?.email}</address>
