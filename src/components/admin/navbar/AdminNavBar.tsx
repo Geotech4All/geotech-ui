@@ -43,7 +43,7 @@ export default function AdminNavBar(){
             animate={{ translateX: "100%", translateY: 0 }}
             exit={{ translateX: "200%", translateY: "-100%" }}
             className={`
-              max-w-[15rem] min-w-[11rem] z-30 flex flex-col mt-3 justify-between
+              fixed right-[12rem] max-w-[15rem] min-w-[11rem] z-[5] flex flex-col mt-3 justify-between
               bg-white p-3 shadow min-h-[70vh] rounded-lg`}>
             <AdminNavLinks onNavClick={closeNav} />
             <div className="flex flex-col gap-2">
