@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { GImage } from "@components/common";
+import { GImage, Hideable } from "@components/common";
 import { TbEdit } from "react-icons/tb";
 import { Maybe, PodcastType } from "@gql/codegen/graphql";
 
@@ -25,11 +25,13 @@ export default function ManagePodcast(props: ManagePodcastProps) {
         <h4 className="group-hover:text-red-400 transition-all line-clamp-1">{podcast?.title}</h4>
       </div>
       <div>
-        <Link
-          className={`
-            hover:bg-blue-200 active:bg-blue-200 transition-all
-            flex gap-1 items-center border border-blue-500/70 p-0.5 px-2 rounded-md text-blue-700 bg-blue-50`}
-          href={`/admin/podcasts/edit/${slug}-${podcast?.podcastId}`}><TbEdit /> Edit</Link>
+        <Hideable>
+          <Link
+            className={`
+              hover:bg-blue-200 active:bg-blue-200 transition-all
+              flex gap-1 items-center border border-blue-500/70 p-0.5 px-2 rounded-md text-blue-700 bg-blue-50`}
+            href={`/admin/podcasts/edit/${slug}-${podcast?.podcastId}`}><TbEdit /> Edit</Link>
+        </Hideable>
       </div>
     </div>
   )

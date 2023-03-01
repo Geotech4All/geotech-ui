@@ -45,7 +45,7 @@ export default function ManagePost(props: ManagePostProps){
         onMouseOver={handleHover} onMouseLeave={handleHoverEnd}
         className={`
           relative flex items-center justify-between
-          hover:bg-white hover:shadow-lg
+          hover:bg-white hover:shadow-lg z-0
           p-1 group transition-all rounded-2xl`}>
         {(showHoverInfo && !isSmallScreen) &&(
           <PostHoverInfo post={post} />

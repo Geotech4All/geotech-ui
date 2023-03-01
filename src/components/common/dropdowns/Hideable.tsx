@@ -1,7 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { SlOptionsVertical } from "react-icons/sl";
 import React from "react";
-import { Button } from "@components/common";
 import { useIsMidScreen } from "@components/common/hooks";
 
 interface HideableProps {
@@ -54,7 +53,7 @@ export default function Hideable(props: HideableProps) {
             {dropdownOpen && (
               <motion.ul
                ref={dropRef}
-                className="absolute right-7 bg-white p-3 gap-2 flex flex-col shadow-lg rounded-md top-full"
+                className="absolute right-0 bg-white p-3 gap-2 flex flex-col shadow-lg rounded-md bottom-full"
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -50 }}
