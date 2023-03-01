@@ -24,7 +24,6 @@ const PostDetail: NextPageWithLayout = () => {
 
   React.useEffect(() => {
     if (!loading && !error) {
-      console.log(data?.post)
       if (data?.post) {
         setPost(data.post)
       }
