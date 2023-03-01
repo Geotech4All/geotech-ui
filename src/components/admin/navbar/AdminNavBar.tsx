@@ -44,8 +44,10 @@ export default function AdminNavBar(){
               max-w-[15rem] min-w-[11rem] z-30 flex flex-col mt-3 justify-between
               bg-white p-3 shadow min-h-[70vh] rounded-lg`}>
             <AdminNavLinks />
-            <User />
-            <AdminNavLink url={{icon: AiOutlineLogout, name: "Logout", path: "/admin/signout"}}/>
+            <div className="flex flex-col gap-2">
+              <User />
+              <AdminNavLink url={{icon: AiOutlineLogout, name: "Logout", path: "/admin/signout"}}/>
+            </div>
           </motion.div>
         }
       </AnimatePresence>
