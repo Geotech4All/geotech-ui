@@ -33,7 +33,7 @@ export default function UserPill(props: UserPillProps) {
           src={user?.profile?.image ?? "/images/guy-profile.svg"}
           alt={name ?? "user avatar"} />
       </div>
-      <span className="text-sm">{name}</span>
+      <span className="text-sm whitespace-nowrap">{name}</span>
       {onRemove &&
         <Button
           type="button"
