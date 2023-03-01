@@ -1,68 +1,59 @@
 import React from "react";
-import Link from "next/link";
-import { HiMenuAlt4 } from "react-icons/hi";
-import { IoIosClose } from "react-icons/io";
-import { Button, FullLogo } from "@components/common";
+import { BiMenu } from "react-icons/bi";
+import { MdClose } from "react-icons/md";
 import { AnimatePresence, motion } from "framer-motion";
 import { frontFacingNavUrl } from "@constants/frontFacing";
+import { AdminNavLink } from "@components/admin";
 
 export default function MobileNav(){
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [navOpen, setNavOpen] = React.useState(false);
 
-  function handleOpen() {
-    if (isOpen) {
-      setIsOpen(false);
+  function toggleNav(){
+    if (navOpen) {
+      setNavOpen(false);
     } else {
-      setIsOpen(true);
-    };
+      setNavOpen(true);
+    }
+  }
+
+  function closeNav() {
+    setNavOpen(false)
   };
 
-  const handleClose = () => setIsOpen(false);
-
-  return (
-    <nav className="fixed z-[100] top-0 w-screen text-white">
-      <div className="relative z-0">
-        <div className="flex bg-black/10 z-10 backdrop-blur-sm items-center w-full justify-center relative p-2">
-          <Button
-            onClick={handleOpen}
-            className="p-1 aspect-square bg-black/5 rounded-md border absolute top-1/2 -translate-y-1/2 left-2 backdrop-blur-sm">
-            {isOpen ? <IoIosClose size={20}/> : <HiMenuAlt4 size={20}/>}
-          </Button>
-          <FullLogo className="max-w-[8rem]" />
-        </div>
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              key={Math.random()}
-              onClick={handleClose} className="z-0 absolute h-screen inset-0 bg-black/30"/>
-          )}
-        </AnimatePresence>
-        <AnimatePresence>
-          {isOpen && (
-            <>
-              <motion.div
-                initial={{ x: "-100%" }}
-                animate={{ x: 0 }}
-                exit={{ x: "-100%" }}
-                key={Math.random()}
-                className="bg-black/20 w-40 p-1 backdrop-blur-sm h-screen absolute left-0 ">
-                <ul className={`
-                  flex flex-col border rounded-lg gap-1 p-1`}>
-                  {frontFacingNavUrl.map(url => (
-                    <Link
-                      onClick={handleClose}
-                      className="transition-all font-semibold p-1 rounded-xl active:bg-red-300/70"
-                      key={Math.random()} href={url.path}>{url.name}</Link>
-                  ))}
-                </ul>
-              </motion.div>
-            </>
-          )}
-        </AnimatePresence>
-      </div>
-    </nav>
-  );
+return (
+    <div className="fixed z-20">
+      <AnimatePresence>
+        {navOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            key={Math.random()}
+            onClick={() => setNavOpen(false)} className="fixed z-[-10] inset-0 bg-black/50" />)}
+      </AnimatePresence>
+      <button
+        className={`
+          border fixed z-10 border-gray-300 right-2 top-1
+          backdrop-blur p-1 rounded-md`} onClick={toggleNav}>
+        {navOpen ? <MdClose size={25} /> : <BiMenu size={25} />}
+      </button>
+      <AnimatePresence>
+        {navOpen &&
+          <motion.div 
+            initial={{ translateX: "200%", translateY: "-100%" }}
+            animate={{ translateX: "100%", translateY: 0 }}
+            exit={{ translateX: "200%", translateY: "-100%" }}
+            className={`
+              max-w-[15rem] min-w-[11rem] z-30 flex flex-col mt-3 justify-between
+              bg-white p-3 shadow min-h-[70vh] rounded-lg`}>
+            <ul>{frontFacingNavUrl.map(url => (
+              <AdminNavLink
+                onClick={closeNav}
+                key={Math.random()} url={{ icon: url.icon, name: url.name, path: url.path}} />
+            ))}</ul>
+          </motion.div>
+        }
+      </AnimatePresence>
+    </div>
+  )
 };

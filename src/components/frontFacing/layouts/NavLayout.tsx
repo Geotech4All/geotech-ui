@@ -10,10 +10,10 @@ export default function NavBarLayout (page: React.ReactElement): React.ReactNode
   }, [isScreen])
   return (
     <div className="relative">
-      <div className="">
+      <div className="relative">
         {!isMidScreen ?<MobileNav /> : <NavBar /> }
       </div>
-      <div className="mt-10 z-0">
+      <div className="z-0">
         {page}
       </div>
     </div>

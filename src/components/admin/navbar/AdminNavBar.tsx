@@ -7,7 +7,6 @@ import { MdClose } from "react-icons/md";
 
 export default function AdminNavBar(){
   const [navOpen, setNavOpen] = React.useState(false);
-  const rootRef = React.useRef() as React.MutableRefObject<HTMLDivElement>;
   
   function toggleNav(){
     if (navOpen) {
@@ -18,7 +17,7 @@ export default function AdminNavBar(){
   }
 
   return (
-    <div ref={rootRef} className="fixed z-20">
+    <div className="fixed z-20">
       <AnimatePresence>
         {navOpen && (
           <motion.div
@@ -28,7 +27,8 @@ export default function AdminNavBar(){
             key={Math.random()}
             onClick={() => setNavOpen(false)} className="fixed z-[-10] inset-0 bg-black/50" />)}
       </AnimatePresence>
-      <button className={`border fixed z-10 border-gray-400 right-2 top-1 backdrop-blur p-2 rounded-md`} onClick={toggleNav}>
+      <button
+        className={`border fixed z-10 text-white border-gray-400 right-2 top-1 backdrop-blur p-1 rounded-md`} onClick={toggleNav}>
         {navOpen ? <MdClose size={25} /> : <BiMenu size={25} />}
       </button>
       <AnimatePresence>
