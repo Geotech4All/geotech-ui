@@ -22,8 +22,6 @@ export default function ProfileForm(props: ProfileFormProps){
     setNewProfileImage(image);
   }
   
-  console.log(user)
-
   const handleSubmit: React.FormEventHandler = (event) => {
     event.preventDefault()
     updateProfile({variables: {
