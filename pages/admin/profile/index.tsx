@@ -1,10 +1,12 @@
-import { SidebarLayout } from "@components/admin";
+import { ProfileForm, SidebarLayout } from "@components/admin";
 import { NextPageWithLayout } from "@pages/_app";
 import React from "react";
 
 const ProfilePage: NextPageWithLayout = () => {
   return (
-    <div>Your profile</div>
+    <div className="w-full">
+      <ProfileForm />
+    </div>
   );
 };
 

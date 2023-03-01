@@ -4,7 +4,9 @@ import {
   PREVIOUS_GUESTS,
   GET_PODCAST_BY_ID,
   ALL_POSTS,
-  STAFF_LIST } from "@gql/requests/queries/AdminQueries";
+  STAFF_LIST,
+  GET_CURRENT_USER
+} from "@gql/requests/queries/AdminQueries";
 
 import {
   ALL_PODCASTS,
@@ -17,6 +19,7 @@ export {
   STAFF_LIST,
   RECENT_HOSTS,
   ALL_PODCASTS,
+  GET_CURRENT_USER,
   POPULAR_POSTS,
   GET_POST_BY_ID,
   PREVIOUS_GUESTS,

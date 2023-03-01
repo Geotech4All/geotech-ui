@@ -36,7 +36,6 @@ export default function SidebarLayout(page: React.ReactElement) {
       {!isLarge ? <AdminNavBar /> : <Sidebar getState={getSidebarState}/>}
       <AudioLayout width={audioWidth}>
         <motion.div
-          animate={{ paddingTop: topPadding }}
           className="relative">
           <EnsureAuth>{ page }</EnsureAuth>
         </motion.div>

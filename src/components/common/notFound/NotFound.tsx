@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Image from "next/image";
 import { getRandom } from "@utils/common";
@@ -17,7 +18,7 @@ export default function NothingFound(props: NothingFoundProps){
   React.useEffect(() => setEmptyError(getRandom<EmptyError>(emptyErrors)), []);
   return (
     <div>
-      <Image
+      <img
         width={emptyError?.width ?? 0}
         height={emptyError?.height ?? 0}
         className="w-full"

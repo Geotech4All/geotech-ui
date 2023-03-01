@@ -9,6 +9,18 @@ export const TOKEN_AUTH = gql`
       user {
         email
         fullName
+        staff {
+          canAlterPodcast
+          canAlterPost
+          canAlterUser
+          canCreatePodcast
+          canCreatePost
+          canCreateUser
+          canDeletePodcast
+          canDeletePost
+          canDeleteUser
+          staffId
+        }
         profile {
           about
           image

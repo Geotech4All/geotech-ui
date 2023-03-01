@@ -21,6 +21,7 @@ import ManagePost from "@components/admin/blog/ManagePost";
 import ManagePosts from "@components/admin/blog/ManagePosts";
 import ManagePodcast from "@components/admin/podcasts/ManagePodcast";
 import ManagePodcasts from "@components/admin/podcasts/ManagePodcasts";
+import ProfileForm from "@components/admin/profile/ProfileForm";
 
 export {
   User,
@@ -35,6 +36,7 @@ export {
   GuestSelect,
   GuestOption,
   PostForm,
+  ProfileForm,
   ManagePost,
   ManagePosts,
   SelectGuests,

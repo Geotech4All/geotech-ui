@@ -13,8 +13,14 @@ import type {
   PostType,
   QueryGetPostByIdArgs,
   QueryGetPodcastByIdArgs,
-  PodcastType
+  PodcastType,
+  UserNode
 } from "@gql/codegen/graphql";
+
+export function useCurrentlyLoggenInUser() {
+  return useQuery<
+    { user: Maybe<UserNode>}>(Queries.GET_CURRENT_USER)
+}
 
 export function useDetailedPodcast(variables?: QueryGetPodcastByIdArgs) {
   return useQuery<

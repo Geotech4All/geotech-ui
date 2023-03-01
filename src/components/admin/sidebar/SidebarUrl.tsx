@@ -18,7 +18,9 @@ export default function SidebarUrl(props: UrlType) {
   }, [path, router])
 
   return (
-    <Link className={`
+    <Link
+      title={name}
+      className={`
       flex ${active ? "bg-red-50 text-red-500" : "text-gray-700"}
       hover:bg-black/10 p-1.5 rounded-2xl 
       transition-all

@@ -16,7 +16,7 @@ interface NewPodcastFormProps {
 
 export default function PodcastForm (props: NewPodcastFormProps){
   const { onCreated, podcast, edit } = props;
-  const { loading: hLoading, error: hError, data: hData } = useRecentHosts();
+  const { loading: hLoading, data: hData } = useRecentHosts();
   const [creationComplete, setCreationComplete] = React.useState(false)
   const [hosts, setHosts] = React.useState<Array<string>>();
   const [guests, setGuests] = React.useState<Array<number>>();

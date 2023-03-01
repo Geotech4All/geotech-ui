@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
-import Image from "next/image";
 
 type MyImageProps = {
   className?: string,
@@ -15,9 +15,9 @@ export default function MyImage(props: MyImageProps){
 
   return (
     <div className={className}>
-      <Image 
+      <img 
         {...rest}
-        priority={priority}
+        loading={priority ? "eager": "lazy"}
         width={width}
         height={height}
         className='w-full object-cover'

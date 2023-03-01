@@ -158,3 +158,32 @@ export const GET_PODCAST_BY_ID = gql`
     }
   }
 `
+
+export const GET_CURRENT_USER = gql`
+  query MeUser {
+    user: me {
+      firstName
+      lastName
+      email
+      id
+      fullName
+      staff {
+        canAlterPodcast
+        canAlterPost
+        canAlterUser
+        canCreatePodcast
+        canCreatePost
+        canCreateUser
+        canDeletePodcast
+        canDeletePost
+        canDeleteUser
+        staffId
+      }
+      profile {
+        about
+        image
+        profileId
+      }
+    }
+  }
+`

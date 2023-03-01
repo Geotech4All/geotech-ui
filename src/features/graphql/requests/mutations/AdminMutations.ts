@@ -49,3 +49,20 @@ export const DELETE_POST = gql`
     }
   }
 `
+
+export const UPDATE_PROFILE = gql`
+  mutation UpdateProfile($profileId: ID!, $about: String, $firstName: String, $image: Upload, $lastName: String) {
+    profile: updateProfile(profileId: $profileId, about: $about, firstName: $firstName, image: $image, lastName: $lastName) {
+      errors {
+        field
+        messages
+      }
+      success
+      profile {
+        about
+        image
+        profileId
+      }
+    }
+  }
+`

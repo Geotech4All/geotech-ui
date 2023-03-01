@@ -7,16 +7,27 @@ import {
   MutationDeletePostArgs,
   MutationIncreasePodcastListensArgs,
   MutationIncreasePostViewCountArgs,
+  MutationUpdateProfileArgs,
   PodcastCreateUpdateMutation,
   PostCreateUpdateMutation, 
   PostDeleteMutation, 
-  PostViewsIncreaseMutation} from "@gql/codegen/graphql";
+  PostViewsIncreaseMutation,
+  ProfileUpdateMutation} from "@gql/codegen/graphql";
 import {
   CREATE_UPDATE_PODCAST,
   CREATE_UPDATE_POST,
   DELETE_POST,
   INCREASE_PODCAST_LISTENS,
-  INCREASE_POST_VIEW_COUNT } from "@gql/requests/mutations";
+  INCREASE_POST_VIEW_COUNT,
+  UPDATE_PROFILE
+} from "@gql/requests/mutations";
+
+export const useUpdatePodcast = () => {
+  return useMutation<
+    { profile: Maybe<ProfileUpdateMutation>},
+    MutationUpdateProfileArgs
+  >(UPDATE_PROFILE)
+};
 
 export const useCreateUpdatePodcast = () => {
   return useMutation<
