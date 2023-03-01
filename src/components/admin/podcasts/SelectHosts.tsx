@@ -52,7 +52,7 @@ export default function SelectHosts(props: SelectHostsProps){
       <label className="before:content-['\2022'] before:text-lg before:text-red-500 text-black/60 font-semibold"> Hosts</label>
       <div className="relative flex flex-col gap-1 border p-1 rounded-3xl border-red-100/40">
         {chosenHosts && chosenHosts?.length > 0 &&
-          <ul className="bg-red-50 p-1 rounded-3xl flex gap-2 items-center border border-red-300/20">
+          <ul className="bg-red-50 p-1 rounded-3xl flex-wrap flex gap-2 items-center border border-red-300/20">
             {chosenHosts?.map(host => <UserPill onRemove={handleRemoveHost} key={host?.id} user={host}/>)}
           </ul>
         }
