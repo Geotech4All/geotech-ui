@@ -34,6 +34,7 @@ return (
       <button
         className={`
           border fixed z-10 border-gray-300 right-2 top-1
+          bg-black/20 text-white
           backdrop-blur p-1 rounded-md`} onClick={toggleNav}>
         {navOpen ? <MdClose size={25} /> : <BiMenu size={25} />}
       </button>
