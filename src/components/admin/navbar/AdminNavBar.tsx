@@ -28,7 +28,10 @@ export default function AdminNavBar(){
             onClick={() => setNavOpen(false)} className="fixed z-[-10] inset-0 bg-black/50" />)}
       </AnimatePresence>
       <button
-        className={`border fixed z-10 text-white border-gray-400 right-2 top-1 backdrop-blur p-1 rounded-md`} onClick={toggleNav}>
+        className={`
+          border fixed z-10 text-white border-gray-400 right-2
+          bg-black/20
+          top-1 backdrop-blur p-1 rounded-md`} onClick={toggleNav}>
         {navOpen ? <MdClose size={25} /> : <BiMenu size={25} />}
       </button>
       <AnimatePresence>
