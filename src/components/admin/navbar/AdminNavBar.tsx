@@ -40,7 +40,9 @@ export default function AdminNavBar(){
             initial={{ translateX: "200%", translateY: "-100%" }}
             animate={{ translateX: "100%", translateY: 0 }}
             exit={{ translateX: "200%", translateY: "-100%" }}
-            className="max-w-[15rem] z-30 flex flex-col mt-3 justify-between bg-white p-3 shadow min-h-[70vh] rounded-lg">
+            className={`
+              max-w-[15rem] min-w-[11rem] z-30 flex flex-col mt-3 justify-between
+              bg-white p-3 shadow min-h-[70vh] rounded-lg`}>
             <AdminNavLinks />
             <User />
             <AdminNavLink url={{icon: AiOutlineLogout, name: "Logout", path: "/admin/signout"}}/>
