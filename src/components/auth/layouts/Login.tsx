@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { useMediaQuery } from "react-responsive";
+import { useIsScreenSize } from "@components/common/hooks";
 
 interface LoginLayoutProps {
   src?: string;
@@ -13,9 +13,10 @@ export default function LoginLayout(props: LoginLayoutProps){
   const { src, children, width, height, alt } = props;
   const [showImage, setShowImage] = React.useState(false);
   const imgSrc = src ? src : "/images/scientist.png";
-  const isTabletOrMobile = useMediaQuery({ query: '(min-width: 975px)' })
+  const isTabletOrMobile = useIsScreenSize(970)
   React.useEffect(() => {
     setShowImage(isTabletOrMobile);
+    console.log(isTabletOrMobile)
   }, [isTabletOrMobile]);
 
   return (

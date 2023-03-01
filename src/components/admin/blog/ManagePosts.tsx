@@ -5,10 +5,8 @@ import { useAllPosts } from "@gql/requests/queries/hooks";
 import React from "react";
 import ManagePost from "./ManagePost";
 
-interface ManagePostsProps {
-}
 
-export default function ManagePosts(props: ManagePostsProps) {
+export default function ManagePosts() {
   const { loading, data, error, refetch } = useAllPosts({ first: 20 });
   const [posts, setPosts] = React.useState<Maybe<PostTypeConnection>>();
   const [delError, setDelError] = React.useState<ApolloError>();

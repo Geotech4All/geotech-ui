@@ -25,8 +25,10 @@ export default function SidebarLayout(page: React.ReactElement) {
   React.useEffect(() => {
     setIsLarge(isLargeDevice);
     setLeftMargin(isLarge ? ((state?.sidebarWidth ?? 50) + 15) : "auto")
-    setTopPadding(isLarge ? "auto" : 50)
+    setTopPadding(isLarge ? "auto" : 30)
   }, [isLargeDevice, setIsLarge, state, isLarge])
+
+  console.log(isLargeDevice)
 
   return (
     <motion.div
@@ -36,6 +38,7 @@ export default function SidebarLayout(page: React.ReactElement) {
       {!isLarge ? <AdminNavBar /> : <Sidebar getState={getSidebarState}/>}
       <AudioLayout width={audioWidth}>
         <motion.div
+          animate={{ paddingTop: topPadding }}
           className="relative">
           <EnsureAuth>{ page }</EnsureAuth>
         </motion.div>

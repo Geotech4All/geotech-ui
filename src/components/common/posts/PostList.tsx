@@ -6,7 +6,7 @@ interface PostListProps {
   posts: Maybe<PostTypeConnection> | undefined,
   className?: string;
   title?: string;
-  isAdmin?: boolean
+  isAdmin?: boolean;
 }
 
 export default function PostList(props: PostListProps) {

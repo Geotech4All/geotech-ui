@@ -1,7 +1,6 @@
 import React from "react";
 import { Maybe, PostType } from "@gql/codegen/graphql";
 import { GImage, PostAuthor, PostReadLength } from "@components/common";
-import Link from "next/link";
 
 interface MidPostCardProps {
   post?: Maybe<PostType>;
@@ -14,7 +13,7 @@ export default function MidPostCard(props: MidPostCardProps) {
   const { post, isAdmin, className, bordered } = props;
   const slug = post?.title.toLowerCase().split(" ").join("-")
   return (
-    <Link
+    <a
       href={`${isAdmin ? "/admin" : "" }/blog/${post?.postId}-${slug}`}
       className={`
         ${bordered && "border-2 border-black/50"}
@@ -39,6 +38,6 @@ export default function MidPostCard(props: MidPostCardProps) {
           <PostAuthor post={post}/>
         </div>
       </div>
-    </Link>
+    </a>
   );
 };
