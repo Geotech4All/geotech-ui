@@ -2,7 +2,7 @@ import React from "react";
 import { CiEdit } from "react-icons/ci";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { AnimatePresence, motion } from "framer-motion";
-import { Button, GImage, Hideable, MiniPostCard } from "@components/common";
+import { Button, Confirmation, GImage, Hideable, MiniPostCard, MModal } from "@components/common";
 import { Maybe, PostType } from "@gql/codegen/graphql";
 import Link from "next/link";
 import { useDeletePost } from "@gql/requests/mutations/hooks";
@@ -20,10 +20,13 @@ export default function ManagePost(props: ManagePostProps){
   const [mutate] = useDeletePost();
   const [showHoverInfo, setShowHoverInfo] = React.useState(false)
   const [isSmallScreen, setIsSmallScreen] = React.useState(false);
+  const [deleting, setDeleting] = React.useState(false);
   const isMid = useIsMidScreen();
 
   const handleHover = () => setShowHoverInfo(true)
   const handleHoverEnd = () => setShowHoverInfo(false)
+  const openDeleting = () => setDeleting(true)
+  const closeDeleting = () => setDeleting(false)
 
   const slug = post?.title.toLowerCase().split(" ").join("-")
 
@@ -54,7 +57,7 @@ export default function ManagePost(props: ManagePostProps){
           <GImage
             className="max-w-[2.5rem] aspect-square rounded-full"
             src={post?.coverPhoto ?? "/images/reading-geo-tech.svg"} alt={`${post?.title} cover photo`}/>
-          <h3 className="group-hover:text-red-400 transition-all">{post?.title}</h3>
+          <h3 className="group-hover:text-red-400 transition-all line-clamp-1">{post?.title}</h3>
         </div>
         <div className="flex items-center gap-2">
           <Hideable>
@@ -66,7 +69,7 @@ export default function ManagePost(props: ManagePostProps){
                   p-0.5 px-2 rounded bg-blue-400/10 text-blue-900 hover:bg-blue-400/40 transition-all`}
                 href={`/admin/blog/edit/${post?.postId}-${slug}`}><CiEdit />Edit</Link>
               <Button
-                onClick={handleDelete}
+                onClick={openDeleting}
                 className={`
                   flex items-center bg-red-600/10 rounded p-0.5
                   hover:bg-red-600/30 transition-all active:bg-red-600/30
@@ -74,6 +77,15 @@ export default function ManagePost(props: ManagePostProps){
                 icon={MdOutlineDeleteOutline}>Delete</Button>
             </>
           </Hideable>
+          <MModal open={deleting} onClose={closeDeleting}>
+            <Confirmation
+              onCancel={closeDeleting}
+              onConfirm={handleDelete}
+              confirmPrompt="Yes! delete"
+              cancelPrompt="No! cancel"
+              item={{ name: post?.title ?? "", imageSrc: post?.coverPhoto ?? ""}}
+              message="Are you sure you want to delete this Post?"/>
+          </MModal>
         </div>
       </article>
     </>

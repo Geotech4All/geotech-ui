@@ -43,6 +43,7 @@ import PlayerBackground from "@components/common/audio/PlayerBackground";
 import PlayerControls from "@components/common/audio/PlayerControls";
 import PopupError from "@components/common/errors/PopupError";
 import Hideable from "@components/common/dropdowns/Hideable";
+import Confirmation from "@components/common/popups/Confirmation";
 
 import type { GInputProps } from "@components/common/inputs/GInput";
 import type { LInputProps } from "@components/common/inputs/LInput";
@@ -95,7 +96,8 @@ export {
   PlayerBackground,
   PlayingPodcastDetails,
   PlayerControls,
-  Hideable
+  Hideable,
+  Confirmation
 };
 
 export type { GInputProps, LInputProps, DialogPropsType, ButtonProps, ErrorProps }
