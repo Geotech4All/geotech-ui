@@ -17,7 +17,7 @@ export default function Confirmation(props: ConfirmationProps) {
   const { onConfirm, onCancel, message, confirmPrompt, cancelPrompt, item } = props;
   return (
     <div className="flex gap-3 flex-col items-center">
-      <h1 className="text-lg">{message}</h1>
+      <h1 className="text-lg flex items-center">{message}</h1>
       {item && (
          <div className="flex flex-col gap-3 items-center">
           {item.name && <h2 className="font-semibold text-lg line-clamp-1">{item.name}</h2>}
