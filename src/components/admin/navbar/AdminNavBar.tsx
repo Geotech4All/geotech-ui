@@ -16,6 +16,8 @@ export default function AdminNavBar(){
     }
   }
 
+  const closeNav = () => setNavOpen(false);
+
   return (
     <div className="fixed z-20">
       <AnimatePresence>
@@ -43,10 +45,12 @@ export default function AdminNavBar(){
             className={`
               max-w-[15rem] min-w-[11rem] z-30 flex flex-col mt-3 justify-between
               bg-white p-3 shadow min-h-[70vh] rounded-lg`}>
-            <AdminNavLinks />
+            <AdminNavLinks onNavClick={closeNav} />
             <div className="flex flex-col gap-2">
               <User />
-              <AdminNavLink url={{icon: AiOutlineLogout, name: "Logout", path: "/admin/signout"}}/>
+              <AdminNavLink
+                onClick={closeNav}
+                url={{icon: AiOutlineLogout, name: "Logout", path: "/admin/signout"}}/>
             </div>
           </motion.div>
         }
