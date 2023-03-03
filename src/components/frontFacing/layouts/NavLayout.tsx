@@ -1,5 +1,5 @@
 import React from "react";
-import { MobileNav, NavBar } from "@components/frontFacing";
+import { Footer, MobileNav, NavBar } from "@components/frontFacing";
 import { useIsMidScreen } from "@components/common/hooks";
 
 export default function NavBarLayout (page: React.ReactElement): React.ReactNode {
@@ -16,6 +16,7 @@ export default function NavBarLayout (page: React.ReactElement): React.ReactNode
       <div className="z-0">
         {page}
       </div>
+      <Footer />
     </div>
   )
 }

@@ -32,14 +32,14 @@ export default function BlogLanding(props: BlogLandingProps) {
         href="/blog">Our blog</Link>
       <motion.h3
         initial={{ opacity: 0, y: -5 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        animate={{ opacity: 1, y: 0 }}
         className="font-montserrat font-bold mb-6 text-3xl md:text-5xl">Stories &amp; News</motion.h3>
       <div className={`flex flex-col gap-5 p-2 md:max-w-5xl items-center md:flex-row`}>
         {posts?.edges[0] && (
           <motion.div
             whileInView={{ opacity: 1, y: 0 }}
             initial={{ opacity: 0, y: 5 }}>
-            <MidPostCard className="max-w-md" bordered post={posts?.edges[0].node} />
+            <MidPostCard className="max-w-md" post={posts?.edges[0].node} />
           </motion.div>
           )}
         <motion.ul
