@@ -14,7 +14,8 @@ import type {
   QueryGetPostByIdArgs,
   QueryGetPodcastByIdArgs,
   PodcastType,
-  UserNode
+  UserNode,
+  QueryStaffDetailArgs
 } from "@gql/codegen/graphql";
 
 export function useCurrentlyLoggenInUser() {
@@ -73,6 +74,14 @@ export function useRecentHosts(){
 export function useStaffList(){
   return useQuery<{ staff: Maybe<Array<StaffType>> }>(Queries.STAFF_LIST)
 };
+
+export function useStaffDetail(variables?: QueryStaffDetailArgs){
+  return useQuery<
+    { staff: Maybe<StaffType>},
+    QueryStaffDetailArgs>(Queries.STAFF_DETAIL, {
+      variables
+    })
+}
 
 export function usePrevousGuests(){
   return useQuery<{ guests: Maybe<GuestTypeConnection>}>(Queries.PREVIOUS_GUESTS)

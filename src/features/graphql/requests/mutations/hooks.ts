@@ -8,18 +8,21 @@ import {
   MutationIncreasePodcastListensArgs,
   MutationIncreasePostViewCountArgs,
   MutationUpdateProfileArgs,
+  MutationUpdateStaffArgs,
   PodcastCreateUpdateMutation,
   PostCreateUpdateMutation, 
   PostDeleteMutation, 
   PostViewsIncreaseMutation,
-  ProfileUpdateMutation} from "@gql/codegen/graphql";
+  ProfileUpdateMutation,
+  StaffUpdateMutation} from "@gql/codegen/graphql";
 import {
   CREATE_UPDATE_PODCAST,
   CREATE_UPDATE_POST,
   DELETE_POST,
   INCREASE_PODCAST_LISTENS,
   INCREASE_POST_VIEW_COUNT,
-  UPDATE_PROFILE
+  UPDATE_PROFILE,
+  UPDATE_STAFF
 } from "@gql/requests/mutations";
 
 export const useUpdatePodcast = () => {
@@ -62,4 +65,11 @@ export const useIncreasePodcastListens = (variables?: MutationIncreasePodcastLis
   { podcast: Maybe<IncreasePodcastListens>},
     MutationIncreasePodcastListensArgs
   >(INCREASE_PODCAST_LISTENS, { variables })
+}
+
+export const useUpdateStaff = (variables?: MutationUpdateStaffArgs) => {
+  return useMutation<
+  { staff: Maybe<StaffUpdateMutation>},
+    MutationUpdateStaffArgs
+  >(UPDATE_STAFF, { variables })
 }

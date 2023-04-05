@@ -66,6 +66,9 @@ export const STAFF_LIST = gql`
       staffId
       id
       user {
+        email
+        firstName
+        lastName
         fullName
         id
         profile {
@@ -183,6 +186,30 @@ export const GET_CURRENT_USER = gql`
         about
         image
         profileId
+      }
+    }
+  }
+`
+
+export const STAFF_DETAIL = gql`
+  query StaffDetail($staffId: ID!) {
+    staff: staffDetail(staffId: $staffId) {
+      canAlterPodcast
+      canAlterPost
+      canAlterUser
+      canCreatePodcast
+      canCreatePost
+      canCreateUser
+      canDeletePodcast
+      canDeletePost
+      canDeleteUser
+      staffId
+      user {
+        email
+        fullName
+        profile {
+          image
+        }
       }
     }
   }

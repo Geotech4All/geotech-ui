@@ -45,6 +45,9 @@ import PopupError from "@components/common/errors/PopupError";
 import Hideable from "@components/common/dropdowns/Hideable";
 import Confirmation from "@components/common/popups/Confirmation";
 
+// Input
+import ToggleInput from "@components/common/inputs/ToggleInput";
+
 import type { GInputProps } from "@components/common/inputs/GInput";
 import type { LInputProps } from "@components/common/inputs/LInput";
 import type { DialogPropsType } from "@components/common/modals/types";
@@ -97,7 +100,8 @@ export {
   PlayingPodcastDetails,
   PlayerControls,
   Hideable,
-  Confirmation
+  Confirmation,
+  ToggleInput
 };
 
 export type { GInputProps, LInputProps, DialogPropsType, ButtonProps, ErrorProps }

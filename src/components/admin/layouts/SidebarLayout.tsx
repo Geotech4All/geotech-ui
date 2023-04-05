@@ -28,7 +28,6 @@ export default function SidebarLayout(page: React.ReactElement) {
     setTopPadding(isLarge ? "auto" : 30)
   }, [isLargeDevice, setIsLarge, state, isLarge])
 
-  console.log(isLargeDevice)
 
   return (
     <motion.div

@@ -23,6 +23,11 @@ import ManagePodcast from "@components/admin/podcasts/ManagePodcast";
 import ManagePodcasts from "@components/admin/podcasts/ManagePodcasts";
 import ProfileForm from "@components/admin/profile/ProfileForm";
 
+// Stafff
+import StaffCard from "@components/admin/staff/StaffCard";
+import StaffList from "@components/admin/staff/StaffList";
+import StaffPermissionForm from "@components/admin/staff/StaffPermissionForm";
+
 export {
   User,
   Sidebar,
@@ -47,5 +52,10 @@ export {
   SidebarLayout,
   PodcastForm,
   AdminPodcastList,
-  AdminTrendingPodcasts
+  AdminTrendingPodcasts,
+
+// Staff
+  StaffCard,
+  StaffList,
+  StaffPermissionForm
 };

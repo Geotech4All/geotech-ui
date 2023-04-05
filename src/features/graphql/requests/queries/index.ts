@@ -5,7 +5,8 @@ import {
   GET_PODCAST_BY_ID,
   ALL_POSTS,
   STAFF_LIST,
-  GET_CURRENT_USER
+  GET_CURRENT_USER,
+  STAFF_DETAIL
 } from "@gql/requests/queries/AdminQueries";
 
 import {
@@ -17,6 +18,7 @@ import {
 export {
   ALL_POSTS,
   STAFF_LIST,
+  STAFF_DETAIL,
   RECENT_HOSTS,
   ALL_PODCASTS,
   GET_CURRENT_USER,
