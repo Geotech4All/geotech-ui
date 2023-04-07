@@ -27,6 +27,7 @@ import ProfileForm from "@components/admin/profile/ProfileForm";
 import StaffCard from "@components/admin/staff/StaffCard";
 import StaffList from "@components/admin/staff/StaffList";
 import StaffPermissionForm from "@components/admin/staff/StaffPermissionForm";
+import NewStaff from "@components/admin/staff/NewStaff";
 
 export {
   User,
@@ -57,5 +58,6 @@ export {
 // Staff
   StaffCard,
   StaffList,
-  StaffPermissionForm
+  StaffPermissionForm,
+  NewStaff
 };

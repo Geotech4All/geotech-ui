@@ -9,7 +9,7 @@ interface StaffListProps {
 export default function StaffList(props: StaffListProps){
   const { staff } = props;
   return (
-    <div>
+    <div className="flex flex-col gap-3 p-4">
         <h2 className="text-black/50 text-xl">Staff List</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {staff?.map(staff => <StaffCard key={staff.staffId} staff={staff}/>)}

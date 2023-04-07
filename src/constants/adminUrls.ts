@@ -3,6 +3,7 @@ import { MdSpaceDashboard } from "react-icons/md";
 import { SiGooglepodcasts } from "react-icons/si";
 import { CgNotes } from "react-icons/cg";
 import { FaUsers } from "react-icons/fa";
+import { FiBriefcase } from "react-icons/fi";
 
 export interface UrlType {
   path: string;
@@ -30,5 +31,10 @@ export const adminUrls: UrlType[] = [
     path: "/admin/staff",
     name: "Staff",
     icon: FaUsers
+  },
+  {
+    path: "/admin/opportunities",
+    name: "Opportunities",
+    icon: FiBriefcase
   }
 ]

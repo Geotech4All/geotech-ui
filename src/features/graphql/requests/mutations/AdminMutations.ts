@@ -102,3 +102,54 @@ export const UPDATE_STAFF = gql`
     }
   }
 `
+
+export const CREATE_STAFF = gql`
+  mutation CreateStaff(
+    $userEmail: String!,
+    $canAlterPodcast: Boolean, 
+    $canAlterPost: Boolean, 
+    $canAlterUser: Boolean, 
+    $canCreatePodcast: Boolean, 
+    $canCreatePost: Boolean, 
+    $canCreateUser: Boolean, 
+    $canDeletePodcast: Boolean, 
+    $canDeletePost: Boolean, 
+    $canDeleteUser: Boolean) {
+    createStaff(
+      userEmail: $userEmail, 
+      canAlterPodcast: $canAlterPodcast, 
+      canAlterPost: $canAlterPost, 
+      canAlterUser: $canAlterUser, 
+      canCreatePodcast: $canCreatePodcast, 
+      canCreatePost: $canCreatePost, 
+      canCreateUser: $canCreateUser, 
+      canDeletePodcast: $canDeletePodcast, 
+      canDeletePost: $canDeletePost, 
+      canDeleteUser: $canDeleteUser) {
+      success
+      errors {
+        field
+        messages
+      }
+      staff {
+        staffId
+        canAlterPodcast
+        canAlterPost
+        canAlterUser
+        canCreatePodcast
+        canCreatePost
+        canCreateUser
+        canDeletePodcast
+        canDeletePost
+        canDeleteUser
+        user {
+          email
+          fullName
+          profile {
+            image
+          }
+        }
+      }
+    }
+  }
+`

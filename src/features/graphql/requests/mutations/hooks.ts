@@ -1,7 +1,7 @@
 import { useMutation } from "@apollo/client";
 import {
-    IncreasePodcastListens,
   Maybe,
+  IncreasePodcastListens,
   MutationCreateUpdatePodcastArgs,
   MutationCreateUpdatePostArgs,
   MutationDeletePostArgs,
@@ -14,7 +14,9 @@ import {
   PostDeleteMutation, 
   PostViewsIncreaseMutation,
   ProfileUpdateMutation,
-  StaffUpdateMutation} from "@gql/codegen/graphql";
+  StaffUpdateMutation,
+  MutationCreateStaffArgs,
+  StaffCreateMutation} from "@gql/codegen/graphql";
 import {
   CREATE_UPDATE_PODCAST,
   CREATE_UPDATE_POST,
@@ -24,6 +26,7 @@ import {
   UPDATE_PROFILE,
   UPDATE_STAFF
 } from "@gql/requests/mutations";
+import { CREATE_STAFF } from "./AdminMutations";
 
 export const useUpdatePodcast = () => {
   return useMutation<
@@ -72,4 +75,11 @@ export const useUpdateStaff = (variables?: MutationUpdateStaffArgs) => {
   { staff: Maybe<StaffUpdateMutation>},
     MutationUpdateStaffArgs
   >(UPDATE_STAFF, { variables })
+}
+
+export const useCreateStaff = (variables?: MutationCreateStaffArgs) => {
+  return useMutation<
+  { staff: Maybe<StaffCreateMutation>},
+    MutationCreateStaffArgs
+  >(CREATE_STAFF, { variables })
 }

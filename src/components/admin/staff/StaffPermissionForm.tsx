@@ -46,7 +46,7 @@ export default function StaffPermissionForm(props: StaffPermissionFormProps){
   return (
     <form
       onSubmit={submitHandler}
-      className="w-fit flex relative flex-col gap-4">
+      className="w-full max-w-md flex relative flex-col gap-4">
       {loading && <div className="absolute h-full w-full bg-white/30"><SLoadingHalo /></div>}
       <legend
         className={`font-semibold text-2xl bg-ui-red-200/70
@@ -68,7 +68,7 @@ export default function StaffPermissionForm(props: StaffPermissionFormProps){
         className={`
           text-xl rounded-xl w-fit px-5 self-end justify-end
           p-2 bg-ui-red-200/90 text-white hover:opacity-70
-          transition active:opacity-70`}>Update</Button>
+          transition active:opacity-70`}>Save</Button>
     </form>
   )
 };
