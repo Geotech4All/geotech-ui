@@ -14,6 +14,8 @@ export default function DropDownList(props: DropDownListProps) {
   const [selected, setSelected] = React.useState<string>();
   const [optionsOpen, setOptionsOpen] = React.useState(false);
 
+  const buttonRef = React.useRef() as React.MutableRefObject<HTMLButtonElement>;
+
   const handleOpenOptions = () => {
     if (optionsOpen) {
       setOptionsOpen(false)
@@ -22,7 +24,12 @@ export default function DropDownList(props: DropDownListProps) {
     }
   }
 
-  const closeOptions = ()=>setOptionsOpen(false)
+  const closeOptions = (event: MouseEvent) => {
+    if (event.target !== buttonRef.current) {
+      setOptionsOpen(false)
+    }
+  }
+
   React.useEffect(()=> {
     document.addEventListener("click", closeOptions)
     return () => document.removeEventListener("click", closeOptions)
@@ -31,6 +38,7 @@ export default function DropDownList(props: DropDownListProps) {
   return (
     <div>
       <button
+        ref={buttonRef}
         type="button"
         onClick={handleOpenOptions}
         className="border-2 w-full flex items-center justify-between max-w-md text-black/70 rounded-md p-1 px-2">
