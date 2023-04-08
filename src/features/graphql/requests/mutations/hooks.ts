@@ -16,7 +16,9 @@ import {
   ProfileUpdateMutation,
   StaffUpdateMutation,
   MutationCreateStaffArgs,
-  StaffCreateMutation} from "@gql/codegen/graphql";
+  StaffCreateMutation,
+  MutationCreateUpdateOpportunityArgs,
+  OpportunityCreateUpdateMutation} from "@gql/codegen/graphql";
 import {
   CREATE_UPDATE_PODCAST,
   CREATE_UPDATE_POST,
@@ -26,7 +28,7 @@ import {
   UPDATE_PROFILE,
   UPDATE_STAFF
 } from "@gql/requests/mutations";
-import { CREATE_STAFF } from "./AdminMutations";
+import { CREATE_STAFF, CREATE_UPDATE_OPPORTUNITY } from "./AdminMutations";
 
 export const useUpdatePodcast = () => {
   return useMutation<
@@ -82,4 +84,11 @@ export const useCreateStaff = (variables?: MutationCreateStaffArgs) => {
   { staff: Maybe<StaffCreateMutation>},
     MutationCreateStaffArgs
   >(CREATE_STAFF, { variables })
+}
+
+export const useCreateUpdateOpportunity = (variables?: MutationCreateUpdateOpportunityArgs) => {
+  return useMutation<
+  { opportunity: Maybe<OpportunityCreateUpdateMutation>},
+    MutationCreateUpdateOpportunityArgs
+  >(CREATE_UPDATE_OPPORTUNITY, { variables })
 }

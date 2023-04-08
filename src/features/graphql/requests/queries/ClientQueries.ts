@@ -95,3 +95,27 @@ export const GET_POST_BY_ID = gql`
     }
   }
 `
+
+export const ALL_OPPORTUNITIES = gql`
+  query Opportunities($category: String) {
+    opportunities (category: $category) {
+      edges {
+        node {
+          category
+          description
+          lastUpdated
+          opportunityId
+          title
+          images {
+            edges {
+              node {
+                url
+                imageId
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`

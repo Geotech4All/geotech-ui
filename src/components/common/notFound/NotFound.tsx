@@ -1,23 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import Image from "next/image";
 import { getRandom } from "@utils/common";
 import { EmptyError, emptyErrors } from "@constants/errors";
 
 interface NothingFoundProps {
   caption?: string;
-  url?: string;
-  name?: string;
-  isAdmin: boolean;
+  className?: string;
 }
 
 export default function NothingFound(props: NothingFoundProps){
-  const { caption } = props;
+  const { caption, className } = props;
   const [emptyError, setEmptyError] = React.useState<EmptyError>()
 
   React.useEffect(() => setEmptyError(getRandom<EmptyError>(emptyErrors)), []);
   return (
-    <div>
+    <div className={className}>
       <img
         width={emptyError?.width ?? 0}
         height={emptyError?.height ?? 0}

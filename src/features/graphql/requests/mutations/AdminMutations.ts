@@ -153,3 +153,28 @@ export const CREATE_STAFF = gql`
     }
   }
 `
+
+export const CREATE_UPDATE_OPPORTUNITY = gql`
+  mutation CreateUpdateOpportunity(
+    $category: OpportunityEnum, 
+    $description: String, 
+    $imageIds: [IdInput], 
+    $opportunityId: ID, 
+    $title: String) {
+    opportunity: createUpdateOpportunity(
+      category: $category, 
+      description: $description, 
+      imageIds: $imageIds, 
+      opportunityId: $opportunityId, 
+      title: $title) {
+      errors {
+        field
+        messages
+      }
+      success
+      opportunity {
+        opportunityId
+      }
+    }
+  }
+`

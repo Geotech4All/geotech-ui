@@ -29,6 +29,12 @@ import StaffList from "@components/admin/staff/StaffList";
 import StaffPermissionForm from "@components/admin/staff/StaffPermissionForm";
 import NewStaff from "@components/admin/staff/NewStaff";
 
+
+// Opportunities
+import OpportunityList from "@components/admin/opportunities/OpportunityList";
+import OpportunityCard from "@components/admin/opportunities/OpportunityCard";
+import OpportunityForm from "@components/admin/opportunities/OpportuntityForm";
+
 export {
   User,
   Sidebar,
@@ -59,5 +65,10 @@ export {
   StaffCard,
   StaffList,
   StaffPermissionForm,
-  NewStaff
+  NewStaff,
+
+// Opportunities
+  OpportunityList,
+  OpportunityCard,
+  OpportunityForm,
 };

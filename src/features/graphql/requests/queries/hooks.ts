@@ -15,7 +15,9 @@ import type {
   QueryGetPodcastByIdArgs,
   PodcastType,
   UserNode,
-  QueryStaffDetailArgs
+  QueryStaffDetailArgs,
+  QueryOpportunitiesArgs,
+  OpportunityTypeConnection
 } from "@gql/codegen/graphql";
 
 export function useCurrentlyLoggenInUser() {
@@ -85,4 +87,11 @@ export function useStaffDetail(variables?: QueryStaffDetailArgs){
 
 export function usePrevousGuests(){
   return useQuery<{ guests: Maybe<GuestTypeConnection>}>(Queries.PREVIOUS_GUESTS)
+}
+
+export function useAllOpportunities(variables?: QueryOpportunitiesArgs) {
+  return useQuery<
+    {opportunities: Maybe<OpportunityTypeConnection>},
+    QueryOpportunitiesArgs
+  >(Queries.ALL_OPPORTUNITIES, { variables })
 }

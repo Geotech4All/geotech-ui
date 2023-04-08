@@ -12,7 +12,8 @@ import {
 import {
   ALL_PODCASTS,
   POPULAR_POSTS,
-  GET_POST_BY_ID
+  GET_POST_BY_ID,
+  ALL_OPPORTUNITIES
 } from "@gql/requests/queries/ClientQueries";
 
 export {
@@ -27,4 +28,5 @@ export {
   PREVIOUS_GUESTS,
   GET_PODCAST_BY_ID,
   MOST_LISTENED_PODCASTS,
+  ALL_OPPORTUNITIES,
 }
