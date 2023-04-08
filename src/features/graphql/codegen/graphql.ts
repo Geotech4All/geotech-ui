@@ -1640,8 +1640,6 @@ export type StaffUpdateMutationVariables = Exact<{
 }>;
 
 
-export type StaffUpdateMutation = { __typename?: 'Mutation', staff?: { __typename?: 'StaffUpdateMutation', success?: boolean | null, errors?: Array<{ __typename?: 'ErrorType', field: string, messages: Array<string> } | null> | null, staff?: { __typename?: 'StaffType', staffId?: string | null, id: string } | null } | null };
-
 export type CreateStaffMutationVariables = Exact<{
   userEmail: Scalars['String'];
   canAlterPodcast?: InputMaybe<Scalars['Boolean']>;
@@ -1676,8 +1674,6 @@ export type CreateUpdateTagMutationVariables = Exact<{
   tagId?: InputMaybe<Scalars['ID']>;
 }>;
 
-
-export type CreateUpdateTagMutation = { __typename?: 'Mutation', tag?: { __typename?: 'CreateUpdateTagMutation', success?: boolean | null, errors?: Array<{ __typename?: 'ErrorType', field: string, messages: Array<string> } | null> | null, tag?: { __typename?: 'TagType', tagId?: string | null, title: string } | null } | null };
 
 export type TokenAuthMutationVariables = Exact<{
   password: Scalars['String'];
