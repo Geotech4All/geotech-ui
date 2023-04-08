@@ -156,7 +156,7 @@ export const CREATE_STAFF = gql`
 
 export const CREATE_UPDATE_OPPORTUNITY = gql`
   mutation CreateUpdateOpportunity(
-    $category: OpportunityEnum, 
+    $category: String, 
     $description: String, 
     $imageIds: [IdInput], 
     $opportunityId: ID, 
@@ -174,6 +174,22 @@ export const CREATE_UPDATE_OPPORTUNITY = gql`
       success
       opportunity {
         opportunityId
+      }
+    }
+  }
+`
+
+export const CREATE_UPDATE_TAG = gql`
+  mutation CreateUpdateTag($category: String, $description: String, $title: String, $tagId: ID) {
+    tag: createUpdateTag(category: $category, description: $description, title: $title, tagId: $tagId) {
+      errors {
+        field
+        messages
+      }
+      success
+      tag {
+        tagId
+        title
       }
     }
   }

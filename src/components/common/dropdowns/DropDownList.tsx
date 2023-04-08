@@ -7,14 +7,21 @@ import DropDownOption from "./DropDownOption";
 interface DropDownListProps {
   options: string[];
   name?: string;
+  getCurrent: (selected: string) => void;
+  defaultValue?: string;
 }
 
 export default function DropDownList(props: DropDownListProps) {
-  const { options, name } = props;
-  const [selected, setSelected] = React.useState<string>();
+  const { options, name, getCurrent, defaultValue } = props;
+  const [selected, setSelected] = React.useState<string | undefined>(defaultValue);
   const [optionsOpen, setOptionsOpen] = React.useState(false);
 
+  const updateSelected = (selected: string) => {
+    setSelected(selected);
+    getCurrent(selected);
+  }
   const buttonRef = React.useRef() as React.MutableRefObject<HTMLButtonElement>;
+  const spanRef = React.useRef() as React.MutableRefObject<HTMLSpanElement>;
 
   const handleOpenOptions = () => {
     if (optionsOpen) {
@@ -25,7 +32,9 @@ export default function DropDownList(props: DropDownListProps) {
   }
 
   const closeOptions = (event: MouseEvent) => {
-    if (event.target !== buttonRef.current) {
+    const validTargets = [buttonRef.current, spanRef.current]
+    const target = event.target as HTMLElement
+    if (target && !validTargets.includes(target)) {
       setOptionsOpen(false)
     }
   }
@@ -36,15 +45,18 @@ export default function DropDownList(props: DropDownListProps) {
   }, [])
 
   return (
-    <div>
+    <div className="w-full">
       <button
         ref={buttonRef}
         type="button"
         onClick={handleOpenOptions}
         className="border-2 w-full flex items-center justify-between max-w-md text-black/70 rounded-md p-1 px-2">
-        <span className={`
-          ${selected ? "" : "text-black/50"}
-          `}>{selected? selected : `Select ${name ? name : ''}`}</span>
+        <span
+          ref={spanRef} 
+          onClick={handleOpenOptions}
+          className={`
+            ${selected ? "" : "text-black/50"}
+            `}>{selected? selected : `Select ${name ? name : ''}`}</span>
         {optionsOpen ? <FaAngleDown /> : <FaAngleUp />}
       </button>
       <AnimatePresence>
@@ -57,7 +69,7 @@ export default function DropDownList(props: DropDownListProps) {
             key={Math.random()}>
             {options.map(option => (
               <DropDownOption
-                onSelect={setSelected}
+                onSelect={updateSelected}
                 key={Math.random()} option={option} />
             ))}
           </motion.ul>

@@ -17,7 +17,9 @@ import type {
   UserNode,
   QueryStaffDetailArgs,
   QueryOpportunitiesArgs,
-  OpportunityTypeConnection
+  OpportunityTypeConnection,
+  QueryTagsArgs,
+  TagTypeConnection
 } from "@gql/codegen/graphql";
 
 export function useCurrentlyLoggenInUser() {
@@ -94,4 +96,11 @@ export function useAllOpportunities(variables?: QueryOpportunitiesArgs) {
     {opportunities: Maybe<OpportunityTypeConnection>},
     QueryOpportunitiesArgs
   >(Queries.ALL_OPPORTUNITIES, { variables })
+}
+
+export function useAllTags(variables?: QueryTagsArgs) {
+  return useQuery<
+    { tags: Maybe<TagTypeConnection>},
+    QueryTagsArgs
+  >(Queries.ALL_TAGS, { variables })
 }

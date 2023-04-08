@@ -35,6 +35,9 @@ import OpportunityList from "@components/admin/opportunities/OpportunityList";
 import OpportunityCard from "@components/admin/opportunities/OpportunityCard";
 import OpportunityForm from "@components/admin/opportunities/OpportuntityForm";
 
+// Tags
+import TagForm from "@components/admin/tag/TagForm";
+
 export {
   User,
   Sidebar,
@@ -71,4 +74,7 @@ export {
   OpportunityList,
   OpportunityCard,
   OpportunityForm,
+
+// Tag
+  TagForm,
 };

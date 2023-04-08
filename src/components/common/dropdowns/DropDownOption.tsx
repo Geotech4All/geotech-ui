@@ -3,7 +3,7 @@ import React from "react";
 
 interface DropDownOptionProps {
   option: string;
-  onSelect: React.Dispatch<React.SetStateAction<string | undefined>>
+  onSelect: (selected: string) => void
 }
 
 export default function DropDownOption(props: DropDownOptionProps) {
