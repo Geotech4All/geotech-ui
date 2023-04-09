@@ -30,7 +30,7 @@ const DashBoard: NextPageWithLayout = () => {
       </Head>
       <main>
         <div className="flex flex-col gap-3">
-            <TrendingPodcasts isAdmin={true} />
+            <TrendingPodcasts />
             <PostList title="Popular posts" posts={pData?.posts}/>
         </div>
       </main>
