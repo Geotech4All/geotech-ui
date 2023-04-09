@@ -2,11 +2,8 @@ import { useAllPodcasts } from "@gql/requests/queries/hooks";
 import React from "react";
 import { MidPodcastCard, NothingFound, SLoadingRing } from "@components/common"
 
-interface RecentPodcastsProps {
-  isAdmin?: boolean;
-}
 
-export default function RecentPodcasts(props: RecentPodcastsProps){
+export default function RecentPodcasts(){
   const {loading, error, data} = useAllPodcasts({ first: 5 })
 
   if (loading) return (
@@ -25,7 +22,7 @@ export default function RecentPodcasts(props: RecentPodcastsProps){
       </div>)
       :(
         <div className="flex items-center h-full justify-center w-full">
-          <NothingFound isAdmin={props.isAdmin ? props.isAdmin : true} caption="Sorry no podcasts yet" name="Podcast"/>
+          <NothingFound caption="Sorry no podcasts yet"/>
         </div>
       )}
     </div>

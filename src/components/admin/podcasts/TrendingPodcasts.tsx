@@ -12,8 +12,6 @@ export default function AdminTrendingPodcasts(){
       {hasPodcasts ? <AdminPodcastList podcasts={podcasts} />
       :(
         <NothingFound
-          isAdmin={true}
-          url="#" name="Podcast"
           caption="Sorry! No podcasts found" />
       )}
     </div>

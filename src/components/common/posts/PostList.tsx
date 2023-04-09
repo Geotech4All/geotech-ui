@@ -6,11 +6,10 @@ interface PostListProps {
   posts: Maybe<PostTypeConnection> | undefined,
   className?: string;
   title?: string;
-  isAdmin?: boolean;
 }
 
 export default function PostList(props: PostListProps) {
-  const { posts, isAdmin, title, className } = props;
+  const { posts, title, className } = props;
   
   return (
     <div className={`flex flex-col ${className}`}>
@@ -20,7 +19,7 @@ export default function PostList(props: PostListProps) {
           <div className="flex items-center self-center justify-center max-w-md">
             <NothingFound
               caption="Sorry we couldn't find any posts"
-              url="/admin/blog/new" name="Post" isAdmin={isAdmin ? isAdmin : true} />
+              />
           </div>
         )
       :(
