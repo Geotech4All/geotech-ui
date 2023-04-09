@@ -62,7 +62,7 @@ export default function DropDownList(props: DropDownListProps) {
       <AnimatePresence>
         {optionsOpen && (
           <motion.ul
-            className="shadow-lg p-2 max-w-md flex flex-col rounded-lg"
+            className="shadow-lg p-2 absolute w-full bg-white z-20 max-w-md flex flex-col rounded-lg"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 20, opacity: 0 }}

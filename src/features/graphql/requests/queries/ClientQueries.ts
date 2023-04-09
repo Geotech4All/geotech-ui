@@ -97,8 +97,16 @@ export const GET_POST_BY_ID = gql`
 `
 
 export const ALL_OPPORTUNITIES = gql`
-  query Opportunities($categoryTitle: String, $categoryTitleIstartswith: String, $categoryTitleIcontains: String) {
-    opportunities(category_Title: $categoryTitle, category_Title_Istartswith: $categoryTitleIstartswith, category_Title_Icontains: $categoryTitleIcontains) {
+  query Opportunities(
+    $category: String,
+    $categoryTitle: String, 
+    $categoryTitleIstartswith: String, 
+    $categoryTitleIcontains: String) {
+    opportunities(
+      category: $category,
+      category_Title: $categoryTitle, 
+      category_Title_Istartswith: $categoryTitleIstartswith, 
+      category_Title_Icontains: $categoryTitleIcontains) {
       edges {
         node {
           category {

@@ -4,6 +4,7 @@ import { GoHome } from "react-icons/go";
 import { BsTwitter, BsLinkedin } from "react-icons/bs";
 import { MdFiberSmartRecord } from "react-icons/md";
 import { ImFacebook2 } from "react-icons/im";
+import { FiBriefcase } from "react-icons/fi";
 
 export const frontFacingNavUrl: UrlType[] = [
   {
@@ -20,6 +21,11 @@ export const frontFacingNavUrl: UrlType[] = [
     name: "Podcast",
     path: "/podcasts",
     icon: MdFiberSmartRecord
+  },
+  {
+    name: "Opportunities",
+    path: "/opportunities",
+    icon: FiBriefcase
   }
 ]
 

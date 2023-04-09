@@ -6127,6 +6127,18 @@
                 "deprecationReason": null
               },
               {
+                "name": "category",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
                 "name": "category_Title",
                 "description": null,
                 "type": {

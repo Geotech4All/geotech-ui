@@ -34,6 +34,7 @@ import NewStaff from "@components/admin/staff/NewStaff";
 import OpportunityList from "@components/admin/opportunities/OpportunityList";
 import OpportunityCard from "@components/admin/opportunities/OpportunityCard";
 import OpportunityForm from "@components/admin/opportunities/OpportunityForm";
+import OpportunitiesListFilter from "@components/admin/opportunities/OpportunitiesListFilter";
 
 // Tags
 import TagForm from "@components/admin/tag/TagForm";
@@ -74,6 +75,7 @@ export {
   OpportunityList,
   OpportunityCard,
   OpportunityForm,
+  OpportunitiesListFilter,
 
 // Tag
   TagForm,
