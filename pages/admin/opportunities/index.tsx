@@ -1,5 +1,4 @@
 import { OpportunityList, SidebarLayout } from "@components/admin";
-import { Button } from "@components/common";
 import { NextPageWithLayout } from "@pages/_app";
 import Head from "next/head";
 import Link from "next/link";
