@@ -25,7 +25,7 @@ const Podcast: NextPageWithLayout = () => {
     </Head>
     <AudioLayout>
       <div className="flex md:p-2 flex-col gap-4">
-        <TrendingPodcasts isAdmin={false}/>
+        <TrendingPodcasts />
         <RecentPodcasts isAdmin={false} />
       </div>
     </AudioLayout>
