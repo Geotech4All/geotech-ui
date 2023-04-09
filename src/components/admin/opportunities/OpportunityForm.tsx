@@ -1,10 +1,13 @@
-import { Button, CenterSLoadingRing, DropDownList, GInput, GTextArea, MModal, SomethingWentWrong } from "@components/common";
+import {
+  Button, CenterSLoadingRing,
+  DropDownList, FormErrors, GInput, GTextArea,
+  MModal, SLoadingHalo, SomethingWentWrong } from "@components/common";
 import { Maybe, OpportunityType } from "@gql/codegen/graphql";
 import { useCreateUpdateOpportunity } from "@gql/requests/mutations/hooks";
 import { useAllTags } from "@gql/requests/queries/hooks";
 import { useRouter } from "next/router";
 import React from "react";
-import TagForm from "../tag/TagForm";
+import { TagForm } from "@components/admin";
 
 
 interface OpportunityFormProps {
@@ -13,8 +16,8 @@ interface OpportunityFormProps {
 
 export default function OpportunityForm(props: OpportunityFormProps) {
   const { defaultValue } = props;
-  const [createUpdate, {loading}] = useCreateUpdateOpportunity();
-  const { refetch, data: tagData, loading: tagLoading, error: tagError} = useAllTags({ category: "opportunity" })
+  const [createUpdate, { loading, error }] = useCreateUpdateOpportunity();
+  const { refetch, data: tagData, loading: tagLoading, error: tagError} = useAllTags({ category_Iexact: "opportunity" })
   const [category, setCategory] = React.useState<string>();
   const [newTagOpen, setNewTagOpen] = React.useState(false)
   const router = useRouter();
@@ -36,7 +39,11 @@ export default function OpportunityForm(props: OpportunityFormProps) {
       description: descRef.current.value,
       title: titleRef.current.value,
       category: category 
-    }}).then(() => router.replace("/admin/opportunities"));
+    }}).then((res) => {
+        if (!res.errors) {
+          router.replace("/admin/opportunities")
+        }
+      }).catch(err => console.log(err));
   }
 
   if (tagLoading) return <CenterSLoadingRing />
@@ -47,9 +54,8 @@ export default function OpportunityForm(props: OpportunityFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col shadow-xl gap-3 p-3 md:p-9 rounded-lg">
-
-      {loading && <CenterSLoadingRing />}
+      className="flex flex-col relative shadow-xl gap-3 p-3 md:p-9 rounded-lg">
+      { error && <FormErrors errors={error} />}
       <GInput
         ref={titleRef}
         defaultValue={defaultValue?.title} 
@@ -79,7 +85,7 @@ export default function OpportunityForm(props: OpportunityFormProps) {
           onClick={() => setNewTagOpen(true)}
           type="button"
           className={`
-            hover:bg-green-500/90 active:bg-green-500/90 transition
+            hover:bg-green-500/90 active:bg-green-500/90 transition h-fit
             bg-green-500/70 whitespace-nowrap p-1 px-2 rounded-md`}>Add Category</Button>
         <MModal open={newTagOpen} onClose={()=>setNewTagOpen(false)}>
           <TagForm onComplete={onNewTagCreate} />
@@ -90,6 +96,11 @@ export default function OpportunityForm(props: OpportunityFormProps) {
         className={`
           bg-ui-red-200/80 p-1 rounded-md text-white text-lg transition
           font-semibold hover:bg-ui-red-200 active:bg-ui-red-200`}>Save</Button>
+      {loading && (
+        <div className="absolute bg-white/40 h-full w-full ">
+            <SLoadingHalo />
+        </div>
+      )}
     </form>
   )
 }

@@ -13,7 +13,7 @@ const Opportunities: NextPageWithLayout = () => {
         <title>Geotech Opportunities</title>
       </Head>
       <main className="relative p-3">
-        <OpportunityList />
+        <OpportunityList admin/>
         <Link href="/admin/opportunities/new" className={`
           bg-ui-red-200/60 p-2 text-white font-semibold rounded-md
           absolute top-2 right-2 text-lg

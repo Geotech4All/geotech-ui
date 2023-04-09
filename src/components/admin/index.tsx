@@ -33,7 +33,7 @@ import NewStaff from "@components/admin/staff/NewStaff";
 // Opportunities
 import OpportunityList from "@components/admin/opportunities/OpportunityList";
 import OpportunityCard from "@components/admin/opportunities/OpportunityCard";
-import OpportunityForm from "@components/admin/opportunities/OpportuntityForm";
+import OpportunityForm from "@components/admin/opportunities/OpportunityForm";
 
 // Tags
 import TagForm from "@components/admin/tag/TagForm";

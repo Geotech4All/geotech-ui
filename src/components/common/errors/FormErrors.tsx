@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { ApolloError } from "@apollo/client";
 
 interface AuthErrorsProps {
   errors: any;
@@ -22,13 +23,16 @@ interface SimpleGQLError {
 export default function FormErrors(props: AuthErrorsProps){
   const { errors } = props;
   const [nonField, setNonField] = React.useState<NonFieldErrors>();
-  const [gqlErrors, setGqlErrors] = React.useState<SimpleGQLError[]>()
+  const [gqlErrors, setGqlErrors] = React.useState<SimpleGQLError[]>();
+  const [apolloError, setApolloError] = React.useState<ApolloError>();
 
   console.log(errors.graphqlErrors);
 
   React.useEffect(() => {
     if (errors.nonFieldErrors !== undefined && Array.isArray(errors.nonFieldErrors)) {
       if (errors satisfies NonFieldErrors) setNonField(errors as NonFieldErrors)
+    } else if (errors satisfies ApolloError) {
+      setApolloError(errors)
     } else if (errors satisfies SimpleGQLError) {
       setGqlErrors(errors as SimpleGQLError[])
     };
@@ -43,7 +47,10 @@ export default function FormErrors(props: AuthErrorsProps){
         {nonField && nonField.nonFieldErrors.map(error => (
           <li className="list-none text-red-700" key={error.code}>{error.message}</li>
         ))}
-        {gqlErrors && gqlErrors.map(error => (
+        {(gqlErrors && gqlErrors.map) && gqlErrors.map(error => (
+          <li className="list-none text-red-700" key={Math.random()}>{error.message}</li>
+        ))}
+        {apolloError && apolloError .graphQLErrors.map(error => (
           <li className="list-none text-red-700" key={Math.random()}>{error.message}</li>
         ))}
       </ul>

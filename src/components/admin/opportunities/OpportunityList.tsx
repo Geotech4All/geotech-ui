@@ -16,7 +16,8 @@ export default function OpportunityList(props: OpportunityListProps) {
   const found_opportunities = (data?.opportunities?.edges && data.opportunities.edges.length < 1);
 
 return (
-    <div>
+    <div className="flex flex-col gap-3">
+      <h1 className="text-lg font-semibold text-black/70">Oppotunities</h1>
       {found_opportunities ? (
         <div className="flex items-center justify-center">
           <NothingFound
@@ -24,11 +25,14 @@ return (
               className="max-w-md"/>
         </div>
       ):(
-        <ul>{data?.opportunities?.edges.map(opportunity => (
-          <OpportunityCard
-              opportunity={opportunity?.node}
-              key={opportunity?.node?.opportunityId} />
-        ))}</ul>      
+        <ul className="flex w-full flex-wrap gap-3">
+          {data?.opportunities?.edges.map(opportunity => (
+            <OpportunityCard
+                admin={admin}
+                opportunity={opportunity?.node}
+                key={opportunity?.node?.opportunityId} />
+          ))}
+        </ul>      
       )}
     </div>
   )

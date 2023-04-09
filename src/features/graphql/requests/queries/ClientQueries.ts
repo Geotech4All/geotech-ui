@@ -124,12 +124,36 @@ export const ALL_OPPORTUNITIES = gql`
 `
 
 export const ALL_TAGS = gql`
-  query Tags($category: String) {
-    tags(category: $category) {
+  query Tags($category: String, $categoryIexact: String) {
+    tags(category: $category, category_Iexact: $categoryIexact) {
       edges {
         node {
           title
           tagId
+        }
+      }
+    }
+  }
+`
+
+export const OPPORTUNITY = gql`
+  query Opportunity($opportunityId: ID!) {
+    opportunity(opportunityId: $opportunityId) {
+      title
+      description
+      category {
+        title
+        category
+      }
+      opportunityId
+      lastUpdated
+      images {
+        edges {
+          node {
+            imageId
+            url
+            description
+          }
         }
       }
     }

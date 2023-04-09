@@ -72,6 +72,9 @@ export default function DropDownList(props: DropDownListProps) {
                 onSelect={updateSelected}
                 key={Math.random()} option={option} />
             ))}
+            {options.length < 1 && (
+              <li className="italic text-black/50 flex items-center justify-center">empty</li>
+            )}
           </motion.ul>
         )}
       </AnimatePresence>
