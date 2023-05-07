@@ -5,11 +5,12 @@ import { createUploadLink } from "apollo-upload-client";
 
 // ApiUrl
 const ApiUrl = process.env.NEXT_PUBLIC_API_URL
-console.log({ApiUrl})
 
 const uploadLink = createUploadLink({
   uri: ApiUrl,
 })
+
+console.log({uploadLink});
 
 
 const authLink = setContext((_, { headers }) => {
