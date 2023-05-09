@@ -42,7 +42,7 @@ export default function ImageUpload(props: ImageUploadProps){
                 </div>
                 <DragAndDrop onAddFiles={getFile} />
             </div>
-            <DropDownList getCurrent={getFolder} options={folders}/>
+            <DropDownList full name="Image Folder i.e. image purpose (Optional)" getCurrent={getFolder} options={folders}/>
             <div className="w-full max-w-5xl">
                 { image && (
                     <ImagePreview url={URL.createObjectURL(image)} 

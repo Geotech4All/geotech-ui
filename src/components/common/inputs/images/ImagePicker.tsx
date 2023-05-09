@@ -1,8 +1,9 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ImageType } from "@gql/codegen/graphql";
+import { ImageType, ImageTypeEdge, Maybe } from "@gql/codegen/graphql";
 import { useImages } from "@gql/requests/queries/hooks";
-import { CenterSLoadingRing, ImagePickerFilter, ImagePickerItem, ImageUpload, MModal, SomethingWentWrong, TextInput, UIButton } from "@components/common";
+import { CenterSLoadingRing, ImagePickerFilter, ImagePickerItem, ImageUpload, MModal, NothingFound, SomethingWentWrong, TextInput, UIButton } from "@components/common";
+import { images } from "@constants/images";
 
 interface ImagePickerProps {
     onClose: () => void;
@@ -25,15 +26,22 @@ export default function ImagePicker(props: ImagePickerProps){
     }, [description, refetch])
     const handleImageFilter = (text: string) => setDescription(text);
 
-    const handleImageFormClose = () => {
-        setImageFormOpen(false);
-    }
+    const toggleImageForm = () => setImageFormOpen(curr => !curr);
 
     const handleNewImageSuccess = (_image: ImageType) => {
         refetch({ first: limit })
+        toggleImageForm();
+    }
+
+    const handleScroll = (e: React.UIEvent<HTMLElement>) => {
+        const atBottom = e.currentTarget.scrollHeight - e.currentTarget.scrollTop === e.currentTarget.clientHeight;
+        if (atBottom) {
+            fetchMore({ variables: { first: limit, after: data?.images.edges.pop()?.cursor}})
+        }
     }
 
     const closePicker = () => onClose();
+    const edges = data?.images.edges;
 
     if (error) return <SomethingWentWrong error={error} />
 
@@ -50,22 +58,27 @@ export default function ImagePicker(props: ImagePickerProps){
             <AnimatePresence>
                 <motion.div
                     className={`
-                        fixed top-1/3 bg-gray-100 p-2 flex flex-col gap-3 rounded w-full
+                        absolute self-top -translate-y-60 bg-gray-100 p-2 flex flex-col gap-3 rounded w-full
                         max-w-2xl shadow-lg`}
                     key={Math.random()}
                     exit={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     initial={{ opacity: 0 }}>
                     { loading && <CenterSLoadingRing /> }
-                   <ImagePickerFilter onFilter={handleImageFilter}/>
-                    <div>
-                        {data?.images.edges.map(edge => (
-                            <ImagePickerItem
-                                onPickImage={onPickImage}
-                                image={edge?.node} key={edge?.cursor}/>)
-                        )}
+                   <ImagePickerFilter onNew={toggleImageForm}onFilter={handleImageFilter}/>
+                    <div onScroll={handleScroll}
+                        className="w-full z-0 flex gap-1 min-h-[30rem] max-h-[35rem] overflow-auto">
+                        {edges?.length && edges.length > 0 ?
+                            edges?.map(edge => (
+                                <ImagePickerItem
+                                    onPickImage={onPickImage}
+                                    image={edge?.node} key={edge?.cursor}/>)
+                            )
+                        : <NothingFound caption="No images found"
+                            variant="small" image={images.imageSvg.img} alt={images.imageSvg.alt} />
+                        }
                     </div>
-                    <MModal open={imageFormOpen} onClose={handleImageFormClose}>
+                    <MModal open={imageFormOpen} onClose={toggleImageForm}>
                         <ImageUpload onSuccess={handleNewImageSuccess}/>
                     </MModal>
                 </motion.div>

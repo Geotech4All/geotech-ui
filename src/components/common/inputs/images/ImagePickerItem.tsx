@@ -23,16 +23,16 @@ export default function ImagePickerItem(props: ImagePickerItemProps){
     }
 
     return (
-        <div className="relative w-fit cursor-pointer"
+        <div className="relative w-fit h-fit cursor-pointer"
             onMouseOver={handleShowPreview}
             onMouseLeave={handleShowPreview}>
             <img onClick={handlePickImage}
-                className="max-h-40 object-cover"
+                className="max-h-40 object-cover z-[-100]"
                 src={image?.url} alt={image?.description ?? ""} title={image?.description ?? ""} />
             <AnimatePresence>
             {showPreview && (
                 <motion.div
-                    className="absolute w-screen max-w-2xl left-full bottom-0 bg-gray-100 p-1 rounded-md"
+                    className="fixed w-screen z-10 max-w-2xl bg-gray-100 p-1 rounded-md"
                     key={Math.random()}
                     exit={{ opacity: 0 }}
                     animate={{ opacity: 1 }}

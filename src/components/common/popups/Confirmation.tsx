@@ -20,9 +20,9 @@ export default function Confirmation(props: ConfirmationProps) {
       <h1 className="text-lg flex text-center">{message}</h1>
       {item && (
          <div className="flex flex-col gap-3 items-center">
-          {item.name && <h2 className="font-semibold text-lg line-clamp-1">{item.name}</h2>}
+          {item.name && <h2 className="font-semibold text-2xl line-clamp-1">{item.name}</h2>}
           {item.imageSrc && (
-            <img className="rounded-md" src={item.imageSrc} alt={item.name} />
+            <img className="rounded-md max-h-[30rem] object-cover" src={item.imageSrc} alt={item.name} />
           )}
         </div> 
       )}

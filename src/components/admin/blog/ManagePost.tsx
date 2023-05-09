@@ -81,8 +81,8 @@ export default function ManagePost(props: ManagePostProps){
             <Confirmation
               onCancel={closeDeleting}
               onConfirm={handleDelete}
-              confirmPrompt="Yes! delete"
-              cancelPrompt="No! cancel"
+              confirmPrompt="Yes delete"
+              cancelPrompt="No cancel"
               item={{ name: post?.title ?? "", imageSrc: post?.coverPhoto?.url ?? ""}}
               message="Are you sure you want to delete this Post?"/>
           </MModal>

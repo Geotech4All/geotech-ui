@@ -24,10 +24,10 @@ export default function MModal(props: DialogPropsType){
             animate={{ opacity: 1 }}
             key={Math.random()}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/20" aria-hidden="true" />
+            className="fixed items-celter flex flex-col inset-0 bg-black/20" aria-hidden="true" />
         </AnimatePresence>
         <div className="fixed inset-0 z-50 overflow-y-auto flex items-center ">
-          <div className="flex items-center mt-[30rem] md:mt-52 w-full justify-center p-4">
+          <div className="flex items-center  w-full justify-center p-4">
             <AnimatePresence>
               <Dialog.Panel
                 key={Math.random()}
@@ -35,7 +35,7 @@ export default function MModal(props: DialogPropsType){
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 as={motion.div}
-                className="flex flex-col gap-3 z-20 w-full max-w-3xl  rounded bg-white p-4">
+                className="flex flex-col items-center gap-3 z-20 w-full max-w-3xl  rounded bg-white p-4">
                 {title && (
                   <Dialog.Title className="text-red-500 font-semibold text-2xl">
                     {title}
