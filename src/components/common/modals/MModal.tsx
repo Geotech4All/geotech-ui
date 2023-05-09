@@ -35,7 +35,7 @@ export default function MModal(props: DialogPropsType){
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 as={motion.div}
-                className="flex flex-col items-center gap-3 z-20 w-full max-w-3xl  rounded bg-white p-4">
+                className="flex flex-col gap-3 z-20 w-full max-w-3xl  rounded bg-white p-4">
                 {title && (
                   <Dialog.Title className="text-red-500 font-semibold text-2xl">
                     {title}

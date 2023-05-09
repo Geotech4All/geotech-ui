@@ -15,7 +15,7 @@ export default function LoginAgainPrompt(){
   const goHome = () => router.push("/admin/signout")
   return (
     <MModal title="Signature Expired" open={open} onClose={handleClose}>
-      <div className="flex flex-col items-start gap-2 bg-white sm:text-sm md:text-base">
+      <div className="flex flex-col gap-2 bg-white sm:text-sm md:text-base">
         <p className="w-fit">It seems your session has expired</p>
         <div className="flex gap-3">
           <UIButton variant="Green" type="button" onClick={goToLogin}>Login</UIButton>
