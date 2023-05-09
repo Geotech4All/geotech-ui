@@ -9,6 +9,8 @@ interface TipTapMenuBarProps {
   editor: Editor | null;
 }
 
+// TODO: Add image pikcer to tiptap menu
+
 export default function TipTapMenuBar(props: TipTapMenuBarProps) {
   const { editor } = props;
   if (!editor) return null;
@@ -36,7 +38,6 @@ export default function TipTapMenuBar(props: TipTapMenuBarProps) {
           funcArgs={{ level: 1 }} func="heading" editor={editor} />
         <TipTapMenuItem
           showName="h2"
-          // disabled={editor.can().chain().focus().toggleHeading({ level: 2 }).run()}
           onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
           funcArgs={{ level: 2 }} func="heading" editor={editor} />
         <TipTapMenuItem
