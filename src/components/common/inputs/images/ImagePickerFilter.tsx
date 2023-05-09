@@ -28,7 +28,9 @@ export default function ImagePickerFilter(props: ImagePickerFilterProps){
             <TextInput ref={textRef}
                 onKeyDown={handleKeyPress}
                 placeholder="Search image by description"/>
-            <UIButton type="button" onClick={handleFilter} variant="Yellow" ><FiFilter size={20} /></UIButton>
+            <UIButton type="button" title="filter" onClick={handleFilter} variant="Yellow">
+                <FiFilter size={20} />
+            </UIButton>
         </div> 
    )
 };

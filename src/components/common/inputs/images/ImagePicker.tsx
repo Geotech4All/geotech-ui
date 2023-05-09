@@ -2,18 +2,22 @@ import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ImageType } from "@gql/codegen/graphql";
 import { useImages } from "@gql/requests/queries/hooks";
-import { CenterSLoadingRing, ImagePickerFilter, ImagePickerItem, ImageUpload, MModal, NothingFound, SomethingWentWrong } from "@components/common";
 import { images } from "@constants/images";
+import {
+    CenterSLoadingRing, ImagePickerFilter,
+    ImagePickerItem, ImageUpload, MModal, NothingFound,
+    SomethingWentWrong } from "@components/common";
 
 interface ImagePickerProps {
     onClose: () => void;
     onPickImage: (image: ImageType) => void;
+    children?: React.ReactNode;
 }
 
 const limit = 50;
 
 export default function ImagePicker(props: ImagePickerProps){
-    const { onClose, onPickImage } = props;
+    const { onClose, onPickImage, children } = props;
     const { data, loading, error, fetchMore, refetch } = useImages({ first: limit });
     const [imageFormOpen, setImageFormOpen] = React.useState(false);
     const [description, setDescription] = React.useState("");
@@ -58,13 +62,13 @@ export default function ImagePicker(props: ImagePickerProps){
             <AnimatePresence>
                 <motion.div
                     className={`
-                        absolute self-top -translate-y-60 bg-gray-100 p-2 flex flex-col gap-3 rounded w-full
-                        max-w-2xl shadow-lg`}
-                    key={Math.random()}
-                    exit={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    initial={{ opacity: 0 }}>
+                        absolute self-top left-1/2 -translate-x-1/2 -translate-y-60
+                        bg-gray-100 p-2 flex flex-col gap-3 rounded w-full
+                        max-w-xs md:max-w-2xl shadow-lg z-10`}
+                    key={Math.random()} exit={{ opacity: 0 }}
+                    animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
                     { loading && <CenterSLoadingRing /> }
+                    {children}
                    <ImagePickerFilter onNew={toggleImageForm}onFilter={handleImageFilter}/>
                     <div onScroll={handleScroll}
                         className="w-full z-0 flex gap-1 min-h-[30rem] max-h-[35rem] overflow-auto">

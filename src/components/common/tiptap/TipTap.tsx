@@ -1,11 +1,10 @@
 import React from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
-import Image from "@tiptap/extension-image";
 import StarterKit from "@tiptap/starter-kit";
 import { TipTapMenuBar } from "@components/common";
 import Underline from "@tiptap/extension-underline"
 import Paragraph from "@tiptap/extension-paragraph";
-import CustomHeading from "./CustormHeading";
+import { CustomHeading, CustomImage } from "@components/common";
 import { Editor } from "@tiptap/core";
 
 interface TipTapProps {
@@ -19,7 +18,7 @@ export default function TipTap(props: TipTapProps){
   const editor = useEditor({
     extensions: [
       StarterKit.configure({ heading: false }),
-      Image,
+      CustomImage,
       Underline,
       Paragraph,
       CustomHeading

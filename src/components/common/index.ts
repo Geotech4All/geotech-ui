@@ -10,6 +10,8 @@ import GTextArea from "@components/common/inputs/GTextArea";
 import TipTap from "@components/common/tiptap/TipTap";
 import TipTapMenuBar from "@components/common/tiptap/TipTapMenuBar";
 import TipTapMenuItem from "@components/common/tiptap/TipTapMenuItem";
+import TipTapImage, { CustomImage } from "@components/common/tiptap/TipTapImage";
+import CustomHeading from "@components/common/tiptap/CustormHeading";
 /**** Image Inputs ****/
 import IInput from "@components/common/inputs/images/IInput";
 import ToggleInput from "@components/common/inputs/ToggleInput";
@@ -83,7 +85,7 @@ export {
 /*** Inputs ***/
     LInput, GInput, IInput, PInput, FInput, TipTap, ImagePreview, ToggleInput,
     DragAndDrop, ImageUpload, TextInput, ImagePicker, ImagePickerItem,
-    ImagePickerFilter, TextArea,
+    ImagePickerFilter, TextArea, TipTapImage, CustomHeading, CustomImage,
 
 /*** Loading ***/
     SLoadingRing, SLoadingHalo, PageLoadingRing, PageLoadingHalo,

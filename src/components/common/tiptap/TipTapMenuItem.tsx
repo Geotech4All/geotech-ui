@@ -3,17 +3,18 @@ import { Button, ButtonProps } from "@components/common";
 import { Editor } from "@tiptap/core";
 
 interface TipTapMenuItemProps extends ButtonProps {
-  func: "bold" | "italic" | "underline" | "heading" | "undo" | "redo";
+  func: "Bold" | "Italic" | "Underline" | "Heading" | "Undo" | "Redo" | "Insert Image";
+  shortCut?: string;
   funcArgs?: Record<string, unknown>;
   showName?: string;
   editor: Editor;
 }
 
 export default function TipTapMenuItem(props: TipTapMenuItemProps){
-  const { showName, func, funcArgs, editor, ...rest } = props;
+  const { showName, func, shortCut, funcArgs, editor, ...rest } = props;
   return (
     <Button
-      {...rest} type="button" title={func}
+      {...rest} type="button" title={`${func} ${shortCut ?? ""}`}
       className={`
         ${editor.isActive(func.toLowerCase(), funcArgs) ? "bg-black/30" : "" }
         transition-all border p-1 text-black text-sm md:text-base disabled:text-black/30
