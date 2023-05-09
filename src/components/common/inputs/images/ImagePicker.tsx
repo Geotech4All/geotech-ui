@@ -1,8 +1,8 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ImageType, ImageTypeEdge, Maybe } from "@gql/codegen/graphql";
+import { ImageType } from "@gql/codegen/graphql";
 import { useImages } from "@gql/requests/queries/hooks";
-import { CenterSLoadingRing, ImagePickerFilter, ImagePickerItem, ImageUpload, MModal, NothingFound, SomethingWentWrong, TextInput, UIButton } from "@components/common";
+import { CenterSLoadingRing, ImagePickerFilter, ImagePickerItem, ImageUpload, MModal, NothingFound, SomethingWentWrong } from "@components/common";
 import { images } from "@constants/images";
 
 interface ImagePickerProps {
