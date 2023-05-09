@@ -1,4 +1,4 @@
-import { Button, MModal } from "@components/common";
+import { Button, MModal, UIButton } from "@components/common";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
@@ -12,27 +12,14 @@ export default function LoginAgainPrompt(){
   }
 
   const goToLogin = () => router.replace("/admin/signin")
-  const goHome = () => router.push("/")
+  const goHome = () => router.push("/admin/signout")
   return (
     <MModal title="Signature Expired" open={open} onClose={handleClose}>
-      <div className="flex flex-col gap-2 w-fit bg-white text-xl">
+      <div className="flex flex-col items-start gap-2 bg-white sm:text-sm md:text-base">
         <p className="w-fit">It seems your session has expired</p>
         <div className="flex gap-3">
-          <Button
-            type="button"
-            onClick={goToLogin}
-            className={`
-              bg-green-400 border border-green-600 outline-none
-              outline-0 transition-all hover:bg-green-600 p-1
-              px-3 hover:text-white rounded-md`}>Login</Button>
-          <Link
-            href="/admin/signout"
-            type="button"
-            onClick={goHome}
-            className={`
-              bg-red-400 border border-red-600 outline-0
-              transition-all hover:bg-red-600 p-1 px-3
-              hover:text-white rounded-md`}>Logout</Link>
+          <UIButton variant="Green" type="button" onClick={goToLogin}>Login</UIButton>
+          <UIButton type="button" onClick={goHome}>Logout</UIButton>
         </div>
       </div>
     </MModal>
