@@ -9,7 +9,7 @@ interface TipTapMenuBarProps {
   editor: Editor | null;
 }
 
-// TODO: Add image pikcer to tiptap menu
+// TODO: Add image pikcer to tiptap menu.
 
 export default function TipTapMenuBar(props: TipTapMenuBarProps) {
   const { editor } = props;
