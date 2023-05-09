@@ -28,7 +28,10 @@ export default function MiniPostCard(props: MiniPostCardPorps) {
         flex gap-3 group hover:shadow active:shadow
         bg-gray-100
         transition-all max-h-40 max-w-lg rounded-lg overflow-hidden`}>
-      <GImage className="flex-[1] overflow-hidden" src={post?.coverPhoto ?? "/images/reading-geo-tech.svg"} alt={`${post?.title} cover photo`}/>
+      <GImage
+          className="flex-[1] overflow-hidden"
+          src={post?.coverPhoto?.url ?? "/images/reading-geo-tech.svg"}
+          alt={post?.coverPhoto?.description ?? post?.title ?? ""}/>
       <div className="flex-[1] p-1 flex text-black/80 flex-col">
         <PostReadLength length={post?.readLength ?? 1}/>
         <div className="flex-1 flex flex-col justify-between">

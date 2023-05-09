@@ -24,7 +24,8 @@ export default function MidPostCard(props: MidPostCardProps) {
         flex flex-col gap-2 p-2 rounded-lg ${className}`}>
       <GImage
         className={`w-full flex-1 rounded-md shadow-lg`}
-        src={post?.coverPhoto ?? "/images/reading-geo-tech.svg"} alt={`${post?.title} cover photo`} />
+        src={post?.coverPhoto?.url ?? "/images/reading-geo-tech.svg"}
+        alt={post?.coverPhoto?.description ?? post?.title ?? ""} />
       <div className="p-2 flex flex-1 flex-col gap-2 text-black/80 w-full">
         <PostReadLength length={post?.readLength ?? 0}/>
         <div className="flex flex-1 flex-col justify-between">

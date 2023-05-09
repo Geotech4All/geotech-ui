@@ -56,7 +56,7 @@ export default function ManagePost(props: ManagePostProps){
         <div className="flex items-center gap-4">
           <GImage
             className="max-w-[2.5rem] aspect-square rounded-full"
-            src={post?.coverPhoto ?? "/images/reading-geo-tech.svg"} alt={`${post?.title} cover photo`}/>
+            src={post?.coverPhoto?.url ?? "/images/reading-geo-tech.svg"} alt={`${post?.title} cover photo`}/>
           <h3 className="group-hover:text-red-400 transition-all line-clamp-1">{post?.title}</h3>
         </div>
         <div className="flex items-center gap-2">
@@ -83,7 +83,7 @@ export default function ManagePost(props: ManagePostProps){
               onConfirm={handleDelete}
               confirmPrompt="Yes! delete"
               cancelPrompt="No! cancel"
-              item={{ name: post?.title ?? "", imageSrc: post?.coverPhoto ?? ""}}
+              item={{ name: post?.title ?? "", imageSrc: post?.coverPhoto?.url ?? ""}}
               message="Are you sure you want to delete this Post?"/>
           </MModal>
         </div>

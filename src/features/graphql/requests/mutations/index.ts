@@ -4,7 +4,8 @@ import {
   CREATE_UPDATE_POST,
   DELETE_POST,
   UPDATE_PROFILE,
-  UPDATE_STAFF
+  UPDATE_STAFF,
+  DELETE_IMAGE
 }
 from "@gql/requests/mutations/AdminMutations";
 import {
@@ -21,5 +22,6 @@ export {
   UPDATE_PROFILE,
   INCREASE_POST_VIEW_COUNT,
   INCREASE_PODCAST_LISTENS,
-  UPDATE_STAFF
+  UPDATE_STAFF,
+  DELETE_IMAGE
 };

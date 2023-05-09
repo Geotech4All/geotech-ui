@@ -6,7 +6,8 @@ import {
   ALL_POSTS,
   STAFF_LIST,
   GET_CURRENT_USER,
-  STAFF_DETAIL
+  STAFF_DETAIL,
+  IMAGES
 } from "@gql/requests/queries/AdminQueries";
 
 import {
@@ -19,6 +20,7 @@ import {
 } from "@gql/requests/queries/ClientQueries";
 
 export {
+  IMAGES,
   ALL_POSTS,
   STAFF_LIST,
   STAFF_DETAIL,

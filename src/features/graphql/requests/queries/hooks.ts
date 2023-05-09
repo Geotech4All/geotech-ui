@@ -21,7 +21,9 @@ import type {
   QueryTagsArgs,
   TagTypeConnection,
   QueryOpportunityArgs,
-  OpportunityType
+  OpportunityType,
+  QueryImagesArgs,
+  ImageTypeConnection
 } from "@gql/codegen/graphql";
 
 export function useCurrentlyLoggenInUser() {
@@ -112,4 +114,10 @@ export function useOpportunity(variables?: QueryOpportunityArgs) {
     { opportunity: Maybe<OpportunityType> },
     QueryOpportunityArgs
   >(Queries.OPPORTUNITY, { variables })
+}
+
+export function useImages(variables?: QueryImagesArgs) {
+    return useQuery<
+    { images: ImageTypeConnection },
+    QueryImagesArgs>(Queries.IMAGES, { variables })
 }

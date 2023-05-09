@@ -20,20 +20,13 @@ export const CREATE_UPDATE_PODCAST = gql`
 `
 
 export const CREATE_UPDATE_POST = gql`
-  mutation CreateUpdatePost($title: String!, $abstract: String, $body: String!, $coverPhoto: Upload, $postId: ID) {
-    post: createUpdatePost(title: $title, abstract: $abstract, body: $body, coverPhoto: $coverPhoto, postId: $postId) {
+  mutation CreateUpdatePost($title: String!, $abstract: String, $body: String!, $coverPhotoId: ID, $postId: ID) {
+    post: createUpdatePost(title: $title, abstract: $abstract, body: $body, coverPhotoId: $coverPhotoId, postId: $postId) {
       errors {
         field
         messages
       }
       success
-      post {
-        abstract
-        id
-        body
-        coverPhoto
-        postId
-      }
     }
   }
 `
@@ -193,4 +186,34 @@ export const CREATE_UPDATE_TAG = gql`
       }
     }
   }
+`
+
+export const CREATE_UPDATE_IMAGE = gql`
+    mutation CreateUpdateImage ($image: Upload!, $description: String, $folder: FoldersEnum, $imageId: ID) {
+      image: createUpdateImage (image: $image, description: $description, folder: $folder, imageId: $imageId) {
+        image {
+          publicId
+          url
+          description
+          imageId
+        },
+        success,
+        errors {
+          field
+          messages
+        }
+      }
+    }
+`
+
+export const DELETE_IMAGE = gql`
+    mutation DeleteImage ($imageId: ID!) {
+      deleteImage(imageId: $imageId) {
+        success
+        errors {
+          field
+          messages
+        }
+      }
+    }
 `

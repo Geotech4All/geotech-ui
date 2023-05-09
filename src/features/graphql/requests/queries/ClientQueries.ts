@@ -58,7 +58,9 @@ export const POPULAR_POSTS = gql`
           body
           readLength
           dateAdded
-          coverPhoto
+          coverPhoto {
+            url
+          }
           postId
         }
       }
@@ -90,7 +92,9 @@ export const GET_POST_BY_ID = gql`
       dislikes
       readLength
       dateAdded
-      coverPhoto
+      coverPhoto {
+        url
+      }
       postId
     }
   }

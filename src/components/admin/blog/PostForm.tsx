@@ -1,13 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
 import { 
-  AnimatedCheckMark,
-  Button,
-  FormErrors,
-  GInput,
-  GTextArea,
-  IInput,
-  PageLoadingHalo, SomethingWentWrong, TipTap } from "@components/common";
-import { ErrorType, Maybe, PostType } from "@gql/codegen/graphql";
+  AnimatedCheckMark, FormErrors, GInput, GTextArea, ImagePicker,
+  PageLoadingHalo, PreviewImage, SomethingWentWrong, TipTap, UIButton } from "@components/common";
+import { ImageType, Maybe, PostType } from "@gql/codegen/graphql";
 import { useCreateUpdatePost } from "@gql/requests/mutations/hooks";
 import { Editor } from "@tiptap/core";
 import { useRouter } from "next/router";
@@ -24,118 +18,91 @@ interface PostFormProps {
  */
 export default function PostForm(props: PostFormProps) {
   const { post: oldPost } = props;
-  const [oldPostId, setOldPostId] = React.useState<string>()
-  const [createUpdatePost, { error, loading }] = useCreateUpdatePost();
-  const [creationComplete, setCreationComplete] = React.useState(false)
-  const [creationErrors, setCreationErrors] = React.useState<Maybe<Maybe<ErrorType>[]>>();
-  const [showImageForm, setShowImageForm] = React.useState(oldPost?.coverPhoto ? false : true);
-  const [image, setImage] = React.useState<File>()
+  const [createUpdatePost, { error, loading, data }] = useCreateUpdatePost();
   const [post, setPost] = React.useState<string>();
+  const [coverPhoto, setCoverPhoto] = React.useState<ImageType>();
+  const [showImagePicker, setShowImagePicker] = React.useState(false);
   const router = useRouter();
 
   const titleRef = React.useRef() as React.MutableRefObject<HTMLInputElement>;
   const abstractRef = React.useRef() as React.MutableRefObject<HTMLTextAreaElement>;
 
-  React.useEffect(() => {
-    if (oldPost?.postId) setOldPostId(oldPost.postId);
+  React.useEffect(() => { 
+    oldPost?.coverPhoto && setCoverPhoto(oldPost.coverPhoto)
   }, [oldPost])
-
-  React.useEffect(() => {
-    if (image)
-    setShowImageForm(false);
-  }, [image])
-
-  const getImage = (file?: File) => {
-    setImage(file);
-  }
-
-  const handleShowImageForm = () => setShowImageForm(true);
 
   const getPost = (editor: Editor | null) => {
     if (editor) setPost(editor.getHTML())
   }
 
-  
+  const toggleImagePicker = () => setShowImagePicker(!showImagePicker);
+  const haldePickCoverPhoto = (image: ImageType) => {
+      setShowImagePicker(false);
+      setCoverPhoto(image);
+  };
+
   const submitHandler: React.FormEventHandler = (event) => {
     event.preventDefault();
     createUpdatePost({
       variables: {
-        postId: oldPostId,
+        postId: oldPost?.postId,
         title: titleRef.current.value ?? "",
         body: post ?? "",
         abstract: abstractRef.current.value,
-        coverPhoto: image
+        coverPhotoId: coverPhoto?.imageId
       }
-    }).then(res => {
-      if (!res.errors) { 
-        setCreationComplete(true)
-        const timeout = setTimeout(() => router.push("/admin/blog"), 3000)
-        return () => clearTimeout(timeout);
-      }
-      else setCreationErrors(res.data?.post?.errors)
-    })
-    .catch(err => console.log(err))
+    }).catch(err => console.log(err))
+    if (!data?.post?.errors) {
+        const timeout = setTimeout(() => {
+                router.push("/admin/blog")
+                clearTimeout(timeout)
+            }, 500)
+        }
   };
 
   if (error) return <SomethingWentWrong error={error} />
   if (loading) return <PageLoadingHalo />
-  if (creationComplete) return <AnimatedCheckMark />
+  if (data?.post?.success) return <AnimatedCheckMark />
 
   return (
-    <form onSubmit={submitHandler} className="flex flex-col gap-2">
-      {creationErrors && <FormErrors errors={setCreationErrors}/>}
-      <GInput
-        ref={titleRef}
-        defaultValue={oldPost?.title}
-        required
-        className={`
-          shadow w-full text-red-400 font-extrabold
-          placeholder:text-4xl md:placeholder:text-6xl placeholder:font-extrabold placeholder:text-red-300/60
-          rounded-2xl p-3 text-4xl md:text-6xl`}
-        placeholder="Your post title goes here" />
+    <form onSubmit={submitHandler} className="flex md:p-5 z-0 flex-col gap-2">
+        {data?.post?.errors && <FormErrors errors={data?.post?.errors}/>}
+        <GInput
+            ref={titleRef}
+            defaultValue={oldPost?.title}
+            required
+            className={`
+                shadow w-full text-red-400 font-extrabold
+                placeholder:text-4xl md:placeholder:text-6xl placeholder:font-extrabold placeholder:text-red-300/60
+                rounded-2xl p-3 text-4xl md:text-6xl`}
+            placeholder="Your post title goes here" />
 
-      <GTextArea
-        ref={abstractRef}
-        defaultValue={oldPost?.abstract ?? undefined}
-        rows={4}
-        placeholder={`A short summary of your post. Something "catchy" that'll grab attention`}
-        maxLength={1000}
-        className={`shadow resize-none p-3 w-full rounded-2xl text-lg`}/>
+        <GTextArea
+            ref={abstractRef}
+            defaultValue={oldPost?.abstract ?? undefined}
+            rows={4}
+            placeholder={`A short summary of your post. Something "catchy" that'll grab attention`}
+            maxLength={1000}
+            className={`shadow resize-none p-3 w-full rounded-2xl text-lg`}/>
 
-      {image && <img className="shadow" src={URL.createObjectURL(image)} alt="temp alt"/>}
-      {oldPost?.coverPhoto && !image && (
-        <img
-          className="shadow"
-          src={oldPost.coverPhoto}
-          alt={`${oldPost.title} cover photo`}/>
-      )}
+        {coverPhoto && (
+            <PreviewImage src={coverPhoto.url}
+                alt={coverPhoto.description ?? ""}
+                title={coverPhoto.description ?? ""}/>
+        )}
 
-      {showImageForm && (
-        <IInput
-          className={`${showImageForm ? "" : "hidden"}`}
-          title="Cover-photo(optional)"
-          getFile={getImage} name="cover-photo"/>
-      )}
+        <div className="relative flex flex-col z-10 items-center">
+            <UIButton type="button" className="self-start"
+                onClick={toggleImagePicker}>{coverPhoto ? "Edit": "Add"} Cover photo</UIButton>
+                {showImagePicker && (
+                    <ImagePicker
+                        onClose={toggleImagePicker} 
+                        onPickImage={haldePickCoverPhoto}/>
+                )}
+        </div>
 
-      {!showImageForm && (
-        <Button
-          onClick={handleShowImageForm}
-          title="Add cover image to post"
-          type="button"
-          className={`
-            bg-red-300 text-white font-semibold
-            hover:bg-red-400 active:bg-red-400 transition-all
-            w-fit p-0.5 px-2 rounded-2xl`} >Change cover image</Button>
-      )}
-
-      <TipTap content={oldPost?.body} title="Post body" getContent={getPost}/>
-      <Button
-        type="submit"
-        className={`
-          p-1 px-6 rounded-lg w-fit
-          bg-red-400 hover:bg-red-500
-          active:bg-red-500 text-white
-          transition-all font-semibold`} >Post</Button>
+        <TipTap content={oldPost?.body} title="Post body" getContent={getPost}/>
+        <UIButton className="self-end px-10" type="submit">Post</UIButton>
     </form>
   )
 };

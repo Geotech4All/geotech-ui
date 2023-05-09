@@ -20,7 +20,11 @@ import {
   MutationCreateUpdateOpportunityArgs,
   OpportunityCreateUpdateMutation,
   MutationCreateUpdateTagArgs,
-  CreateUpdateTagMutation} from "@gql/codegen/graphql";
+  CreateUpdateTagMutation,
+  ImageCreateUpdateMutation,
+  MutationCreateUpdateImageArgs,
+  MutationDeleteImageArgs,
+  ImageDeleteMutation} from "@gql/codegen/graphql";
 import {
   CREATE_UPDATE_PODCAST,
   CREATE_UPDATE_POST,
@@ -28,9 +32,10 @@ import {
   INCREASE_PODCAST_LISTENS,
   INCREASE_POST_VIEW_COUNT,
   UPDATE_PROFILE,
-  UPDATE_STAFF
+  UPDATE_STAFF,
+  DELETE_IMAGE
 } from "@gql/requests/mutations";
-import { CREATE_STAFF, CREATE_UPDATE_OPPORTUNITY, CREATE_UPDATE_TAG } from "./AdminMutations";
+import { CREATE_STAFF, CREATE_UPDATE_IMAGE, CREATE_UPDATE_OPPORTUNITY, CREATE_UPDATE_TAG } from "./AdminMutations";
 
 export const useUpdatePodcast = () => {
   return useMutation<
@@ -100,4 +105,18 @@ export const useCreateUpdateTag = (variables?: MutationCreateUpdateTagArgs) => {
   { tag: Maybe<CreateUpdateTagMutation> },
   MutationCreateUpdateTagArgs
   >(CREATE_UPDATE_TAG, { variables })
+}
+
+export const useCreateUpdateImage = (variables?: MutationCreateUpdateImageArgs) => {
+    return useMutation<
+    { image: Maybe<ImageCreateUpdateMutation>},
+    MutationCreateUpdateImageArgs
+    >(CREATE_UPDATE_IMAGE, { variables })
+}
+
+export const useDeleteImage = (variables?: MutationDeleteImageArgs) => {
+    return useMutation<
+    { deleteImage: Maybe<ImageDeleteMutation>},
+    MutationDeleteImageArgs
+    >(DELETE_IMAGE, { variables })
 }

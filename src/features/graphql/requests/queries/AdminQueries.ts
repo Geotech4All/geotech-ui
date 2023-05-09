@@ -114,7 +114,9 @@ export const ALL_POSTS = gql`
           postId
           readLength
           abstract
-          coverPhoto
+          coverPhoto {
+            url
+          }
           title
           author {
             profile {
@@ -213,4 +215,23 @@ export const STAFF_DETAIL = gql`
       }
     }
   }
+`
+
+export const IMAGES = gql`
+    query Images ($offset: Int, $after: String, $first: Int, $description_Icontains: String, $description: String) {
+      images (offset: $offset,  after: $after, first: $first, description_Icontains: $description_Icontains, description: $description) {
+        pageInfo {
+          hasNextPage
+          hasPreviousPage
+        }
+        edges {
+          node {
+            url
+            description
+            imageId
+          }
+          cursor
+        }
+      }
+    }
 `
