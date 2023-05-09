@@ -1,6 +1,6 @@
 import {
-    AnimatedCheckMark, FormErrors, GInput, GTextArea, ImagePicker,
-    PageLoadingHalo, PreviewImage, SomethingWentWrong, TipTap, UIButton
+    AnimatedCheckMark, FormErrors, ImagePicker,
+    PageLoadingHalo, PreviewImage, SomethingWentWrong, TextArea, TextInput, TipTap, UIButton
 } from "@components/common";
 import { ImageType, Maybe, PostType } from "@gql/codegen/graphql";
 import { useCreateUpdatePost } from "@gql/requests/mutations/hooks";
@@ -68,23 +68,13 @@ export default function PostForm(props: PostFormProps) {
     return (
         <form onSubmit={submitHandler} className="flex md:p-5 z-0 flex-col gap-2">
             {data?.post?.errors && <FormErrors errors={data?.post?.errors} />}
-            <GInput
-                ref={titleRef}
-                defaultValue={oldPost?.title}
-                required
-                className={`
-                shadow w-full text-red-400 font-extrabold
-                placeholder:text-4xl md:placeholder:text-6xl placeholder:font-extrabold placeholder:text-red-300/60
-                rounded-2xl p-3 text-4xl md:text-6xl`}
+            <TextInput ref={titleRef} defaultValue={oldPost?.title} required
                 placeholder="Your post title goes here" />
 
-            <GTextArea
-                ref={abstractRef}
-                defaultValue={oldPost?.abstract ?? undefined}
-                rows={4}
-                placeholder={`A short summary of your post. Something "catchy" that'll grab attention`}
-                maxLength={1000}
-                className={`shadow resize-none p-3 w-full rounded-2xl text-lg`} />
+            <TextArea
+                ref={abstractRef} defaultValue={oldPost?.abstract ?? undefined}
+                rows={4} maxLength={1000}
+                placeholder={`A short summary of your post. Something "catchy" that'll grab attention`} />
 
             {coverPhoto && (
                 <PreviewImage src={coverPhoto.url}
@@ -93,7 +83,7 @@ export default function PostForm(props: PostFormProps) {
             )}
 
             <div className="relative flex flex-col z-10 items-center">
-                <UIButton type="button" className="self-start"
+                <UIButton type="button" className="self-start py-3"
                     onClick={toggleImagePicker}>{coverPhoto ? "Edit" : "Add"} Cover photo</UIButton>
                 {showImagePicker && (
                     <ImagePicker

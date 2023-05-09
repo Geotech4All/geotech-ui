@@ -22,7 +22,7 @@ export default function UIButton(props: ButtonProps) {
 
   return (
         <button 
-            className={`${color} px-2 rounded text-white font-semibold transition
+            className={`${color} px-2 rounded text-xs md:text-base text-white font-semibold transition
             ${className}`}
             {...rest}>
           { Icon && <Icon size={iconSize}/> }

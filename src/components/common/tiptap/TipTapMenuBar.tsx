@@ -16,7 +16,7 @@ export default function TipTapMenuBar(props: TipTapMenuBarProps) {
   if (!editor) return null;
   editor.isActive("bold")
   return (
-    <div className="flex flex-wrap items-end justify-end w-fit self-end gap-1 p-1 shadow rounded-xl">
+    <div className="flex flex-wrap items-center justify-end w-fit self-end gap-1 p-1 shadow rounded">
       <TipTapMenuItem
         disabled={!editor.can().chain().focus().toggleBold().run()}
         onClick={() => editor.chain().focus().toggleBold().run()}
@@ -31,7 +31,7 @@ export default function TipTapMenuBar(props: TipTapMenuBarProps) {
         onClick={() => editor.chain().focus().toggleUnderline().run()}
         icon={MdFormatUnderlined}
         func="underline" editor={editor} />
-      <div className="rounded-xl p-0.5 border flex gap-1 items-center px-1">
+      <div className="flex gap-1 items-center px-1">
         <TipTapMenuItem
           showName="h1"
           onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}

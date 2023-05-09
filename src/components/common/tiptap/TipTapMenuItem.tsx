@@ -13,12 +13,11 @@ export default function TipTapMenuItem(props: TipTapMenuItemProps){
   const { showName, func, funcArgs, editor, ...rest } = props;
   return (
     <Button
-      {...rest}
-      type="button"
-      title={func}
+      {...rest} type="button" title={func}
       className={`
         ${editor.isActive(func.toLowerCase(), funcArgs) ? "bg-black/30" : "" }
-        transition-all border text-black font-semibold text-xl disabled:text-black/30 active:bg-black/20 hover:bg-black/20 px-0.5 aspect-square rounded-lg`}
+        transition-all border p-1 text-black text-sm md:text-base disabled:text-black/30
+        active:bg-black/20 hover:bg-black/20 aspect-square rounded`}
       iconSize={25}>{showName}</Button>
   );
 }

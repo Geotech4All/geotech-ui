@@ -4,6 +4,7 @@ import LInput from "@components/common/inputs/LInput";
 import PInput from "@components/common/inputs/PInput";
 import GInput from "@components/common/inputs/GInput";
 import FInput from "@components/common/inputs/FInput";
+import TextArea from "@components/common/inputs/text/TextArea";
 import TextInput from "@components/common/inputs/text/Input";
 import GTextArea from "@components/common/inputs/GTextArea";
 import TipTap from "@components/common/tiptap/TipTap";
@@ -82,7 +83,7 @@ export {
 /*** Inputs ***/
     LInput, GInput, IInput, PInput, FInput, TipTap, ImagePreview, ToggleInput,
     DragAndDrop, ImageUpload, TextInput, ImagePicker, ImagePickerItem,
-    ImagePickerFilter,
+    ImagePickerFilter, TextArea,
 
 /*** Loading ***/
     SLoadingRing, SLoadingHalo, PageLoadingRing, PageLoadingHalo,
