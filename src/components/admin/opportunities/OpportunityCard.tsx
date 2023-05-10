@@ -15,7 +15,7 @@ export default function OpportunityCard(props: OpportunityCardProps) {
   return (
     <Link href={`${admin ? '/admin': ''}/opportunities/${slug}`}
       className={`
-        group relative aspect-video w-full p-2 rounded border
+        group relative aspect-video w-full p-2 rounded border h-full
         transition-all hover:border-black/20 border-black/5 flex flex-col`}>
         <div className="p-2">
             <time
@@ -28,7 +28,7 @@ export default function OpportunityCard(props: OpportunityCardProps) {
         </div>
       <div className="h-[1px] w-full bg-black/20"/>
       <div className="p-2">
-          <p className="line-clamp-3 text-black/60 py-1 text-sm">{opportunity?.description}</p>
+          <p className="line-clamp-3 text-black/60 py-1 text-sm">{opportunity?.abstract}</p>
           <span className={`
               text-sm bg-black/70 group-hover:bg-black capitalize
               text-white font-semibold rounded-sm px-1 absolute transition

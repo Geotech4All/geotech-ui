@@ -148,28 +148,28 @@ export const CREATE_STAFF = gql`
 `
 
 export const CREATE_UPDATE_OPPORTUNITY = gql`
-  mutation CreateUpdateOpportunity(
-    $category: String, 
-    $description: String, 
-    $imageIds: [IdInput], 
-    $opportunityId: ID, 
-    $title: String) {
-    opportunity: createUpdateOpportunity(
-      category: $category, 
-      description: $description, 
-      imageIds: $imageIds, 
-      opportunityId: $opportunityId, 
-      title: $title) {
-      errors {
-        field
-        messages
-      }
-      success
-      opportunity {
-        opportunityId
+    mutation CreateUpdateOpportunity(
+        $abstract: String,
+        $category: String,
+        $content: String,
+        $opportunityId: ID,
+        $title: String!) {
+      createUpdateOpportunity(
+          title: $title,
+          content: $content,
+          abstract: $abstract,
+          category: $category,
+          opportunityId: $opportunityId) {
+        success
+        errors{
+          field
+          messages
+        }
+        opportunity {
+          opportunityId
+        }
       }
     }
-  }
 `
 
 export const CREATE_UPDATE_TAG = gql`

@@ -101,7 +101,7 @@ export const GET_POST_BY_ID = gql`
 `
 
 export const ALL_OPPORTUNITIES = gql`
-  query Opportunities(
+ query Opportunities(
     $category: String,
     $categoryTitle: String, 
     $categoryTitleIstartswith: String, 
@@ -116,19 +116,10 @@ export const ALL_OPPORTUNITIES = gql`
           category {
             title
           }
-          description
+          abstract
           lastUpdated
           opportunityId
           title
-          images {
-            edges {
-              node {
-                url
-                imageId
-                description
-              }
-            }
-          }
         }
       }
     }
@@ -149,25 +140,17 @@ export const ALL_TAGS = gql`
 `
 
 export const OPPORTUNITY = gql`
-  query Opportunity($opportunityId: ID!) {
-    opportunity(opportunityId: $opportunityId) {
-      title
-      description
-      category {
+    query Opportunity($opportunityId: ID!) {
+      opportunity(opportunityId: $opportunityId) {
         title
-        category
-      }
-      opportunityId
-      lastUpdated
-      images {
-        edges {
-          node {
-            imageId
-            url
-            description
-          }
+        category {
+          title
+          category
         }
+        opportunityId
+        lastUpdated
+        abstract
+        content
       }
     }
-  }
 `

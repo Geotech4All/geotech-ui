@@ -24,7 +24,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <Provider store={store}>
       <ApolloProvider client={client}>
-        <div className='h-screen overflow-auto font-montserrat'>
+        <div className='h-screen z-0 overflow-auto font-montserrat'>
         {getLayout(<Component {...pageProps} />)}
         </div>
       </ApolloProvider>

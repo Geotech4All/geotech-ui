@@ -10,12 +10,14 @@ import FooterEmail from "@components/frontFacing/footer/FooterEmail";
 import FooterSocials from "@components/frontFacing/footer/FooterSocials";
 import FooterSocialLink from "@components/frontFacing/footer/FooterSocialLink";
 import FooterVision from "@components/frontFacing/footer/FooterVision";
+import ArticleReader from "@components/frontFacing/readers/ArticleReader";
 
 export {
   PodcastLanding,
   BlogLanding,
   NavBarLayout,
   ClientNavLinks,
+  ArticleReader,
   NavBar,
   MobileNav,
   Footer,

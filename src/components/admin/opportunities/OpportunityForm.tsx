@@ -1,13 +1,14 @@
 import {
   Button, CenterSLoadingRing,
-  DropDownList, FormErrors, GInput, GTextArea,
-  MModal, SLoadingHalo, SomethingWentWrong } from "@components/common";
+  DropDownList, FormErrors, GInput,
+  MModal, SLoadingHalo, SomethingWentWrong, TextArea, TipTap } from "@components/common";
 import { Maybe, OpportunityType } from "@gql/codegen/graphql";
 import { useCreateUpdateOpportunity } from "@gql/requests/mutations/hooks";
 import { useAllTags } from "@gql/requests/queries/hooks";
 import { useRouter } from "next/router";
 import React from "react";
 import { TagForm } from "@components/admin";
+import { Editor } from "@tiptap/core";
 
 
 interface OpportunityFormProps {
@@ -19,6 +20,7 @@ export default function OpportunityForm(props: OpportunityFormProps) {
   const [createUpdate, { loading, error }] = useCreateUpdateOpportunity();
   const { refetch, data: tagData, loading: tagLoading, error: tagError} = useAllTags({ category_Iexact: "opportunity" })
   const [category, setCategory] = React.useState<string>();
+  const [content, setContent] = React.useState<string>();
   const [newTagOpen, setNewTagOpen] = React.useState(false)
   const router = useRouter();
 
@@ -32,13 +34,18 @@ export default function OpportunityForm(props: OpportunityFormProps) {
     refetch()
   }
 
+  const getContent = (editor: Editor | null) => {
+      editor && setContent(editor.getHTML());
+    };
+
   const handleSubmit: React.FormEventHandler = (event) => {
     event.preventDefault();
     createUpdate({variables: {
       opportunityId: defaultValue?.opportunityId,
-      description: descRef.current.value,
+      abstract: descRef.current.value,
       title: titleRef.current.value,
-      category: category 
+      category: category,
+      content
     }}).then((res) => {
         if (!res.errors) {
           router.replace("/admin/opportunities")
@@ -52,32 +59,26 @@ export default function OpportunityForm(props: OpportunityFormProps) {
   const categories = tagData?.tags?.edges.map(tag => tag?.node?.title ?? "")
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex flex-col relative shadow-xl gap-3 p-3 md:p-9 rounded-lg">
+    <form onSubmit={handleSubmit}
+      className="flex flex-col relative gap-3 rounded-lg">
       { error && <FormErrors errors={error} />}
-      <GInput
-        ref={titleRef}
-        defaultValue={defaultValue?.title} 
+      <GInput ref={titleRef} defaultValue={defaultValue?.title} 
         classNameL="bg-ui-red-200/80 text-lg p-1 px-3 font-semibold text-white rounded"
         classNameI="shadow text-lg focus:shadow-lg transition p-1 px-2 rounded-md w-full"
         classNameW="flex gap-3"
         label="Title" 
         placeholder="My opportunity title"/>
 
-      <GTextArea
-        ref={descRef}
-        rows={10}
-        defaultValue={defaultValue?.description?.toString()}
-        classNameW="flex gap-3"
-        classNameI="shadow text-lg focus:shadow-lg transition p-1 px-3 rounded-md w-full"
-        placeholder="More details about this opportunity" />
+      <TextArea ref={descRef} rows={2}
+        defaultValue={defaultValue?.abstract?.toString()}
+        placeholder="A short description of this opportunity (will go on opportunity card)"/>
+      <TipTap content={defaultValue?.content ?? ""} title="Opprtunity content" getContent={getContent}/>
 
       <div className="flex w-full gap-3">
         <label
           className="bg-ui-red-200/80 h-fit p-1 px-3 rounded text-white font-semibold">Category</label>
-        <DropDownList
-          name="Category"
+        <DropDownList full
+          name="Category (e.g. Job listing, Internship, Scholarship e.t.c.)"
           defaultValue={defaultValue?.category?.title}
           getCurrent={getCategory}
           options={categories ?? []}/>

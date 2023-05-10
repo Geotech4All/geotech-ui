@@ -12,7 +12,7 @@ export default function AdminNavLink(props: AdminNavLinkProps){
   const { onClick } = props;
   const { path, icon: Icon, name } = props.url;
   const router = useRouter();
-  const currRoute = router.pathname.split("/").pop()?.trim();
+  const currRoute = router.asPath.split("/")[1]?.trim();
   const pathName = path.split("/")[1]?.trim();
   return (
     <Link onClick={onClick} href={path}

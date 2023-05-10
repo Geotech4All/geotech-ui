@@ -1,14 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 
-interface PreviwImageProps extends React.ImgHTMLAttributes<HTMLImageElement>{};
+interface PreviwImageProps extends React.ImgHTMLAttributes<HTMLImageElement>{
+    straight?: boolean;
+};
 
 export default function PreviewImage(props: PreviwImageProps) {
-    const {alt, className, ...rest} = props;
+    const {alt, className, straight, ...rest} = props;
     return (
         <div>
             <img
-                className={`aspect-video rounded-lg object-cover ${className}`}
+                className={`${!straight ? "rounded-md":""}
+                    aspect-video object-cover ${className}`}
                 alt={alt} {...rest} />
         </div>
     )

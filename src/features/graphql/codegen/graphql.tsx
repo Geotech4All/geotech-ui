@@ -220,10 +220,6 @@ export type HostTypeEdge = {
   node?: Maybe<HostType>;
 };
 
-export type IdInput = {
-  id?: InputMaybe<Scalars['ID']>;
-};
-
 export type ImageCreateUpdateMutation = {
   __typename?: 'ImageCreateUpdateMutation';
   errors?: Maybe<Array<Maybe<ErrorType>>>;
@@ -555,11 +551,11 @@ export type MutationCreateUpdateImageArgs = {
 
 
 export type MutationCreateUpdateOpportunityArgs = {
+  abstract?: InputMaybe<Scalars['String']>;
   category?: InputMaybe<Scalars['String']>;
-  description?: InputMaybe<Scalars['String']>;
-  imageIds?: InputMaybe<Array<InputMaybe<IdInput>>>;
+  content?: InputMaybe<Scalars['String']>;
   opportunityId?: InputMaybe<Scalars['ID']>;
-  title?: InputMaybe<Scalars['String']>;
+  title: Scalars['String'];
 };
 
 
@@ -773,27 +769,15 @@ export type OpportunityCreateUpdateMutation = {
 
 export type OpportunityType = Node & {
   __typename?: 'OpportunityType';
+  abstract?: Maybe<Scalars['String']>;
   category?: Maybe<TagType>;
+  content?: Maybe<Scalars['String']>;
   dateAdded: Scalars['DateTime'];
-  description?: Maybe<Scalars['String']>;
   /** The ID of the object. */
   id: Scalars['ID'];
-  images: ImageTypeConnection;
   lastUpdated: Scalars['DateTime'];
   opportunityId?: Maybe<Scalars['ID']>;
   title: Scalars['String'];
-};
-
-
-export type OpportunityTypeImagesArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  description?: InputMaybe<Scalars['String']>;
-  description_Icontains?: InputMaybe<Scalars['String']>;
-  description_Istartswith?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
 };
 
 export type OpportunityTypeConnection = {

@@ -13,8 +13,8 @@ export default function AudioLayout(props: AudioLayoutProps) {
   const { children, width } = props;
   const player = useAppSelector(selectAudioPlayer);
   return (
-    <div className="relative w-full z-[1000]">
-      <div className="z-0 w-full">{children}</div>
+    <div className="relative w-full">
+      <div className="w-full">{children}</div>
       {player.playerVissible && (
         <motion.div
           initial={{ opacity: 0, y: 100 }}

@@ -11,11 +11,11 @@ const Opportunities: NextPageWithLayout = () => {
       <Head>
         <title>Geotech Opportunities</title>
       </Head>
-      <main className="relative p-3">
+      <main className="relative z-0 p-3">
         <OpportunityList admin/>
         <Link href="/admin/opportunities/new" className={`
           bg-ui-red-200/60 p-2 text-white font-semibold rounded-md
-          absolute top-2 right-2 text-lg
+          absolute top-2 right-2 text-lg z-10
           hover:bg-ui-red-200/80 active:bg-ui-red-200/80 transition`}>+ New Opportunity</Link>
       </main>
     </>
