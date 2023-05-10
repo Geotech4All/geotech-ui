@@ -46,7 +46,7 @@ export default function BlogLanding(props: BlogLandingProps) {
           initial={{ opacity: 0, x: 10 }}
           animate={{ opacity: 1, x: 0, transition: { duration: 0.5 } }}
           variants={container}
-          className="flex flex-col flex-1 gap-2">
+          className="flex flex-col flex-1 gap-2 h-full">
           {otherPosts?.map((post, index) => (
             <motion.div
               variants={child}
