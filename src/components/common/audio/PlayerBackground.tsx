@@ -12,8 +12,8 @@ export default function PlayerBackground(){
         src={player.podcast?.coverPhoto ?? "/images/listening-geo-tech.svg"} alt="cover photo"/>
       <div
         className={`
-          absolute inset-0 bg-gradient-to-br z-[-100] backdrop-blur-sm
-          ${player.color?.to} ${player.color?.from}`}/>
+          absolute inset-0 bg-gradient-to-t z-[-100] backdrop-blur-sm
+          to-black/30 from-black`}/>
     </>
   )
 }

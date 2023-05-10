@@ -37,7 +37,7 @@ export default function MiniPostCard(props: MiniPostCardPorps) {
           <h3
             className={`
               transition-all
-              group-hover:text-black/40 group-active:text-red-400
+              group-hover:text-black/40 group-active:text-black/40
               line-clamp-3 font-bold text-lg`}>{post?.title}</h3>
           {isMid && <PostAuthor post={post}/>}
         </div>

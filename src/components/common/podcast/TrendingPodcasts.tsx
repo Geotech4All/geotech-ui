@@ -2,7 +2,7 @@ import React from "react";
 import SwiperCore, { A11y, Pagination, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "@styles/Utils.module.scss"
-import { LargePodcastCard, NothingFound, SLoadingRing } from "@components/common"
+import { CenterSLoadingRing, LargePodcastCard, NothingFound } from "@components/common"
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { selectTrendingPodcasts, setTrendingPodcasts } from "@store/slices";
 import { useTrendingPodcasts } from "@gql/requests/queries/hooks";
@@ -14,30 +14,23 @@ export default function TrendingPodcasts(){
   const { loading, error, data } = useTrendingPodcasts({ first: 5 })
   const dispatch = useAppDispatch();
 
+    const edges = trending?.edges;
   React.useEffect(() => {
     if (data?.podcasts) {
       dispatch(setTrendingPodcasts(data.podcasts));
     }
   }, [data, dispatch])
 
-  if (loading) return (
-    <div className="flex w-full min-h-screen items-center justify-center">
-      <SLoadingRing />
-    </div>
-  )
-
+  if (loading) return <CenterSLoadingRing />
   if (error) console.log({ error })
 
-  if (!trending?.edges || trending?.edges.length <= 0) return (
-    <div className="flex items-center justify-center">
-      <NothingFound
-        caption="Sorry no podcasts were found"/>
-    </div>
+  if (!edges || edges.length <= 0) return (
+      <NothingFound caption="Sorry no podcasts were found"/>
   )
 
   return (
-    <div className="relative z-0">
-      <h3 className="p-1 capitalize font-semibold">Trending Podcasts</h3>
+    <div className="relative z-0 flex flex-col gap-3">
+      <h3 className="p-1 capitalize text-lg text-black/50 font-semibold">Trending</h3>
       <div className="flex max-w-md p-1 md:max-w-2xl items-center w-full">
         <Swiper
           autoplay={{ pauseOnMouseEnter: true }}

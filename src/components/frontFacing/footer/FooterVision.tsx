@@ -9,7 +9,7 @@ export default function FooterVision(){
         <div className="bg-white/25 h-[1px] w-full"/>
       </div>
       <blockquote className="text-3xl text-white/70 ">
-        To be the leading resource center for infrastructure and Geoscience development
+        To be a resource center for everything geoscience in Nigeria and Africa
       </blockquote>
     </div>
   );

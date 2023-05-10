@@ -13,7 +13,7 @@ export default function NavBarLayout (page: React.ReactElement): React.ReactNode
       <div className="relative">
         {!isMidScreen ?<MobileNav /> : <NavBar /> }
       </div>
-      <div className="min-h-screen z-0">{page}</div>
+      <div className={`min-h-screen z-0 ${isMidScreen ? "mt-16" : ""}`}>{page}</div>
       <Footer />
     </div>
   )

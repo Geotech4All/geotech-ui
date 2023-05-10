@@ -1,6 +1,6 @@
 import React from "react";
 import { useAllOpportunities } from "@gql/requests/queries/hooks";
-import { CenterSLoadingRing, NothingFound, SomethingWentWrong } from "@components/common";
+import { CenterSLoadingRing, List, NothingFound, SomethingWentWrong } from "@components/common";
 import { OpportunitiesListFilter, OpportunityCard } from "@components/admin";
 
 interface OpportunityListProps {
@@ -23,23 +23,17 @@ export default function OpportunityList(props: OpportunityListProps) {
 
 return (
     <div className="flex flex-col gap-3">
-      <h1 className="text-lg font-semibold text-black/70">Oppotunities</h1>
       <OpportunitiesListFilter getCategory={getCategory}/>
       {found_opportunities ? (
-        <div className="flex items-center justify-center">
-          <NothingFound
-              caption="Sorry! No Opportunites we're found"
-              className="max-w-md"/>
-        </div>
+          <NothingFound caption="Sorry! No Opportunites we're found" />
       ):(
-        <ul className="flex w-full flex-wrap gap-3">
+        <List title="New">
           {data?.opportunities?.edges.map(opportunity => (
-            <OpportunityCard
-                admin={admin}
+            <OpportunityCard admin={admin}
                 opportunity={opportunity?.node}
                 key={opportunity?.node?.opportunityId} />
           ))}
-        </ul>      
+        </List>
       )}
     </div>
   )

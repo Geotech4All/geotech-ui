@@ -16,7 +16,8 @@ export default function PodcastLanding() {
             The best podcast for geo ethusiasts.</h2>
           <p
             className='text-lg sm:text-xl'>
-            Discover the best and latest in the geo-tech community and from seasoned geo technologists</p>
+            Discover the latest and greatest in the geo-tech community and
+            from seasoned geo-technologists</p>
           <Link
             className={`
               flex items-center gap-1 bg-black/70 text-white text-lg

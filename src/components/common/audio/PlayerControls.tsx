@@ -77,8 +77,12 @@ export default function PlayerControls() {
   }
 
   return (
-    <div className={`p-3 flex-col md:flex-row gap-2 justify-center sm:justify-start flex w-full items-center`}>
-      <audio ref={playerRef} className="hidden" preload="metadata" controls src={player.podcast?.audio ?? ""}/>
+    <div className={`
+        p-3 flex-col md:flex-row gap-2 justify-center
+        sm:justify-start flex w-full items-center`}>
+      <audio ref={playerRef}
+        className="hidden" preload="metadata"
+        controls src={player.podcast?.audio ?? ""}/>
 
       {/* Play and skip buttons */}
       <AudioPlayerButtons
@@ -88,16 +92,9 @@ export default function PlayerControls() {
         isPlaying={isPlaying}/>
 
       {/** Duration*/}
-      <div
-        className={`
-          flex w-full bg-black/20 p-1.5 px-2.5 rounded-3xl
-          items-center text-white gap-3`}>
+      <div className={` flex w-full p-1.5 px-2.5 items-center text-white gap-3`}>
         <div>{currentTime}</div>
-        <input
-          title="Seek"
-          ref={rangeRef}
-          onChange={handleSeek}
-          defaultValue={0}
+        <input title="Seek" ref={rangeRef} onChange={handleSeek} defaultValue={0}
           className={styles.progressBar} type="range"/>
         <div>{duration}</div>
       </div>

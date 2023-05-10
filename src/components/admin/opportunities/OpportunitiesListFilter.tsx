@@ -18,8 +18,8 @@ export default function OpportunitiesListFilter(props: OpportunitiesListFilterPr
       <span
         className={`
           flex items-center px-2 p-1 text-white font-semibold rounded
-          gap-2 bg-orange-600`}><HiFilter /> Filter</span>
-      <DropDownList name="Category" getCurrent={getCategory} options={categories ?? []}/>
+          gap-2 bg-black/90`}><HiFilter /> Filter</span>
+      <DropDownList full name="Category" getCurrent={getCategory} options={categories ?? []}/>
     </div>
   )
 };

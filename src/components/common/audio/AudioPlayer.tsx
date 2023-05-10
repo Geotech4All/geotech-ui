@@ -19,13 +19,9 @@ export default function AudioPlayer(props: AudioPlayerProps){
   }, [increaseListens, player?.podcast?.podcastId]);
 
   return (
-    <div
-      style={{ width: props.width }}
-      className={`
-        px-1 md:px-3
-        p-1
-        fixed bottom-0 w-screen`}>
-      <div className="relative overflow-hidden rounded-3xl z-0 flex flex-col w-full">
+    <div style={{ width: props.width }}
+      className={`z-10 px-1 md:px-3 p-1 fixed bottom-0 w-screen`}>
+      <div className="relative overflow-hidden rounded-lg z-0 flex flex-col w-full">
         <PlayerBackground />
         <PlayingPodcastDetails />
         <PlayerControls />

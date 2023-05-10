@@ -37,7 +37,7 @@ export const socialMedia: UrlType[] = [
   },
   {
     name: "LinkedIn",
-    path: "https://www.linkedin.com/in/geotech4all/",
+    path: "https://www.linkedin.com/company/geotech4all/",
     icon: BsLinkedin
   },
   {
