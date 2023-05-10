@@ -10,7 +10,7 @@ export default function FullLogo(props: FullLogoProps){
   return (
     <Image
       className={className}
-      src="/images/gtech.png"
+      src="/images/Geotech4All-rebrand.png"
       width={1031} height={207}
       alt="geotech full size logo" />
   )

@@ -5,7 +5,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   icon?: IconType;
   children?: React.ReactNode;
   iconSize?: number;
-  variant?: "Red" | "Yellow" | "Green"
+  variant?: "Red" | "Yellow" | "Green" | "White"
 };
 
 export default function UIButton(props: ButtonProps) {
@@ -14,15 +14,19 @@ export default function UIButton(props: ButtonProps) {
 
   React.useEffect(() => {
         if (variant == "Yellow") {
-            setColor("bg-yellow-500 p-1 hover:bg-yellow-600 active:bg-yellow-600")
+            setColor(`bg-yellow-500 text-white hover:bg-yellow-600 active:bg-yellow-600`)
         } else if (variant == "Green") {
-            setColor("bg-green-500 p-1 hover:bg-green-600 active:bg-green-600")
-        } else setColor("bg-red-500 p-1 hover:bg-red-600 active:bg-red-600")
+            setColor("bg-green-500 text-white hover:bg-green-600 active:bg-green-600")
+        } else if (variant === "White") {
+            setColor("bg-white text-black hover:bg-white/20 hover:text-white active:bg-white/20 active-text-white")
+        } else setColor("bg-red-500 text-white hover:bg-red-600 active:bg-red-600")
     }, [variant])
 
   return (
         <button 
-            className={`${color} px-2 rounded text-xs md:text-base text-white font-semibold transition
+            className={`${color}
+               disabled:opacity-60 p-1 md:text-base 
+               px-2 rounded text-xs font-semibold transition
             ${className}`}
             {...rest}>
           { Icon && <Icon size={iconSize}/> }

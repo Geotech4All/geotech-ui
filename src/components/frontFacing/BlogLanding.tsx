@@ -37,16 +37,16 @@ export default function BlogLanding(props: BlogLandingProps) {
       <div className={`flex flex-col gap-5 p-2 md:max-w-5xl items-center md:flex-row`}>
         {posts?.edges[0] && (
           <motion.div
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             initial={{ opacity: 0, y: 5 }}>
-            <MidPostCard className="max-w-md" post={posts?.edges[0].node} />
+            <MidPostCard bordered className="max-w-md" post={posts?.edges[0].node} />
           </motion.div>
           )}
         <motion.ul
           initial={{ opacity: 0, x: 10 }}
-          whileInView={{ opacity: 1, x: 0, transition: { duration: 0.5 } }}
+          animate={{ opacity: 1, x: 0, transition: { duration: 0.5 } }}
           variants={container}
-          className="flex flex-col flex-1 gap-2 p-3">
+          className="flex flex-col flex-1 gap-2">
           {otherPosts?.map((post, index) => (
             <motion.div
               variants={child}

@@ -9,7 +9,8 @@ import { NextPageWithLayout } from './_app';
 const Home: NextPageWithLayout = () => {
   const {loading, data} = usePopularPosts({ first: 4 })
 
-  if (loading) return <PageLoadingRing />
+  if (loading) return <PageLoadingRing />;
+    const posts = (data?.posts && data.posts.edges.length > 3) ? data.posts : dummyPosts.posts;
   
   return (
     <>
@@ -21,7 +22,7 @@ const Home: NextPageWithLayout = () => {
       </Head>
       <main >
         <PodcastLanding />
-        <BlogLanding posts={data?.posts && data.posts.edges.length > 3 ? data.posts : dummyPosts.posts} />
+        <BlogLanding posts={posts} />
       </main>
     </>
   )

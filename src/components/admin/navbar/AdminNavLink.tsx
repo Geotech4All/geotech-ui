@@ -11,11 +11,11 @@ export default function AdminNavLink(props: AdminNavLinkProps){
   const { onClick } = props;
   const { path, icon: Icon, name } = props.url;
   return (
-    <Link
-      onClick={onClick}
-      className="flex transition-all items-center hover:text-white active:bg-red-400 hover:bg-red-400 p-2 rounded-md gap-2"
-      href={path}>
-      <Icon size={25}/>
+    <Link onClick={onClick} href={path}
+      className={`
+        flex transition-all items-center active:bg-red-400 bg-transparent
+        hover:bg-black/10 active:bg-black/10 p-2 rounded-md gap-2`} >
+      <Icon size={20}/>
       <span>{name}</span>
     </Link>
   );
