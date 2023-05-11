@@ -23,7 +23,7 @@ export default function ImagePickerFilter(props: ImagePickerFilterProps){
 
     return (
         <div className="flex gap-1">
-            <UIButton onClick={handleNew}
+            <UIButton onClick={handleNew} variant="Black"
                 className="whitespace-nowrap" type="button">New +</UIButton>
             <TextInput ref={textRef}
                 onKeyDown={handleKeyPress}

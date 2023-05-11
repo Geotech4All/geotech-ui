@@ -62,9 +62,9 @@ export default function ImagePicker(props: ImagePickerProps){
             <AnimatePresence>
                 <motion.div
                     className={`
-                        absolute self-top left-1/2 -translate-x-1/2 -translate-y-60
-                        bg-gray-100 p-2 flex flex-col gap-3 rounded w-full
-                        max-w-xs md:max-w-2xl shadow-lg z-10`}
+                        fixed top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2
+                        bg-gray-100 p-2 flex flex-col gap-3 rounded w-full max h-[98vh]
+                        max-w-xs md:max-w-2xl shadow-lg z-10 overflow-auto`}
                     key={Math.random()} exit={{ opacity: 0 }}
                     animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
                     { loading && <CenterSLoadingRing /> }

@@ -1,6 +1,5 @@
 import { ApolloError } from "@apollo/client";
 import { CenterSLoadingRing, GInput, SomethingWentWrong, PopupError } from "@components/common";
-import { Maybe, PostTypeConnection } from "@gql/codegen/graphql";
 import { useAllPosts } from "@gql/requests/queries/hooks";
 import React from "react";
 import ManagePost from "./ManagePost";
@@ -8,17 +7,11 @@ import ManagePost from "./ManagePost";
 
 export default function ManagePosts() {
   const { loading, data, error, refetch } = useAllPosts({ first: 20 });
-  const [posts, setPosts] = React.useState<Maybe<PostTypeConnection>>();
   const [delError, setDelError] = React.useState<ApolloError>();
-
-  React.useEffect(() => {
-    setPosts(data?.posts);
-  }, [data]);
+  const posts = data?.posts?.edges;
 
   const handleDelete = () => {
-    refetch().then(res => {
-      setPosts(res.data.posts)
-    }).catch(err => console.log(err));
+    refetch().catch(err => console.log(err));
   };
 
   const handleDelError = (error: ApolloError) => {
@@ -26,19 +19,15 @@ export default function ManagePosts() {
   };
 
   const handleSearch: React.ChangeEventHandler<HTMLInputElement> = async (event) => {
-      refetch({title_Icontains: event.target.value})
-      .then(res => {
-        setPosts(res.data.posts)
-      })
-      .catch(err => console.log(err));
+      refetch({title_Icontains: event.target.value}).catch(err => console.log(err));
   }
 
   if (error) return <SomethingWentWrong error={error} />;
 
   return (
     <>
-      <div className={`p-3 flex flex-col gap-3 bg-gray-100 rounded-3xl`}>
-        <h4 className="font-bold text-red-600">Manage Posts</h4>
+      <div className={`p-3 flex flex-col gap-3 bg-gray-50 rounded-lg`}>
+        <h4 className="font-bold text-black/70 text-lg">Manage Posts</h4>
         <GInput
           onChange={handleSearch}
           classNameW="rounded-lg overflow-hidden focus-within:shadow"
@@ -46,7 +35,7 @@ export default function ManagePosts() {
       {loading ? <CenterSLoadingRing />
       :(
         <ul className={`flex flex-col`}>
-          {posts?.edges.map(edge => (
+          {posts?.map(edge => (
             <ManagePost
               onError={handleDelError}
               onDelete={handleDelete}

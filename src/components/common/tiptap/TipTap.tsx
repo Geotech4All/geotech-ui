@@ -32,15 +32,13 @@ export default function TipTap(props: TipTapProps){
 
   return (
     <div className={`
-      flex flex-col gap-2
-      shadow p-1 w-full border-2 rounded-xl transition-all
-      outline-0 outline-none
-      focus-within:shadow-lg`}>
+      flex flex-col gap-2 shadow p-1 w-full border-2
+      rounded-xl transition-all outline-0 outline-none `}>
       <div className="flex w-full flex-wrap items-center justify-between">
-        <div className="font-extrabold px-2 text-red-400/30 md:text-lg">{title}</div>
+        <div className="font-extrabold px-2 text-black/30 md:text-lg">{title}</div>
         <TipTapMenuBar editor={editor}/>
       </div>
-      <EditorContent className={`shadow rounded-md md:text-lg p-3 ${styles.tiptap}`} editor={editor} />
+      <EditorContent className={`border border-black/5 focus-within:border-black/25 rounded-md md:text-lg p-3 ${styles.tiptap}`} editor={editor} />
     </div>
   )
 }

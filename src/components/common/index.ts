@@ -25,7 +25,6 @@ import ImagePickerFilter from "@components/common/inputs/images/ImagePickerFilte
 import DropDownList from "@components/common/dropdowns/DropDownList";
 import DropDownOption from "@components/common/dropdowns/DropDownOption";
 
-
 /***************** Loading ***********************/
 import SLoadingRing from "@components/common/loading/SLoadingRing";
 import SLoadingHalo from "@components/common/loading/SLoadingHalo";
@@ -61,6 +60,7 @@ import Heading from "@components/common//htmlComponents/Heading";
 import TipTapSection from "@components/common/htmlComponents/TipTapSection";
 import Article from "@components/common/htmlComponents/Article";
 import DateTime from "@components/common/htmlComponents/DateTime";
+import ButtonLink from "@components/common/htmlComponents/ButtonLink";
 
 import NothingFound from "@components/common/notFound/NotFound";
 import FullLogo from "@components/common/logo/FullLogo";
@@ -121,7 +121,7 @@ export {
     PlayingPodcastDetails,
 
 /*** HtmlComponents ***/
-    Heading, TipTapSection, Article, DateTime,
+    Heading, TipTapSection, Article, DateTime, ButtonLink,
 
   UserPill,
   FullLogo,

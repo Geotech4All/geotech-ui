@@ -1,5 +1,5 @@
 import { ManagePodcasts, SidebarLayout } from "@components/admin";
-import { RecentPodcasts, SLoadingRing, SomethingWentWrong } from "@components/common";
+import { ButtonLink, RecentPodcasts, SLoadingRing, SomethingWentWrong } from "@components/common";
 import { useAppDispatch } from "@store/hooks";
 import { NextPageWithLayout } from "pages/_app";
 import { usePrevousGuests, useRecentHosts, useStaffList } from "@gql/requests/queries/hooks";
@@ -45,15 +45,7 @@ const Podcasts: NextPageWithLayout = () => {
           <TrendingPodcasts />
           <RecentPodcasts />
           <ManagePodcasts />
-          <Link
-            href="/admin/podcasts/new"
-            className={`
-              absolute top-4 right-4
-              bg-red-400 text-white p-2
-              rounded-lg hover:bg-red-500
-              transition-all font-semibold
-              active:bg-red-500
-              `}>+ New Podcast</Link>
+          <ButtonLink href="/admin/podcasts/new">+ New Podcast</ButtonLink>
       </div>
     </>
   );

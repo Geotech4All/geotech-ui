@@ -5,7 +5,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   icon?: IconType;
   children?: React.ReactNode;
   iconSize?: number;
-  variant?: "Red" | "Yellow" | "Green" | "White"
+  variant?: "Red" | "Yellow" | "Green" | "White" | "Black"
 };
 
 export default function UIButton(props: ButtonProps) {
@@ -17,6 +17,8 @@ export default function UIButton(props: ButtonProps) {
             setColor(`bg-yellow-500 text-white hover:bg-yellow-600 active:bg-yellow-600`)
         } else if (variant == "Green") {
             setColor("bg-green-500 text-white hover:bg-green-600 active:bg-green-600")
+        } else if (variant === "Black") {
+            setColor("bg-black text-white hover:bg-black/70 active:bg-black/70")
         } else if (variant === "White") {
             setColor("bg-white text-black hover:bg-white/20 hover:text-white active:bg-white/20 active-text-white")
         } else setColor("bg-red-500 text-white hover:bg-red-600 active:bg-red-600")

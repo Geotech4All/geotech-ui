@@ -2,7 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { selectAdmin, setSidebarWidth, setSidebarOpen } from "@store/slices";
-import Image from "next/image";
 import { Button, FullLogo } from "@components/common";
 import { FaAngleDoubleRight, FaAngleDoubleLeft } from "react-icons/fa";
 

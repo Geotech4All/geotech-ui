@@ -66,7 +66,7 @@ export default function PostForm(props: PostFormProps) {
     if (data?.post?.success) return <AnimatedCheckMark />
 
     return (
-        <form onSubmit={submitHandler} className="flex md:p-5 z-0 flex-col gap-2">
+        <form onSubmit={submitHandler} className="flex py-3 z-0 flex-col gap-2">
             {data?.post?.errors && <FormErrors errors={data?.post?.errors} />}
             <TextInput ref={titleRef} defaultValue={oldPost?.title} required
                 placeholder="Your post title goes here" />
@@ -83,17 +83,15 @@ export default function PostForm(props: PostFormProps) {
             )}
 
             <div className="relative flex flex-col z-10 items-center">
-                <UIButton type="button" className="self-start py-3"
+                <UIButton variant="Black" type="button" className="self-start py-3"
                     onClick={toggleImagePicker}>{coverPhoto ? "Edit" : "Add"} Cover photo</UIButton>
                 {showImagePicker && (
-                    <ImagePicker
-                        onClose={toggleImagePicker}
-                        onPickImage={haldePickCoverPhoto} />
+                    <ImagePicker onClose={toggleImagePicker} onPickImage={haldePickCoverPhoto} />
                 )}
             </div>
 
             <TipTap content={oldPost?.body} title="Post body" getContent={getPost} />
-            <UIButton className="self-end px-10" type="submit">Post</UIButton>
+            <UIButton variant="Black" className="self-end px-10" type="submit">Post</UIButton>
         </form>
     )
 };

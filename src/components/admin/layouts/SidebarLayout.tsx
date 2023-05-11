@@ -25,7 +25,7 @@ export default function SidebarLayout(page: React.ReactElement) {
   React.useEffect(() => {
     setIsLarge(isLargeDevice);
     setLeftMargin(isLarge ? ((state?.sidebarWidth ?? 50) + 15) : "auto")
-    setTopPadding(isLarge ? "auto" : 30)
+    setTopPadding(isLarge ? "auto" : 20)
   }, [isLargeDevice, setIsLarge, state, isLarge])
 
 

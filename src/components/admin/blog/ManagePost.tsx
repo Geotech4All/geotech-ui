@@ -47,17 +47,14 @@ export default function ManagePost(props: ManagePostProps){
       <article
         onMouseOver={handleHover} onMouseLeave={handleHoverEnd}
         className={`
-          relative flex items-center justify-between
-          hover:bg-white hover:shadow-lg z-0
-          p-1 group transition-all rounded-2xl`}>
-        {(showHoverInfo && !isSmallScreen) &&(
-          <PostHoverInfo post={post} />
-        )}
+          relative flex items-center justify-between hover:bg-white
+          hover:shadow-lg z-0 p-1 group transition-all rounded-2xl`}>
+        {(showHoverInfo && !isSmallScreen) &&( <PostHoverInfo post={post} />)}
         <div className="flex items-center gap-4">
-          <GImage
+          <GImage alt={`${post?.title} cover photo`}
             className="max-w-[2.5rem] aspect-square rounded-full"
-            src={post?.coverPhoto?.url ?? "/images/reading-geo-tech.svg"} alt={`${post?.title} cover photo`}/>
-          <h3 className="group-hover:text-red-400 transition-all line-clamp-1">{post?.title}</h3>
+            src={post?.coverPhoto?.url ?? "/images/reading-geo-tech.svg"}/>
+          <h3 className="group-hover:text-black/50 transition-all line-clamp-1">{post?.title}</h3>
         </div>
         <div className="flex items-center gap-2">
           <Hideable>
