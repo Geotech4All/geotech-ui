@@ -30,7 +30,6 @@ export default function ManagePosts() {
         <h4 className="font-bold text-black/70 text-lg">Manage Posts</h4>
         <GInput
           onChange={handleSearch}
-          classNameW="rounded-lg overflow-hidden focus-within:shadow"
           className="w-full p-1 text-sm px-3" placeholder="Search posts"/>
       {loading ? <CenterSLoadingRing />
       :(

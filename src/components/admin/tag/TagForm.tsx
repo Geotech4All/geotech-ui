@@ -41,27 +41,12 @@ export default function TagForm(props: TagFormProps) {
       className="flex flex-col w-full gap-3 relative">
       <legend
         className="bg-ui-red-100/80 p-2 px-3 rounded-lg text-white font-semibold text-lg">New Tag</legend>
-      <GInput
-        defaultValue={defaultValue?.title}
-        ref={titleRef}
-        classNameI={`
-          hover:shadow-lg, text-lg font-semibold active:shadow-lg transition
-          p-1.5 px-3 rounded-md shadow w-full`}
-        placeholder="Tag title" />
-      <GInput
-        defaultValue={defaultValue?.description ?? ""}
-        ref={descRef}
-        classNameI={`
-          hover:shadow-lg, text-lg font-semibold active:shadow-lg transition
-          p-1.5 px-3 rounded-md shadow w-full`}
-        placeholder="Tag description"/>
-      <GInput
-        defaultValue={defaultValue?.category}
-        ref={catRef}
-        classNameI={`
-          hover:shadow-lg, text-lg font-semibold active:shadow-lg transition
-          p-1.5 px-3 rounded-md shadow w-full`}
-        placeholder="Category i.e what is getting tagged e.g. Podcast, Opportunity, Post"/>
+      <GInput defaultValue={defaultValue?.title}
+        ref={titleRef} placeholder="Tag title" />
+      <GInput defaultValue={defaultValue?.description ?? ""}
+        ref={descRef} placeholder="Tag description"/>
+      <GInput defaultValue={defaultValue?.category}
+        ref={catRef} placeholder="Category i.e what is getting tagged e.g. Podcast, Opportunity, Post"/>
       <Button
         onClick={handleSubmit}
         type="button"

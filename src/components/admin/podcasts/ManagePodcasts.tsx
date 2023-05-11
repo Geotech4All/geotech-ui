@@ -1,8 +1,8 @@
-import { CenterSLoadingRing, GInput, SomethingWentWrong } from "@components/common";
-import { Maybe, PodcastTypeEdge } from "@gql/codegen/graphql";
-import { useAllPodcasts } from "@gql/requests/queries/hooks";
 import React from "react";
-import ManagePodcast from "./ManagePodcast";
+import { ManagePodcast } from "@components/admin";
+import { useAllPodcasts } from "@gql/requests/queries/hooks";
+import { Maybe, PodcastTypeEdge } from "@gql/codegen/graphql";
+import { CenterSLoadingRing, GInput, SomethingWentWrong } from "@components/common";
 
 export default function ManagePodcasts(){
   const [search, setSearch] = React.useState("");
@@ -25,7 +25,7 @@ export default function ManagePodcasts(){
       <div className={`
           bg-gray-100 p-3 rounded-3xl flex flex-col gap-3`}>
         <h3 className="p-2 font-semibold">Manage podcasts</h3>
-        <GInput onChange={updateSearch} className="w-full rounded-3xl px-5 p-1" classNameI="w-full text-lg" placeholder="Search podcast"/>
+        <GInput onChange={updateSearch} className="w-full rounded-3xl px-5 p-1" placeholder="Search podcast"/>
         {error && <SomethingWentWrong error={error} />}
         <ul className="flex flex-col gap-1">
           {pods?.map(edge => <ManagePodcast key={edge?.node?.podcastId} podcast={edge?.node} />)}

@@ -68,12 +68,8 @@ export default function PodcastForm (props: NewPodcastFormProps){
       <fieldset>
         <legend className="text-3xl text-red-300 mb-3 font-extrabold">{edit ? "Edit" : "New"} Podcast</legend>
         <GInput 
-          ref={podRefs.titleRef}
-          placeholder="Your podcast title goes here....."
-          title="Podcast title"
-          defaultValue={podcast?.title}
-          required
-          classNameI="bg-red-500 text-white rounded-lg focus:shadow-lg transition-all outline-none w-full placeholder:text-white/80 font-extrabold text-xl md:text-4xl p-2 md:p-3 md:py-6 py-3"/>     
+          ref={podRefs.titleRef} placeholder="Your podcast title goes here....."
+          title="Podcast title" defaultValue={podcast?.title} required />     
         <GTextArea
           ref={podRefs.descRef}
           rows={5}

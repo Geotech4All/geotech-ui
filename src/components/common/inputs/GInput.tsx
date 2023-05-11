@@ -5,6 +5,7 @@ export interface GInputProps extends React.InputHTMLAttributes<HTMLInputElement>
   label?: string;
   children?: React.ReactNode;
   className?: string;
+  variant?: "Transparent";
 }
 /**
  * GInput returns a generic input field attached to a label
@@ -13,7 +14,7 @@ export interface GInputProps extends React.InputHTMLAttributes<HTMLInputElement>
  * @param {string} className - ClassName for the input element.
  */
 const GInput = React.forwardRef<HTMLInputElement, GInputProps>((props, ref) => {
-  const { label, children, className, ...rest } = props;
+  const { label, children, variant, className, ...rest } = props;
   return (
     <div className={`flex gap-3`}>
       {label && (
@@ -21,7 +22,7 @@ const GInput = React.forwardRef<HTMLInputElement, GInputProps>((props, ref) => {
             className={`
                 bg-black text-white whitespace-nowrap items-center
                 flex p-2 rounded font-semibold`}>{label}</label>)}
-      <TextInput className={className} id={label} ref={ref} {...rest} />
+      <TextInput variant={variant} className={className} id={label} ref={ref} {...rest} />
       { children }
     </div>
   )

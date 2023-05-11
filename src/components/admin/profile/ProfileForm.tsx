@@ -58,22 +58,10 @@ export default function ProfileForm(props: ProfileFormProps){
             alt={user?.fullName ?? "user profile image"}/>
         </div>
         <div className={`flex-1 gap-5 flex flex-col rounded-lg`}>
-          <GInput
-            ref={firstNameRef}
-            classNameW="gap-1 flex flex-col"
-            classNameI="bg-gray-50 transition-all px-3 p-2 focus:shadow rounded-lg w-full"
-            classNameL={`text-sm text-gray-400 whitespace-nowrap flex items-center rounded-lg`}
-            label="First Name"
-            defaultValue={user?.firstName ?? ""}
-            placeholder="Your first name" />
-          <GInput
-            ref={lastNameRef}
-            label="Last Name"
-            classNameW="gap-1 flex flex-col"
-            classNameI="bg-gray-50 transition-all px-3 p-2 focus:shadow rounded-lg w-full"
-            classNameL={`text-sm text-gray-400 whitespace-nowrap flex items-center rounded-lg`}
-            defaultValue={user?.lastName ?? ""}
-            placeholder="Your last name" />
+          <GInput ref={firstNameRef} label="First Name"
+            defaultValue={user?.firstName ?? ""} placeholder="Your first name" />
+          <GInput ref={lastNameRef} label="Last Name"
+            defaultValue={user?.lastName ?? ""} placeholder="Your last name" />
           <GTextArea
             ref={descRef}
             label="About (Bio)"

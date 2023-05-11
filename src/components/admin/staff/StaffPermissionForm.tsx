@@ -1,4 +1,4 @@
-import { Button, SLoadingHalo, SomethingWentWrong, ToggleInput } from "@components/common";
+import { Button, SLoadingHalo, SomethingWentWrong, ToggleInput, UIButton } from "@components/common";
 import { StaffType } from "@gql/codegen/graphql";
 import { useUpdateStaff } from "@gql/requests/mutations/hooks";
 import { Maybe } from "graphql/jsutils/Maybe";
@@ -57,32 +57,32 @@ export default function StaffPermissionForm(props: StaffPermissionFormProps){
       {loading && <div className="absolute h-full w-full bg-white/30"><SLoadingHalo /></div>}
       <legend className={`
           font-semibold text-xl bg-black/80 p-1.5 rounded-md text-white`}>Staff Permisions</legend>
-      <div className="h-[2px] w-1/2 bg-gray-200"/>
-      <div>
-        <StaffPermissionGroup>
+      <div className="flex flex-col gap-1">
+        <StaffPermissionGroup title="Posts">
             <ToggleInput enabled={canCreatePost} onEnableChange={setCanCreatePost} name="Can create post"/>
             <ToggleInput enabled={canAlterPost} onEnableChange={setCanAlterPost} name="Can alter (update) post"/>
             <ToggleInput enabled={canDeletePost} onEnableChange={setCanDeletePost} name="Can delete post"/>
         </StaffPermissionGroup>
 
-        <ToggleInput enabled={canCreateUser} onEnableChange={setCanCreateUser} name="Can create user"/>
-        <ToggleInput enabled={canAlterUser} onEnableChange={setCanAlterUser} name="Can alter (update) user"/>
-        <ToggleInput enabled={canDeleteUser} onEnableChange={setCanDeleteUser} name="Can delete user"/>
+        <StaffPermissionGroup title="Users">
+            <ToggleInput enabled={canCreateUser} onEnableChange={setCanCreateUser} name="Can create user"/>
+            <ToggleInput enabled={canAlterUser} onEnableChange={setCanAlterUser} name="Can alter (update) user"/>
+            <ToggleInput enabled={canDeleteUser} onEnableChange={setCanDeleteUser} name="Can delete user"/>
+        </StaffPermissionGroup>
 
-        <ToggleInput enabled={canCreatePodcast} onEnableChange={setCanCreatePodcast} name="Can create podcast"/>
-        <ToggleInput enabled={canAlterPodcast} onEnableChange={setCanAlterPodcast} name="Can alter (update) podcast"/>
-        <ToggleInput enabled={canDeletePodcast} onEnableChange={setCanDeletePodcast} name="Can delete podcast"/>
+        <StaffPermissionGroup title="Podcasts">
+            <ToggleInput enabled={canCreatePodcast} onEnableChange={setCanCreatePodcast} name="Can create podcast"/>
+            <ToggleInput enabled={canAlterPodcast} onEnableChange={setCanAlterPodcast} name="Can alter (update) podcast"/>
+            <ToggleInput enabled={canDeletePodcast} onEnableChange={setCanDeletePodcast} name="Can delete podcast"/>
+        </StaffPermissionGroup>
 
-        <ToggleInput enabled={canCreateOpportunities} onEnableChange={setcanCreateOpportunities} name="Can create opportunity"/>
-        <ToggleInput enabled={canUpdateOpportunities} onEnableChange={setcanUpdateOpportunities} name="Can alter (update) opportunity"/>
-        <ToggleInput enabled={canDeleteOpportunities} onEnableChange={setcanDeleteOpportunities} name="Can delete opportunity"/>
+        <StaffPermissionGroup title="Opportunities">
+            <ToggleInput enabled={canCreateOpportunities} onEnableChange={setcanCreateOpportunities} name="Can create opportunity"/>
+            <ToggleInput enabled={canUpdateOpportunities} onEnableChange={setcanUpdateOpportunities} name="Can alter (update) opportunity"/>
+            <ToggleInput enabled={canDeleteOpportunities} onEnableChange={setcanDeleteOpportunities} name="Can delete opportunity"/>
+        </StaffPermissionGroup>
       </div>
-      <Button
-        type="submit"
-        className={`
-          text-xl rounded-xl w-fit px-5 self-end justify-end
-          p-2 bg-ui-red-200/90 text-white hover:opacity-70
-          transition active:opacity-70`}>Save</Button>
+      <UIButton variant="Black" type="submit">Save</UIButton>
     </form>
   )
 };

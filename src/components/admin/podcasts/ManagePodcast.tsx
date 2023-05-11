@@ -22,7 +22,7 @@ export default function ManagePodcast(props: ManagePodcastProps) {
             className="max-w-[2rem] rounded-full aspect-square overflow-hidden"
             src={"/images/listening-geo-tech.svg"} alt={`${podcast.title} cover photo`} />
         )}
-        <h4 className="group-hover:text-red-400 transition-all line-clamp-1">{podcast?.title}</h4>
+        <h4 className="group-hover:text-black/40 transition-all line-clamp-1">{podcast?.title}</h4>
       </div>
       <div>
         <Hideable>

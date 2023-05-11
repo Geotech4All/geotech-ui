@@ -31,7 +31,7 @@ const StaffEditPage: NextPageWithLayout = () => {
                 <Heading className="text-black/50">{data?.staff?.user?.fullName}</Heading>
                 <address className="text-xl font-semibold">{data?.staff?.user?.email}</address>
             </div>
-            <div className="flex flex-col p-4 md:flex-row">
+            <div className="flex gap-3 flex-col p-4 md:flex-row">
                 <div className="flex flex-col flex-1 items-center gap-1">
                     <GImage className="max-h-[80vh] rounded-lg aspect-square"
                         alt={data?.staff?.user?.fullName ?? "Staff"}

@@ -63,11 +63,7 @@ export default function OpportunityForm(props: OpportunityFormProps) {
       className="flex flex-col relative gap-3 rounded-lg">
       { error && <FormErrors errors={error} />}
       <GInput ref={titleRef} defaultValue={defaultValue?.title} 
-        classNameL="bg-ui-red-200/80 text-lg p-1 px-3 font-semibold text-white rounded"
-        classNameI="shadow text-lg focus:shadow-lg transition p-1 px-2 rounded-md w-full"
-        classNameW="flex gap-3"
-        label="Title" 
-        placeholder="My opportunity title"/>
+        label="Title" placeholder="My opportunity title"/>
 
       <TextArea ref={descRef} rows={2}
         defaultValue={defaultValue?.abstract?.toString()}

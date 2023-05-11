@@ -10,10 +10,7 @@ export default function FooterEmail(){
         <UIButton variant="White" disabled type="submit">Send</UIButton>
       </div>
       <div className="flex flex-col gap-4">
-        <GInput
-          classNameW={`bg-white/30 p-2 rounded`}
-          classNameI={`bg-transparent w-full text-white`}
-          type="email" placeholder="Your email address (example@gmail.com)"/>
+        <GInput variant="Transparent" type="email" placeholder="Your email address (example@gmail.com)"/>
         <GTextArea
           classNameW={`bg-white/30 p-2 rounded`}
           classNameI={`bg-transparent w-full text-white`}

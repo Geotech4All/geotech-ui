@@ -13,17 +13,15 @@ const ToggleInput = React.forwardRef<HTMLInputElement, ToggleInputProps>((props,
   return (
     <Switch.Group>
       <div className="flex gap-4 justify-between w-full max-w-md items-center">
-        {name && <Switch.Label className="text-lg md:text-xl">{name}</Switch.Label>}
-        <Switch
-          checked={enabled}
-          onChange={onEnableChange}
+        {name && <Switch.Label className="">{name}</Switch.Label>}
+        <Switch checked={enabled} onChange={onEnableChange}
           className={`
-              ${enabled ? "bg-ui-red-200" : "bg-gray-300"} relative
-              inline-flex h-6 w-11 items-center rounded-full transition-all`}>
+              ${enabled ? "bg-black/60" : "bg-gray-300"} relative
+              inline-flex h-4 w-[2.2rem] items-center rounded-full transition-all`}>
               <span className="sr-only">{`Toggle ${name}`}</span>
               <span className={`
-              ${enabled ? "translate-x-6": "translate-x-1"}
-               inline-block h-4 w-4 tran rounded-full bg-white transition`}/>
+              ${enabled ? "translate-x-5": "translate-x-0.5"}
+               inline-block w-3 aspect-square tran rounded-full bg-white transition`}/>
           </Switch>
       </div>
     </Switch.Group>
