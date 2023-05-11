@@ -20,7 +20,7 @@ export default function PostList(props: PostListProps) {
               {edges?.map(post => <MidPostCard bordered key={post?.node?.postId} post={post?.node} />)}
             </List>
         ): (
-            <NothingFound caption="No posts found" />
+            <NothingFound caption="Sorry no posts yet" />
         )}
     </div>
   );

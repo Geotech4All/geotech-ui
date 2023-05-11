@@ -16,7 +16,6 @@ export default function LoginLayout(props: LoginLayoutProps){
   const isTabletOrMobile = useIsScreenSize(970)
   React.useEffect(() => {
     setShowImage(isTabletOrMobile);
-    console.log(isTabletOrMobile)
   }, [isTabletOrMobile]);
 
   return (

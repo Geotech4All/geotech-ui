@@ -25,7 +25,7 @@ return (
     <div className="flex flex-col gap-3">
       <OpportunitiesListFilter getCategory={getCategory}/>
       {found_opportunities ? (
-          <NothingFound caption="Sorry! No Opportunites we're found" />
+          <NothingFound caption="Sorry no Opportunites yet" />
       ):(
         <List title="New">
           {data?.opportunities?.edges.map(opportunity => (
