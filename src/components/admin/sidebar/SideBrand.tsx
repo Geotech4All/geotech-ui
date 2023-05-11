@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { selectAdmin, setSidebarWidth, setSidebarOpen } from "@store/slices";
 import Image from "next/image";
-import { Button } from "@components/common";
+import { Button, FullLogo } from "@components/common";
 import { FaAngleDoubleRight, FaAngleDoubleLeft } from "react-icons/fa";
 
 export default function SideBrand() {
@@ -24,18 +24,12 @@ export default function SideBrand() {
     <div className="flex min-h-[37px] items-center justify-between">
       {admin.sidebarOpen && (
         <motion.span className="flex h-full items-center justify-center">
-          <Image
-            className="w-full max-w-[90%]"
-            width={1031}
-            height={207}
-            src="/images/gtech.png"
-            alt="small geotech logo"/>
+          <FullLogo />
         </motion.span>
       )}
-      <Button
-        className={`flex items-center transition-all ${!admin.sidebarOpen && "hover:pl-7"} justify-center flex-1 text-lg h-full`}
-        onClick={updateSidebar}
-        iconSize={25}
+      <Button onClick={updateSidebar} iconSize={25}
+        className={`
+            flex items-center transition-all ${!admin.sidebarOpen && "hover:pl-7"} justify-center flex-1 text-lg h-full`}
         icon={admin.sidebarOpen ? FaAngleDoubleLeft : FaAngleDoubleRight} />
     </div>
   )

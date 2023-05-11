@@ -21,7 +21,7 @@ export default function SidebarUrl(props: UrlType) {
     <Link title={name}
       className={`
         flex ${active ? "bg-black/80 text-white" : "text-gray-700"} gap-2 self-start w-full
-        hover:bg-black/60 p-2.5 px-4 rounded-3xl hover:text-white transition-all
+        hover:bg-black/60 p-3 px-4 rounded-[3rem] hover:text-white transition-all
         ${admin.sidebarOpen ? "justify-start p-4" : "justify-center aspect-square rounded-full"}
       items-center`} href={path}>
       <Icon size={ 25 }/>
