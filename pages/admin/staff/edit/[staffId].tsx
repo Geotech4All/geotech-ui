@@ -26,7 +26,7 @@ const StaffEditPage: NextPageWithLayout = () => {
         <Head>
             <title>Geotech - Staff Permisions</title>
         </Head>
-        <main className="p-5 flex flex-col gap-3">
+        <main className="p-2 md:p-5 flex flex-col gap-3">
             <div className="bg-gray-50 p-4 rounded-md">
                 <Heading className="text-black/50">{data?.staff?.user?.fullName}</Heading>
                 <address className="text-xl font-semibold">{data?.staff?.user?.email}</address>
