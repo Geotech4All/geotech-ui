@@ -47,7 +47,7 @@ export default function DropDownList(props: DropDownListProps) {
         className={`${!full ? "max-w-md" : ""}
             border-2 w-full flex items-center justify-between text-black/70 rounded-md p-1 px-2`}>
         <span ref={spanRef} onClick={toggleOptionsOpen}
-          className={`${selected ? "" : "text-black/50"} pointer-events-none`}>
+          className={`${selected ? "" : "text-black/50"} line-clamp-1 pointer-events-none`}>
           {selected? selected : `Select ${name ? name : ''}`}
         </span>
         {optionsOpen ? <FaAngleDown /> : <FaAngleUp />}

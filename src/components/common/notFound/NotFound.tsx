@@ -27,7 +27,7 @@ export default function NothingFound(props: NothingFoundProps){
   }, [variant])
 
   return (
-    <div className={`flex min-h-[30rem] w-full items-center justify-center ${className}`}>
+    <div className={`flex flex-col md:flex-row min-h-[30rem] w-full items-center justify-center ${className}`}>
       <PreviewImage
         className={`${size} w-full`}
         src={image ?? emptyError?.img ?? ""}

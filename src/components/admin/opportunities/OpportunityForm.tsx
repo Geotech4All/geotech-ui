@@ -1,7 +1,7 @@
 import {
   Button, CenterSLoadingRing,
   DropDownList, FormErrors, GInput,
-  MModal, SLoadingHalo, SomethingWentWrong, TextArea, TipTap } from "@components/common";
+  MModal, SLoadingHalo, SomethingWentWrong, TextArea, TipTap, UIButton } from "@components/common";
 import { Maybe, OpportunityType } from "@gql/codegen/graphql";
 import { useCreateUpdateOpportunity } from "@gql/requests/mutations/hooks";
 import { useAllTags } from "@gql/requests/queries/hooks";
@@ -74,20 +74,18 @@ export default function OpportunityForm(props: OpportunityFormProps) {
         placeholder="A short description of this opportunity (will go on opportunity card)"/>
       <TipTap content={defaultValue?.content ?? ""} title="Opprtunity content" getContent={getContent}/>
 
-      <div className="flex w-full gap-3">
-        <label
-          className="bg-ui-red-200/80 h-fit p-1 px-3 rounded text-white font-semibold">Category</label>
-        <DropDownList full
-          name="Category (e.g. Job listing, Internship, Scholarship e.t.c.)"
-          defaultValue={defaultValue?.category?.title}
-          getCurrent={getCategory}
-          options={categories ?? []}/>
-        <Button
-          onClick={() => setNewTagOpen(true)}
-          type="button"
-          className={`
-            hover:bg-green-500/90 active:bg-green-500/90 transition h-fit
-            bg-green-500/70 whitespace-nowrap p-1 px-2 rounded-md`}>Add Category</Button>
+      <div className="flex flex-col md:flex-row w-full gap-3">
+        <div className="flex gap-3 w-full">
+            <label
+              className="bg-ui-red-200/80 h-fit p-1 px-3 rounded text-white font-semibold">Category</label>
+            <DropDownList full
+              name="Category (e.g. Job listing, Internship, Scholarship e.t.c.)"
+              defaultValue={defaultValue?.category?.title}
+              getCurrent={getCategory}
+              options={categories ?? []}/>
+        </div>
+        <UIButton variant="Green" className="p-[0.5rem] whitespace-nowrap"
+            onClick={() => setNewTagOpen(true)} type="button" >Add Category</UIButton>
         <MModal open={newTagOpen} onClose={()=>setNewTagOpen(false)}>
           <TagForm onComplete={onNewTagCreate} />
         </MModal>

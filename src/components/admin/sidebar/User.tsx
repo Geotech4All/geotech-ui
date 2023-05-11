@@ -10,13 +10,12 @@ export default function User () {
 
   return (
     <Link
-      className={`flex flex-col group gap-1 items-center justify-center`}
+      className={`flex max-w-[7rem] flex-col group gap-1 items-center justify-center`}
       href="/admin/profile">
       <img
         className={`
-          w-full max-w-[10rem] bg-gray-200 rounded-full
-          group-hover:bg-red-100 transition-all object-cover
-          aspect-square p-0.5`}
+            w-full max-w-[10rem] bg-gray-200 rounded-full p-3
+            group-hover:bg-black/70 transition-all object-cover aspect-square`}
         src={user?.profile?.image ?? "/images/profile.svg" } alt={user?.fullName ?? "user profile"} />
       {admin.sidebarOpen && (
         <address>{user?.email}</address>

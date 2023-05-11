@@ -28,12 +28,9 @@ export default function Sidebar(props: SidebarProps){
         <SideBrand />
         <SidebarUrls />
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex items-center py-3 flex-col gap-2">
         <User />
-        <SidebarUrl
-          icon={AiOutlineLogout}
-          name="Logout"
-          path={`/admin/signout`} />
+        <SidebarUrl icon={AiOutlineLogout} name="Logout" path={`/admin/signout`} />
       </div>
   </motion.div>
   )
