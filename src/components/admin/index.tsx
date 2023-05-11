@@ -23,10 +23,11 @@ import ManagePodcast from "@components/admin/podcasts/ManagePodcast";
 import ManagePodcasts from "@components/admin/podcasts/ManagePodcasts";
 import ProfileForm from "@components/admin/profile/ProfileForm";
 
-// Stafff
+/********************* Stafff **************************/
 import StaffCard from "@components/admin/staff/StaffCard";
 import StaffList from "@components/admin/staff/StaffList";
 import StaffPermissionForm from "@components/admin/staff/StaffPermissionForm";
+import StaffPermissionGroup from "@components/admin/staff/StaffPermissionGroup";
 import NewStaff from "@components/admin/staff/NewStaff";
 
 
@@ -65,11 +66,8 @@ export {
   AdminPodcastList,
   AdminTrendingPodcasts,
 
-// Staff
-  StaffCard,
-  StaffList,
-  StaffPermissionForm,
-  NewStaff,
+/*** Staff ***/
+  StaffCard, StaffList, StaffPermissionForm, StaffPermissionGroup, NewStaff,
 
 // Opportunities
   OpportunityList,

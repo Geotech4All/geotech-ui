@@ -4,6 +4,7 @@ import { useUpdateStaff } from "@gql/requests/mutations/hooks";
 import { Maybe } from "graphql/jsutils/Maybe";
 import { useRouter } from "next/router";
 import React from "react";
+import { StaffPermissionGroup } from "@components/admin";
 
 interface StaffPermissionFormProps {
   defaultValue?: Maybe<StaffType>;
@@ -51,18 +52,18 @@ export default function StaffPermissionForm(props: StaffPermissionFormProps){
   }
   if (error) return <SomethingWentWrong error={error} />;
   return (
-    <form
-      onSubmit={submitHandler}
+    <form onSubmit={submitHandler}
       className="w-full max-w-md flex relative flex-col gap-4">
       {loading && <div className="absolute h-full w-full bg-white/30"><SLoadingHalo /></div>}
-      <legend
-        className={`font-semibold text-2xl bg-ui-red-200/70
-                    p-2 rounded-lg text-white`}>Staff Permisions</legend>
+      <legend className={`
+          font-semibold text-xl bg-black/80 p-1.5 rounded-md text-white`}>Staff Permisions</legend>
       <div className="h-[2px] w-1/2 bg-gray-200"/>
       <div>
-        <ToggleInput enabled={canCreatePost} onEnableChange={setCanCreatePost} name="Can create post"/>
-        <ToggleInput enabled={canAlterPost} onEnableChange={setCanAlterPost} name="Can alter (update) post"/>
-        <ToggleInput enabled={canDeletePost} onEnableChange={setCanDeletePost} name="Can delete post"/>
+        <StaffPermissionGroup>
+            <ToggleInput enabled={canCreatePost} onEnableChange={setCanCreatePost} name="Can create post"/>
+            <ToggleInput enabled={canAlterPost} onEnableChange={setCanAlterPost} name="Can alter (update) post"/>
+            <ToggleInput enabled={canDeletePost} onEnableChange={setCanDeletePost} name="Can delete post"/>
+        </StaffPermissionGroup>
 
         <ToggleInput enabled={canCreateUser} onEnableChange={setCanCreateUser} name="Can create user"/>
         <ToggleInput enabled={canAlterUser} onEnableChange={setCanAlterUser} name="Can alter (update) user"/>
