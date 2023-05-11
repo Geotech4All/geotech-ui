@@ -7,6 +7,7 @@ import Paragraph from "@tiptap/extension-paragraph";
 import { CustomImage } from "@components/common";
 import { Editor } from "@tiptap/core";
 import Heading from "@tiptap/extension-heading";
+import styles from "./styles.module.scss";
 
 interface TipTapProps {
   content?: string;
@@ -39,7 +40,7 @@ export default function TipTap(props: TipTapProps){
         <div className="font-extrabold px-2 text-red-400/30 md:text-lg">{title}</div>
         <TipTapMenuBar editor={editor}/>
       </div>
-      <EditorContent className="shadow rounded-md p-3" editor={editor} />
+      <EditorContent className={`shadow rounded-md md:text-lg p-3 ${styles.tiptap}`} editor={editor} />
     </div>
   )
 }
