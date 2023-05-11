@@ -173,16 +173,19 @@ export const GET_CURRENT_USER = gql`
       id
       fullName
       staff {
-        canAlterPodcast
-        canAlterPost
-        canAlterUser
-        canCreatePodcast
-        canCreatePost
-        canCreateUser
-        canDeletePodcast
-        canDeletePost
-        canDeleteUser
         staffId
+        canAlterPost
+        canCreatePost
+        canDeletePost
+        canAlterUser
+        canCreateUser
+        canDeleteUser
+        canAlterPodcast
+        canCreatePodcast
+        canDeletePodcast
+        canUpdateOpportunities
+        canCreateOpportunities
+        canDeleteOpportunities
       }
       profile {
         about
@@ -196,16 +199,19 @@ export const GET_CURRENT_USER = gql`
 export const STAFF_DETAIL = gql`
   query StaffDetail($staffId: ID!) {
     staff: staffDetail(staffId: $staffId) {
-      canAlterPodcast
-      canAlterPost
-      canAlterUser
-      canCreatePodcast
-      canCreatePost
-      canCreateUser
-      canDeletePodcast
-      canDeletePost
-      canDeleteUser
-      staffId
+    staffId
+    canAlterPost
+    canCreatePost
+    canDeletePost
+    canAlterUser
+    canCreateUser
+    canDeleteUser
+    canAlterPodcast
+    canCreatePodcast
+    canDeletePodcast
+    canUpdateOpportunities
+    canCreateOpportunities
+    canDeleteOpportunities
       user {
         email
         fullName

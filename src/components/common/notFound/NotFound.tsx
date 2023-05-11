@@ -28,10 +28,8 @@ export default function NothingFound(props: NothingFoundProps){
 
   return (
     <div className={`flex flex-col md:flex-row min-h-[30rem] w-full items-center justify-center ${className}`}>
-      <PreviewImage
-        className={`${size} w-full`}
-        src={image ?? emptyError?.img ?? ""}
-        alt={alt ?? emptyError?.alt ?? ""}/>
+      <PreviewImage className={`${size} w-full`}
+        src={image ?? emptyError?.img ?? ""} alt={alt ?? emptyError?.alt ?? ""}/>
       <div className="flex flex-col items-center justify-center text-lg text-black/60">
         <p>{caption}</p>
       </div>

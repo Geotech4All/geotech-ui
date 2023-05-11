@@ -1,11 +1,11 @@
 import React from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { NextPageWithLayout } from "@pages/_app";
 import { SidebarLayout } from "@components/admin";
 import { StaffPermissionForm } from "@components/admin"
 import { useStaffDetail } from "@gql/requests/queries/hooks";
-import { GImage, Heading, PageLoadingRing, PreviewImage, SomethingWentWrong } from "@components/common";
-import Head from "next/head";
+import { GImage, Heading, PageLoadingRing, SomethingWentWrong } from "@components/common";
 
 
 const StaffEditPage: NextPageWithLayout = () => {
@@ -18,8 +18,6 @@ const StaffEditPage: NextPageWithLayout = () => {
 
   if (loading) return <PageLoadingRing />
   if (error) return <SomethingWentWrong error={error} />
-
-  console.log(data)
 
   return (
     <>

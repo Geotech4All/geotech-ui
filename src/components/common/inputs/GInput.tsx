@@ -1,15 +1,14 @@
 import React from "react";
-import TextInput from "./text/Input";
+import { TextInput } from "@components/common";
 
 export interface GInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   children?: React.ReactNode;
   className?: string;
   variant?: "Transparent";
-}
+};
 /**
- * GInput returns a generic input field attached to a label
- * without any styles
+ * GInput returns a generic input field attached to a label without any styles
  * Simply pass the label props to give it a label
  * @param {string} className - ClassName for the input element.
  */
