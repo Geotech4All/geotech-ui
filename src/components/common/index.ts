@@ -56,6 +56,12 @@ import MidPodcastCard from "@components/common/podcast/MidPodcastCard";
 import RecentPodcasts from "@components/common/podcast/RecentPodcasts";
 import PlayingPodcastDetails from "@components/common/audio/PlayingPodcastDetails";
 
+/**************** HtmlComponents *****************/
+import Heading from "@components/common//htmlComponents/Heading";
+import TipTapSection from "@components/common/htmlComponents/TipTapSection";
+import Article from "@components/common/htmlComponents/Article";
+import DateTime from "@components/common/htmlComponents/DateTime";
+
 import NothingFound from "@components/common/notFound/NotFound";
 import FullLogo from "@components/common/logo/FullLogo";
 import SomethingWentWrong from "@components/common/errors/SomethingWentWrong";
@@ -113,6 +119,9 @@ export {
 /*** Podcast-stuff ***/
     PodcastHostPill, RecentPodcasts, MidPodcastCard, LargePodcastCard,
     PlayingPodcastDetails,
+
+/*** HtmlComponents ***/
+    Heading, TipTapSection, Article, DateTime,
 
   UserPill,
   FullLogo,

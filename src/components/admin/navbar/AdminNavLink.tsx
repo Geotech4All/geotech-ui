@@ -10,14 +10,20 @@ interface AdminNavLinkProps {
 
 export default function AdminNavLink(props: AdminNavLinkProps){
   const { onClick } = props;
-  const { path, icon: Icon, name } = props.url;
   const router = useRouter();
-  const currRoute = router.asPath.split("/")[1]?.trim();
-  const pathName = path.split("/")[1]?.trim();
+  const { path, icon: Icon, name } = props.url;
+  const [isCurrRoute, setIsCurrRoute] = React.useState(false);
+
+  React.useEffect(() => {
+      const currRoute = router.asPath.split("/")[1]?.trim();
+      const pathName = path.split("/")[1]?.trim();
+      setIsCurrRoute(currRoute === pathName)
+  }, [path, router.asPath])
+
   return (
     <Link onClick={onClick} href={path}
-      className={`${currRoute === pathName ? "bg-black/25":""}
-        flex transition-all items-center active:bg-red-400 bg-transparent
+      className={`${isCurrRoute ? "bg-black/25":""}
+        flex transition-all items-center active:bg-red-400
         hover:bg-black/10 active:bg-black/10 p-2 rounded-md gap-2`} >
       <Icon size={20}/>
       <span>{name}</span>

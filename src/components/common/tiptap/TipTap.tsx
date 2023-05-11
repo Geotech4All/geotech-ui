@@ -4,8 +4,9 @@ import StarterKit from "@tiptap/starter-kit";
 import { TipTapMenuBar } from "@components/common";
 import Underline from "@tiptap/extension-underline"
 import Paragraph from "@tiptap/extension-paragraph";
-import { CustomHeading, CustomImage } from "@components/common";
+import { CustomImage } from "@components/common";
 import { Editor } from "@tiptap/core";
+import Heading from "@tiptap/extension-heading";
 
 interface TipTapProps {
   content?: string;
@@ -21,7 +22,7 @@ export default function TipTap(props: TipTapProps){
       CustomImage,
       Underline,
       Paragraph,
-      CustomHeading
+      Heading
     ],
     content
   });

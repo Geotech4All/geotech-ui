@@ -1,6 +1,6 @@
 import React from "react";
 import { Maybe, PostType } from "@gql/codegen/graphql";
-import { GImage } from "@components/common";
+import { DateTime, GImage } from "@components/common";
 
 interface PostAuthorProps {
   post: Maybe<PostType> | undefined;
@@ -9,13 +9,7 @@ interface PostAuthorProps {
 
 export default function PostAuthor(props: PostAuthorProps) {
   const { post, className } = props;
-  const [date, setDate] = React.useState<string>();
 
-  React.useEffect(() => {
-    const newDate = new Date(Date.parse(post?.dateAdded ?? ""))
-    const strDate = newDate.toLocaleDateString("en-us", { day: "numeric", month: "long", year: "numeric"})
-    setDate(strDate);
-  }, [post])
   return (
     <div className={`flex gap-2 ${className}`}>
       <GImage
@@ -24,7 +18,7 @@ export default function PostAuthor(props: PostAuthorProps) {
         alt={`${post?.author?.fullName ? `${post?.author.fullName}` : `${post?.title} author` }`}/>
       <div className="flex text-sm flex-col">
         <p className="font-bold">{post?.author.fullName}</p>
-        <time className="text-xs" dateTime={post?.dateAdded}>{date}</time>
+        <DateTime date={String(post?.dateAdded)} />
       </div>
     </div>
   )
