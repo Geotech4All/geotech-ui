@@ -1,10 +1,11 @@
-import { SidebarLayout } from "@components/admin";
-import { GImage, PageLoadingRing, SomethingWentWrong } from "@components/common";
-import { useStaffDetail } from "@gql/requests/queries/hooks";
-import { NextPageWithLayout } from "@pages/_app";
-import { useRouter } from "next/router";
 import React from "react";
-import StaffPermissionForm from "../../../../src/components/admin/staff/StaffPermissionForm";
+import { useRouter } from "next/router";
+import { NextPageWithLayout } from "@pages/_app";
+import { SidebarLayout } from "@components/admin";
+import { StaffPermissionForm } from "@components/admin"
+import { useStaffDetail } from "@gql/requests/queries/hooks";
+import { GImage, Heading, PageLoadingRing, PreviewImage, SomethingWentWrong } from "@components/common";
+import Head from "next/head";
 
 
 const StaffEditPage: NextPageWithLayout = () => {
@@ -21,20 +22,27 @@ const StaffEditPage: NextPageWithLayout = () => {
   console.log(data)
 
   return (
-    <div className={`
-      flex flex-col md:flex-row w-full shadow-xl rounded-xl gap-4
-      min-h-[95vh] justify-evenly items-center p-4 md:p-9`}>
-
-      <div className="flex flex-col items-center gap-1">
-        <GImage
-          className="max-w-xs border-gray-300 w-full rounded-full aspect-square"
-          src={data?.staff?.user?.profile?.image ?? "/images/profile.svg"}
-          alt={data?.staff?.user?.fullName ?? "Staff"} />
-        <address className="text-xl font-semibold">{data?.staff?.user?.email}</address>
-        <h2 className="text-xl">{data?.staff?.user?.fullName}</h2>
-      </div>
-      <StaffPermissionForm defaultValue={data?.staff} />
-    </div>
+    <>
+        <Head>
+            <title>Geotech - Staff Permisions</title>
+        </Head>
+        <main className="p-5 flex flex-col gap-3">
+            <div className="bg-gray-50 p-4 rounded-md">
+                <Heading className="text-black/50">{data?.staff?.user?.fullName}</Heading>
+                <address className="text-xl font-semibold">{data?.staff?.user?.email}</address>
+            </div>
+            <div className="flex flex-col p-4 md:flex-row">
+                <div className="flex flex-col flex-1 items-center gap-1">
+                    <GImage className="max-h-[80vh] rounded-lg aspect-square"
+                        alt={data?.staff?.user?.fullName ?? "Staff"}
+                        src={data?.staff?.user?.profile?.image ?? "/images/profile.svg"} />
+                </div>
+                <div className="flex-1">
+                    <StaffPermissionForm defaultValue={data?.staff} />
+                </div>
+            </div>
+        </main>
+    </>
   )
 };
 

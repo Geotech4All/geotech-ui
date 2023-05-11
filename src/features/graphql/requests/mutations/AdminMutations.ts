@@ -71,7 +71,10 @@ export const UPDATE_STAFF = gql`
     $canCreateUser: Boolean,
     $canDeletePodcast: Boolean,
     $canDeletePost: Boolean,
-    $canDeleteUser: Boolean) {
+    $canDeleteUser: Boolean
+    $canCreateOpportunities: Boolean
+    $canUpdateOpportunities: Boolean
+    $canDeleteOpportunities: Boolean) {
     staff: updateStaff(
       userEmail: $userEmail,
       canAlterPodcast: $canAlterPodcast, 
@@ -82,7 +85,10 @@ export const UPDATE_STAFF = gql`
       canCreateUser: $canCreateUser, 
       canDeletePodcast: $canDeletePodcast, 
       canDeletePost: $canDeletePost, 
-      canDeleteUser: $canDeleteUser) {
+      canDeleteUser: $canDeleteUser
+      canCreateOpportunities: $canCreateOpportunities
+      canUpdateOpportunities: $canUpdateOpportunities
+      canDeleteOpportunities: $canDeleteOpportunities ) {
       errors {
         field
         messages
@@ -107,7 +113,10 @@ export const CREATE_STAFF = gql`
     $canCreateUser: Boolean, 
     $canDeletePodcast: Boolean, 
     $canDeletePost: Boolean, 
-    $canDeleteUser: Boolean) {
+    $canDeleteUser: Boolean
+    $canCreateOpportunities: Boolean
+    $canUpdateOpportunities: Boolean
+    $canDeleteOpportunities: Boolean) {
     createStaff(
       userEmail: $userEmail, 
       canAlterPodcast: $canAlterPodcast, 
@@ -118,7 +127,10 @@ export const CREATE_STAFF = gql`
       canCreateUser: $canCreateUser, 
       canDeletePodcast: $canDeletePodcast, 
       canDeletePost: $canDeletePost, 
-      canDeleteUser: $canDeleteUser) {
+      canDeleteUser: $canDeleteUser
+      canCreateOpportunities: $canCreateOpportunities
+      canUpdateOpportunities: $canUpdateOpportunities
+      canDeleteOpportunities: $canDeleteOpportunities ) {
       success
       errors {
         field

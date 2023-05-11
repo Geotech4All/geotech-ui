@@ -23,6 +23,10 @@ export default function StaffPermissionForm(props: StaffPermissionFormProps){
   const [canCreatePodcast, setCanCreatePodcast] = React.useState<boolean>(staff?.canCreatePodcast ?? false)
   const [canAlterPodcast, setCanAlterPodcast] = React.useState<boolean>(staff?.canAlterPodcast ?? false)
   const [canDeletePodcast, setCanDeletePodcast] = React.useState<boolean>(staff?.canDeletePodcast ?? false)
+  const [canCreateOpportunities, setcanCreateOpportunities] = React.useState<boolean>(staff?.canCreateOpportunities ?? false)
+  const [canUpdateOpportunities, setcanUpdateOpportunities] = React.useState<boolean>(staff?.canUpdateOpportunities ?? false)
+  const [canDeleteOpportunities, setcanDeleteOpportunities] = React.useState<boolean>(staff?.canDeleteOpportunities ?? false)
+
 
   const submitHandler: React.FormEventHandler = (event) => {
     event.preventDefault()
@@ -37,7 +41,10 @@ export default function StaffPermissionForm(props: StaffPermissionFormProps){
         canCreatePost,
         canCreateUser,
         canDeletePost,
-        canDeleteUser
+        canDeleteUser,
+        canCreateOpportunities,
+        canUpdateOpportunities,
+        canDeleteOpportunities
       }
     })
     router.replace("/admin/staff")
@@ -56,12 +63,18 @@ export default function StaffPermissionForm(props: StaffPermissionFormProps){
         <ToggleInput enabled={canCreatePost} onEnableChange={setCanCreatePost} name="Can create post"/>
         <ToggleInput enabled={canAlterPost} onEnableChange={setCanAlterPost} name="Can alter (update) post"/>
         <ToggleInput enabled={canDeletePost} onEnableChange={setCanDeletePost} name="Can delete post"/>
+
         <ToggleInput enabled={canCreateUser} onEnableChange={setCanCreateUser} name="Can create user"/>
         <ToggleInput enabled={canAlterUser} onEnableChange={setCanAlterUser} name="Can alter (update) user"/>
         <ToggleInput enabled={canDeleteUser} onEnableChange={setCanDeleteUser} name="Can delete user"/>
+
         <ToggleInput enabled={canCreatePodcast} onEnableChange={setCanCreatePodcast} name="Can create podcast"/>
         <ToggleInput enabled={canAlterPodcast} onEnableChange={setCanAlterPodcast} name="Can alter (update) podcast"/>
         <ToggleInput enabled={canDeletePodcast} onEnableChange={setCanDeletePodcast} name="Can delete podcast"/>
+
+        <ToggleInput enabled={canCreateOpportunities} onEnableChange={setcanCreateOpportunities} name="Can create opportunity"/>
+        <ToggleInput enabled={canUpdateOpportunities} onEnableChange={setcanUpdateOpportunities} name="Can alter (update) opportunity"/>
+        <ToggleInput enabled={canDeleteOpportunities} onEnableChange={setcanDeleteOpportunities} name="Can delete opportunity"/>
       </div>
       <Button
         type="submit"

@@ -319,11 +319,6 @@ export type Mutation = {
    * To perform an update, you just need to pass in the blog `id`.
    */
   createUpdatePost?: Maybe<PostCreateUpdateMutation>;
-  /**
-   * Create and update mutation for a post image.
-   * To perform an update, all you need to do is pass in the post image `id`
-   */
-  createUpdatePostImage?: Maybe<PostImageCreateUpdateMutation>;
   createUpdateTag?: Maybe<CreateUpdateTagMutation>;
   /**
    * Delete account permanently or make `user.is_active=False`.
@@ -488,12 +483,15 @@ export type MutationCreateStaffArgs = {
   canAlterPodcast?: InputMaybe<Scalars['Boolean']>;
   canAlterPost?: InputMaybe<Scalars['Boolean']>;
   canAlterUser?: InputMaybe<Scalars['Boolean']>;
+  canCreateOpportunities?: InputMaybe<Scalars['Boolean']>;
   canCreatePodcast?: InputMaybe<Scalars['Boolean']>;
   canCreatePost?: InputMaybe<Scalars['Boolean']>;
   canCreateUser?: InputMaybe<Scalars['Boolean']>;
+  canDeleteOpportunities?: InputMaybe<Scalars['Boolean']>;
   canDeletePodcast?: InputMaybe<Scalars['Boolean']>;
   canDeletePost?: InputMaybe<Scalars['Boolean']>;
   canDeleteUser?: InputMaybe<Scalars['Boolean']>;
+  canUpdateOpportunities?: InputMaybe<Scalars['Boolean']>;
   userEmail: Scalars['String'];
 };
 
@@ -587,12 +585,6 @@ export type MutationCreateUpdatePostArgs = {
   coverPhotoId?: InputMaybe<Scalars['ID']>;
   postId?: InputMaybe<Scalars['ID']>;
   title: Scalars['String'];
-};
-
-
-export type MutationCreateUpdatePostImageArgs = {
-  description?: InputMaybe<Scalars['String']>;
-  image?: InputMaybe<Scalars['Upload']>;
 };
 
 
@@ -706,12 +698,15 @@ export type MutationUpdateStaffArgs = {
   canAlterPodcast?: InputMaybe<Scalars['Boolean']>;
   canAlterPost?: InputMaybe<Scalars['Boolean']>;
   canAlterUser?: InputMaybe<Scalars['Boolean']>;
+  canCreateOpportunities?: InputMaybe<Scalars['Boolean']>;
   canCreatePodcast?: InputMaybe<Scalars['Boolean']>;
   canCreatePost?: InputMaybe<Scalars['Boolean']>;
   canCreateUser?: InputMaybe<Scalars['Boolean']>;
+  canDeleteOpportunities?: InputMaybe<Scalars['Boolean']>;
   canDeletePodcast?: InputMaybe<Scalars['Boolean']>;
   canDeletePost?: InputMaybe<Scalars['Boolean']>;
   canDeleteUser?: InputMaybe<Scalars['Boolean']>;
+  canUpdateOpportunities?: InputMaybe<Scalars['Boolean']>;
   userEmail: Scalars['String'];
 };
 
@@ -925,26 +920,6 @@ export type PostDeleteMutation = {
   __typename?: 'PostDeleteMutation';
   errors?: Maybe<Array<Maybe<ErrorType>>>;
   success?: Maybe<Scalars['Boolean']>;
-};
-
-/**
- * Create and update mutation for a post image.
- * To perform an update, all you need to do is pass in the post image `id`
- */
-export type PostImageCreateUpdateMutation = {
-  __typename?: 'PostImageCreateUpdateMutation';
-  errors?: Maybe<Array<Maybe<ErrorType>>>;
-  postImage?: Maybe<PostImageType>;
-  success?: Maybe<Scalars['Boolean']>;
-};
-
-export type PostImageType = Node & {
-  __typename?: 'PostImageType';
-  description?: Maybe<Scalars['String']>;
-  /** The ID of the object. */
-  id: Scalars['ID'];
-  image?: Maybe<Scalars['String']>;
-  postImageId?: Maybe<Scalars['ID']>;
 };
 
 export type PostType = Node & {
@@ -1313,12 +1288,15 @@ export type StaffType = Node & {
   canAlterPodcast: Scalars['Boolean'];
   canAlterPost: Scalars['Boolean'];
   canAlterUser: Scalars['Boolean'];
+  canCreateOpportunities: Scalars['Boolean'];
   canCreatePodcast: Scalars['Boolean'];
   canCreatePost: Scalars['Boolean'];
   canCreateUser: Scalars['Boolean'];
+  canDeleteOpportunities: Scalars['Boolean'];
   canDeletePodcast: Scalars['Boolean'];
   canDeletePost: Scalars['Boolean'];
   canDeleteUser: Scalars['Boolean'];
+  canUpdateOpportunities: Scalars['Boolean'];
   /** The ID of the object. */
   id: Scalars['ID'];
   staffId?: Maybe<Scalars['ID']>;

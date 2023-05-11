@@ -11,14 +11,16 @@ export default function StaffCard(props: StaffCartProps) {
   const { staff } = props;
   return (
       <Link href={`/admin/staff/edit/${staff.staffId}`}
-        className="flex items-center gap-4 shadow-lg p-4 rounded-3xl">
+        className={`
+            flex items-center gap-4 shadow p-4 rounded-md border group
+            hover:border-black/20 transition border-black/5`}>
         <GImage
-          className="rounded-full aspect-square w-[7rem] bg-gray-300"
+          className="rounded-full aspect-square min-w-[4rem] w-[4.5rem] bg-gray-300"
           src={staff.user?.profile?.image ?? "/images/profile.svg"}
           alt={staff.user?.fullName ?? "Staff"} />
-        <div>
-          <address>{staff.user?.email}</address>
-          <h3>{staff.user?.fullName}</h3>
+        <div className="group-hover:text-black/60 transition flex-1">
+          <address className="line-clamp-1">{staff.user?.email}</address>
+          <h3 className="whitespace-nowrap flex line-clamp-1">{staff.user?.fullName}</h3>
         </div>
       </Link>
   )
