@@ -750,7 +750,7 @@ export type MutationUpdateAccountArgs = {
 export type MutationUpdateProfileArgs = {
   about?: InputMaybe<Scalars['String']>;
   firstName?: InputMaybe<Scalars['String']>;
-  image?: InputMaybe<Scalars['Upload']>;
+  imageId?: InputMaybe<Scalars['ID']>;
   lastName?: InputMaybe<Scalars['String']>;
   profileId: Scalars['ID'];
 };
@@ -1031,7 +1031,7 @@ export type PostViewsIncreaseMutation = {
 export type ProfileType = {
   __typename?: 'ProfileType';
   about?: Maybe<Scalars['String']>;
-  image?: Maybe<Scalars['String']>;
+  image?: Maybe<ImageType>;
   profileId?: Maybe<Scalars['ID']>;
   user?: Maybe<UserType>;
 };

@@ -3779,11 +3779,11 @@
                 "deprecationReason": null
               },
               {
-                "name": "image",
+                "name": "imageId",
                 "description": null,
                 "type": {
                   "kind": "SCALAR",
-                  "name": "Upload",
+                  "name": "ID",
                   "ofType": null
                 },
                 "defaultValue": null,
@@ -5628,11 +5628,11 @@
           },
           {
             "name": "image",
-            "description": null,
+            "description": "",
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "OBJECT",
+              "name": "ImageType",
               "ofType": null
             },
             "isDeprecated": false,

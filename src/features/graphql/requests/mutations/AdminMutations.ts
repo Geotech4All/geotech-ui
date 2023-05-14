@@ -48,18 +48,13 @@ export const DELETE_POST = gql`
 `
 
 export const UPDATE_PROFILE = gql`
-  mutation UpdateProfile($profileId: ID!, $about: String, $firstName: String, $image: Upload, $lastName: String) {
-    profile: updateProfile(profileId: $profileId, about: $about, firstName: $firstName, image: $image, lastName: $lastName) {
+  mutation UpdateProfile($profileId: ID!, $about: String, $firstName: String, $imageId: ID, $lastName: String) {
+    profile: updateProfile(profileId: $profileId, about: $about, firstName: $firstName, imageId: $imageId, lastName: $lastName) {
       errors {
         field
         messages
       }
       success
-      profile {
-        about
-        image
-        profileId
-      }
     }
   }
 `
@@ -139,25 +134,6 @@ export const CREATE_STAFF = gql`
       errors {
         field
         messages
-      }
-      staff {
-        staffId
-        canAlterPodcast
-        canAlterPost
-        canAlterUser
-        canCreatePodcast
-        canCreatePost
-        canCreateUser
-        canDeletePodcast
-        canDeletePost
-        canDeleteUser
-        user {
-          email
-          fullName
-          profile {
-            image
-          }
-        }
       }
     }
   }

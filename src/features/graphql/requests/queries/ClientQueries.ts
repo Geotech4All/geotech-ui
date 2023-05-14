@@ -57,7 +57,11 @@ export const POPULAR_POSTS = gql`
           author {
             fullName
             profile {
-              image
+              image {
+                url
+                description
+                imageId
+              }
               profileId
             }
           }
@@ -91,7 +95,11 @@ export const GET_POST_BY_ID = gql`
       author {
         fullName
         profile {
-          image
+          image {
+            url
+            description
+            imageId
+          }
         }
       }
       title

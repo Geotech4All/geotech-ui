@@ -22,8 +22,12 @@ export default function ImageUpload(props: ImageUploadProps){
     const handleSubmit: React.FormEventHandler = async (e) => {
         e.preventDefault();
         const folderEnumVal = folder as ImageFoldersEnum;
-        const imageData = { image, description, folder: folderEnumVal }
-        const res = await mutate({ variables: { ...imageData, imageId: defaultImage?.imageId }})
+        const res = await mutate({ variables: { 
+            image,
+            description,
+            folder: folderEnumVal,
+            imageId: defaultImage?.imageId
+        }})
         const timeout = setTimeout(() => {
             if (res.data?.image?.image && onSuccess) {
                 onSuccess(res.data.image.image);

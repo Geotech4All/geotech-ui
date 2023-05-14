@@ -1,4 +1,4 @@
-import { Button, SLoadingHalo, SomethingWentWrong, ToggleInput, UIButton } from "@components/common";
+import { SLoadingHalo, SomethingWentWrong, ToggleInput, UIButton } from "@components/common";
 import { StaffType } from "@gql/codegen/graphql";
 import { useUpdateStaff } from "@gql/requests/mutations/hooks";
 import { Maybe } from "graphql/jsutils/Maybe";

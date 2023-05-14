@@ -16,7 +16,7 @@ export default function User () {
         className={`
             w-full max-w-[10rem] bg-gray-200 rounded-full p-3
             group-hover:bg-black/70 transition-all object-cover aspect-square`}
-        src={user?.profile?.image ?? "/images/profile.svg" } alt={user?.fullName ?? "user profile"} />
+        src={user?.profile?.image?.url ?? "/images/profile.svg" } alt={user?.profile?.image?.description ?? ""} />
       {admin.sidebarOpen && (
         <address>{user?.email}</address>
       )}

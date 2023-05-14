@@ -10,8 +10,8 @@ export default function PodcastHostPill(props: PodcastHostPillProps){
     const { host } = props
     return (
         <div className="flex items-center gap-1 bg-white/40 p-1 rounded-md pr-3">
-            <GImage alt={host?.fullName ?? ""}
-                src={host?.profile?.image ?? "/images/hosting-geo-tech.svg"}
+            <GImage alt={host?.profile?.image?.description ?? ""}
+                src={host?.profile?.image?.url ?? "/images/hosting-geo-tech.svg"}
                 className="rounded overflow-hidden aspect-square w-[1.5rem]" />
             <small className="max-w-[5rem] whitespace-nowrap overflow-hidden text-ellipsis">
                 {host?.fullName}

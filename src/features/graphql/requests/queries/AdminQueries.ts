@@ -57,7 +57,11 @@ export const RECENT_HOSTS = gql`
       fullName
       email
       profile {
-        image
+        image {
+            url
+            description
+            imageId
+        }
         profileId
       }
     }
@@ -81,7 +85,11 @@ export const STAFF_LIST = gql`
         id
         profile {
           profileId
-          image
+          image {
+            url
+            description
+            imageId
+          }
         }
       }
     }
@@ -130,7 +138,11 @@ export const ALL_POSTS = gql`
           title
           author {
             profile {
-              image
+              image {
+                url
+                description
+                imageId
+              }
             }
             fullName
           }
@@ -169,7 +181,11 @@ export const GET_PODCAST_BY_ID = gql`
           fullName
           email
           profile {
-            image
+            image {
+              url
+              description
+              imageId
+            }
             profileId
           }
           id
@@ -207,7 +223,11 @@ export const GET_CURRENT_USER = gql`
       }
       profile {
         about
-        image
+        image {
+          url
+          description
+          imageId
+        }
         profileId
       }
     }
@@ -234,7 +254,11 @@ export const STAFF_DETAIL = gql`
         email
         fullName
         profile {
-          image
+          image {
+            url
+            description
+            imageId
+          }
         }
       }
     }
@@ -266,7 +290,11 @@ export const USER = gql`
         id
         fullName
         profile {
-          image
+          image {
+            url
+            description
+            imageId
+          }
         }
       }
     }

@@ -24,7 +24,11 @@ export const TOKEN_AUTH = gql`
         }
         profile {
           about
-          image
+          image {
+            url
+            description
+            imageId
+          }
           profileId
         }
       }
