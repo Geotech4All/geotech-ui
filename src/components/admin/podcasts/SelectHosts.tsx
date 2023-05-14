@@ -1,80 +1,64 @@
 import React from "react";
-import { Button, MModal, UserPill, UserSelect } from "@components/common";
-import { Maybe, UserType } from "@gql/codegen/graphql";
-import { useAppSelector } from "@store/hooks";
-import { selectRecentHosts, selectStaffList } from "@store/slices";
-import StaffSelect from "../staff/StaffSelect";
+import { HostType, Maybe, UserType } from "@gql/codegen/graphql";
+import { useRecentHosts, useStaffList } from "@gql/requests/queries/hooks";
+import { StaffSelect } from "@components/admin";
+import { Button, CenterSLoadingRing, DottedLabel, MModal, UIButton, UserPill, UserSelect, Wrap } from "@components/common";
 
 interface SelectHostsProps {
-  getSelected: (selected: number[]) => void;
+  getSelected: (selected: string[]) => void;
   className?: string;
-  currentHosts?: (Maybe<string | undefined>)[];
+  currentHosts?: Maybe<Maybe<HostType>[]> | undefined;
 }
 export default function SelectHosts(props: SelectHostsProps){
   const { getSelected, className, currentHosts } = props;
-  const [chosenHosts, setChosenHosts] = React.useState<Maybe<UserType>[]>()
+  const { loading, data } = useRecentHosts();
+  const { loading: sLoading, data: sData } = useStaffList();
+  const oldHosts = currentHosts ? currentHosts.map(host => host?.user as Maybe<UserType>) : []
+  const [hosts, setHosts] = React.useState<Set<Maybe<UserType>>>(new Set(oldHosts));
   const [modalOpen, setModalOpen] = React.useState(false);
-  const prevHosts = useAppSelector(selectRecentHosts);
-  const staff = useAppSelector(selectStaffList);
-  const hostIndexes = new Set<number>(currentHosts?.map(host => parseInt(host?.toString() ?? "")))
 
   React.useEffect(() => {
     updateChosen()
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [prevHosts])
-
+  }, [hosts])
 
   const handleModalClose = () => setModalOpen(false);
   const handleModalOpen = () => setModalOpen(true);
 
   function updateChosen(){
-    setChosenHosts(prevHosts.hosts?.filter(host => (
-      host && hostIndexes.has(parseInt(host.id))))
-    );
-    const vals = hostIndexes.values();
-    getSelected(Array.from(vals))
+    getSelected(Array.from(hosts).map(host => String(host?.id)))
   }
 
   function handleAddHost(user: UserType){
-    hostIndexes.add(parseInt(user.id));
+    setHosts(curr => curr.add(user));
     updateChosen();
     handleModalClose();
   }
 
   function handleRemoveHost(user: UserType){
-    hostIndexes.delete(parseInt(user?.id))
+    setHosts(curr => { curr.delete(user); return curr })
     updateChosen();
   }
+
+  if (loading || sLoading ) return <CenterSLoadingRing />;
 
 
   return (
     <div className={className}>
-      <label className="before:content-['\2022'] before:text-lg before:text-red-500 text-black/60 font-semibold"> Hosts</label>
-      <div className="relative flex flex-col gap-1 border p-1 rounded-3xl border-red-100/40">
-        {chosenHosts && chosenHosts?.length > 0 &&
-          <ul className="bg-red-50 p-1 rounded-3xl flex-wrap flex gap-2 items-center border border-red-300/20">
-            {chosenHosts?.map(host => <UserPill onRemove={handleRemoveHost} key={host?.id} user={host}/>)}
-          </ul>
-        }
-        <Button
-          onClick={handleModalOpen}
-          type="button"
-          className="bg-red-500 text-white self-end font-semibold p-2 rounded-3xl transition-all active:bg-red-600 hover:bg-red-600">+ Add Host</Button>
-        <MModal
-          title="Add Host"
-          open={modalOpen} onClose={handleModalClose}>
+      <DottedLabel>Hosts</DottedLabel>
+      <div className="relative flex flex-col gap-1 border p-1 rounded-lg border-black/5">
+        {Array.from(hosts).length > 0 &&
+          <Wrap>
+            {Array.from(hosts).map(host => <UserPill onRemove={handleRemoveHost} key={host?.id} user={host}/>)}
+          </Wrap> }
+        <UIButton variant="Black" className="w-fit self-end"
+            onClick={handleModalOpen} type="button" >+ Add Host</UIButton>
+        <MModal title="Add Host" open={modalOpen} onClose={handleModalClose}>
           <div className="flex gap-3 flex-col">
             <div className="flex flex-col md:flex-row gap-2 w-full justify-between">
-              <UserSelect
-                className="flex-1"
-                title="Previous Hosts"
-                onSelect={handleAddHost}
-                users={prevHosts.hosts ?? []}/>
-              <StaffSelect 
-                className="flex-1"
-                title="Staff list"
-                onSelect={handleAddHost}
-                staff={staff}/>
+              <UserSelect className="flex-1" title="Previous Hosts"
+                onSelect={handleAddHost} users={data?.hosts ?? []}/>
+                <StaffSelect onSelect={handleAddHost} staff={sData?.staff ?? []}/>
             </div>
             <Button
               className="bg-red-500 hover:bg-red-600 active:bg-red-600 transition-all self-end p-1 rounded-md mt-3 text-white px-4"

@@ -25,12 +25,15 @@ export default function FormErrors(props: AuthErrorsProps){
   const [nonField, setNonField] = React.useState<NonFieldErrors>();
   const [gqlErrors, setGqlErrors] = React.useState<SimpleGQLError[]>();
   const [apolloError, setApolloError] = React.useState<ApolloError>();
+  const [errorStr, setErrorStr] = React.useState<string>();
 
   console.log(errors.graphqlErrors);
 
   React.useEffect(() => {
     if (errors.nonFieldErrors !== undefined && Array.isArray(errors.nonFieldErrors)) {
       if (errors satisfies NonFieldErrors) setNonField(errors as NonFieldErrors)
+    } else if (errors satisfies string) {
+      setErrorStr(errors)
     } else if (errors satisfies ApolloError) {
       setApolloError(errors)
     } else if (errors satisfies SimpleGQLError) {
@@ -53,6 +56,7 @@ export default function FormErrors(props: AuthErrorsProps){
         {apolloError && apolloError .graphQLErrors.map(error => (
           <li className="list-none text-red-700" key={Math.random()}>{error.message}</li>
         ))}
+        {errorStr && <li className="list-none text-red-700" key={Math.random()}>{errorStr}</li>}
       </ul>
     </motion.div>
   )

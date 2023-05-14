@@ -23,7 +23,10 @@ import type {
   QueryOpportunityArgs,
   OpportunityType,
   QueryImagesArgs,
-  ImageTypeConnection
+  ImageTypeConnection,
+  QueryUserArgs,
+  QueryFilesArgs,
+  FileTypeConnection
 } from "@gql/codegen/graphql";
 
 export function useCurrentlyLoggenInUser() {
@@ -120,4 +123,16 @@ export function useImages(variables?: QueryImagesArgs) {
     return useQuery<
     { images: ImageTypeConnection },
     QueryImagesArgs>(Queries.IMAGES, { variables })
+}
+
+export function useUser(variables?: QueryUserArgs) {
+    return useQuery<
+    { user: Maybe<UserType> },
+    QueryUserArgs>(Queries.USER, { variables })
+}
+
+export function useFiles(variables?: QueryFilesArgs) {
+    return useQuery<
+    { files: FileTypeConnection },
+    QueryFilesArgs>(Queries.FILES, { variables })
 }

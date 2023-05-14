@@ -16,9 +16,17 @@ export const MOST_LISTENED_PODCASTS = gql`
       title_Istartswith: $titleIstartswith, title: $title) {
       edges {
         node {
-          coverPhoto
+          coverPhoto {
+            url
+            description
+            imageId
+          }
           dateAdded
-          audio
+          audio {
+            url
+            fileId
+            description
+          }
           description
           guests {
             name
@@ -116,6 +124,8 @@ export const ALL_POSTS = gql`
           abstract
           coverPhoto {
             url
+            description
+            imageId
           }
           title
           author {
@@ -133,8 +143,16 @@ export const ALL_POSTS = gql`
 export const GET_PODCAST_BY_ID = gql`
   query GetPodcastById($podcastId: ID!) {
     podcast: getPodcastById(podcastId: $podcastId) {
-      audio
-      coverPhoto
+      audio {
+        url
+        fileId
+        description
+      }
+      coverPhoto {
+        url
+        description
+        imageId
+      }
       dateAdded
       description
       guests {
@@ -224,8 +242,8 @@ export const STAFF_DETAIL = gql`
 `
 
 export const IMAGES = gql`
-    query Images ($offset: Int, $after: String, $first: Int, $description_Icontains: String, $description: String) {
-      images (offset: $offset,  after: $after, first: $first, description_Icontains: $description_Icontains, description: $description) {
+    query Images ($offset: Int, $after: String, $first: Int, $description_Icontains: String, $description: String, $folder_Iexact: String) {
+      images (offset: $offset,  after: $after, first: $first, description_Icontains: $description_Icontains, description: $description, folder_Iexact: $folder_Iexact) {
         pageInfo {
           hasNextPage
           hasPreviousPage
@@ -237,6 +255,37 @@ export const IMAGES = gql`
             imageId
           }
           cursor
+        }
+      }
+    }
+`
+
+export const USER = gql`
+    query User($id: ID!) {
+      user(id: $id) {
+        id
+        fullName
+        profile {
+          image
+        }
+      }
+    }
+`
+
+export const FILES = gql`
+    query Files ($offset: Int, $before: String, $first: Int, $after: String, $name_Icontains: String, $description_Icontains: String, $folder_Iexact: String) {
+      files (offset: $offset, before: $before, first: $first, after: $after, name_Icontains: $name_Icontains, description_Icontains: $description_Icontains, folder_Iexact: $folder_Iexact) {
+        pageInfo {
+          hasNextPage
+        }
+        edges {
+          cursor
+          node {
+            url
+            name
+            description
+            fileId
+          }
         }
       }
     }

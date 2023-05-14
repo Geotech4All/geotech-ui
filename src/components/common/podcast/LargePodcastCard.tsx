@@ -32,9 +32,9 @@ export default function LargePodcastCard(props: LargePodcastCardProps){
         rounded-md overflow-hidden aspect-video w-full shadow-lg`}>
       <div className="absolute inset-0 z-[-10]">
         <div className="relative flex items-center w-full h-full justify-center">
-          <img alt={podcast?.node?.title + " cover"}
+          <img alt={podcast?.node?.coverPhoto?.description ?? ""}
             className="self-end w-full min-h-full object-cover"
-            src={podcast?.node?.coverPhoto ?? "/images/listening-geo-tech.svg"} />
+            src={podcast?.node?.coverPhoto?.url ?? "/images/listening-geo-tech.svg"} />
           <div className={` backdrop-blur-sm bg-gradient-to-t from-black/90
               ${ podcast?.node?.coverPhoto ? "to-black/10" : "to-black/50"} absolute inset-0`} />
         </div>

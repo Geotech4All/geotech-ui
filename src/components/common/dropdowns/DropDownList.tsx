@@ -1,4 +1,4 @@
-import { FoldersEnum } from "@gql/codegen/graphql";
+import { ImageFoldersEnum } from "@gql/codegen/graphql";
 import { motion, AnimatePresence } from "framer-motion";
 import React from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
@@ -6,7 +6,7 @@ import DropDownOption from "./DropDownOption";
 
 
 interface DropDownListProps {
-  options: string[] | FoldersEnum[];
+  options: string[] | ImageFoldersEnum[];
   name?: string;
   full?: boolean;
   getCurrent: (selected: string) => void;

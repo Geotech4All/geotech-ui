@@ -145,11 +145,50 @@ export type EventType = {
   venue?: Maybe<AddressNode>;
 };
 
-export enum FoldersEnum {
-  Blog = 'BLOG',
-  Opportunity = 'OPPORTUNITY',
-  Profile = 'PROFILE'
+export type FileCreateUpdateMutation = {
+  __typename?: 'FileCreateUpdateMutation';
+  errors?: Maybe<Array<Maybe<ErrorType>>>;
+  file?: Maybe<FileType>;
+  success?: Maybe<Scalars['Boolean']>;
+};
+
+export type FileDeleteMutation = {
+  __typename?: 'FileDeleteMutation';
+  errors?: Maybe<Array<Maybe<ErrorType>>>;
+  success?: Maybe<Scalars['Boolean']>;
+};
+
+export enum FileFoldersEnum {
+  Podcast = 'PODCAST'
 }
+
+export type FileType = Node & {
+  __typename?: 'FileType';
+  description?: Maybe<Scalars['String']>;
+  fileId?: Maybe<Scalars['ID']>;
+  /** The ID of the object. */
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  publicId: Scalars['String'];
+  url: Scalars['String'];
+};
+
+export type FileTypeConnection = {
+  __typename?: 'FileTypeConnection';
+  /** Contains the nodes in this connection. */
+  edges: Array<Maybe<FileTypeEdge>>;
+  /** Pagination data for this connection. */
+  pageInfo: PageInfo;
+};
+
+/** A Relay edge containing a `FileType` and its cursor. */
+export type FileTypeEdge = {
+  __typename?: 'FileTypeEdge';
+  /** A cursor for use in pagination */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge */
+  node?: Maybe<FileType>;
+};
 
 /**
  * Performs create and update actions on a `Guest` object.
@@ -233,6 +272,13 @@ export type ImageDeleteMutation = {
   success?: Maybe<Scalars['Boolean']>;
 };
 
+export enum ImageFoldersEnum {
+  Blog = 'BLOG',
+  Opportunity = 'OPPORTUNITY',
+  Podcast = 'PODCAST',
+  Profile = 'PROFILE'
+}
+
 export type ImageType = Node & {
   __typename?: 'ImageType';
   description?: Maybe<Scalars['String']>;
@@ -296,6 +342,7 @@ export type Mutation = {
    * To perform an update all you need to do is pass in the event image `id`.
    */
   createUpdateEventImage?: Maybe<EventImageCreateUpdateMutation>;
+  createUpdateFile?: Maybe<FileCreateUpdateMutation>;
   /**
    * Performs create and update actions on a `Guest` object.
    * To perform an update all you need to do is pass in the guest `id`.
@@ -329,6 +376,7 @@ export type Mutation = {
    * User must be verified and confirm password.
    */
   deleteAccount?: Maybe<DeleteAccount>;
+  deleteFile?: Maybe<FileDeleteMutation>;
   deleteImage?: Maybe<ImageDeleteMutation>;
   /** Deletes a post with the specified id. */
   deletePost?: Maybe<PostDeleteMutation>;
@@ -532,6 +580,15 @@ export type MutationCreateUpdateEventImageArgs = {
 };
 
 
+export type MutationCreateUpdateFileArgs = {
+  description?: InputMaybe<Scalars['String']>;
+  file?: InputMaybe<Scalars['Upload']>;
+  fileId?: InputMaybe<Scalars['ID']>;
+  folder?: InputMaybe<FileFoldersEnum>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+
 export type MutationCreateUpdateGuestArgs = {
   description?: InputMaybe<Scalars['String']>;
   guestId?: InputMaybe<Scalars['ID']>;
@@ -542,7 +599,7 @@ export type MutationCreateUpdateGuestArgs = {
 
 export type MutationCreateUpdateImageArgs = {
   description?: InputMaybe<Scalars['String']>;
-  folder?: InputMaybe<FoldersEnum>;
+  folder?: InputMaybe<ImageFoldersEnum>;
   image?: InputMaybe<Scalars['Upload']>;
   imageId?: InputMaybe<Scalars['ID']>;
 };
@@ -569,8 +626,8 @@ export type MutationCreateUpdateOrganizationArgs = {
 
 
 export type MutationCreateUpdatePodcastArgs = {
-  audio?: InputMaybe<Scalars['Upload']>;
-  coverPhoto?: InputMaybe<Scalars['Upload']>;
+  audioId?: InputMaybe<Scalars['ID']>;
+  coverPhotoId?: InputMaybe<Scalars['ID']>;
   description: Scalars['String'];
   guestIds?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   hostIds: Array<InputMaybe<Scalars['ID']>>;
@@ -598,6 +655,11 @@ export type MutationCreateUpdateTagArgs = {
 
 export type MutationDeleteAccountArgs = {
   password: Scalars['String'];
+};
+
+
+export type MutationDeleteFileArgs = {
+  fileId: Scalars['ID'];
 };
 
 
@@ -872,8 +934,8 @@ export type PodcastCreateUpdateMutation = {
 /** Podcast graphql object type */
 export type PodcastType = Node & {
   __typename?: 'PodcastType';
-  audio?: Maybe<Scalars['String']>;
-  coverPhoto?: Maybe<Scalars['String']>;
+  audio?: Maybe<FileType>;
+  coverPhoto?: Maybe<ImageType>;
   dateAdded: Scalars['DateTime'];
   /** short summary of this podcast */
   description: Scalars['String'];
@@ -987,6 +1049,8 @@ export type Query = {
   allEventImages?: Maybe<Array<Maybe<EventImageType>>>;
   allPodcasts?: Maybe<PodcastTypeConnection>;
   allPosts?: Maybe<PostTypeConnection>;
+  file?: Maybe<FileType>;
+  files?: Maybe<FileTypeConnection>;
   getAddressById?: Maybe<AddressNode>;
   getGuestById?: Maybe<GuestType>;
   getPodcastById?: Maybe<PodcastType>;
@@ -1044,6 +1108,26 @@ export type QueryAllPostsArgs = {
 };
 
 
+export type QueryFileArgs = {
+  fileId: Scalars['ID'];
+};
+
+
+export type QueryFilesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  description_Icontains?: InputMaybe<Scalars['String']>;
+  description_Istartswith?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  folder_Iexact?: InputMaybe<Scalars['String']>;
+  last?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
+  name_Icontains?: InputMaybe<Scalars['String']>;
+  name_Istartswith?: InputMaybe<Scalars['String']>;
+  offset?: InputMaybe<Scalars['Int']>;
+};
+
+
 export type QueryGetAddressByIdArgs = {
   addressId: Scalars['ID'];
 };
@@ -1076,6 +1160,7 @@ export type QueryImagesArgs = {
   description_Icontains?: InputMaybe<Scalars['String']>;
   description_Istartswith?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  folder_Iexact?: InputMaybe<Scalars['String']>;
   last?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
 };

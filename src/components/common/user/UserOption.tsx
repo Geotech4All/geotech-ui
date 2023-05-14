@@ -1,36 +1,32 @@
 /* eslint-disable @next/next/no-img-element */
-import { Maybe, UserType } from "@gql/codegen/graphql";
 import React from "react";
+import { GImage, UIButton } from "@components/common"
+import { Maybe, UserType } from "@gql/codegen/graphql";
 
 interface UserOptionProps {
-  user?: Maybe<UserType>;
+  user?: Maybe<UserType> | undefined;
   onSelect: (user: UserType) => void;
 };
 export default function UserOption(props: UserOptionProps){
-  const { user, onSelect } = props;
-  const [name, setName] = React.useState<string>();
+    const { user, onSelect } = props;
+    const [name, setName] = React.useState<string>();
 
-  React.useEffect(() => {
-    if (user?.fullName && user.fullName !== "None None" && user.fullName !== "") {
-      setName(user.fullName);
-    } else {
-      setName(user?.email);
-    }
+    React.useEffect(() => {
+        if (user?.fullName && user.fullName !== "None None") {
+          setName(user.fullName);
+        } else { setName(user?.email); }
     }, [user])
 
-  function handleClick(){
-    if (user) onSelect(user)
-  };
+    function handleClick(){
+        if (user) onSelect(user)
+    };
 
-  return (
-    <button
-      type="button"
-      className="flex gap-3 items-center rounded-3xl transition-all active:bg-red-300 hover:bg-red-300 bg-red-100/20 w-full p-1"
-      onClick={handleClick} title={name}>
-      <div className="max-w-[2rem] rounded-full overflow-hidden">
-        <img className="w-full object-cover" src={user?.profile?.image ?? ""} alt={name ?? "user avatar"} />
-      </div>
-      <span>{name}</span>
-    </button>
-  );
+    return (
+        <UIButton type="button" variant="Black" onClick={handleClick} title={name}
+            className="w-full bg-black/60 flex items-center gap-2 rounded-md">
+            <GImage src={user?.profile?.image ?? "/images/guy-profile.svg"} alt={name ?? "user avatar"}
+                className="max-w-[4rem] rounded bg-black/80 aspect-square"/>
+          <span>{name}</span>
+        </UIButton>
+    );
 };

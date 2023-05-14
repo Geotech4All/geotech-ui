@@ -50,8 +50,8 @@ export default function MidPodcastCard(props: MidPodcastCardProps){
       <div className="flex rounded text-white overflow-hidden flex-1 min-h-full">
         {podcast?.node?.coverPhoto ? (
             <img className={`w-full object-cover h-full`}
-                src={podcast?.node?.coverPhoto ?? "/images/listening-geo-tech.svg"}
-                alt={`${podcast?.node?.title} cover photo`} />
+                src={podcast?.node?.coverPhoto.url ?? "/images/listening-geo-tech.svg"}
+                alt={podcast.node.coverPhoto.description ?? ""} />
         ): (
             <span className={
                 `w-40 bg-black/40 h-full flex items-center justify-center`}>

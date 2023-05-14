@@ -1,22 +1,26 @@
 import { gql } from "@apollo/client";
 
 export const CREATE_UPDATE_PODCAST = gql`
-  mutation CreateUpdatePodcast($description: String!, $hostIds: [ID]!, $title: String!, $audio: Upload, $coverPhoto: Upload, $podcastId: ID, $guestIds: [ID]) {
-    createUpdatePodcast(description: $description, hostIds: $hostIds, title: $title, audio: $audio, coverPhoto: $coverPhoto, podcastId: $podcastId, guestIds: $guestIds) {
-      errors {
-        field
-        messages
-      }
-      success
-      podcast {
-        coverPhoto
-        dateAdded
-        description
-        listens
-        podcastId
+    mutation CreateUpdatePodcast($description: String!, $hostIds: [ID]!, $title: String!, $audioId: ID!, $coverPhotoId: ID, $podcastId: ID, $guestIds: [ID]) {
+      podcast: createUpdatePodcast(description: $description, hostIds: $hostIds, title: $title, audioId: $audioId, coverPhotoId: $coverPhotoId, podcastId: $podcastId, guestIds: $guestIds) {
+        errors {
+          field
+          messages
+        }
+        success
+        podcast {
+          coverPhoto {
+            url
+            description
+            imageId
+          }
+          dateAdded
+          description
+          listens
+          podcastId
+        }
       }
     }
-  }
 `
 
 export const CREATE_UPDATE_POST = gql`
@@ -201,7 +205,7 @@ export const CREATE_UPDATE_TAG = gql`
 `
 
 export const CREATE_UPDATE_IMAGE = gql`
-    mutation CreateUpdateImage ($image: Upload!, $description: String, $folder: FoldersEnum, $imageId: ID) {
+    mutation CreateUpdateImage ($image: Upload!, $description: String, $folder: ImageFoldersEnum, $imageId: ID) {
       image: createUpdateImage (image: $image, description: $description, folder: $folder, imageId: $imageId) {
         image {
           publicId
@@ -225,6 +229,39 @@ export const DELETE_IMAGE = gql`
         errors {
           field
           messages
+        }
+      }
+    }
+`
+
+export const CREATE_UPDATE_GUEST = gql`
+    mutation CreateUpdateGuest($description: String, $guestId: ID, $name: String!) {
+      guest: createUpdateGuest(description: $description, guestId: $guestId, name: $name) {
+        success
+        errors {
+          field
+          messages
+        }
+        guest {
+          guestId
+        }
+      }
+    }
+`
+
+export const CREATE_UPDATE_FILE = gql`
+    mutation CreateUpdateFile($description: String, $file: Upload, $name: String, $fileId: ID, $folder: FileFoldersEnum) {
+      file: createUpdateFile(description: $description, file: $file, name: $name, fileId: $fileId, folder: $folder) {
+        success
+        errors {
+          field
+          messages
+        }
+        file {
+          url
+          name
+          description
+          fileId
         }
       }
     }

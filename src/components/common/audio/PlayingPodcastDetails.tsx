@@ -2,25 +2,15 @@ import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { clearPlayer, selectAudioPlayer } from "@store/slices";
-import { Maybe, UserType } from "@gql/codegen/graphql";
-import { GImage, PlayerManageButtons, PodcastHostPill, Wrap } from "@components/common";
+import { PlayerManageButtons, PodcastHostPill, Wrap } from "@components/common";
 
-interface PlayingPodcastDetailsProps {
-};
 
-export default function PlayingPodcastDetails(props: PlayingPodcastDetailsProps){
+export default function PlayingPodcastDetails(){
   const [isExpanded, setIsExpanded] = React.useState(false);
   const podcast = useAppSelector(selectAudioPlayer).podcast;
-  const hosts = new Set<Maybe<UserType | undefined>>(podcast?.hosts?.map(host => host?.user));
   const dispatch = useAppDispatch();
 
-  React.useEffect(() => {
-
-  }, [podcast?.hosts])
-
-  function closePlayer(){
-    dispatch(clearPlayer())
-  }
+  function closePlayer(){ dispatch(clearPlayer()) }
 
   function toggleExpand(){
     if (isExpanded) {
@@ -32,11 +22,7 @@ export default function PlayingPodcastDetails(props: PlayingPodcastDetailsProps)
 
   return (
     <>
-      <PlayerManageButtons
-        isExpanded={isExpanded}
-        closePlayer={closePlayer}
-        toggleExpand={toggleExpand}
-      />
+      <PlayerManageButtons isExpanded={isExpanded} closePlayer={closePlayer} toggleExpand={toggleExpand} />
       <AnimatePresence>
         {isExpanded && (
           <motion.div  key={Math.random()}
@@ -48,7 +34,7 @@ export default function PlayingPodcastDetails(props: PlayingPodcastDetailsProps)
             <h2 className="text-2xl font-semibold">{podcast?.title}</h2>
             <p className="line-clamp-3">{podcast?.description}</p>
             <Wrap>
-                {Array.from(hosts).map(host => <PodcastHostPill key={host?.id} host={host} />)}
+                {podcast?.hosts?.map(host => <PodcastHostPill key={host?.id} host={host?.user} />)}
             </Wrap>
           </motion.div>
         )}

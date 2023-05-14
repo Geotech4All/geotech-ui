@@ -7,6 +7,7 @@ export const TOKEN_AUTH = gql`
       success
       errors
       user {
+        isStaff
         email
         fullName
         staff {

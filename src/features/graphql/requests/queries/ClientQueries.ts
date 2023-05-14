@@ -20,8 +20,16 @@ export const ALL_PODCASTS = gql`
           title
           description
           listens
-          audio
-          coverPhoto
+          audio {
+            url
+            fileId
+            description
+          }
+          coverPhoto {
+            url
+            description
+            imageId
+          }
           podcastId
           guests {
             guestId
@@ -60,6 +68,8 @@ export const POPULAR_POSTS = gql`
           dateAdded
           coverPhoto {
             url
+            description
+            imageId
           }
           postId
         }
@@ -94,6 +104,8 @@ export const GET_POST_BY_ID = gql`
       dateAdded
       coverPhoto {
         url
+        description
+        imageId
       }
       postId
     }

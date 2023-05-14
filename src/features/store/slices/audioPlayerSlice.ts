@@ -1,5 +1,4 @@
 import { AudioPlayer } from "@components/common";
-import { PodcastColorType } from "@constants/podcastColors";
 import { Maybe, PodcastType } from "@gql/codegen/graphql";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "@store/config";
@@ -8,7 +7,6 @@ export interface AudioPlayer {
   playerVissible: boolean;
   isPlaying: boolean;
   podcast?: Maybe<PodcastType>;
-  color?: PodcastColorType;
 }
 
 

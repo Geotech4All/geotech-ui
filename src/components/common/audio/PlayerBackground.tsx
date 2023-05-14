@@ -9,7 +9,7 @@ export default function PlayerBackground(){
     <>
       <img 
         className="w-full absolute opacity-90 z-[-1000] object-center"
-        src={player.podcast?.coverPhoto ?? "/images/listening-geo-tech.svg"} alt="cover photo"/>
+        src={player.podcast?.coverPhoto?.url ?? "/images/listening-geo-tech.svg"} alt="cover photo"/>
       <div
         className={`
           absolute inset-0 bg-gradient-to-t z-[-100] backdrop-blur-sm

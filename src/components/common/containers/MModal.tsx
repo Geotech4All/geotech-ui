@@ -17,7 +17,7 @@ export default function MModal(props: DialogPropsType){
         exit={{ opacity: 0 }}
         as={motion.div}
         id="The-dialog"
-        className=""
+        className="z-[1000000000000]"
         open={open} onClose={onClose} >
         <AnimatePresence>
           <motion.div
@@ -38,7 +38,7 @@ export default function MModal(props: DialogPropsType){
                 exit={{ opacity: 0 }}
                 className="flex flex-col gap-3 w-full max-w-3xl  rounded bg-white p-4">
                 {title && (
-                  <Dialog.Title className="text-red-500 font-semibold text-2xl">
+                  <Dialog.Title className="text-black/80 font-semibold text-2xl">
                     {title}
                   </Dialog.Title>)}
                 { description && <Dialog.Description>{description}</Dialog.Description>}

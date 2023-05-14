@@ -1,6 +1,6 @@
 import React from "react";
-import { FoldersEnum, ImageType } from "@gql/codegen/graphql";
-import { Button, DragAndDrop, DropDownList, ImagePreview, LoadingSuccess, SomethingWentWrong, UploadLoadingAnimation } from "@components/common";
+import { ImageFoldersEnum, ImageType } from "@gql/codegen/graphql";
+import { DragAndDrop, DropDownList, ImagePreview, LoadingSuccess, SomethingWentWrong, UIButton, UploadLoadingAnimation } from "@components/common";
 import { useCreateUpdateImage } from "@gql/requests/mutations/hooks";
 
 interface ImageUploadProps {
@@ -14,16 +14,16 @@ export default function ImageUpload(props: ImageUploadProps){
     const [image, setImage] = React.useState<File>();
     const [description, setDescription] = React.useState(defaultImage?.description as string || undefined);
     const [folder, setFolder] = React.useState<string>();
-    const folders = Object.values(FoldersEnum)
+    const folders = Object.values(ImageFoldersEnum)
 
     const handleDescriptionChange = (text: string) => setDescription(text);
     const getFile = (file: File[]) => setImage(file[0]);
     const getFolder = (folder: string) => setFolder(folder);
     const handleSubmit: React.FormEventHandler = async (e) => {
         e.preventDefault();
-        const folderEnumVal = folder as FoldersEnum;
+        const folderEnumVal = folder as ImageFoldersEnum;
         const imageData = { image, description, folder: folderEnumVal }
-        const res = await mutate({ variables: imageData})
+        const res = await mutate({ variables: { ...imageData, imageId: defaultImage?.imageId }})
         const timeout = setTimeout(() => {
             if (res.data?.image?.image && onSuccess) {
                 onSuccess(res.data.image.image);
@@ -40,7 +40,7 @@ export default function ImageUpload(props: ImageUploadProps){
                     <h1 className="font-bold text-3xl text-black/80">Upload your images</h1>
                     <p className="text-xl text-gray-400">PNG, JPG, WebP and GIF files only</p>
                 </div>
-                <DragAndDrop onAddFiles={getFile} />
+                <DragAndDrop accept="images/jpg, images/png, images/webp" onAddFiles={getFile} />
             </div>
             <DropDownList full name="Image Folder i.e. image purpose (Optional)" getCurrent={getFolder} options={folders}/>
             <div className="w-full max-w-5xl">
@@ -55,11 +55,7 @@ export default function ImageUpload(props: ImageUploadProps){
                         onChange={handleDescriptionChange}/>
                 )}
             </div>
-            <Button onClick={handleSubmit}type="button" title="Upload image"
-                className={`
-                    bg-red-500/90 p-2 px-10 rounded-md transition
-                    text-lg text-white font-semibold active:bg-red-600/60
-                    hover:bg-red-600/90`}>Save</Button>
+            <UIButton variant="Black" onClick={handleSubmit} type="button" title="Upload image">Save</UIButton>
             { loading && <UploadLoadingAnimation /> }
             { data?.image?.success && <LoadingSuccess /> }
         </form>

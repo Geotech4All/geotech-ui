@@ -1,79 +1,55 @@
 import React from "react";
-import { GuestPill, Button, MModal } from "@components/common";
-import { useAppSelector } from "@store/hooks";
-import { selectPreviousGuests } from "@store/slices";
-import { GuestType, GuestTypeEdge, Maybe } from "@gql/codegen/graphql";
+import { GuestPill, MModal, DottedLabel, Wrap, UIButton } from "@components/common";
+import { GuestType, Maybe } from "@gql/codegen/graphql";
 import { GuestSelect } from "@components/admin";
 
 interface SelectGuestsProps {
-  getSelected: (indexes: number[]) => void;
+  getSelected: (selected: string[]) => void;
   className?: string;
-  currentGuests?: (Maybe<string | undefined>)[];
+  currentGuests?: Maybe<Maybe<GuestType>[]> | undefined;
 }
 export default function SelectGuests(props: SelectGuestsProps){
   const { getSelected, className, currentGuests } = props;
-  const previousGuests = useAppSelector(selectPreviousGuests);
-  const [chosenGuests, setChosenGuests] = React.useState<Maybe<GuestTypeEdge>[]>()
+  const [guests, setGuests] = React.useState<Set<Maybe<GuestType>>>(new Set());
   const [modalOpen, setModalOpen] = React.useState(false);
-  const guestIndexes = React.useMemo(
-    () => new Set<number>(currentGuests?.map(guest => parseInt(guest?.toString() ?? ""))),
-    [currentGuests]
-  );
 
   React.useEffect(() => {
-    setChosenGuests(previousGuests?.edges?.filter(guest => (
-      guestIndexes.has(parseInt(guest?.node?.guestId ?? ""))))
-    )
-  }, [guestIndexes, previousGuests])
+        currentGuests?.forEach(guest => setGuests(curr => curr.add(guest)))
+  }, [currentGuests])
 
   function returnSelected(){
-    const selectedIndexes = Array.from(guestIndexes.values())
-    getSelected(selectedIndexes);
+    getSelected(Array.from(guests).map(guest => String(guest?.guestId)));
   }
 
   function handleRemoveGuest(guest: GuestType){
-    guestIndexes.delete(parseInt(guest.guestId ?? ""));
+    setGuests(curr => { curr.delete(guest); return curr})
     returnSelected();
   }
 
   function handleAddGuest(guest: GuestType){
-    guestIndexes.add(parseInt(guest.guestId ?? ""));
+    setGuests(curr => curr.add(guest))
     returnSelected();
+    toggleModal();
   }
 
-  const handleModalOpen = () => setModalOpen(true)
-  const handleModalClose = () => setModalOpen(false)
+  const toggleModal = () => setModalOpen(curr => !curr);
 
   return (
     <div className={className}>
-      <label className="before:content-['\2022'] before:text-lg before:text-red-500 text-black/60 font-semibold"> Guests</label>
-      <div className="relative flex flex-col gap-1 border p-1 rounded-3xl border-red-100/40">
-        {chosenGuests && chosenGuests?.length > 0 &&
-          <ul className="bg-red-50 p-1 rounded-3xl flex gap-2 items-center border border-red-300/20">
-            {chosenGuests?.map(guest => (
-              <GuestPill
-                onRemove={handleRemoveGuest}
-                key={guest?.node?.guestId}
-                guest={guest?.node}/>)
-            )}
-          </ul>
-        }
-        <Button
-          onClick={handleModalOpen}
-          type="button"
-          className="bg-red-500 text-white self-end font-semibold p-2 rounded-3xl transition-all active:bg-red-600 hover:bg-red-600">+ Add Guest</Button>
-        <MModal
-          title="Add Host"
-          open={modalOpen} onClose={handleModalClose}>
+      <DottedLabel>Guests</DottedLabel>
+      <div className="relative flex flex-col gap-1 border p-1 rounded-lg border-red-100/40">
+        {Array.from(guests).length > 0 &&
+          <Wrap>
+            {Array.from(guests).map(guest => (
+              <GuestPill onRemove={handleRemoveGuest} key={guest?.guestId} guest={guest}/>))}
+          </Wrap> }
+        <UIButton className="w-fit self-end" variant="Black"
+            onClick={toggleModal} type="button" >+ Add Guest</UIButton>
+        <MModal title="Add Guest" open={modalOpen} onClose={toggleModal}>
           <div className="flex gap-3 flex-col">
-            <GuestSelect
-              title="Previous Guests"
-              guests={previousGuests?.edges ?? []}
-              onSelect={handleAddGuest}/>
-            <Button
-              className="bg-red-500 hover:bg-red-600 active:bg-red-600 transition-all self-end p-1 rounded-md mt-3 text-white px-4"
-              type="button"
-              onClick={handleModalClose}>Cancel</Button>
+            <GuestSelect title="Previous Guests" onSelect={handleAddGuest}/>
+            <UIButton className="w-fit self-end" variant="Yellow"
+                type="button" onClick={toggleModal}>Cancel</UIButton>
           </div>
         </MModal>
       </div>

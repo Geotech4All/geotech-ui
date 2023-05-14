@@ -14,6 +14,7 @@ import PodcastForm from "@components/admin/podcasts/PodcastForm";
 import SelectHosts from "@components/admin/podcasts/SelectHosts";
 import StaffSelect from "@components/admin/staff/StaffSelect";
 import GuestSelect from "@components/admin/guests/GuestSelect";
+import GuestForm from "@components/admin/guests/GuestForm";
 import SelectGuests from "@components/admin/guests/SelectGuests";
 import GuestOption from "@components/admin/guests/GuestOption";
 import PostForm from "@components/admin/blog/PostForm";
@@ -31,50 +32,27 @@ import StaffPermissionGroup from "@components/admin/staff/StaffPermissionGroup";
 import NewStaff from "@components/admin/staff/NewStaff";
 
 
-// Opportunities
+/****************** Opportunities **********************/
 import OpportunityList from "@components/admin/opportunities/OpportunityList";
 import OpportunityCard from "@components/admin/opportunities/OpportunityCard";
 import OpportunityForm from "@components/admin/opportunities/OpportunityForm";
 import OpportunitiesListFilter from "@components/admin/opportunities/OpportunitiesListFilter";
 
-// Tags
+/*********************** Tags *************************/
 import TagForm from "@components/admin/tag/TagForm";
 
 export {
-  User,
-  Sidebar,
-  SideBrand,
-  SidebarUrl, 
-  PodcastCard,
-  AdminNavBar,
-  SelectHosts,
-  StaffSelect,
-  SidebarUrls,
-  GuestSelect,
-  GuestOption,
-  PostForm,
-  ProfileForm,
-  ManagePost,
-  ManagePosts,
-  SelectGuests,
-  ManagePodcasts,
-  ManagePodcast,
-  AdminNavLink,
-  AdminNavLinks,
-  SidebarLayout,
-  PodcastForm,
-  AdminPodcastList,
-  AdminTrendingPodcasts,
+    GuestForm, User, Sidebar, SideBrand, SidebarUrl, PodcastCard, AdminNavBar,
+    SelectHosts, StaffSelect, SidebarUrls, GuestSelect, GuestOption, PostForm,
+    ProfileForm, ManagePost, ManagePosts, SelectGuests, ManagePodcasts,
+    ManagePodcast, AdminNavLink, AdminNavLinks, SidebarLayout, PodcastForm,
+    AdminPodcastList, AdminTrendingPodcasts,
 
 /*** Staff ***/
-  StaffCard, StaffList, StaffPermissionForm, StaffPermissionGroup, NewStaff,
+    StaffCard, StaffList, StaffPermissionForm, StaffPermissionGroup, NewStaff,
 
-// Opportunities
-  OpportunityList,
-  OpportunityCard,
-  OpportunityForm,
-  OpportunitiesListFilter,
-
-// Tag
+/*** Opportunities ***/
+    OpportunityList, OpportunityCard, OpportunityForm, OpportunitiesListFilter,
+/*** Tag ***/
   TagForm,
 };

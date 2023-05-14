@@ -12,15 +12,24 @@ import TipTapMenuBar from "@components/common/tiptap/TipTapMenuBar";
 import TipTapMenuItem from "@components/common/tiptap/TipTapMenuItem";
 import TipTapImage, { CustomImage } from "@components/common/tiptap/TipTapImage";
 import CustomHeading from "@components/common/tiptap/CustormHeading";
+import LabeledTextArea from "@components/common/inputs/text/LabeledTextArea";
 /**** Image Inputs ****/
 import IInput from "@components/common/inputs/images/IInput";
 import ToggleInput from "@components/common/inputs/ToggleInput";
-import DragAndDrop from "@components/common/inputs/DragAndDrop";
+import DragAndDrop from "@components/common/inputs/files/DragAndDrop";
 import ImageUpload from "@components/common/inputs/images/ImageUpload";
 import ImagePreview from "@components/common/inputs/images/ImagePreview";
 import ImagePicker from "@components/common/inputs/images/ImagePicker";
 import ImagePickerItem from "@components/common/inputs/images/ImagePickerItem";
 import ImagePickerFilter from "@components/common/inputs/images/ImagePickerFilter";
+
+/******************* File Input ******************/
+import FileUpload from "@components/common/inputs/files/FileUpload";
+import FilePreview from "@components/common/inputs/files/FilePreview";
+import FileThumbnail from "@components/common/inputs/files/FileThumbnail";
+import FilePicker from "@components/common/inputs/files/FilePicker";
+import FilePickerItem from "@components/common/inputs/files/FilePickerItem";
+
 /**** Dropdown Inputs ****/
 import DropDownList from "@components/common/dropdowns/DropDownList";
 import DropDownOption from "@components/common/dropdowns/DropDownOption";
@@ -61,6 +70,7 @@ import TipTapSection from "@components/common/htmlComponents/TipTapSection";
 import Article from "@components/common/htmlComponents/Article";
 import DateTime from "@components/common/htmlComponents/DateTime";
 import ButtonLink from "@components/common/htmlComponents/ButtonLink";
+import DottedLabel from "@components/common/htmlComponents/DottedLabel";
 
 import NothingFound from "@components/common/notFound/NotFound";
 import FullLogo from "@components/common/logo/FullLogo";
@@ -99,6 +109,8 @@ export {
     LInput, GInput, IInput, PInput, FInput, TipTap, ImagePreview, ToggleInput,
     DragAndDrop, ImageUpload, TextInput, ImagePicker, ImagePickerItem,
     ImagePickerFilter, TextArea, TipTapImage, CustomHeading, CustomImage,
+    LabeledTextArea, FileUpload, FilePreview, FileThumbnail, FilePicker,
+    FilePickerItem,
 
 /*** Loading ***/
     SLoadingRing, SLoadingHalo, PageLoadingRing, PageLoadingHalo,
@@ -121,7 +133,7 @@ export {
     PlayingPodcastDetails,
 
 /*** HtmlComponents ***/
-    Heading, TipTapSection, Article, DateTime, ButtonLink,
+    Heading, TipTapSection, Article, DateTime, ButtonLink, DottedLabel,
 
   UserPill,
   FullLogo,

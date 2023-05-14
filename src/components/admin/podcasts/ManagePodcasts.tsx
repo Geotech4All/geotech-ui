@@ -23,8 +23,8 @@ export default function ManagePodcasts(){
   return (
     <>
       <div className={`
-          bg-gray-100 p-3 rounded-3xl flex flex-col gap-3`}>
-        <h3 className="p-2 font-semibold">Manage podcasts</h3>
+          bg-gray-100 p-3 rounded-lg flex flex-col gap-3`}>
+        <h3 className="p-2 md:text-lg text-black/60 font-semibold">Manage podcasts</h3>
         <GInput onChange={updateSearch} className="w-full rounded-3xl px-5 p-1" placeholder="Search podcast"/>
         {error && <SomethingWentWrong error={error} />}
         <ul className="flex flex-col gap-1">

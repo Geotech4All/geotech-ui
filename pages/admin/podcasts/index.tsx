@@ -7,7 +7,6 @@ import { setPreviousGuests, setRecentHosts, setStaffList } from "@store/slices";
 import React from "react";
 import Head from "next/head";
 import TrendingPodcasts from "@components/common/podcast/TrendingPodcasts";
-import Link from "next/link";
 
 const Podcasts: NextPageWithLayout = () => {
   const { loading, error, data } = useRecentHosts();

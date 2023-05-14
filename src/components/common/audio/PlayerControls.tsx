@@ -82,7 +82,7 @@ export default function PlayerControls() {
         sm:justify-start flex w-full items-center`}>
       <audio ref={playerRef}
         className="hidden" preload="metadata"
-        controls src={player.podcast?.audio ?? ""}/>
+        controls src={player.podcast?.audio?.url ?? ""}/>
 
       {/* Play and skip buttons */}
       <AudioPlayerButtons
