@@ -14,7 +14,7 @@ export default function User () {
       href="/admin/profile">
       <img
         className={`
-            w-full max-w-[10rem] bg-gray-200 rounded-full p-3
+            w-full max-w-[10rem] bg-gray-200 rounded-full p-1
             group-hover:bg-black/70 transition-all object-cover aspect-square`}
         src={user?.profile?.image?.url ?? "/images/profile.svg" } alt={user?.profile?.image?.description ?? ""} />
       {admin.sidebarOpen && (
