@@ -1,6 +1,6 @@
 import React from "react";
 import { Maybe, PostType } from "@gql/codegen/graphql";
-import { GImage, PostAuthor, PostReadLength, PreviewImage } from "@components/common";
+import { PostAuthor, PostReadLength, PreviewImage } from "@components/common";
 
 interface MidPostCardProps {
   post?: Maybe<PostType>;

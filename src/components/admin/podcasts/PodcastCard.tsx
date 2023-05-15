@@ -1,8 +1,6 @@
 import React from "react"
 import { BiAlbum } from "react-icons/bi";
 import type { PodcastTypeEdge, Maybe } from "@gql/codegen/graphql";
-import { PodcastColorType } from "@constants/podcastColors";
-import { randomColor } from "@utils/common";
 type PotentialPodtact = Maybe<PodcastTypeEdge>
 
 interface PodcastCardProps {
@@ -11,12 +9,9 @@ interface PodcastCardProps {
 
 export default function PodcastCard(props: PodcastCardProps){
   const { podcast } = props;
-  const [color, setColor] = React.useState<PodcastColorType>()
-  React.useEffect(() => {
-    setColor(randomColor());
-  }, [])
+
   return (
-    <article className={`${color?.bgColor} ${color?.textColor} relative flex flex-col justify-center items-center p-4 rounded-2xl`}>
+    <article className={`bg-black/60 text-white relative flex flex-col justify-center items-center p-4 rounded-2xl`}>
       <span className="bg-black/50 w-7 absolute top-2 left-2 aspect-square flex items-center justify-center rounded-full">{podcast?.node?.listens}</span>
       <span><BiAlbum size={100} /></span>
       <div className="w-full">

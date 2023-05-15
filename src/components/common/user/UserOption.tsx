@@ -24,7 +24,8 @@ export default function UserOption(props: UserOptionProps){
     return (
         <UIButton type="button" variant="Black" onClick={handleClick} title={name}
             className="w-full bg-black/60 flex items-center gap-2 rounded-md">
-            <GImage src={user?.profile?.image ?? "/images/guy-profile.svg"} alt={name ?? "user avatar"}
+            <GImage src={user?.profile?.image?.url ?? "/images/guy-profile.svg"}
+                alt={user?.profile?.image?.description ?? ""}
                 className="max-w-[4rem] rounded bg-black/80 aspect-square"/>
           <span>{name}</span>
         </UIButton>

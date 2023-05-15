@@ -32,8 +32,8 @@ const StaffEditPage: NextPageWithLayout = () => {
             <div className="flex gap-3 flex-col p-4 md:flex-row">
                 <div className="flex flex-col flex-1 items-center gap-1">
                     <GImage className="max-h-[80vh] rounded-lg aspect-square"
-                        alt={data?.staff?.user?.fullName ?? "Staff"}
-                        src={data?.staff?.user?.profile?.image ?? "/images/profile.svg"} />
+                        alt={data?.staff?.user?.profile?.image?.description ?? ""}
+                        src={data?.staff?.user?.profile?.image?.url ?? "/images/profile.svg"} />
                 </div>
                 <div className="flex-1">
                     <StaffPermissionForm defaultValue={data?.staff} />
