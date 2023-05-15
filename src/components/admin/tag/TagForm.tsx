@@ -1,4 +1,4 @@
-import { AnimatedCheckMark, Button, CenterSLoadingRing, GInput, SomethingWentWrong } from "@components/common";
+import { AnimatedCheckMark, CenterSLoadingRing, SomethingWentWrong, TextArea, TextInput, UIButton } from "@components/common";
 import { Maybe, TagType } from "@gql/codegen/graphql";
 import { useCreateUpdateTag } from "@gql/requests/mutations/hooks";
 import React from "react";
@@ -14,7 +14,7 @@ export default function TagForm(props: TagFormProps) {
   const [createUpdateTag, { loading, error }] = useCreateUpdateTag();
   const [complete, setComplete] = React.useState(false);
   const titleRef = React.useRef() as React.MutableRefObject<HTMLInputElement>
-  const descRef = React.useRef() as React.MutableRefObject<HTMLInputElement>
+  const descRef = React.useRef() as React.MutableRefObject<HTMLTextAreaElement>
   const catRef = React.useRef() as React.MutableRefObject<HTMLInputElement>
 
   if (complete) return <AnimatedCheckMark />
@@ -40,19 +40,14 @@ export default function TagForm(props: TagFormProps) {
       onSubmit={handleSubmit}
       className="flex flex-col w-full gap-3 relative">
       <legend
-        className="bg-ui-red-100/80 p-2 px-3 rounded-lg text-white font-semibold text-lg">New Tag</legend>
-      <GInput defaultValue={defaultValue?.title}
+        className="bg-black/80 p-2 px-3 rounded-md text-white font-semibold text-lg">New Tag</legend>
+      <TextInput defaultValue={defaultValue?.title}
         ref={titleRef} placeholder="Tag title" />
-      <GInput defaultValue={defaultValue?.description ?? ""}
+      <TextArea defaultValue={defaultValue?.description ?? ""}
         ref={descRef} placeholder="Tag description"/>
-      <GInput defaultValue={defaultValue?.category}
+      <TextInput defaultValue={defaultValue?.category}
         ref={catRef} placeholder="Category i.e what is getting tagged e.g. Podcast, Opportunity, Post"/>
-      <Button
-        onClick={handleSubmit}
-        type="button"
-        className={`
-        hover:bg-ui-red-200/90 active:bg-ui-red-200/90 transition font-semibold
-        w-fit p-1 px-3 rounded-md bg-ui-red-200/70 text-white self-end`}>Save</Button>
+      <UIButton variant="Black" onClick={handleSubmit} type="button">Save</UIButton>
       {loading && (
         <div className="absolute w-full h-full bg-white/30">
           <CenterSLoadingRing />

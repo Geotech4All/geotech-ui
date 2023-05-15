@@ -12,7 +12,7 @@ const NewOpportunity: NextPageWithLayout = () => {
       </Head>
       <main className="p-3 flex gap-3 flex-col">
         <h1 className={`
-            text-lg bg-ui-red-100/70 p-3 rounded-lg text-white font-semibold`}>New Opportuntiy</h1>
+            text-lg bg-black/70 p-3 rounded-lg text-white font-semibold`}>New Opportuntiy</h1>
         <OpportunityForm />
       </main>
     </>

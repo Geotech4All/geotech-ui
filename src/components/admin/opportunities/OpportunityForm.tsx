@@ -71,13 +71,12 @@ export default function OpportunityForm(props: OpportunityFormProps) {
       <TipTap content={defaultValue?.content ?? ""} title="Opprtunity content" getContent={getContent}/>
 
       <div className="flex flex-col md:flex-row w-full gap-3">
-        <div className="flex gap-3 w-full">
+        <div className="flex gap-3 items-center w-full">
             <label
-              className="bg-ui-red-200/80 h-fit p-1 px-3 rounded text-white font-semibold">Category</label>
+              className="bg-black/90 h-fit p-1 px-3 rounded text-white font-semibold">Category</label>
             <DropDownList full
               name="Category (e.g. Job listing, Internship, Scholarship e.t.c.)"
-              defaultValue={defaultValue?.category?.title}
-              getCurrent={getCategory}
+              defaultValue={defaultValue?.category?.title} getCurrent={getCategory}
               options={categories ?? []}/>
         </div>
         <UIButton variant="Green" className="p-[0.5rem] whitespace-nowrap"
@@ -86,11 +85,7 @@ export default function OpportunityForm(props: OpportunityFormProps) {
           <TagForm onComplete={onNewTagCreate} />
         </MModal>
       </div>
-      <Button
-        type="submit"
-        className={`
-          bg-ui-red-200/80 p-1 rounded-md text-white text-lg transition
-          font-semibold hover:bg-ui-red-200 active:bg-ui-red-200`}>Save</Button>
+      <UIButton variant="Black" type="submit">Save</UIButton>
       {loading && (
         <div className="absolute bg-white/40 h-full w-full ">
             <SLoadingHalo />
