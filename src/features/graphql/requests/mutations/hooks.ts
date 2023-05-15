@@ -1,6 +1,7 @@
 import { useMutation } from "@apollo/client";
 import {
   Maybe,
+  Register,
   IncreasePodcastListens,
   MutationCreateUpdatePodcastArgs,
   MutationCreateUpdatePostArgs,
@@ -28,7 +29,8 @@ import {
   MutationCreateUpdateGuestArgs,
   GuestCreateUpdateMutation,
   MutationCreateUpdateFileArgs,
-  FileCreateUpdateMutation} from "@gql/codegen/graphql";
+  FileCreateUpdateMutation,
+  MutationRegisterArgs} from "@gql/codegen/graphql";
 import {
   CREATE_UPDATE_PODCAST,
   CREATE_UPDATE_POST,
@@ -40,6 +42,7 @@ import {
   DELETE_IMAGE
 } from "@gql/requests/mutations";
 import { CREATE_STAFF, CREATE_UPDATE_FILE, CREATE_UPDATE_GUEST, CREATE_UPDATE_IMAGE, CREATE_UPDATE_OPPORTUNITY, CREATE_UPDATE_TAG } from "./AdminMutations";
+import { REGISTER } from "./AuthMutations";
 
 export const useUpdatePodcast = () => {
   return useMutation<
@@ -135,4 +138,10 @@ export const useCreateUpdateFile = (variables?: MutationCreateUpdateFileArgs) =>
     return useMutation<
     { file: Maybe<FileCreateUpdateMutation> },
     MutationCreateUpdateFileArgs>(CREATE_UPDATE_FILE, { variables })
+}
+
+export const useRegister = (variables?: MutationRegisterArgs) => {
+    return useMutation<
+    { register: Maybe<Register> },
+    MutationRegisterArgs>(REGISTER, { variables });
 }

@@ -9,7 +9,7 @@ interface LoginLayoutProps {
   height?: number;
   alt?: string;
 }
-export default function LoginLayout(props: LoginLayoutProps){
+export default function AuthFormLayout(props: LoginLayoutProps){
   const { src, children, width, height, alt } = props;
   const [showImage, setShowImage] = React.useState(false);
   const imgSrc = src ? src : "/images/scientist.png";

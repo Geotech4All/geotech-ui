@@ -16,8 +16,8 @@ export default function StaffCard(props: StaffCartProps) {
             hover:border-black/20 transition border-black/5`}>
         <GImage
           className="rounded-full aspect-square min-w-[4rem] w-[4.5rem] bg-gray-300"
-          src={staff.user?.profile?.image ?? "/images/profile.svg"}
-          alt={staff.user?.fullName ?? "Staff"} />
+          src={staff.user?.profile?.image?.url ?? "/images/profile.svg"}
+          alt={staff.user?.profile?.image?.description ?? ""} />
         <div className="group-hover:text-black/60 transition flex-1">
           <address className="line-clamp-1">{staff.user?.email}</address>
           <h3 className="whitespace-nowrap flex line-clamp-1">{staff.user?.fullName}</h3>
