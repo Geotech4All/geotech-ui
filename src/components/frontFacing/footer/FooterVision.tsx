@@ -8,7 +8,7 @@ export default function FooterVision(){
         <h3 className="capitalize text-white/50 whitespace-nowrap font-semibold text-xl">Our vision</h3>
         <div className="bg-white/25 h-[1px] w-full"/>
       </div>
-      <blockquote className="text-3xl text-white/70 ">
+      <blockquote className="text-xl text-white/70 ">
         To be a resource center for everything geoscience in Nigeria and Africa
       </blockquote>
     </div>
