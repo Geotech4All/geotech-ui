@@ -8,7 +8,7 @@ export default function Hero() {
                 <Earth />
             </Canvas>
             <div className="text-white absolute top-1/2 -translate-y-1/2 left-10">
-                <h1 className="text-7xl font-extrabold">Geotech</h1>
+                <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold">Geotech</h1>
                 <p className="text-xl">All things geoscience</p>
             </div>
         </div>

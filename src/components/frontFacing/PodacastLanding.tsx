@@ -12,7 +12,7 @@ export default function PodcastLanding() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                     className={`flex-1 flex flex-col gap-5 pt-7`}>
-                    <h2 className={`font-extrabold sm:text-6xl text-5xl xl:text-7xl`}>
+                    <h2 className={`font-extrabold sm:text-5xl text-4xl xl:text-6xl`}>
                         The best podcast for geo ethusiasts.</h2>
                     <p
                         className='text-lg sm:text-xl'>
