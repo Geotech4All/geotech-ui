@@ -15,6 +15,8 @@
     "@headlessui/react": "^1.7.7",
     "@next/font": "^13.4.1",
     "@nrwl/next": "15.8.8",
+    "@react-three/drei": "^9.68.6",
+    "@react-three/fiber": "^8.13.0",
     "@reduxjs/toolkit": "^1.9.1",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@tiptap/core": "^2.0.0-beta.193",
@@ -27,6 +29,7 @@
     "@types/node": "18.11.18",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.10",
+    "@types/three": "^0.152.0",
     "apollo-upload-client": "^17.0.0",
     "cosmiconfig-toml-loader": "^1.0.0",
     "eslint": "8.31.0",
@@ -51,6 +54,7 @@
     "react-responsive": "^9.0.2",
     "sass": "^1.57.1",
     "swiper": "^8.4.6",
+    "three": "^0.152.2",
     "typescript": "^4.9.4"
   },
   "devDependencies": {

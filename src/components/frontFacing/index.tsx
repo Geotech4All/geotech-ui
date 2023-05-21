@@ -11,19 +11,23 @@ import FooterSocials from "@components/frontFacing/footer/FooterSocials";
 import FooterSocialLink from "@components/frontFacing/footer/FooterSocialLink";
 import FooterVision from "@components/frontFacing/footer/FooterVision";
 import ArticleReader from "@components/frontFacing/readers/ArticleReader";
+import Earth from "@components/frontFacing/3d/Earth";
+import Hero from "@components/frontFacing/Hero";
 
 export {
-  PodcastLanding,
-  BlogLanding,
-  NavBarLayout,
-  ClientNavLinks,
-  ArticleReader,
-  NavBar,
-  MobileNav,
-  Footer,
-  PodcastLandingPageImages,
-  FooterEmail,
-  FooterSocials,
-  FooterSocialLink,
-  FooterVision
+    Hero,
+    Earth,
+    PodcastLanding,
+    BlogLanding,
+    NavBarLayout,
+    ClientNavLinks,
+    ArticleReader,
+    NavBar,
+    MobileNav,
+    Footer,
+    PodcastLandingPageImages,
+    FooterEmail,
+    FooterSocials,
+    FooterSocialLink,
+    FooterVision
 }
