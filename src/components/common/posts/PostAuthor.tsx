@@ -17,7 +17,7 @@ export default function PostAuthor(props: PostAuthorProps) {
         src={post?.author?.profile?.image?.url ?? "/images/guy-profile.svg"}
         alt={`${post?.author.profile?.image?.description}`}/>
       <div className="flex text-sm flex-col">
-        <p className="font-bold">{post?.author.fullName}</p>
+        <p className="font-bold">{`${post?.author.firstName} ${post?.author.lastName}`}</p>
         <DateTime date={String(post?.dateAdded)} />
       </div>
     </div>

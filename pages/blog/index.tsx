@@ -2,7 +2,7 @@ import React from "react";
 import { NavBarLayout } from "@components/frontFacing";
 import { NextPageWithLayout } from "@pages/_app";
 import { useAllPosts } from "@gql/requests/queries/hooks";
-import { CenterSLoadingRing, GImage, PostList, SomethingWentWrong } from "@components/common";
+import { CenterSLoadingRing, NothingFound, PostList, SomethingWentWrong } from "@components/common";
 import Head from "next/head";
 
 const Blog: NextPageWithLayout = () => {
@@ -11,10 +11,7 @@ const Blog: NextPageWithLayout = () => {
     if (loading) return <CenterSLoadingRing />;
     if (error) return <SomethingWentWrong error={error} />;
     if (data?.posts?.edges.length && data?.posts?.edges?.length < 1) return (
-        <div className="flex justify-center flex-col w-full items-center">
-            <GImage className="max-w-lg" src="/images/sorry.svg" alt="lady holding a sorry plack" />
-            <h1 className="text-xl text-gray-600">Sorry no podcasts yet</h1>
-        </div>
+        <NothingFound caption="Sorry! no posts were found."/>
     );
 
     return (

@@ -145,6 +145,8 @@ export const ALL_POSTS = gql`
               }
             }
             fullName
+            firstName
+            lastName
           }
         }
       }
