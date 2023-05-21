@@ -18,7 +18,7 @@ export default function StaffCard(props: StaffCartProps) {
           className="rounded-full aspect-square min-w-[4rem] w-[4.5rem] bg-gray-300"
           src={staff.user?.profile?.image?.url ?? "/images/profile.svg"}
           alt={staff.user?.profile?.image?.description ?? ""} />
-        <div className="group-hover:text-black/60 transition flex-1">
+        <div className="group-hover:text-black/60 w-full overflow-hidden transition flex-1">
           <address className="line-clamp-1 w-full text-ellipsis overflow-hidden">{staff.user?.email}</address>
           <h3 className="whitespace-nowrap w-full text-ellipsis overflow-hidden flex line-clamp-1">{staff.user?.fullName}</h3>
         </div>
