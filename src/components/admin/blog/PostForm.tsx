@@ -1,6 +1,6 @@
 import {
     AnimatedCheckMark, FormErrors, ImagePicker,
-    PageLoadingHalo, PreviewImage, SomethingWentWrong, TextArea, TextInput, TipTap, UIButton
+    PageLoadingHalo, PreviewImage, TextArea, TextInput, TipTap, UIButton
 } from "@components/common";
 import { ImageType, Maybe, PostType } from "@gql/codegen/graphql";
 import { useCreateUpdatePost } from "@gql/requests/mutations/hooks";
@@ -52,22 +52,22 @@ export default function PostForm(props: PostFormProps) {
                 abstract: abstractRef.current.value,
                 coverPhotoId: coverPhoto?.imageId
             }
+        }).then(res => {
+            if (res.data?.post?.success) {
+                const timeout = setTimeout(() => {
+                    router.push("/admin/blog")
+                    clearTimeout(timeout)
+                }, 500)
+            }
         }).catch(err => console.log(err))
-        if (!data?.post?.errors) {
-            const timeout = setTimeout(() => {
-                router.push("/admin/blog")
-                clearTimeout(timeout)
-            }, 500)
-        }
     };
 
-    if (error) return <SomethingWentWrong error={error} />
     if (loading) return <PageLoadingHalo />
     if (data?.post?.success) return <AnimatedCheckMark />
 
     return (
         <form onSubmit={submitHandler} className="flex py-3 z-0 flex-col gap-2">
-            {data?.post?.errors && <FormErrors errors={data?.post?.errors} />}
+            {error && <FormErrors errors={error} />}
             <TextInput ref={titleRef} defaultValue={oldPost?.title} required
                 placeholder="Your post title goes here" />
 

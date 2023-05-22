@@ -17,7 +17,6 @@ export default function Earth() {
     const cloudsRef = React.useRef() as React.MutableRefObject<THREE.Mesh<THREE.BufferGeometry<THREE.NormalBufferAttributes>, THREE.Material | THREE.Material[]>> | undefined;
     useFrame(({ clock }) => {
         const elapsedTime = clock.getElapsedTime();
-        console.log(earthRef?.current.position)
         earthRef && (earthRef.current.rotation.y = elapsedTime / 6);
         cloudsRef && (cloudsRef.current.rotation.y = elapsedTime / 6);
     });
