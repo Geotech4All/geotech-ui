@@ -7,12 +7,12 @@ export default function Hero() {
             <Canvas style={{ height: 350 }}>
                 <Earth />
             </Canvas>
-            <div className="text-white absolute top-[64%] md:top-1/2 md:-translate-y-1/2 left-5 md:left-10">
+            <div className="text-white absolute top-[50%] left-5 md:left-10">
                 <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold">Geotech4all</h1>
                 <div className="flex flex-col gap-3">
                     <p className="text-xl font-semibold">Everything geoscience</p>
                 </div>
-                <p className="text-xl">News, Articles, Podcasts, Conferences, Webinars and Interviews</p>
+                <p className="text-xl mt-4">News, Articles, Podcasts, Conferences, Webinars and Interviews</p>
             </div>
         </div>
     );
