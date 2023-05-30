@@ -71,7 +71,7 @@ export default function ImagePicker(props: ImagePickerProps){
                     {children}
                    <ImagePickerFilter onNew={toggleImageForm}onFilter={handleImageFilter}/>
                     <div onScroll={handleScroll}
-                        className="w-full z-0 flex gap-1 min-h-[30rem] max-h-[35rem] overflow-auto">
+                        className="w-full z-0 grid grid-cols-1 gap-1 min-h-[30rem] max-h-[35rem] overflow-auto">
                         {edges?.length && edges.length > 0 ?
                             edges?.map(edge => (
                                 <ImagePickerItem onPickImage={onPickImage}
@@ -88,4 +88,4 @@ export default function ImagePicker(props: ImagePickerProps){
             </AnimatePresence>
         </>
     )
-};
+}

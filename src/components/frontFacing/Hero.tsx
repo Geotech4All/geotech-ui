@@ -11,8 +11,8 @@ export default function Hero() {
                 <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold">Geotech4all</h1>
                 <div className="flex flex-col gap-3">
                     <p className="text-xl font-semibold">Everything geoscience</p>
-                    <p className="text-xl">News, Articles, Podcasts, Conferences, Webinars and Interviews</p>
                 </div>
+                <p className="text-xl">News, Articles, Podcasts, Conferences, Webinars and Interviews</p>
             </div>
         </div>
     );
