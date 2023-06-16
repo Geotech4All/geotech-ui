@@ -5,7 +5,8 @@ import { FormErrors, FullLogo, LoadingSuccess, PageLoadingRing, PInput, TextInpu
 import { useRouter } from "next/router";
 
 export default function SignUpForm() {
-    const [mutate, { loading, error, data }] = useRegister();
+    const [mutate, { loading, data }] = useRegister();
+    const [signUpError, setSighUpError] = React
     const emailRef = React.useRef() as React.MutableRefObject<HTMLInputElement>;
     const pass1Ref = React.useRef() as React.MutableRefObject<HTMLInputElement>;
     const pass2Ref = React.useRef() as React.MutableRefObject<HTMLInputElement>;
